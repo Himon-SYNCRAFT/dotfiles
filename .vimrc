@@ -490,7 +490,7 @@ endif
 
 
 " powerline
-set rtp+=/home/himon/.vim/bundle/powerline/powerline/bindings/vim/
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
 set laststatus=2 " Always show statusline
 
 set statusline+=%#warningmsg#
@@ -498,7 +498,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set t_Co=256
-colorscheme Monokai
 hi Normal ctermbg=none
 highlight NonText ctermbg=none
 
@@ -518,9 +517,9 @@ nnoremap <F12> :call FixIndentAndTrailingWhitespace()<CR>
 inoremap <F12> <C-o>:call FixIndentAndTrailingWhitespace()<CR>
 
 " Private dir for UltiSnip snippets
-set rtp+=/home/himon/.vim/UltiSnips/
-let g:UltiSnipsSnippetsDir = "/home/himon/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["/home/himon/.vim/UltiSnips"]
+set rtp+=~/.vim/UltiSnips/
+let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/UltiSnips"]
 
 function! FixIndentAndTrailingWhitespace()
 	let l:save_cursor = getpos(".")
@@ -528,3 +527,7 @@ function! FixIndentAndTrailingWhitespace()
 	execute "normal gg=G"
 	call setpos('.', l:save_cursor)
 endfunction
+
+if filereadable($HOME."/.vimrc.loc")
+    source ${HOME}/.vimrc.loc
+endif
