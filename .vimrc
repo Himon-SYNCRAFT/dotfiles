@@ -46,6 +46,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'powerline/powerline'
+Plug 'lambdatoast/elm.vim'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -90,6 +91,9 @@ Plug 'mattn/emmet-vim'
 
 "" PHP Bundle
 Plug 'arnaud-lb/vim-php-namespace'
+
+"" Haskell Bundle
+Plug 'neovimhaskell/haskell-vim'
 
 "" Zeal for vim
 Plug 'KabbAmine/zeavim.vim', {'on': [
@@ -164,6 +168,9 @@ let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
+
+"" apllies substitution globally on lines for example instead of :%s/foo/bar/g you just type :%s/foo/bar/
+set gdefault
 
 "*****************************************************************************
 "" Visual Settings
@@ -529,6 +536,10 @@ function! FixIndentAndTrailingWhitespace()
 	call setpos('.', l:save_cursor)
 endfunction
 
+" Haskell
+let g:haskell_indent_disable = 1
+
+" Local configuration
 if filereadable($HOME."/.vimrc.loc")
     source ${HOME}/.vimrc.loc
 endif
