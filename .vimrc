@@ -537,7 +537,7 @@ function! FixIndentAndTrailingWhitespace()
 endfunction
 
 " Haskell
-let g:haskell_indent_disable = 1
+" let g:haskell_indent_disable = 1
 
 " Local configuration
 if filereadable($HOME."/.vimrc.loc")
