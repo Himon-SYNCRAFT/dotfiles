@@ -32,8 +32,8 @@ call plug#begin(expand('~/.vim/plugged'))
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -46,7 +46,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'powerline/powerline'
-Plug 'lambdatoast/elm.vim'
+Plug 'elmcast/elm-vim'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -395,6 +395,10 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:elm_syntastic_show_warnings = 1
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -536,10 +540,12 @@ function! FixIndentAndTrailingWhitespace()
 	call setpos('.', l:save_cursor)
 endfunction
 
-" Haskell
-" let g:haskell_indent_disable = 1
+" Elm
+let g:elm_format_autosave = 1
 
 " Local configuration
 if filereadable($HOME."/.vimrc.loc")
     source ${HOME}/.vimrc.loc
 endif
+
+set iskeyword-=.
