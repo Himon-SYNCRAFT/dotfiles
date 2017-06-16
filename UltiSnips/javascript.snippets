@@ -1,0 +1,132 @@
+snippet lf "Function assigned to let"
+let ${1:function_name} = function(${2}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet l
+let ${1} = ${2}
+endsnippet
+
+snippet c
+const ${1} = ${2}
+endsnippet
+
+snippet cr
+const ${1} = require('${2}')
+endsnippet
+
+snippet for "for (...) {...} (counting up)" b
+for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet recomp
+class ${1} extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = { ${2} }
+	}
+
+	render() {
+		return (
+		)
+	}
+}
+endsnippet
+
+snippet recompp
+const React = require('react')
+const ${3}Store = require('../stores/$3Store')
+const $3Actions = require('../actions/$3Actions')
+
+
+class ${1} extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			${2}
+		}
+
+		this.onChange = this.onChange.bind(this)
+	}
+
+	componentDidMount() {
+        $3Store.addChangeListener(this.onChange)
+        $3Actions.all()
+    }
+
+    componentWillUnmount() {
+        $3Store.removeChangeListener(this.onChange)
+    }
+
+    onChange() {
+		const $2 = $3Store.all()
+		this.setState({ $2 })
+    }
+
+	render() {
+		return (
+		)
+	}
+}
+endsnippet
+
+snippet compdm
+componentDidMount() {
+	${1}
+}
+endsnippet
+
+snippet compwu
+componentWillUnmount() {
+	${1}
+}
+endsnippet
+
+snippet restore
+const EventEmitter = require('events').EventEmitter
+
+
+const CHANGE = 'CHANGE'
+let ${1} = []
+
+const ${2} = Object.assign({}, EventEmitter.prototype, {
+    all: () => {
+		return $1
+    },
+
+    addChangeListener: function(callback) {
+		this.on(CHANGE, callback)
+    },
+
+    removeChangeListener: function(callback) {
+		this.removeListener(CHANGE, callback)
+    }
+})
+
+Dispatcher.register(action => {
+    switch (action.actionType) {
+        case ${3}:
+            $2.emit(CHANGE)
+            break;
+
+    }
+})
+
+
+module.exports = $2
+endsnippet
+
+snippet ex
+module.exports = ${1}
+endsnippet
+
+snippet rebind
+this.${1} = this.$1.bind(this)
+endsnippet
+
+snippet c=c
+const ${1} = '$1'
+endsnippet
