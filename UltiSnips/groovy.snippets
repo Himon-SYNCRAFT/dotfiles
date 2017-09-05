@@ -1,0 +1,47 @@
+snippet impe
+import pl.com.stream.verto.cmm.schema.domain.entity.${1}
+endsnippet
+
+snippet dmfind
+${1} `!p snip.rv = first_letter_lower(t[1])` = dm.find($1.class, id$1)
+endsnippet
+
+snippet print
+requestContext.getReport().println('' + ${1})
+endsnippet
+
+snippet getservice
+${1} `!p snip.rv = first_letter_lower(t[1])` = context.getService($1.class)
+endsnippet
+
+snippet query
+def query = dm.createSQLQuery(sql)
+query.setParameter('${1}', $1)
+def row = query.getFirstRow()
+// def rows = query.getListResult()
+endsnippet
+
+snippet decimal
+import pl.com.stream.lib.commons.math.Decimal
+endsnippet
+
+snippet impattr
+import pl.com.stream.verto.cmm.attribute.server.pub.value.AttributeValueDto
+import pl.com.stream.verto.cmm.attribute.server.pub.value.AttributeValueService
+endsnippet
+
+snippet findattr
+def attributeSubject = ${1:objectName}.getAttributeSubject()
+def attributeValues = attributeSubject.getAttributeValueSet()
+def ${2:attributeValue} = attributeValues.find { it.getAttributeDefinition().getIdAttributeDefinition() == ${3:idAttributeDefinition} }
+endsnippet
+
+
+global !p
+
+def first_letter_lower(text):
+	if not text:
+		return ''
+	return text[0].lower() + text[1:]
+
+endglobal
