@@ -36,6 +36,31 @@ def attributeValues = attributeSubject.getAttributeValueSet()
 def ${2:attributeValue} = attributeValues.find { it.getAttributeDefinition().getIdAttributeDefinition() == ${3:idAttributeDefinition} }
 endsnippet
 
+snippet command
+def ${1} = {
+	${2}
+} as BusinessCommand
+businessCommandExecutor.executeInNewTransaction($1)
+endsnippet
+
+snippet trans
+import pl.com.stream.next.asen.server.business.BusinessCommand
+import pl.com.stream.next.asen.server.business.BusinessCommandExecutor
+
+BusinessCommandExecutor businessCommandExecutor = context.getService(BusinessCommandExecutor.class)
+endsnippet
+
+snippet script
+import pl.com.stream.next.asen.common.groovy.api.common.ScriptReference
+
+ScriptReference s = script.find("${1:Nazwa skryptu}")
+s.execute(${2:[]})
+endsnippet
+
+snippet methods
+.metaClass.methods*.name.sort().unique()
+endsnippet
+
 
 global !p
 
