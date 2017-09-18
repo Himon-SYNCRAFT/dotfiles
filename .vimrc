@@ -47,6 +47,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'powerline/powerline'
 Plug 'elmcast/elm-vim'
+Plug 'shawncplus/phpcomplete.vim'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -83,7 +84,7 @@ Plug 'vim-scripts/c.vim'
 Plug 'jelera/vim-javascript-syntax'
 
 "" HTML Bundle
-Plug 'amirh/HTML-AutoCloseTag'
+Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'

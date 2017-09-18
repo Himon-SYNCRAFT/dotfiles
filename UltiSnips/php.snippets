@@ -1,0 +1,30 @@
+snippet get
+public function get${1}() {
+	return $this->`!p snip.rv = first_letter_lower(t[1])`;
+}
+endsnippet
+
+snippet set
+public function set${1}($`!p snip.rv = first_letter_lower(t[1])`) {
+	$this->`!p snip.rv = first_letter_lower(t[1])` = $`!p snip.rv = first_letter_lower(t[1])`;
+	return $this;
+}
+endsnippet
+
+snippet new
+$${1} = new `!p snip.rv = first_letter_upper(t[1])`();
+endsnippet
+
+global !p
+
+def first_letter_lower(text):
+	if not text:
+		return ''
+	return text[0].lower() + text[1:]
+
+def first_letter_upper(text):
+	if not text:
+		return ''
+	return text[0].upper() + text[1:]
+
+endglobal
