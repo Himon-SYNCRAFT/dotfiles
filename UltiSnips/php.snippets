@@ -21,6 +21,38 @@ snippet php
 
 endsnippet
 
+snippet m
+${1:public} function ${2:funcName}(${3}) {
+	${4:// code here}
+}
+endsnippet
+
+snippet c
+class ${1:`!p snip.rv = snip.basename`} ${2:implements Interface} {
+	${3:// code here}
+}
+endsnippet
+
+snippet it
+it('${1:should}', function() {
+	${2:// code here}
+});
+endsnippet
+
+snippet desc
+describe('${1:what}', function() {
+	${2:// code here}
+});
+endsnippet
+
+snippet beforeE
+beforeEach(function() {
+	${1:// code here}
+});
+endsnippet
+
+
+
 global !p
 
 def first_letter_lower(text):
