@@ -533,6 +533,9 @@ inoremap <F12> <C-o>:call FixIndentAndTrailingWhitespace()<CR>
 " Add semicolon at the end of line
 inoremap <leader>; <C-o>A;
 
+" Add semicolon at the end of line
+inoremap <leader>. ->
+
 " Private dir for UltiSnip snippets
 set rtp+=~/.vim/UltiSnips/
 let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
