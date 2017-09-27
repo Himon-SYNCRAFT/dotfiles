@@ -557,3 +557,6 @@ if filereadable($HOME."/.vimrc.loc")
 endif
 
 set iskeyword-=.
+
+" php
+autocmd FileType php setlocal colorcolumn=79
