@@ -38,7 +38,7 @@ endsnippet
 
 snippet command
 def ${1:c} = {
-	${2}
+    ${2}
 } as BusinessCommand
 businessCommandExecutor.executeInNewTransaction($1)
 endsnippet
@@ -73,8 +73,8 @@ endsnippet
 global !p
 
 def first_letter_lower(text):
-	if not text:
-		return ''
-	return text[0].lower() + text[1:]
+    if not text:
+        return ''
+    return text[0].lower() + text[1:]
 
 endglobal

@@ -560,6 +560,7 @@ set iskeyword-=.
 
 " php
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
+autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 set listchars=tab:>·,trail:~,extends:>,precedes:<
 set list
