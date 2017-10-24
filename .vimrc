@@ -478,22 +478,14 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
 
-" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
-
-
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
-
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
+autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
+autocmd FileType json setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
+autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 let g:javascript_enable_domhtmlcss = 1
-
-" vim-javascript
-augroup vimrc-javascript
-    autocmd!
-    autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
-augroup END
-
 
 
 "" Include user's local vim config
@@ -555,10 +547,6 @@ if filereadable($HOME."/.vimrc.loc")
 endif
 
 set iskeyword-=.
-
-" php
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
-autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 set listchars=tab:>·,trail:~,extends:>,precedes:<
 set list
