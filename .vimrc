@@ -96,22 +96,6 @@ Plug 'arnaud-lb/vim-php-namespace'
 "" Haskell Bundle
 Plug 'neovimhaskell/haskell-vim'
 
-"" Zeal for vim
-Plug 'KabbAmine/zeavim.vim', {'on': [
-            \   'Zeavim', 'Docset',
-            \   '<Plug>Zeavim',
-            \   '<Plug>ZVVisSelection',
-            \   '<Plug>ZVKeyDocset',
-            \   '<Plug>ZVMotion'
-            \ ]}
-
-noremap <F5> :Zeavim<CR>
-let g:zv_file_types = {
-            \    'javascript'                      : 'javascript,react',
-            \    'python'                          : 'python,flask,sqlalchemy',
-            \    'html'                            : 'html,jinja',
-            \    'php'                             : 'php,codeigniter,laravel',
-            \ }
 "" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
     source ~/.vimrc.local.bundles
