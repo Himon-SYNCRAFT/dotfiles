@@ -87,7 +87,7 @@ Plug 'jelera/vim-javascript-syntax'
 "" HTML Bundle
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
+" Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
@@ -152,6 +152,25 @@ set showcmd
 set tags+=tags,tags.vendors
 
 let g:autotagTagsFile="tags"
+
+" sort after inserting php namespace
+let g:php_namespace_sort_after_insert = 1
+
+" Insert corresponding use statement for the name under cursor
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+
+augroup vimrc_php
+    autocmd!
+    autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+    autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+    autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+    autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+augroup END
+
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 " session management
 let g:session_directory = "~/.vim/session"
@@ -469,7 +488,6 @@ let g:jedi#smart_auto_mappings = 0
 
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 autocmd FileType json setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
