@@ -151,6 +151,8 @@ set showcmd
 
 set tags+=tags,tags.vendors
 
+let g:autotagTagsFile="tags"
+
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
