@@ -1,4 +1,5 @@
 set shell=/bin/sh
+let loaded_matchparen = 1
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -87,7 +88,7 @@ Plug 'jelera/vim-javascript-syntax'
 "" HTML Bundle
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
-" Plug 'gorodinskiy/vim-coloresque'
+Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
@@ -141,6 +142,7 @@ set smartcase
 set bomb
 set binary
 set ttyfast
+set lazyredraw
 
 "" Directories for swp files
 set nobackup
@@ -170,7 +172,7 @@ augroup vimrc_php
     autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 augroup END
 
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79 lazyredraw
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 " session management
 let g:session_directory = "~/.vim/session"
@@ -398,7 +400,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " ale
-let g:ale_linters = {'javascript': ['eslint']}                                  "Lint js with eslint
+let g:ale_linters = {
+\    'javascript': ['eslint'],
+\    'python': ['flake8']
+\}                                  "Lint js with eslint
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}                       "Fix eslint errors
 let g:ale_javascript_prettier_options = '--print-width 100'                     "Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
