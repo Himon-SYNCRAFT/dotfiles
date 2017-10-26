@@ -170,7 +170,7 @@ augroup vimrc_php
     autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 augroup END
 
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79 lazyredraw
 
 " session management
 let g:session_directory = "~/.vim/session"
