@@ -48,6 +48,7 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'powerline/powerline'
 Plug 'elmcast/elm-vim'
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'craigemery/vim-autotag'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
