@@ -149,6 +149,8 @@ set noswapfile
 set fileformats=unix,dos,mac
 set showcmd
 
+set tags+=tags,tags.vendors
+
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
@@ -508,7 +510,7 @@ inoremap <F12> <C-o>:call FixIndentAndTrailingWhitespace()<CR>
 " Add semicolon at the end of line
 inoremap <leader>; <C-o>A;
 
-" Add semicolon at the end of line
+" 'Shortcut' for ->
 inoremap <leader>. ->
 
 " Private dir for UltiSnip snippets
