@@ -89,6 +89,12 @@ componentWillUnmount() {
 }
 endsnippet
 
+snippet compwm
+componentWillMount() {
+    ${1}
+}
+endsnippet
+
 snippet restore
 const EventEmitter = require('events').EventEmitter
 
@@ -164,3 +170,7 @@ def set_attributes_in_costructor(text):
     return '\n'.join(rv)
 
 endglobal
+
+snippet cl
+console.log(${1})
+endsnippet
