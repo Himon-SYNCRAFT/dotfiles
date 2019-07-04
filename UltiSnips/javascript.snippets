@@ -27,17 +27,18 @@ for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
 endsnippet
 
 snippet recomp
+import React from 'react'
+
+
 class ${1} extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { ${2} }
-    }
 
     render() {
         return (
         )
     }
 }
+
+export default $1
 endsnippet
 
 snippet recompp
@@ -173,4 +174,25 @@ endglobal
 
 snippet cl
 console.log(${1})
+endsnippet
+
+snippet extype
+export const ${1} = '$1'
+endsnippet
+
+snippet reducer
+const INITIAL_STATE = []
+
+const reducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
+const prepareItems = data => {
+    return data
+}
+
+export default reducer
 endsnippet
