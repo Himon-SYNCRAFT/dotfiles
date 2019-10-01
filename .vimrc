@@ -637,3 +637,6 @@ let g:ycm_server_python_interpreter="python"
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+set timeoutlen=1000
+set ttimeoutlen=0
