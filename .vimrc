@@ -631,7 +631,7 @@ let g:gitgutter_max_signs=9999
 set updatetime=100
 set redrawtime=10000
 set noswapfile
-let g:ycm_server_python_interpreter="python"
+let g:ycm_server_python_interpreter="python3"
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -640,3 +640,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 set timeoutlen=1000
 set ttimeoutlen=0
+
+" transparent bg
+hi Normal guibg=NONE ctermbg=NONE
