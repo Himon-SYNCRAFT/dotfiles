@@ -67,6 +67,7 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
 "*****************************************************************************
 "" Custom bundles
@@ -643,3 +644,4 @@ set ttimeoutlen=0
 
 " transparent bg
 hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * colorscheme gruvbox
