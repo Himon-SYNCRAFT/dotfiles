@@ -55,8 +55,6 @@ sudo pacman -Sq --noconfirm alacritty
 echo ""
 echo -e "${RED}installing fish shell${NC}"
 sudo pacman -Sq --noconfirm fish
-curl -L https://get.oh-my.fish | fish
-omf install pure
 
 echo ""
 echo -e "${RED}installing virtualenv${NC}"
