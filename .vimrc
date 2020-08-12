@@ -24,6 +24,9 @@ endif
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 
+if has('python3')
+endif
+
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
@@ -410,6 +413,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsUsePythonVersion = 3
 
 " ale
 let g:ale_linters = {}
