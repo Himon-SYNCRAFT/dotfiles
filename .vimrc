@@ -76,7 +76,7 @@ Plug 'morhetz/gruvbox'
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 
 " haskell
@@ -412,7 +412,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " ale
-let g:ale_linters = {}
+let g:ale_linters = { 'typescript': ['tsserver', 'tslint'] }
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
