@@ -3,6 +3,7 @@
 cd ~
 
 home_dir=`pwd`
+projects_dir=$projects_dir
 
 RED='\033[0;31m'
 NC='\033[0m' # No Color
@@ -11,15 +12,14 @@ sudo pacman -Syyuu --noconfirm
 
 echo ""
 echo -e "${RED}make dir for projects${NC}"
-mkdir $home_dir/Projects
-
+mkdir $projects_dir
 
 echo ""
 echo -e "${RED}installing git${NC}"
 sudo pacman -Sq --noconfirm git
 
-cd $home_dir/Projects
-chown $USER:$USER $home_dir/Projects
+cd $projects_dir
+chown $USER:$USER $projects_dir
 
 echo ""
 echo -e "${RED}fetching dotfiles${NC}"
@@ -28,18 +28,20 @@ git clone https://github.com/Himon-SYNCRAFT/dotfiles.git
 echo ""
 echo -e "${RED}installing yay${NC}"
 git clone https://aur.archlinux.org/yay.git
-chown -R $USER:$USER $home_dir/Projects/*
-cd $home_dir/Projects/yay
+chown -R $USER:$USER $projects_dir/*
+cd $projects_dir/yay
 makepkg -si
 cd $home_dir/
 
-ln -s $home_dir/Projects/dotfiles/.vimrc $home_dir/.vimrc
-ln -s $home_dir/Projects/dotfiles/.tmux.conf $home_dir/.tmux.conf
-ln -s $home_dir/Projects/dotfiles/alacritty.yml $home_dir/.alacritty.yml
+ln -s $projects_dir/dotfiles/.vimrc $home_dir/.vimrc
+ln -s $projects_dir/dotfiles/.tmux.conf $home_dir/.tmux.conf
+ln -s $projects_dir/dotfiles/alacritty.yml $home_dir/.alacritty.yml
 
 echo ""
 echo -e "${RED}installing vim${NC}"
 sudo pacman -Sq --noconfirm vim
+
+ln -s $projects_dir/dotfiles/UltiSnips/ $home_dir/Projects/.vim/UltiSnips
 
 echo ""
 echo -e "${RED}installing tmux${NC}"
@@ -115,10 +117,10 @@ yay -S --noconfirm teams
 
 echo ""
 echo -e "${RED}install intellij toolbox${NC}"
-cd $home_dir/Projects
+cd $projects_dir
 wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.17.7391.tar.gz
 tar -xvzf jetbrains-toolbox-1.17.7391.tar.gz
-chown -R $USER:$USER $home_dir/Projects/*
+chown -R $USER:$USER $projects_dir/*
 
 echo ""
 echo -e "${RED}installing dbeaver${NC}"
