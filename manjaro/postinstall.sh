@@ -114,7 +114,7 @@ echo -e "${RED}installing ms teams${NC}"
 yay -S --noconfirm teams
 
 echo ""
-echo -e "${RED}install intellij toolbox${NC}"
+echo -e "${RED}installing intellij toolbox${NC}"
 cd $projects_dir
 wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.17.7391.tar.gz
 tar -xvzf jetbrains-toolbox-1.17.7391.tar.gz
@@ -133,3 +133,11 @@ cd $home_dir
 echo ""
 echo -e "${RED}fetching JetBrainsMono${NC}"
 wget https://download.jetbrains.com/fonts/JetBrainsMono-2.001.zip
+
+echo ""
+echo -e "${RED}installing nerd fonts${NC}"
+yay -S --noconfirm nerd-fonts-complete
+
+echo ""
+echo -e "${RED}feh${NC}"
+sudo pacman -Sq --noconfirm feh
