@@ -191,18 +191,13 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-# widget_defaults = dict(
-#     font='sans',
-#     fontsize=12,
-#     padding=3,
-# )
-# extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.Sep(linewidth=2, foreground=COLORS["dark_2"]),
+                widget.CurrentLayout(**FONT_PARAMS),
                 widget.TextBox(
                     font="Arial",
                     foreground=COLORS["dark_4"],
