@@ -141,3 +141,7 @@ yay -S --noconfirm nerd-fonts-complete
 echo ""
 echo -e "${RED}feh${NC}"
 sudo pacman -Sq --noconfirm feh
+
+sudo pacman -Sq --noconfirm neofetch cmatrix cmus htop
+yay -S --noconfirm pipes
+
