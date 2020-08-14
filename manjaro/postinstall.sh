@@ -119,29 +119,30 @@ cd $projects_dir
 wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.17.7391.tar.gz
 tar -xvzf jetbrains-toolbox-1.17.7391.tar.gz
 chown -R $USER:$USER $projects_dir/*
+cd $home_dir/
 
 echo ""
 echo -e "${RED}installing dbeaver${NC}"
 sudo pacman -Sq --noconfirm dbeaver
 
-echo ""
-echo -e "${RED}installing qtile${NC}"
-sudo pacman -Sq --noconfirm qtile xterm
-sudo cp /usr/share/doc/qtile/default_config.py ~/.config/qtile/config.py
+# echo ""
+# echo -e "${RED}installing qtile${NC}"
+# sudo pacman -Sq --noconfirm qtile
+# ln -s $projects_dir/dotfiles/qtile/config.py $home_dir/.config/qtile/config.py
 
-cd $home_dir
 echo ""
-echo -e "${RED}fetching JetBrainsMono${NC}"
-wget https://download.jetbrains.com/fonts/JetBrainsMono-2.001.zip
+echo -e "${RED}installing bspwm${NC}"
+sudo pacman -Sq --noconfirm bspwm sxhkd compton nitrogen
+yay -S --noconfirm polybar
 
 echo ""
 echo -e "${RED}installing nerd fonts${NC}"
 yay -S --noconfirm nerd-fonts-complete
 
 echo ""
-echo -e "${RED}feh${NC}"
-sudo pacman -Sq --noconfirm feh
-
+echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
 sudo pacman -Sq --noconfirm neofetch cmatrix cmus htop
-yay -S --noconfirm pipes
 
+echo ""
+echo -e "${RED}installing pgcli${NC}"
+pip install -U pgcli
