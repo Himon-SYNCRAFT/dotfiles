@@ -3,7 +3,7 @@
 cd ~
 
 home_dir=`pwd`
-projects_dir=$projects_dir
+projects_dir=$home_dir/Projects
 
 RED='\033[0;31m'
 NC='\033[0m' # No Color
@@ -41,7 +41,7 @@ echo ""
 echo -e "${RED}installing vim${NC}"
 sudo pacman -Sq --noconfirm vim
 
-ln -s $projects_dir/dotfiles/UltiSnips/ $home_dir/Projects/.vim/UltiSnips
+ln -s $projects_dir/dotfiles/UltiSnips/ $projects_dir/.vim/UltiSnips
 
 echo ""
 echo -e "${RED}installing tmux${NC}"
