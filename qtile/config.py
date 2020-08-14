@@ -32,56 +32,85 @@ from typing import List  # noqa: F401
 
 mod = "mod4"
 
-COLORS = {
-    "dark_0": "#1d2021",
-    "dark_1": "#282828",
-    "dark_2": "#32302f",
-    "dark_3": "#3c3836",
-    "dark_4": "#504945",
-    "dark_5": "#665c54",
-    "dark_6": "#7c6f64",
-    "gray_0": "#928374",
-    "light_0": "#f9f5d7",
-    "light_1": "#fbf1c7",
-    "light_2": "#f2e5bc",
-    "light_3": "#ebdbb2",
-    "light_4": "#d5c4a1",
-    "light_5": "#bdae93",
-    "light_6": "#a89984",
-    "red_0": "#fb4934",
-    "red_1": "#cc241d",
-    "red_2": "#9d0006",
-    "green_0": "#b8bb26",
-    "green_1": "#98971a",
-    "green_2": "#79740e",
-    "yellow_0": "#fabd2f",
-    "yellow_1": "#d79921",
-    "yellow_2": "#b57614",
-    "blue_0": "#83a598",
-    "blue_1": "#458588",
-    "blue_2": "#076678",
-    "purple_0": "#d3869b",
-    "purple_1": "#b16286",
-    "purple_2": "#8f3f71",
-    "aqua_0": "#8ec07c",
-    "aqua_1": "#689d6a",
-    "aqua_2": "#427b58",
-    "orange_0": "#fe8019",
-    "orange_1": "#d65d0e",
-    "orange_2": "#af3a03",
-}
+# COLORS = {
+#     "dark_0": "#1d2021",
+#     "dark_1": "#282828",
+#     "dark_2": "#32302f",
+#     "dark_3": "#3c3836",
+#     "dark_4": "#504945",
+#     "dark_5": "#665c54",
+#     "dark_6": "#7c6f64",
+#     "gray_0": "#928374",
+#     "light_0": "#f9f5d7",
+#     "light_1": "#fbf1c7",
+#     "light_2": "#f2e5bc",
+#     "light_3": "#ebdbb2",
+#     "light_4": "#d5c4a1",
+#     "light_5": "#bdae93",
+#     "light_6": "#a89984",
+#     "red_0": "#fb4934",
+#     "red_1": "#cc241d",
+#     "red_2": "#9d0006",
+#     "green_0": "#b8bb26",
+#     "green_1": "#98971a",
+#     "green_2": "#79740e",
+#     "yellow_0": "#fabd2f",
+#     "yellow_1": "#d79921",
+#     "yellow_2": "#b57614",
+#     "blue_0": "#83a598",
+#     "blue_1": "#458588",
+#     "blue_2": "#076678",
+#     "purple_0": "#d3869b",
+#     "purple_1": "#b16286",
+#     "purple_2": "#8f3f71",
+#     "aqua_0": "#8ec07c",
+#     "aqua_1": "#689d6a",
+#     "aqua_2": "#427b58",
+#     "orange_0": "#fe8019",
+#     "orange_1": "#d65d0e",
+#     "orange_2": "#af3a03",
+# }
 
-FONT = 'TerminessTTF Nerd Font Bold'
-FONT_SIZE = 13
+COLORS = dict(
+    primary=dict(
+        background="#282828",
+        foreground="#ebdbb2",
+    ),
+
+    normal=dict(
+        black='#282828',
+        red='#cc241d',
+        green='#98971a',
+        yellow='#d79921',
+        blue='#458588',
+        magenta='#b16286',
+        cyan='#689d6a',
+        white='#a89984',
+    ),
+
+    bright=dict(
+        black='#928374',
+        red='#fb4934',
+        green='#b8bb26',
+        yellow='#fabd2f',
+        blue='#83a598',
+        magenta='#d3869b',
+        cyan='#8ec07c',
+        white='#ebdbb2',
+    )
+)
+
+FONT = 'TerminessTTF Nerd Font Medium'
+FONT_SIZE = 15
 PADDING = 3
 FONT_PARAMS = dict(
     font=FONT,
     fontsize=FONT_SIZE,
-    foreground=COLORS['light_3']
+    foreground=COLORS['bright']['green']
 )
 
-BORDER_NORMAL = COLORS["dark_2"]
-BORDER_FOCUS = COLORS["red_1"]
+BORDER_NORMAL = COLORS["normal"]["black"]
+BORDER_FOCUS = COLORS["normal"]["yellow"]
 BORDER_WIDTH = 3
 MARGIN = 10
 
@@ -143,7 +172,11 @@ keys = [
     Key([mod], "r", lazy.spawncmd()),
 ]
 
-groups = [Group(i) for i in "12345678"]
+# groups = [Group(i) for i in "12345678"]
+groups = [
+    Group(name="1", label=''),
+    Group(name="2", label=''),
+]
 
 for i in groups:
     keys.extend([
@@ -196,47 +229,49 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Sep(linewidth=2, foreground=COLORS["dark_2"]),
-                widget.CurrentLayout(**FONT_PARAMS),
-                widget.TextBox(
-                    font="Arial",
-                    foreground=COLORS["dark_4"],
-                    text="◢",
-                    fontsize=70,
-                    padding=-7
+                widget.Sep(linewidth=2, foreground=COLORS["primary"]["background"]),
+                widget.CurrentLayoutIcon(
+                    foreground=COLORS['normal']['green'],
+                    background=COLORS['primary']['background'],
                 ),
                 widget.GroupBox(
-                    other_current_screen_border=COLORS["orange_0"],
-                    this_current_screen_border=COLORS["blue_0"],
-                    other_screen_border=COLORS["orange_0"],
-                    this_screen_border=COLORS["blue_0"],
-                    highlight_color=COLORS["blue_0"],
-                    urgent_border=COLORS["red_1"],
-                    background=COLORS["dark_4"],
+                    other_current_screen_border=COLORS["normal"]["yellow"],
+                    this_current_screen_border=COLORS["normal"]["blue"],
+                    other_screen_border=COLORS["normal"]["yellow"],
+                    this_screen_border=COLORS["normal"]["blue"],
+                    highlight_color=COLORS["primary"]["background"],
+                    urgent_border=COLORS["normal"]["red"],
+                    background=COLORS["primary"]["background"],
                     highlight_method="line",
-                    inactive=COLORS["dark_2"],
-                    active=COLORS["light_2"],
+                    inactive=COLORS["normal"]["green"],
+                    active=COLORS["bright"]["green"],
                     disable_drag=True,
                     borderwidth=2,
-                    **FONT_PARAMS,
+                    padding=1,
+                    spacing=1,
+                    rounded=True,
+                    center_aligned=False,
+                    # **FONT_PARAMS,
+                    font=FONT,
+                    fontsize=28,
+                    foreground=COLORS['normal']['green'],
                 ),
                 widget.TextBox(
-                    font="Arial",
-                    foreground=COLORS["dark_4"],
-                    text="◤ ",
-                    fontsize=70,
-                    padding=-7
+                    text="|",
+                    font=FONT,
+                    fontsize=28,
+                    foreground=COLORS['bright']['green'],
                 ),
                 widget.Prompt(**FONT_PARAMS),
-                widget.WindowName(**FONT_PARAMS),
+                widget.Spacer(),
                 widget.Systray(**FONT_PARAMS),
                 widget.Clock(
                     format='%H:%M %d.%m.%Y',
                     **FONT_PARAMS,
                 ),
             ],
-            25,
-            background=COLORS["dark_2"]
+            30,
+            background=COLORS["primary"]["background"]
         ),
     ),
 ]
