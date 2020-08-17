@@ -647,6 +647,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 set timeoutlen=1000
 set ttimeoutlen=0
 
-" transparent bg
-hi Normal guibg=NONE ctermbg=NONE
 autocmd vimenter * colorscheme gruvbox
+" transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+

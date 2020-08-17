@@ -347,7 +347,8 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/tmux
+  program: /bin/fish
+  # program: /bin/tmux
 #  args:
 #    - --login
 

@@ -36,6 +36,12 @@ cd $home_dir/
 ln -s $projects_dir/dotfiles/.vimrc $home_dir/.vimrc
 ln -s $projects_dir/dotfiles/.tmux.conf $home_dir/.tmux.conf
 ln -s $projects_dir/dotfiles/alacritty.yml $home_dir/.alacritty.yml
+ln -s $projects_dir/dotfiles/picom.conf $home_dir/.config/picom.conf
+ln -s $projects_dir/dotfiles/polybar $home_dir/.config/polybar
+
+echo ""
+echo -e "${RED}installing networkmanager${NC}"
+sudo pacman -Sq --noconfirm networkmanager
 
 echo ""
 echo -e "${RED}installing vim${NC}"
@@ -132,7 +138,7 @@ sudo pacman -Sq --noconfirm dbeaver
 
 echo ""
 echo -e "${RED}installing bspwm${NC}"
-sudo pacman -Sq --noconfirm bspwm sxhkd compton nitrogen
+sudo pacman -Sq --noconfirm bspwm sxhkd nitrogen dmenu picom
 yay -S --noconfirm polybar
 
 echo ""
@@ -141,8 +147,8 @@ yay -S --noconfirm nerd-fonts-complete
 
 echo ""
 echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
-sudo pacman -Sq --noconfirm neofetch cmatrix cmus htop
+sudo pacman -Sq --noconfirm neofetch mpd ncmpcpp htop ranger
 
-echo ""
-echo -e "${RED}installing pgcli${NC}"
-pip install -U pgcli
+mkdir -p ~/.mpd/playlists
+touch ~/.mpd/mpd.{db,log,pid}
+touch ~/.mpd/mpdstate
