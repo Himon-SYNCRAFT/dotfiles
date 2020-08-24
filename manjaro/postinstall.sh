@@ -104,6 +104,10 @@ sudo pacman -Sq --noconfirm jre11-openjdk
 sudo pacman -Sq --noconfirm jre14-openjdk
 
 echo ""
+echo -e "${RED}installing postgres${NC}"
+sudo pacman -Sq --noconfirm postgresql
+
+echo ""
 echo -e "${RED}installing calibre${NC}"
 sudo pacman -Sq --noconfirm calibre
 
@@ -131,10 +135,9 @@ echo ""
 echo -e "${RED}installing dbeaver${NC}"
 sudo pacman -Sq --noconfirm dbeaver
 
-# echo ""
-# echo -e "${RED}installing qtile${NC}"
-# sudo pacman -Sq --noconfirm qtile
-# ln -s $projects_dir/dotfiles/qtile/config.py $home_dir/.config/qtile/config.py
+echo ""
+echo -e "${RED}installing rescutime${NC}"
+yay -S --noconfirm rescuetime2
 
 echo ""
 echo -e "${RED}installing bspwm${NC}"
