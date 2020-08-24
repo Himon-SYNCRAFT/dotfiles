@@ -140,18 +140,13 @@ echo -e "${RED}installing rescutime${NC}"
 yay -S --noconfirm rescuetime2
 
 echo ""
-echo -e "${RED}installing bspwm${NC}"
-sudo pacman -Sq --noconfirm bspwm sxhkd nitrogen dmenu picom
-yay -S --noconfirm polybar
-
-echo ""
 echo -e "${RED}installing nerd fonts${NC}"
 yay -S --noconfirm nerd-fonts-complete
 
 echo ""
 echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
-sudo pacman -Sq --noconfirm neofetch mpd ncmpcpp htop ranger
+sudo pacman -Sq --noconfirm pfetch cmus htop ranger
 
-mkdir -p ~/.mpd/playlists
-touch ~/.mpd/mpd.{db,log,pid}
-touch ~/.mpd/mpdstate
+echo ""
+echo -e "${RED}vpn utils${NC}"
+sudo pacman -Sq --noconfirm strongswan xl2tpd
