@@ -152,3 +152,7 @@ echo ""
 echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
 sudo pacman -Sq --noconfirm cmus htop ranger
 yay -S --noconfirm pfetch
+
+echo ""
+echo -e "${RED}vpn utils${NC}"
+sudo pacman -Sq --noconfirm strongswan xl2tpd
