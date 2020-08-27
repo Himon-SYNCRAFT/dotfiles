@@ -65,6 +65,8 @@ bindsym Control+Mod1+t exec alacritty
 # Apps
 bindsym Control+F1 exec /usr/bin/brave
 bindsym Control+F2 exec /usr/bin/thunderbird
+bindsym Control+F3 exec idea
+bindsym Control+F4 exec pycharm
 
 # kill focused window
 bindsym Control+Left kill
@@ -204,14 +206,17 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
+bindsym Shift+Left workspace prev
+bindsym Shift+Right workspace next
 
 # removing title bars for gaps
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 0
 
 # gaps
 new_window 1pixel
-gaps inner 30
-gaps top 40
+gaps inner 50
+gaps outer -15
+gaps top 25
 
 for_window [class="microsoft teams - preview"] move container to workspace $ws10
 for_window [class="Microsoft Teams - Preview"] move container to workspace $ws10
