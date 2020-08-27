@@ -45,7 +45,7 @@ sudo pacman -Sq --noconfirm networkmanager
 
 echo ""
 echo -e "${RED}installing vim${NC}"
-sudo pacman -Sq --noconfirm vim
+sudo pacman -Sq --noconfirm gvim
 
 ln -s $projects_dir/dotfiles/UltiSnips/ $projects_dir/.vim/UltiSnips
 
@@ -141,7 +141,7 @@ yay -S --noconfirm rescuetime2
 
 echo ""
 echo -e "${RED}installing bspwm${NC}"
-sudo pacman -Sq --noconfirm bspwm sxhkd nitrogen dmenu picom
+sudo pacman -Sq --noconfirm i3-gaps nitrogen dmenu picom
 yay -S --noconfirm polybar
 
 echo ""
@@ -150,8 +150,5 @@ yay -S --noconfirm nerd-fonts-complete
 
 echo ""
 echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
-sudo pacman -Sq --noconfirm neofetch mpd ncmpcpp htop ranger
-
-mkdir -p ~/.mpd/playlists
-touch ~/.mpd/mpd.{db,log,pid}
-touch ~/.mpd/mpdstate
+sudo pacman -Sq --noconfirm cmus htop ranger
+yay -S --noconfirm pfetch
