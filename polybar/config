@@ -98,7 +98,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=14;3
 inherit = bar/base
 modules-left = launcher i3
 modules-center = xwindow
-modules-right = pulseaudio-control wlan date powermenu
+modules-right = pulseaudio wlan date powermenu
 width = 100%
 module-margin = 1
 padding = 2
@@ -151,23 +151,23 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 ; label-focused = %index%
-label-focused = %index%: %icon%
+label-focused = %index% %icon%
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.green}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%: %icon%
+label-unfocused = %index% %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%: %icon%
+label-visible = %index% %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%: %icon%
+label-urgent = %index% %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-foreground = ${colors.foreground-alt}
 label-urgent-padding = 2
@@ -425,18 +425,6 @@ type=custom/text
 content = ""
 content-margin = 2
 click-left = dmenu_run -b -fn "Product Sans-12" -nb "#282828" -nf "#ebdbb2"
-
-[module/pulseaudio-control]
-type = custom/script
-tail = true
-label = %output%
-
-exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
-click-right = exec pavucontrol &
-click-left = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
-click-middle = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
-scroll-up = ~/.config/polybar/scripts/pulseaudio-control.bash up
-scroll-down = ~/.config/polybar/scripts/pulseaudio-control.bash down
 
 
 [settings]
