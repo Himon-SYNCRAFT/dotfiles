@@ -216,7 +216,7 @@ for_window [class=".*"] border pixel 0
 new_window 1pixel
 gaps inner 50
 gaps outer -15
-gaps top 25
+gaps top 31
 
 for_window [class="microsoft teams - preview"] move container to workspace $ws10
 for_window [class="Microsoft Teams - Preview"] move container to workspace $ws10

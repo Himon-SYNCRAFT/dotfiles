@@ -253,34 +253,60 @@ font:
   #
   #indexed_colors: []
 # Colors (Gruvbox dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#282828'
+#     foreground: '#ebdbb2'
+
+#   # Normal colors
+#   normal:
+#     black:   '#282828'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#a89984'
+
+#   # Bright colors
+#   bright:
+#     black:   '#928374'
+#     red:     '#fb4934'
+#     green:   '#b8bb26'
+#     yellow:  '#fabd2f'
+#     blue:    '#83a598'
+#     magenta: '#d3869b'
+#     cyan:    '#8ec07c'
+#     white:   '#ebdbb2'
+# Colors (Cyberpunk)
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
-    background: '#282828'
-    # soft contrast: background = '#32302f'
+    background: '#312e39'
     foreground: '#ebdbb2'
 
   # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    black:   '#312e39'
+    red:     '#c72e68'
+    green:   '#978979'
+    yellow:  '#f28920'
+    blue:    '#6262ae'
+    magenta: '#ff2975'
+    cyan:    '#3e518e'
+    white:   '#f9c2a0'
 
   # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
+    black:   '#8a7c6f'
+    red:     '#ff2975'
+    green:   '#afa38b'
+    yellow:  '#f8cd1a'
+    blue:    '#871ff5'
+    magenta: '#f022fd'
+    cyan:    '#6262ae'
     white:   '#ebdbb2'
 
 # Visual Bell
@@ -313,7 +339,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.70
+background_opacity: 0.75
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
