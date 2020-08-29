@@ -48,6 +48,7 @@ Plug 'vim-scripts/CSApprox'
 Plug 'vim-scripts/grep.vim'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-colortemplate'
+Plug 'koalaman/shellcheck'
 
 if isdirectory('/usr/local/opt/fzf')
     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -256,7 +257,8 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'minimalist'
+" let g:airline_theme = 'minimalist'
+let g:airline_theme = 'cyberpunk'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
