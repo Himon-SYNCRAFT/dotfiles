@@ -41,6 +41,7 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
 exec --no-startup-id dunst
+exec --no-startup-id nmcli c up multimedia_Admin passwd-file .multimedia_Admin.passwd
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

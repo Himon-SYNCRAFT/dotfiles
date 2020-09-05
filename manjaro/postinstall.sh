@@ -99,9 +99,6 @@ echo -e "${RED}installing java${NC}"
 sudo pacman -Sq --noconfirm jdk8-openjdk
 sudo pacman -Sq --noconfirm jdk11-openjdk
 sudo pacman -Sq --noconfirm jdk14-openjdk
-sudo pacman -Sq --noconfirm jre8-openjdk
-sudo pacman -Sq --noconfirm jre11-openjdk
-sudo pacman -Sq --noconfirm jre14-openjdk
 
 echo ""
 echo -e "${RED}installing postgres${NC}"
@@ -140,13 +137,14 @@ echo -e "${RED}installing rescutime${NC}"
 yay -S --noconfirm rescuetime2
 
 echo ""
-echo -e "${RED}installing bspwm${NC}"
+echo -e "${RED}installing i3${NC}"
 sudo pacman -Sq --noconfirm i3-gaps nitrogen dmenu picom
 yay -S --noconfirm polybar
 
 echo ""
-echo -e "${RED}installing nerd fonts${NC}"
-yay -S --noconfirm nerd-fonts-complete
+echo -e "${RED}installing fonts${NC}"
+sudo pacman -Sq --noconfirm otf-font-awesome
+yay -S --noconfirm nerd-fonts-hack
 
 echo ""
 echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
