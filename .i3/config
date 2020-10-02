@@ -12,14 +12,20 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
-font pango:Hack 13
-set $background #282828
+# font pango:Hack Nerd Font 13
+font pango:Source Code Pro 13
+set $background #312e39
 set $foreground #ebdbb2
-set $yellow #d79921
-set $bright_black #928374
+set $yellow #f8cd1a
 
-client.focused #d79921 #d79921 #d79921 #d79921 #ebdbb240
-client.focused_inactive #ebdbb200 #ebdbb200 #ebdbb200 #ebdbb200 #ebdbb200
+#class                   ?           border          text        indicator
+client.focused           #312e39     #3e518e         #312e39     #f022fd
+client.focused_inactive  #312e39     #312e39         #312e39     #342d59
+client.unfocused         #312e39     #312e39         #312e39     #871ff5
+client.urgent            #312e39     #f002fd         #312e39     #f002fd
+# client.focused           #312e39     #871ff5         #312e39     #f022fd
+# client.unfocused         #312e39     #3e518e         #312e39     #871ff5
+# client.focused_inactive  #312e39     #3e518e         #312e39     #342d59
 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -41,7 +47,15 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
 exec --no-startup-id dunst
+exec --no-startup-id birdtray
 exec --no-startup-id nmcli c up multimedia_Admin passwd-file .multimedia_Admin.passwd
+# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e cmus'
+# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e pulsemixer'
+# exec --no-startup-id i3-msg 'workspace 7; exec glava'
+# exec --no-startup-id i3-msg 'workspace 8; exec ~/Desktop/GG/gg'
+# exec --no-startup-id i3-msg 'workspace 9; exec alacritty -e neomutt'
+# exec --no-startup-id i3-msg 'workspace 9; exec thunderbird'
+# exec --no-startup-id i3-msg 'workspace 1; exec alacritty'
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -61,20 +75,22 @@ set $right l
 floating_modifier Mod1
 
 # start a terminal
-bindsym Control+Mod1+t exec alacritty
+bindsym Control+Mod1+t exec st
 
 # Apps
 bindsym Control+F1 exec /usr/bin/brave
 bindsym Control+F2 exec /usr/bin/thunderbird
 bindsym Control+F3 exec idea
 bindsym Control+F4 exec pycharm
+bindsym Control+F5 exec st -e cmus; exec glava; exec st -e pulsemixer; exec st -e gotop
 
 # kill focused window
 bindsym Control+Left kill
 bindsym Control+Up kill
 
 # start dmenu (a program launcher)
-bindsym Mod1+d exec dmenu_run -b -fn "Hack-10" -nb "#282828" -nf "#ebdbb2"
+bindsym Mod1+d exec dmenu_run -b -fn "SauceCodePro Nerd Font-10" -nb "#312e39" -nf "#ebdbb2"
+bindsym Mod1+x exec /home/himon/Projects/dotfiles/xmenu.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -211,13 +227,15 @@ bindsym Shift+Left workspace prev
 bindsym Shift+Right workspace next
 
 # removing title bars for gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
+# for_window [class="Alacritty"] border pixel 1
+# for_window [class="URxvt"] border pixel 1
 
 # gaps
 new_window 1pixel
 gaps inner 50
 gaps outer -15
-gaps top 31
+gaps top 30
 
 for_window [class="microsoft teams - preview"] move container to workspace $ws10
 for_window [class="Microsoft Teams - Preview"] move container to workspace $ws10

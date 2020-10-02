@@ -49,6 +49,13 @@ Plug 'vim-scripts/grep.vim'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-colortemplate'
 Plug 'koalaman/shellcheck'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'lfilho/cosco.vim'
+Plug 'tpope/vim-repeat'
+Plug 'dylanaraps/wal.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mikelue/vim-maven-plugin'
 
 if isdirectory('/usr/local/opt/fzf')
     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -71,7 +78,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 
 "*****************************************************************************
@@ -81,7 +87,7 @@ Plug 'morhetz/gruvbox'
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 
 " haskell
@@ -137,6 +143,7 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
+set nocompatible
 
 
 "*****************************************************************************
@@ -289,8 +296,8 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+" nnoremap <silent> <F2> :NERDTreeFind<CR>
+" nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
@@ -575,16 +582,16 @@ endif
 if !exists('g:airline_powerline_fonts')
     let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline_left_sep          = '▶'
-    let g:airline_left_alt_sep      = '»'
-    let g:airline_right_sep         = '◀'
-    let g:airline_right_alt_sep     = '«'
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
     let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-    let g:airline#extensions#readonly#symbol   = '⊘'
+    let g:airline#extensions#readonly#symbol   = ''
     let g:airline#extensions#linecolumn#prefix = '¶'
     let g:airline#extensions#paste#symbol      = 'ρ'
-    let g:airline_symbols.linenr    = '␊'
-    let g:airline_symbols.branch    = '⎇'
+    let g:airline_symbols.linenr = ''
+    let g:airline_symbols.branch = ''
     let g:airline_symbols.paste     = 'ρ'
     let g:airline_symbols.paste     = 'Þ'
     let g:airline_symbols.paste     = '∥'
@@ -618,6 +625,13 @@ inoremap <Right> <NOP>
 nnoremap <F12> :call FixIndentAndTrailingWhitespace()<CR>
 inoremap <F12> <C-o>:call FixIndentAndTrailingWhitespace()<CR>
 
+" Ranger
+let g:ranger_map_keys = 0
+nnoremap <silent> <F2> :Ranger<CR>
+nnoremap <silent> <F3> :RangerWorkingDirectory<CR>
+
+inoremap <leader>; <C-o>A;
+
 " Private dir for UltiSnip snippets
 set rtp+=~/.vim/UltiSnips/
 let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
@@ -647,11 +661,19 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" let g:auto_comma_or_semicolon = 1
+
 set timeoutlen=1000
 set ttimeoutlen=0
 
 " autocmd vimenter * colorscheme gruvbox
 autocmd vimenter * colorscheme cyberpunk
+" autocmd vimenter * colorscheme wal
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
+let g:ycm_confirm_extra_conf = 0
+
+if filereadable(expand("~/.vim/.coc.vimrc"))
+    source ~/.vim/.coc.vimrc
+endif

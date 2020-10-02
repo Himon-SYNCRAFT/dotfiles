@@ -38,10 +38,11 @@ ln -s $projects_dir/dotfiles/.tmux.conf $home_dir/.tmux.conf
 ln -s $projects_dir/dotfiles/alacritty.yml $home_dir/.alacritty.yml
 ln -s $projects_dir/dotfiles/picom.conf $home_dir/.config/picom.conf
 ln -s $projects_dir/dotfiles/polybar $home_dir/.config/polybar
+ln -s $projects_dir/dotfiles/.Xresources $home_dir/.Xresources
 
 echo ""
 echo -e "${RED}installing networkmanager${NC}"
-sudo pacman -Sq --noconfirm networkmanager
+sudo pacman -Sq --noconfirm networkmanager network-manager-applet
 
 echo ""
 echo -e "${RED}installing vim${NC}"
@@ -54,9 +55,13 @@ echo -e "${RED}installing tmux${NC}"
 sudo pacman -Sq --noconfirm tmux
 git clone https://github.com/tmux-plugins/tpm $home_dir/.tmux/plugins/tpm
 
+# echo ""
+# echo -e "${RED}installing alacritty${NC}"
+# sudo pacman -Sq --noconfirm alacritty
+
 echo ""
-echo -e "${RED}installing alacritty${NC}"
-sudo pacman -Sq --noconfirm alacritty
+echo -e "${RED}installing urxvt${NC}"
+sudo pacman -Sq --noconfirm rxvt-unicode
 
 echo ""
 echo -e "${RED}installing fish shell${NC}"
@@ -144,13 +149,17 @@ yay -S --noconfirm polybar
 echo ""
 echo -e "${RED}installing fonts${NC}"
 sudo pacman -Sq --noconfirm otf-font-awesome
-yay -S --noconfirm nerd-fonts-hack
+yay -S --noconfirm nerd-fonts-hack ttf-material-design-icons nerd-fonts-source-code-pro nerd-fonts-jetbrains-mono
 
 echo ""
-echo -e "${RED}cli apps: neofetch cmus htpo pipes${NC}"
-sudo pacman -Sq --noconfirm cmus htop ranger
-yay -S --noconfirm pfetch
+echo -e "${RED}cli apps${NC}"
+sudo pacman -Sq --noconfirm cmus ranger neomutt lm_sensors cava dunst ueberzug
+yay -S --noconfirm pfetch gotop mutt-wizard xmenu tty-clock
 
 echo ""
 echo -e "${RED}vpn utils${NC}"
 sudo pacman -Sq --noconfirm strongswan xl2tpd
+
+echo ""
+echo -e "${RED}audio utils${NC}"
+sudo pacman -Sq --noconfirm pavucontrol pulsemixer

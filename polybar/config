@@ -44,13 +44,20 @@
 ; bright_white = #ebdbb2
 ;
 [colors]
-background = #342d59
+background = #312e39
 background-alt = #928374
-foreground = #ff2975
+foreground = #ebdbb2
 foreground-alt = #ebdbb2
 primary = #f28920
 secondary = #98971a
 alert = #c72e68
+
+; background = ${xrdb:color0:#222}
+; foreground = ${xrdb:color7:#222}
+; foreground-alt = ${xrdb:color7:#222}
+; primary = ${xrdb:color1:#222}
+; secondary = ${xrdb:color2:#222}
+; alert = ${xrdb:color3:#222}
 
 black = #282828
 red = #c72e68
@@ -69,43 +76,115 @@ bright_magenta = #d3869b
 bright_cyan = #8ec07c
 bright_white = #ebdbb2
 
+blue1 = #342d59
+blue2 = #3e518e
+blue3 = #6262ae
+blue4 = #871ff5
+magenta1 = #c72e68
+magenta2 = #ff2975
+magenta3 = #f022fd
+orange = #f28920
+
 [bar/base]
 enable-ipc=true
-height = 46
+height = 36
 width = 100%
-offset-y = 0
+; offset-y = 20
 background = ${colors.background}
 foreground = ${colors.foreground}
 bottom = false
 line-size = 2
 fixed-center = true
 override-redirect = true
+wm-restack = i3
+border-size = 0
+module-margin = 1
+padding = 2
 
 ; font-0=Product Sans:style=Regular:size=12;3
+; font-0 = Hurmit Nerd Font:pixelsize=13;3
 ; font-1=Product Sans:style=Bold:size=12;3
-font-0 = Hack:style=Bold:pixelsize=12;3
+; font-2 = Material Icons:fontformat=truetype:size=14:antialias=false;0
+
+; font-0 = "JetBrainsMono Nerd Font:size=12;3"
+; font-0 = Hack Nerd Font:pixelsize=11;2
+font-0 = SauceCodePro Nerd Font:pixelsize=11;2
 font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
 font-2 = siji:pixelsize=12;2
-font-3 = Font Awesome 5 Free:pixelsize=14;3
-font-4 = Font Awesome 5 Free Solid:pixelsize=14;3
-font-5 = Font Awesome 5 Brands:pixelsize=14;3
+font-3 = Font Awesome 5 Free:pixelsize=12;3
+font-4 = Font Awesome 5 Free Solid:pixelsize=12;3
+font-5 = Font Awesome 5 Brands:pixelsize=12;3
+font-6 = "Hack Nerd Font:size=13;3"
 
 [bar/all]
 inherit = bar/base
 modules-left = launcher i3
-modules-center = xwindow
-modules-right = pulseaudio wlan date powermenu
+modules-center = cmus-info separator window-name
+modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date
 width = 100%
-module-margin = 1
-padding = 2
 tray-position = right
 tray-padding = 2
-border-size = 0
-wm-restack = i3
+
+[bar/launcher]
+inherit = bar/base
+modules-left = launcher i3
+offset-x = 35
+module-margin=1
+width = 805
+
+[bar/windows]
+inherit = bar/base
+modules-center = cmus-info window-name
+width = 1000
+offset-x = 1420
+separator = |
+
+[bar/audio]
+inherit = bar/base
+modules-center = pulseaudio
+width = 125
+offset-x = 2755
+click-right = pavucontrol
+
+[bar/network]
+inherit = bar/base
+modules-center = wlan
+width = 250
+offset-x = 2920
+
+[bar/date]
+inherit = bar/base
+modules-center = date
+width = 250
+offset-x = 3210
+
+[bar/status]
+inherit = bar/base
+offset-x = 2540
+width = 840
+modules-center = pulseaudio checkupdates cpu-info memory-info temperature wlan date
+separator = |
+
+[bar/tray]
+inherit = bar/base
+modules-center = empty
+width = 204
+offset-x = 3550
+tray-position = left
+tray-padding = 2
+
+[module/empty]
+type = custom/text
+content = " "
+
+[module/separator]
+type = custom/text
+content = "|"
+
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -122,6 +201,42 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
+[module/cmus-info]
+type = custom/script
+exec = python ~/Projects/dotfiles/scripts/get_track_info_from_cmus.py
+format-prefix = "  "
+
+[module/window-name]
+type = custom/script
+exec = python ~/Projects/dotfiles/scripts/active_window.py
+interval = 1
+label = %output:0:50:...%
+
+[module/checkupdates]
+type = custom/script
+exec = checkupdates | wc -l
+interval = 120
+format-prefix = " "
+format-underline = ${colors.orange}
+label = %output:0:5:...%
+
+[module/memory-info]
+type = custom/script
+exec = free -h | awk '/^Mem:/ {print $3 "/" $2}'
+format-prefix = " "
+format-underline = ${colors.blue2}
+interval = 10
+click-left = notify-send --icon="" --app-name="Mem Info" "Top10" "$(~/Projects/dotfiles/scripts/meminfo.sh)"
+
+[module/cpu-info]
+type = custom/script
+label = %output%%
+exec = top -b -n1 -d1 | grep -Ei "cpu\\(s\\)\\s*:" | awk '{usage=$2+$4} END {printf("%.0f", usage)}'
+format-prefix = " "
+format-underline = ${colors.blue4}
+interval = 5
+click-left = notify-send --icon="" --app-name="Cpu Info" "Top10" "$(~/Projects/dotfiles/scripts/cpuinfo.sh)"
 
 [module/filesystem]
 type = internal/fs
@@ -174,16 +289,16 @@ label-urgent-padding = 2
 
 ; icons
 
-ws-icon-0 = 1;
-ws-icon-1 = 9;
-ws-icon-2 = 10;
-ws-icon-3 = 8;
-ws-icon-4 = 2;
-ws-icon-5 = 3;
-ws-icon-6 = 4;
-ws-icon-7 = 5;
-ws-icon-8 = 6;
-ws-icon-9 = 7;
+ws-icon-0 = 1;%{T5}%{T-}
+ws-icon-1 = 9;%{T5}%{T-}
+ws-icon-2 = 10;%{T5}%{T-}
+ws-icon-3 = 8;%{T5}%{T-}
+ws-icon-4 = 2;%{T5}%{T-}
+ws-icon-5 = 3;%{T5}%{T-}
+ws-icon-6 = 4;%{T5}%{T-}
+ws-icon-7 = 5;%{T5}%{T-}
+ws-icon-8 = 6;%{T5}%{T-}
+ws-icon-9 = 7;%{T5}%{T-}
 
 
 [module/mpd]
@@ -224,9 +339,9 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-prefix = ""
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.blue4}
 label = %percentage:2%%
 
 [module/memory]
@@ -241,12 +356,14 @@ label = %percentage_used%%
 type = internal/network
 interface = wlp5s0
 interval = 3.0
+format-connected-underline = ${colors.blue3}
 
 ; format-connected = <ramp-signal> <label-connected>
-format-connected =  <label-connected>
+format-connected =   <label-connected>
 label-connected = %essid%
+format-connected-foreground = ${colors.foreground}
 
-format-disconnected =
+format-disconnected = 睊
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
@@ -280,25 +397,28 @@ type = internal/date
 interval = 5
 
 date = " %d.%m.%Y"
-date-alt = " %Y-%m-%d"
+date-alt = " %d.%m.%Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = ""
-; format-prefix-foreground = ${colors.foreground-alt}
-; format-underline = #0a6cf5
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.green}
 
 label = %date% %time%
+label-foreground = ${colors.foreground}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-label-volume =  %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
+label-volume-underline = ${colors.magenta2}
+; label-volume-foreground = ${colors.magenta2}
 
-label-muted =   0%
+label-muted = ﱝ 0%
 label-muted-foreground = ${colors.bright_black}
 
 bar-volume-width = 20
@@ -317,6 +437,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+click-right = pavucontrol
 
 [module/alsa]
 type = internal/alsa
@@ -385,7 +506,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.magenta3}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -393,9 +514,9 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
@@ -413,15 +534,15 @@ label-separator = " | "
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = "  "
-menu-0-0-exec = sudo reboot now
+menu-0-0-exec = reboot
 menu-0-1 = "  "
-menu-0-1-exec = sudo shutdown now
+menu-0-1-exec = shutdown
 
 [module/launcher]
 type=custom/text
-content = ""
-content-margin = 2
-click-left = dmenu_run -b -fn "Product Sans-12" -nb "#282828" -nf "#ebdbb2"
+content = ""
+content-margin = 1
+click-left = dmenu_run -b -fn "SauceCodePro Nerd Font-12" -nb "#312e39" -nf "#ebdbb2"
 
 
 [settings]

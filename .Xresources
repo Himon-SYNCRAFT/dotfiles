@@ -1,0 +1,68 @@
+*.alpha:  0.85
+
+! special
+*.foreground:   #ebdbb2
+*.background:   #312e39
+*.cursorColor:  #ebdbb2
+
+! black
+/* *.color8:       #312e39 */
+/* *.color0:       #8a7c6f */
+*.color0:       #312e39
+*.color8:       #8a7c6f
+
+! red
+*.color9:       #c72e68
+*.color1:       #ff2975
+
+! green
+*.color10:      #978979
+*.color2:       #afa38b
+
+! yellow
+*.color3:      #f28920
+*.color11:       #f8cd1a
+
+! blue
+*.color4:      #6262ae
+*.color12:       #871ff5
+
+! magenta
+*.color5:      #ff2975
+*.color13:       #f022fd
+
+! cyan
+*.color14:      #3e518e
+*.color6:       #6262ae
+
+! white
+*.color15:      #f9c2a0
+*.color7:       #ebdbb2
+
+URxvt.font:\
+    xft:SauceCodePro Nerd Font:pixelsize=16:minspace=False,\
+    xft:DejaVu Sans:size=6:minspace=False,\
+    xft:Unifont:size=6,\
+    xft:Siji:size=6,\
+    xft:Font Awesome 5 Free:size=6,\
+    xft:Font Awesome 5 Free Solid:size=6,\
+    xft:Font Awesome 5 Brands:size=6
+URxvt.boldFont: xft:SauceCodePro Nerd Font:pixelsize=16:Bold
+URxvt.italicFont: xft:SauceCodePro Nerd Font:pixelsize=16:Italic
+URxvt.boldItalicFont: xft:SauceCodePro Nerd Font:pixelsize=16:Bold:Italic
+
+URxvt.depth: 32
+URxvt.background: [75]#312e39
+URxvt.scrollBar: false
+/* URxvt.letterSpace: 0 */
+URxvt.letterSpace: 1
+URxvt.internalBorder: 16
+
+URxvt.perl-ext-common: default, clipboard, selection-to-clipboard
+URxvt.clipboard.autocopy: true
+URxvt.url-launcher: /usr/bin/xdg-open
+
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-c: perl:clipboard:copy

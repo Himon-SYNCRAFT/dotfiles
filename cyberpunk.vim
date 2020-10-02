@@ -164,7 +164,7 @@ if s:t_Co >= 256
   hi ModeMsg ctermfg=220 ctermbg=NONE cterm=bold
   hi MoreMsg ctermfg=220 ctermbg=NONE cterm=bold
   hi NonText ctermfg=244 ctermbg=NONE cterm=NONE
-  hi Pmenu ctermfg=187 ctermbg=NONE cterm=NONE
+  hi Pmenu ctermfg=187 ctermbg=236 cterm=NONE
   hi PmenuSbar ctermfg=NONE ctermbg=NONE cterm=NONE
   hi PmenuSel ctermfg=236 ctermbg=61 cterm=bold
   hi PmenuThumb ctermfg=NONE ctermbg=NONE cterm=NONE

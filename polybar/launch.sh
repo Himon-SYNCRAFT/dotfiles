@@ -10,9 +10,15 @@ killall -q polybar
 
 # polybar launcher >>/tmp/polybar-launcher.log 2>&1 & disown
 # polybar windows >>/tmp/polybar-windows.log 2>&1 & disown
-# polybar music >>/tmp/polybar-music.log 2>&1 & disown
+# polybar status >>/tmp/polybar-status.log 2>&1 & disown
 # polybar tray >>/tmp/polybar-tray.log 2>&1 & disown
-echo "---" | tee -a /tmp/polybar-all.log
+# polybar info >>/tmp/polybar-info.log 2>&1 & disown
+
+# polybar music >>/tmp/polybar-music.log 2>&1 & disown
+# polybar audio >>/tmp/polybar-audio.log 2>&1 & disown
+# polybar network >>/tmp/polybar-network.log 2>&1 & disown
+# polybar date >>/tmp/polybar-date.log 2>&1 & disown
+# echo "---" | tee -a /tmp/polybar-all.log
 polybar all >>/tmp/polybar-all.log 2>&1 & disown
 
 echo "Bars launched..."
