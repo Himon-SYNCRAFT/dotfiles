@@ -199,7 +199,7 @@ set number
 set relativenumber
 
 let no_buffers_menu=1
-silent! colorscheme molokai
+silent! colorscheme cyberpunk
 
 set mousemodel=popup
 set t_Co=256
@@ -265,7 +265,8 @@ endif
 
 " vim-airline
 " let g:airline_theme = 'minimalist'
-let g:airline_theme = 'cyberpunk'
+" let g:airline_theme = 'cyberpunk'
+let g:airline_theme = 'neutral'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -668,6 +669,7 @@ set ttimeoutlen=0
 
 " autocmd vimenter * colorscheme gruvbox
 autocmd vimenter * colorscheme cyberpunk
+autocmd vimenter * AirlineTheme neutral
 " autocmd vimenter * colorscheme wal
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
