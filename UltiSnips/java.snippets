@@ -1,0 +1,57 @@
+snippet id
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Long ${1};
+endsnippet
+
+snippet entity
+@Entity
+@Table(name = "`!p snip.rv = first_letter_lower(t[1])`s")
+public class ${1} {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long `!p snip.rv = first_letter_lower(t[1])`Id;
+}
+endsnippet
+
+snippet "get(\w+)" "getter" r
+public $1get`!p snip.rv = first_letter_upper(match.group(1))`() {
+	return `!p snip.rv = first_letter_lower(match.group(1))`;
+}
+endsnippet
+
+snippet "set(\w+)" "setter" r
+public void set`!p snip.rv = first_letter_upper(match.group(1))`(${1} ${2}) {
+	this.`!p snip.rv = first_letter_lower(match.group(1))` = $2;
+}
+endsnippet
+
+global !p
+
+def first_letter_lower(text):
+    if not text:
+        return ''
+    return text[0].lower() + text[1:]
+
+def first_letter_upper(text):
+    if not text:
+        return ''
+    return text[0].upper() + text[1:]
+
+def set_attributes_in_costructor(text):
+    attributes = text.split(',')
+    rv = []
+
+    for i in range(len(attributes)):
+        arr = attributes[i].split('$')
+        if len(arr) == 2:
+            line = '$this->{} = ${};'.format(arr[1].rstrip(), arr[1].rstrip())
+            if i > 0:
+                snip.shift(2)
+            rv.append(snip.mkline(line))
+            snip.reset_indent()
+
+    return '\n'.join(rv)
+
+endglobal
