@@ -155,6 +155,14 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# Allow websites to show notifications.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.notifications', False, 'https://www.meczyki.pl')
+
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
 # Type: Int
@@ -181,6 +189,10 @@ c.scrolling.smooth = True
 #   - never: Always hide the statusbar.
 #   - in-mode: Show the statusbar when in modes other than normal mode.
 c.statusbar.show = 'in-mode'
+
+# Padding (in pixels) around text for tabs.
+# Type: Padding
+c.tabs.padding = {'bottom': 5, 'left': 10, 'right': 10, 'top': 5}
 
 # When to show the tab bar.
 # Type: String
@@ -210,6 +222,74 @@ c.tabs.show = 'switching'
 # qutebrowser`.
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'wa': 'https://wiki.archlinux.org/?search={}', 'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web'}
+
+# Foreground color for prompts.
+# Type: QssColor
+c.colors.prompts.fg = '#ebdbb2'
+
+# Background color for prompts.
+# Type: QssColor
+c.colors.prompts.bg = '#282828'
+
+# Foreground color of the statusbar.
+# Type: QssColor
+c.colors.statusbar.normal.fg = '#ebdbb2'
+
+# Background color of the statusbar.
+# Type: QssColor
+c.colors.statusbar.normal.bg = '#282828'
+
+# Foreground color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.fg = '#ebddb2'
+
+# Background color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.bg = '#282828'
+
+# Foreground color of the statusbar in command mode.
+# Type: QssColor
+c.colors.statusbar.command.fg = '#ebdbb2'
+
+# Background color of the statusbar in command mode.
+# Type: QssColor
+c.colors.statusbar.command.bg = '#282828'
+
+# Background color of the tab bar.
+# Type: QssColor
+c.colors.tabs.bar.bg = '#312e39'
+
+# Foreground color of unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.odd.fg = '#ebdbb2'
+
+# Background color of unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.odd.bg = '#312e39'
+
+# Foreground color of unselected even tabs.
+# Type: QtColor
+c.colors.tabs.even.fg = '#ebdbb2'
+
+# Background color of unselected even tabs.
+# Type: QtColor
+c.colors.tabs.even.bg = '#312e39'
+
+# Foreground color of selected odd tabs.
+# Type: QtColor
+c.colors.tabs.selected.odd.fg = '#ebdbb2'
+
+# Background color of selected odd tabs.
+# Type: QtColor
+c.colors.tabs.selected.odd.bg = '#282828'
+
+# Foreground color of selected even tabs.
+# Type: QtColor
+c.colors.tabs.selected.even.fg = '#ebdbb2'
+
+# Background color of selected even tabs.
+# Type: QtColor
+c.colors.tabs.selected.even.bg = '#282828'
 
 # Render all web contents using a dark theme. Example configurations
 # from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
