@@ -209,11 +209,7 @@ c.tabs.show = 'switching'
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'wa': 'https://wiki.archlinux.org/?search={}',
-    'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web',
-}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'wa': 'https://wiki.archlinux.org/?search={}', 'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web'}
 
 # Render all web contents using a dark theme. Example configurations
 # from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
@@ -233,4 +229,6 @@ config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.unbind('d')
 config.bind('f', 'hint all')
+config.bind('j', 'scroll-px 0 50')
+config.bind('k', 'scroll-px 0 -50')
 config.bind('x', 'tab-close')
