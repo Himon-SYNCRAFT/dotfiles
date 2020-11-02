@@ -191,6 +191,18 @@ c.statusbar.show = 'in-mode'
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'switching'
 
+# Render all web contents using a dark theme. Example configurations
+# from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
+# inversion": Set   `colors.webpage.darkmode.algorithm` accordingly.  -
+# "With selective image inversion": Set
+# `colors.webpage.darkmode.policy.images` to `smart`.  - "With selective
+# inversion of non-image elements": Set
+# `colors.webpage.darkmode.threshold.text` to 150 and
+# `colors.webpage.darkmode.threshold.background` to 205.  - "With
+# selective inversion of everything": Combines the two variants   above.
+# Type: Bool
+c.colors.webpage.darkmode.enabled = True
+
 # Bindings for normal mode
 config.bind('F', 'hint all tab-fg')
 config.bind('J', 'tab-prev')

@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  auto_save.session:
+  colors.webpage.darkmode.enabled:
     global: true
