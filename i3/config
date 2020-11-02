@@ -45,6 +45,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nitrogen --restore
+# exec_always --no-startup-id killall back4.sh 
+# exec_always --no-startup-id ~/Projects/dotfiles/feh-gif-wallpaper/back4.sh 0.10 ~/Downloads/wp4412356.gif
+
 exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id birdtray
@@ -76,7 +79,7 @@ set $mod Mod1
 floating_modifier Mod1
 
 # start a terminal
-bindsym Control+Mod1+t exec st
+bindsym Control+Mod1+t exec st fish
 
 # Apps
 bindsym Control+F1 exec /usr/bin/brave
