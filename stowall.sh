@@ -2,7 +2,14 @@
 
 
 if ! command -v stow &> /dev/null; then
-    echo "stow not installed"
+    echo "Stow is not installed."
+    echo ""
+    echo "Install snow with your package manager."
+    echo ""
+    echo "For example:"
+    echo "  sudo pacman -S stow"
+    echo "  or"
+    echo "  sudo apt install stow"
     exit 1
 fi
 
