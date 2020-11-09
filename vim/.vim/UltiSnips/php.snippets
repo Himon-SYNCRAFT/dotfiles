@@ -1,0 +1,98 @@
+snippet get
+public function get${1}()
+{
+	return $this->`!p snip.rv = first_letter_lower(t[1])`;
+}
+endsnippet
+
+	snippet set
+public function set${1}($`!p snip.rv = first_letter_lower(t[1])`)
+{
+	$this->`!p snip.rv = first_letter_lower(t[1])` = $`!p snip.rv = first_letter_lower(t[1])`;
+	return $this;
+}
+endsnippet
+
+snippet new
+$${1} = new `!p snip.rv = first_letter_upper(t[1])`(${2});
+endsnippet
+
+snippet php
+<?php
+
+
+endsnippet
+
+snippet m
+${1:public} function ${2:funcName}(${3})
+{
+	${4:// code here}
+}
+endsnippet
+
+snippet c
+class ${1:`!p snip.rv = snip.basename`} ${2:implements Interface}
+{
+	${3:// code here}
+}
+endsnippet
+
+snippet it
+it('${1:should}', function() {
+		${2:// code here}
+		});
+endsnippet
+
+snippet desc
+describe('${1:what}', function() {
+		${2:// code here}
+		});
+endsnippet
+
+snippet beforeE
+beforeEach(function() {
+		${1:// code here}
+		});
+endsnippet
+
+snippet con
+${1:public} function __construct(${2})
+{
+	`!p snip.rv = set_attributes_in_costructor(t[2])`${3}
+}
+endsnippet
+
+snippet t>
+$this->${1}
+endsnippet
+
+
+
+global !p
+
+def first_letter_lower(text):
+	if not text:
+	return ''
+	return text[0].lower() + text[1:]
+
+	def first_letter_upper(text):
+		if not text:
+		return ''
+		return text[0].upper() + text[1:]
+
+		def set_attributes_in_costructor(text):
+			attributes = text.split(',')
+			rv = []
+
+			for i in range(len(attributes)):
+				arr = attributes[i].split('$')
+				if len(arr) == 2:
+				line = '$this->{} = ${};'.format(arr[1].rstrip(), arr[1].rstrip())
+				if i > 0:
+	snip.shift(2)
+	rv.append(snip.mkline(line))
+snip.reset_indent()
+
+	return '\n'.join(rv)
+
+	endglobal

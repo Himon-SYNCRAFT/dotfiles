@@ -1,0 +1,80 @@
+snippet impe
+import pl.com.stream.verto.cmm.schema.domain.entity.${1}
+endsnippet
+
+snippet dmfind
+${1} `!p snip.rv = first_letter_lower(t[1])` = dm.find($1.class, id$1)
+endsnippet
+
+snippet print
+requestContext.getReport().println('' + ${1})
+endsnippet
+
+snippet getservice
+${1} `!p snip.rv = first_letter_lower(t[1])` = context.getService($1.class)
+endsnippet
+
+snippet query
+def query = dm.createSQLQuery(sql)
+query.setParameter('${1}', $1)
+def row = query.getFirstRow()
+// def rows = query.getListResult()
+endsnippet
+
+snippet decimal
+import pl.com.stream.lib.commons.math.Decimal
+endsnippet
+
+snippet impattr
+import pl.com.stream.verto.cmm.attribute.server.pub.value.AttributeValueDto
+import pl.com.stream.verto.cmm.attribute.server.pub.value.AttributeValueService
+endsnippet
+
+snippet findattr
+def attributeSubject = ${1:objectName}.getAttributeSubject()
+def attributeValues = attributeSubject.getAttributeValueSet()
+def ${2:attributeValue} = attributeValues.find { it.getAttributeDefinition().getIdAttributeDefinition() == ${3:idAttributeDefinition} }
+endsnippet
+
+snippet command
+def ${1:c} = {
+    ${2}
+} as BusinessCommand
+businessCommandExecutor.executeInNewTransaction($1)
+endsnippet
+
+snippet trans
+import pl.com.stream.next.asen.server.business.BusinessCommand
+import pl.com.stream.next.asen.server.business.BusinessCommandExecutor
+
+BusinessCommandExecutor businessCommandExecutor = context.getService(BusinessCommandExecutor.class)
+endsnippet
+
+snippet script
+import pl.com.stream.next.asen.common.groovy.api.common.ScriptReference
+
+ScriptReference s = script.find("${1:Nazwa skryptu}")
+s.execute(${2:[]})
+endsnippet
+
+snippet methods
+.metaClass.methods*.name.sort().unique()
+endsnippet
+
+snippet new
+${1} `!p snip.rv = first_letter_lower(t[1])` = new $1()
+endsnippet
+
+snippet input
+${2:def} ${1} = inParams.get('$1')
+endsnippet
+
+
+global !p
+
+def first_letter_lower(text):
+    if not text:
+        return ''
+    return text[0].lower() + text[1:]
+
+endglobal

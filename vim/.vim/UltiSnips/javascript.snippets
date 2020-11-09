@@ -1,0 +1,171 @@
+snippet lf "Function assigned to let"
+let ${1:function_name} = function(${2}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet l
+let ${1} = ${2}
+endsnippet
+
+snippet c
+const ${1} = ${2}
+endsnippet
+
+snippet cr
+const ${1} = require('${2}')
+endsnippet
+
+snippet im
+import ${1} from '${2:`!p snip.rv = first_letter_lower(t[1])`}'
+endsnippet
+
+snippet for "for (...) {...} (counting up)" b
+for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet recomp
+import React from 'react'
+
+
+class ${1} extends React.Component {
+
+    render() {
+        return (
+        )
+    }
+}
+
+export default $1
+endsnippet
+
+snippet recompp
+import React from 'react'
+import ${3}Store from '../stores/$3Store'
+import $3Actions from '../actions/$3Actions'
+
+
+class ${1} extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            ${2}
+        }
+
+        this.onChange = this.onChange.bind(this)
+    }
+
+    componentDidMount() {
+        $3Store.addChangeListener(this.onChange)
+        $3Actions.all()
+    }
+
+    componentWillUnmount() {
+        $3Store.removeChangeListener(this.onChange)
+    }
+
+    onChange() {
+        const $2 = $3Store.all()
+        this.setState({ $2 })
+    }
+
+    render() {
+        return (
+        )
+    }
+}
+endsnippet
+
+snippet compdm
+componentDidMount() {
+    ${1}
+}
+endsnippet
+
+snippet compwu
+componentWillUnmount() {
+    ${1}
+}
+endsnippet
+
+snippet compwm
+componentWillMount() {
+    ${1}
+}
+endsnippet
+
+snippet ex
+export ${1}
+endsnippet
+
+snippet rebind
+this.${1} = this.$1.bind(this)
+endsnippet
+
+snippet c=c
+const ${1} = '$1'
+endsnippet
+
+
+global !p
+
+def first_letter_lower(text):
+    if not text:
+        return ''
+    return text[0].lower() + text[1:]
+
+def first_letter_upper(text):
+    if not text:
+        return ''
+    return text[0].upper() + text[1:]
+
+def set_attributes_in_costructor(text):
+    attributes = text.split(',')
+    rv = []
+
+    for i in range(len(attributes)):
+        arr = attributes[i].split('$')
+        if len(arr) == 2:
+            line = '$this->{} = ${};'.format(arr[1].rstrip(), arr[1].rstrip())
+            if i > 0:
+                snip.shift(2)
+            rv.append(snip.mkline(line))
+            snip.reset_indent()
+
+    return '\n'.join(rv)
+
+endglobal
+
+snippet cl
+console.log(${1})
+endsnippet
+
+snippet ext
+export const ${1} = '$1'
+endsnippet
+
+snippet reducer
+const INITIAL_STATE = []
+
+const reducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
+export default reducer
+endsnippet
+
+snippet rcase
+case ${1}:
+	return {
+		...state,
+	}
+endsnippet
+
+snippet ec
+export const ${1}
+endsnippet
