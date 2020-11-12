@@ -44,7 +44,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -option caps:escape
-exec --no-startup-id xset r rate 300 50
+exec --no-startup-id xset r rate 400 40
 exec --no-startup-id nitrogen --restore
 # exec_always --no-startup-id killall back4.sh 
 # exec_always --no-startup-id ~/Projects/dotfiles/feh-gif-wallpaper/back4.sh 0.10 ~/Downloads/wp4412356.gif
