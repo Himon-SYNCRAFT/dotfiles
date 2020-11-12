@@ -25,5 +25,6 @@ stow -v -t ~/ qutebrowser
 stow -v -t ~/ vim
 stow -v -t ~/ cmus
 stow -v -t ~/ fish
+stow -v -t ~/ ideavim
 
 xrdb ~/.Xresources
