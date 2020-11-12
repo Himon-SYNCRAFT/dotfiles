@@ -1,2 +1,19 @@
 set number
 set relativenumber
+set ignorecase
+set ideaput
+set surround
+set commentary
+
+let mapleader=','
+
+noremap <Leader>g :action GenerateGetter<CR>
+noremap <Leader>s :action GenerateSetter<CR>
+noremap <Leader>gs :action GenerateGetterAndSetter<CR>
+noremap <Leader>gc :action GenerateConstructor<CR>
+noremap <C-h> :action PreviousTab<CR>
+noremap <C-l> :action NextTab<CR>
+noremap <Leader>mc :action NewClass<CR>
+noremap <Leader>rn :action RenameElement<CR>
+noremap <Leader>e :action SearchEverywhere<CR>
+noremap <Leader>r :action IdeaVim.ReloadVimRc.reload<CR>
