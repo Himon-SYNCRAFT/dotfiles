@@ -46,21 +46,12 @@ exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xset r rate 400 40
 exec --no-startup-id nitrogen --restore
-# exec_always --no-startup-id killall back4.sh 
-# exec_always --no-startup-id ~/Projects/dotfiles/feh-gif-wallpaper/back4.sh 0.10 ~/Downloads/wp4412356.gif
 
 exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id birdtray
 exec --no-startup-id caffeine
 exec --no-startup-id nmcli c up multimedia_Admin passwd-file .multimedia_Admin.passwd
-# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e cmus'
-# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e pulsemixer'
-# exec --no-startup-id i3-msg 'workspace 7; exec glava'
-# exec --no-startup-id i3-msg 'workspace 8; exec ~/Desktop/GG/gg'
-# exec --no-startup-id i3-msg 'workspace 9; exec alacritty -e neomutt'
-# exec --no-startup-id i3-msg 'workspace 9; exec thunderbird'
-# exec --no-startup-id i3-msg 'workspace 1; exec alacritty'
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -81,14 +72,13 @@ set $mod Mod1
 floating_modifier Mod1
 
 # start a terminal
-bindsym Control+Mod1+t exec st fish
+bindsym Control+Mod1+t exec tabbed -d -r 2 st -w '' -e fish
 
 # Apps
 bindsym Control+F1 exec /usr/bin/brave
 bindsym Control+F2 exec /usr/bin/thunderbird
 bindsym Control+F3 exec idea
 bindsym Control+F4 exec pycharm
-bindsym Control+F5 exec st -e cmus; exec glava; exec st -e pulsemixer; exec st -e gotop
 
 # kill focused window
 bindsym Control+Left kill
