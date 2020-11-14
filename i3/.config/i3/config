@@ -72,7 +72,7 @@ set $mod Mod1
 floating_modifier Mod1
 
 # start a terminal
-bindsym Control+Mod1+t exec tabbed -d -r 2 st -w '' -e fish
+bindsym Control+Mod1+t exec tabbed -n "st" -d -r 2 st -w '' -e fish
 
 # Apps
 bindsym Control+F1 exec /usr/bin/brave
