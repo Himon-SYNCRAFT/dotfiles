@@ -26,5 +26,6 @@ stow -v -t ~/ vim
 stow -v -t ~/ cmus
 stow -v -t ~/ fish
 stow -v -t ~/ ideavim
+stow -v -t ~/ herbstluftwm
 
 xrdb ~/.Xresources
