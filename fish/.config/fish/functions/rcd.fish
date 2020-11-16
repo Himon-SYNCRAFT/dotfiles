@@ -1,10 +1,8 @@
-# Defined in - @ line 1
-function r --wraps=ranger --description 'alias r ranger'
-    # ranger  $argv;
+function rcd
     set temp_file (mktemp "ranger_cd.XXXXXXXXXX")
     set temp_path "/tmp/$temp_file"
 
-    ranger --choosedir=$temp_path $argv
+    ranger --choosedir=$temp_path
     set return_value "$status"
 
     set chosen_dir (cat $temp_path)
