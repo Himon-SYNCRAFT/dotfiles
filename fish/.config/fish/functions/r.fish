@@ -1,13 +1,11 @@
 # Defined in - @ line 1
 function r --wraps=ranger --description 'alias r ranger'
-    # ranger  $argv;
-    set temp_file (mktemp "ranger_cd.XXXXXXXXXX")
-    set temp_path "/tmp/$temp_file"
+    set temp_file (mktemp -p "/tmp" "ranger_cd.XXXXXXXXXX")
 
-    ranger --choosedir=$temp_path $argv
+    ranger --choosedir=$temp_file $argv
     set return_value "$status"
 
-    set chosen_dir (cat $temp_path)
+    set chosen_dir (cat $temp_file)
 
     if $chosen_dir && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]
         cd "$chosen_dir"

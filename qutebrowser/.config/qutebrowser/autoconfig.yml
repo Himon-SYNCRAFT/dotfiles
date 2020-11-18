@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  tabs.show:
+  scrolling.bar:
     global: never

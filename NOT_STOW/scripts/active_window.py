@@ -21,7 +21,7 @@ try:
     ).stdout.decode('utf-8')
 
     for line in info.splitlines():
-        if line.strip().startswith('__NET_WM_NAME(UTF8_STRING)'):
+        if line.strip().startswith('_NET_WM_NAME(UTF8_STRING)'):
             window_name = line.strip().replace(
                 '_NET_WM_NAME(UTF8_STRING) = ',
                 ''

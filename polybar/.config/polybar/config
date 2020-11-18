@@ -96,7 +96,7 @@ bottom = false
 line-size = 2
 fixed-center = true
 override-redirect = true
-wm-restack = i3
+; wm-restack = i3
 border-size = 0
 module-margin = 1
 padding = 2
@@ -119,6 +119,7 @@ font-6 = "Hack Nerd Font:size=13;3"
 [bar/all]
 inherit = bar/base
 modules-left = launcher i3
+; modules-left = launcher workspaces
 modules-center = cmus-info separator window-name
 modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date
 width = 100%
@@ -299,6 +300,35 @@ ws-icon-6 = 4;%{T5}%{T-}
 ws-icon-7 = 5;%{T5}%{T-}
 ws-icon-8 = 6;%{T5}%{T-}
 ws-icon-9 = 7;%{T5}%{T-}
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = false
+format-padding = 0
+
+icon-0 = 1;%{T5}%{T-}
+icon-1 = 9;%{T5}%{T-}
+icon-2 = 0;%{T5}%{T-}
+icon-3 = 8;%{T5}%{T-}
+icon-4 = 2;%{T5}%{T-}
+icon-5 = 3;%{T5}%{T-}
+icon-6 = 4;%{T5}%{T-}
+icon-7 = 5;%{T5}%{T-}
+icon-8 = 6;%{T5}%{T-}
+icon-9 = 7;%{T5}%{T-}
+
+format = <label-state>
+
+label-active = "%index% %icon%"
+label-active-background = ${colors.background} 
+label-active-underline= ${colors.green}
+label-active-padding = 2
+
+label-empty = "%index% %icon%"
+label-empty-padding = 2
+label-empty-background = ${colors.background} 
 
 
 [module/mpd]
@@ -542,7 +572,7 @@ menu-0-1-exec = shutdown
 type=custom/text
 content = ""
 content-margin = 1
-click-left = dmenu_run -b -fn "SauceCodePro Nerd Font-12" -nb "#312e39" -nf "#ebdbb2"
+click-left = dmenu_run -c -b -l 10 -p "run:"
 
 
 [settings]
