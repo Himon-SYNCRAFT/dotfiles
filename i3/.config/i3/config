@@ -66,6 +66,7 @@ bindsym Control+Up kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -c -b -l 10 -p "run:"
+bindsym $mod+t exec ~/Projects/dotfiles/NOT_STOW/scripts/openinterminal.sh
 
 # change focus
 bindsym $mod+$left focus left
