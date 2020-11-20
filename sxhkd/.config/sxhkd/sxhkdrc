@@ -10,6 +10,9 @@ alt + ctrl + t
 alt + d
 	dmenu_run -b -l 10 -p "run:"
 
+alt + t
+    ~/Projects/dotfiles/NOT_STOW/scripts/openinterminal.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -93,7 +96,7 @@ alt + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-ctrl + {h,u,k,o}
+ctrl + {y,u,i,o}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio

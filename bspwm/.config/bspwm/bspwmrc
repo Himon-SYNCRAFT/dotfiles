@@ -14,10 +14,11 @@ setxkbmap -option caps:escape &
 xset r rate 400 40 &
 unclutter --timeout 1 --jitter 50 --ignore-scrolling &
 
-bspc monitor -d 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 bspc config border_width         2
 bspc config window_gap          20
+bspc config top_padding         36
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
