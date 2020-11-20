@@ -17,7 +17,6 @@ stow -v -t ~/ alacritty
 stow -v -t ~/ home
 stow -v -t ~/ polybar
 stow -v -t ~/ ranger
-stow -v -t ~/ tmux
 stow -v -t ~/ dunst
 stow -v -t ~/ i3
 stow -v -t ~/ picom
