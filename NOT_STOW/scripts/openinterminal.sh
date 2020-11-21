@@ -2,4 +2,4 @@
 
 
 command=$(ls -1 /usr/bin | dmenu -l 10 -p "run in terminal:")
-st -e $command &
+test -n "$command" && st -e $command &

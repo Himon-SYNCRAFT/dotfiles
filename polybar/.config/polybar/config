@@ -323,13 +323,13 @@ format = <label-state>
 
 label-occupied = "%index% %icon%"
 label-active = "%index% %icon%"
-label-active-background = ${colors.background} 
+label-active-background = ${colors.background}
 label-active-underline= ${colors.green}
 label-active-padding = 2
 
 label-empty = "%index% %icon%"
 label-empty-padding = 2
-label-empty-background = ${colors.background} 
+label-empty-background = ${colors.background}
 
 
 [module/mpd]
