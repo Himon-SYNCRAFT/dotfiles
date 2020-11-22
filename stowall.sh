@@ -22,6 +22,7 @@ stow -v -t ~/ i3
 stow -v -t ~/ picom
 stow -v -t ~/ qutebrowser
 stow -v -t ~/ vim
+stow -v -t ~/ nvim
 stow -v -t ~/ cmus
 stow -v -t ~/ fish
 stow -v -t ~/ ideavim
