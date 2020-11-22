@@ -15,15 +15,19 @@ alt + t
 
 # make sxhkd reload its configuration files:
 super + Escape
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && notify-send -t 3000 -a sxhkd "sxhkd reloaded"
 
 #
 # bspwm hotkeys
 #
 
+# quit
+shift + alt + q
+    bspc quit
+
 # quit/restart bspwm
-shift + alt + {q,r}
-    bspc {quit,wm -r}
+shift + alt + r
+    bspc wm -r && notify-send -t 3000 "bspwm restarted" -a bspwm
 
 # close
 ctrl + x
