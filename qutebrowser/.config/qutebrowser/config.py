@@ -312,6 +312,8 @@ c.colors.webpage.darkmode.enabled = False
 config.bind('F', 'hint all tab-fg')
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
+config.bind('<', 'tab-prev')
+config.bind('>', 'tab-next')
 config.unbind('d')
 config.bind('f', 'hint all')
 config.bind('j', 'scroll-px 0 50')
