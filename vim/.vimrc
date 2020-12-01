@@ -267,11 +267,12 @@ endif
 " let g:airline_theme = 'minimalist'
 " let g:airline_theme = 'cyberpunk'
 let g:airline_theme = 'neutral'
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 "*****************************************************************************
 "" Abbreviations
@@ -656,6 +657,8 @@ set updatetime=100
 set redrawtime=10000
 set noswapfile
 let g:ycm_server_python_interpreter="python3"
+" let g:python3_host_prog = '/usr/bin/python3'
+" let g:python_host_prog = '/usr/bin/python'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

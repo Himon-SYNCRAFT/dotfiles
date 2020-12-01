@@ -319,3 +319,5 @@ config.bind('f', 'hint all')
 config.bind('j', 'scroll-px 0 50')
 config.bind('k', 'scroll-px 0 -50')
 config.bind('x', 'tab-close')
+
+config.bind('e', 'edit-url')
