@@ -28,6 +28,25 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     pulsemixer --toggle-mute
+
+### cmus
+
+# toggle pause/play
+XF86AudioPlay
+    ~/Projects/dotfiles/NOT_STOW/scripts/cmustoggleplay.sh
+
+# stop
+# cmus-remote -s
+
+# next
+XF86AudioNext
+    cmus-remote -n
+
+# prev
+XF86AudioPrev
+    cmus-remote -r
+
+
 #
 # bspwm hotkeys
 #
