@@ -6,8 +6,6 @@
 *.cursorColor:  #ebdbb2
 
 ! black
-/* *.color8:       #312e39 */
-/* *.color0:       #8a7c6f */
 *.color0:       #312e39
 *.color8:       #8a7c6f
 
@@ -18,6 +16,9 @@
 ! green
 *.color10:      #978979
 *.color2:       #afa38b
+/* *.color10:      #d8ffcf */
+/* *.color2:       #5a7056 */
+
 
 ! yellow
 *.color3:      #f28920
@@ -34,6 +35,8 @@
 ! cyan
 *.color14:      #3e518e
 *.color6:       #6262ae
+/* *.color6:      #00908e */
+/* *.color14:       #006c6c */
 
 ! white
 *.color15:      #f9c2a0
