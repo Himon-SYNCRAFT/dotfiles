@@ -121,7 +121,7 @@ inherit = bar/base
 ; modules-left = launcher i3
 modules-left = launcher workspaces
 modules-center = cmus-info separator window-name
-modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date xkeyboard
+modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date
 width = 100%
 tray-position = right
 tray-padding = 2
@@ -309,15 +309,15 @@ enable-scroll = false
 format-padding = 0
 
 icon-0 = 1;%{T5}%{T-}
-icon-1 = 9;%{T5}%{T-}
-icon-2 = 0;%{T5}%{T-}
-icon-3 = 8;%{T5}%{T-}
 icon-4 = 2;%{T5}%{T-}
 icon-5 = 3;%{T5}%{T-}
 icon-6 = 4;%{T5}%{T-}
 icon-7 = 5;%{T5}%{T-}
 icon-8 = 6;%{T5}%{T-}
 icon-9 = 7;%{T5}%{T-}
+icon-3 = 8;%{T5}%{T-}
+icon-1 = 9;%{T5}%{T-}
+icon-2 = 0;%{T5}%{T-}
 
 format = <label-state>
 
@@ -325,12 +325,14 @@ label-occupied = "%index% %icon%"
 label-active = "%index% %icon%"
 label-active-background = ${colors.background}
 label-active-underline= ${colors.green}
-label-active-padding = 2
 
 label-empty = "%index% %icon%"
-label-empty-padding = 2
 label-empty-background = ${colors.background}
 
+label-active-padding = 2
+label-empty-padding = 2
+label-urgent-padding = 2
+label-occupied-padding = 2
 
 [module/mpd]
 type = internal/mpd
