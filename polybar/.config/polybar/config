@@ -323,10 +323,12 @@ format = <label-state>
 
 label-occupied = "%index% %icon%"
 label-active = "%index% %icon%"
+label-empty = ""
+label-urgent = "%index% %icon%"
+
 label-active-background = ${colors.background}
 label-active-underline= ${colors.green}
 
-label-empty = "%index% %icon%"
 label-empty-background = ${colors.background}
 
 label-active-padding = 2
