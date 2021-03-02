@@ -205,12 +205,12 @@ label-indicator-underline = ${colors.secondary}
 
 [module/cmus-info]
 type = custom/script
-exec = python ~/Projects/dotfiles/NOT_STOW/scripts/get_track_info_from_cmus.py
+exec = python ~/.config/scripts/get_track_info_from_cmus.py
 format-prefix = "  "
 
 [module/window-name]
 type = custom/script
-exec = python ~/Projects/dotfiles/NOT_STOW/scripts/active_window.py
+exec = python ~/.config/scripts/active_window.py
 interval = 1
 label = %output:0:50:...%
 
@@ -228,7 +228,7 @@ exec = free -h | awk '/^Mem:/ {print $3 "/" $2}'
 format-prefix = " "
 format-underline = ${colors.blue2}
 interval = 10
-click-left = notify-send --icon="" --app-name="Mem Info" "Top10" "$(~/Projects/dotfiles/NOT_STOW/scripts/meminfo.sh)"
+click-left = notify-send --icon="" --app-name="Mem Info" "Top10" "$(~/.config/scripts/meminfo.sh)"
 
 [module/cpu-info]
 type = custom/script
@@ -237,7 +237,7 @@ exec = top -b -n1 -d1 | grep -Ei "cpu\\(s\\)\\s*:" | awk '{usage=$2+$4} END {pri
 format-prefix = " "
 format-underline = ${colors.blue4}
 interval = 5
-click-left = notify-send --icon="" --app-name="Cpu Info" "Top10" "$(~/Projects/dotfiles/NOT_STOW/scripts/cpuinfo.sh)"
+click-left = notify-send --icon="" --app-name="Cpu Info" "Top10" "$(~/.config/scripts/cpuinfo.sh)"
 
 [module/filesystem]
 type = internal/fs

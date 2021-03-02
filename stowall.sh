@@ -28,5 +28,6 @@ stow -v -t ~/ fish
 stow -v -t ~/ ideavim
 stow -v -t ~/ bspwm
 stow -v -t ~/ sxhkd
+stow -v -t ~/ scripts
 
 xrdb ~/.Xresources
