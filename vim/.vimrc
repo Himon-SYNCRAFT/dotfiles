@@ -27,6 +27,12 @@ call plug#begin(expand('~/.vim/plugged'))
 if has('python3')
 endif
 
+" Syntax highlight
+" Default highlight is better than polyglot
+let g:polyglot_disabled = ['python']
+let python_highlight_all = 1
+
+
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
@@ -548,12 +554,6 @@ let g:jedi#smart_auto_mappings = 0
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-
-" Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
-
 
 " typescript
 let g:yats_host_keyword = 1
