@@ -1,5 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 
-command=$(ls -1 /usr/bin | dmenu -l 10 -p "run in terminal:")
-test -n "$command" && st -e $command &
+RES=''
+IFS=':'
+read -ra ADDR <<< "$PATH"
+for i in "${ADDR[@]}"; do
+    RES+="$i "
+done
+IFS=' '
+
+command=$(ls -1 $RES | grep . | grep -v / | sort | uniq | dmenu -l 10 -p "run in terminal:")
+command -v "$command" && st -e "$command" &

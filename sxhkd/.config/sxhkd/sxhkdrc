@@ -11,7 +11,7 @@ alt + d
     dmenu_run -b -l 10 -p "run:"
 
 alt + t
-    ~/Projects/dotfiles/NOT_STOW/scripts/openinterminal.sh
+    ~/.config/scripts/openinterminal.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -33,7 +33,7 @@ XF86AudioMute
 
 # toggle pause/play
 XF86AudioPlay
-    ~/Projects/dotfiles/NOT_STOW/scripts/cmustoggleplay.sh
+    ~/.config/scripts/cmustoggleplay.sh
 
 # stop
 # cmus-remote -s

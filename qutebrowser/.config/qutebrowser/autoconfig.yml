@@ -6,7 +6,18 @@
 
 config_version: 2
 settings:
+  content.media.audio_capture:
+    https://app.slack.com: true
+    https://localhost:8081: true
   content.notifications:
+    https://localhost:8081: true
+    https://www.reddit.com: false
     https://www.youtube.com: false
+  editor.command:
+    global:
+    - st
+    - -e
+    - vim
+    - '{}'
   scrolling.bar:
     global: never
