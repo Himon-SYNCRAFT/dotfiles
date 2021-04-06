@@ -8,7 +8,7 @@ nitrogen --restore &
 picom &
 dunst &
 birdtray &
-caffeine &
+caffeine-indicator &
 setxkbmap -option caps:escape &
 xset r rate 400 40 &
 unclutter --timeout 1 --jitter 50 --ignore-scrolling &
