@@ -18,7 +18,7 @@ noremap <C-h> :action PrevSplitter<CR>
 noremap <Leader>x :action CloseContent<CR>
 noremap <Leader>mc :action NewClass<CR>
 noremap <Leader>rn :action RenameElement<CR>
-noremap <Leader>e :action SearchEverywhere<CR>
+noremap <Leader>e :action GoToClass<CR>
 noremap <Leader>r :action IdeaVim.ReloadVimRc.reload<CR>
 noremap <Leader>v :action SplitVertically<CR>
 noremap <Leader>h :action SplitHorizontally<CR>

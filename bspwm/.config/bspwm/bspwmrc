@@ -7,12 +7,11 @@ nm-applet &
 nitrogen --restore &
 picom &
 dunst &
-birdtray &
+# birdtray &
 caffeine-indicator &
 setxkbmap -option caps:escape &
 xset r rate 400 40 &
 unclutter --timeout 1 --jitter 50 --ignore-scrolling &
-# rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
@@ -31,6 +30,7 @@ bspc rule -a "Thunderbird" desktop='^9'
 bspc rule -a "GG" desktop='^8'
 bspc rule -a "Gg" desktop='^8'
 bspc rule -a Screenkey manage=off
+bspc rule -a Zathura state=tiled
 
 bspc config normal_border_color "#312e39"
 bspc config active_border_color "#312e39"
@@ -42,3 +42,5 @@ bspc config pointer_modifier mod1
 bspc config pointer_action1 move
 bspc config pointer_action3 resize_corner
 bspc config pointer_action2 resize_side
+
+rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon

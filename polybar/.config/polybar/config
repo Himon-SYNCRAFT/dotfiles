@@ -216,7 +216,7 @@ label = %output:0:50:...%
 
 [module/checkupdates]
 type = custom/script
-exec = checkupdates | wc -l
+exec = checkupdates 2> /dev/null | wc -l
 interval = 120
 format-prefix = " "
 format-underline = ${colors.orange}
