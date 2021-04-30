@@ -9,10 +9,13 @@ settings:
   content.media.audio_capture:
     https://app.slack.com: true
     https://localhost:8081: true
-  content.notifications:
+  content.notifications.enabled:
+    https://calendar.google.com: true
     https://localhost:8081: true
     https://www.reddit.com: false
     https://www.youtube.com: false
+  content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: true
   editor.command:
     global:
     - st

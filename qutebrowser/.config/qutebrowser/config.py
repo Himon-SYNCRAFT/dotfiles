@@ -12,18 +12,18 @@
 
 
 # Block YouTube ads
-# from qutebrowser.api import interceptor
+from qutebrowser.api import interceptor
 
-# def filter_yt(info: interceptor.Request):
-#     url = info.request_url
-#     if (
-#             url.host() == "www.youtube.com"
-#             and url.path() == "/get_video_info"
-#             and "&adformat=" in url.query()
-#     ):
-#         info.block()
+def filter_yt(info: interceptor.Request):
+    url = info.request_url
+    if (
+            url.host() == "www.youtube.com"
+            and url.path() == "/get_video_info"
+            and "&adformat=" in url.query()
+    ):
+        info.block()
 
-# interceptor.register(filter_yt)
+interceptor.register(filter_yt)
 
 # Uncomment this to still load settings configured via autoconfig.yml
 config.load_autoconfig()
