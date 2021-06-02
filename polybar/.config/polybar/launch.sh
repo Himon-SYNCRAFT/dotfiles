@@ -19,6 +19,9 @@ killall -q polybar
 # polybar network >>/tmp/polybar-network.log 2>&1 & disown
 # polybar date >>/tmp/polybar-date.log 2>&1 & disown
 # echo "---" | tee -a /tmp/polybar-all.log
-polybar all >>/tmp/polybar-all.log 2>&1 & disown
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+    echo $m
+    MONITOR=$m polybar all >>/tmp/polybar-all.log 2>&1 & disown
+done
 
 echo "Bars launched..."

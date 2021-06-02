@@ -1,4 +1,4 @@
-set -x ZLUA_SCRIPT "/home/himon/.config/scripts/z.lua"
+set -x ZLUA_SCRIPT "$HOME/.config/scripts/z.lua"
 set -x ZLUA_LUAEXE "/usr/bin/lua"
 function _zlua
 	set -l arg_mode ""
