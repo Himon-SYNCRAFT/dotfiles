@@ -11,7 +11,7 @@ dunst &
 thunderbird &
 caffeine-indicator &
 setxkbmap -option caps:escape &
-xset r rate 400 40 &
+xset r rate 300 40 &
 unclutter --timeout 1 --jitter 50 --ignore-scrolling &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
