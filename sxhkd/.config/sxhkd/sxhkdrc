@@ -109,7 +109,7 @@ super + {_,shift + }n
 
 # focus the next/previous desktop in the current monitor
 alt + {comma, period}
-    bspc desktop -f {prev,next}.local
+    bspc desktop -f {prev,next}.local.occupied
 
 # focus the last node/desktop
 super + {grave,Tab}
