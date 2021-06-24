@@ -63,6 +63,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'thanthese/Tortoise-Typing'
+Plug 'ElmCast/elm-vim'
 
 if isdirectory('/usr/local/opt/fzf')
     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

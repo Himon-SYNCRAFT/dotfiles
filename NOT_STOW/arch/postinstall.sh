@@ -89,7 +89,7 @@ sudo pacman -Sq --noconfirm ripgrep
 
 echo ""
 echo -e "${RED}installing brave${NC}"
-yay -S --noconfirm brave
+yay -S --noconfirm brave-bin
 
 echo ""
 echo -e "${RED}installing qutebrowser${NC}"
