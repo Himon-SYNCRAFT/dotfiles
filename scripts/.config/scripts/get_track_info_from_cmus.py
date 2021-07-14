@@ -21,3 +21,5 @@ elif title:
 
 elif artist:
     print(f'{artist} - Unknown title')
+else:
+    print()

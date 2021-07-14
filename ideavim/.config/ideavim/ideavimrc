@@ -22,3 +22,4 @@ noremap <Leader>e :action GotoFile<CR>
 noremap <Leader>r :action IdeaVim.ReloadVimRc.reload<CR>
 noremap <Leader>v :action SplitVertically<CR>
 noremap <Leader>h :action SplitHorizontally<CR>
+noremap <F2> :action ActivateProjectToolWindow<CR>

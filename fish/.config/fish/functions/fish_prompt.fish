@@ -21,26 +21,26 @@ function fish_prompt
     set git_color_red (set_color red)
     set git_color_blue (set_color blue)
 
-    set -l is_git_repository (command git rev-parse --is-inside-work-tree ^/dev/null)
+    set -l is_git_repository (command git rev-parse --is-inside-work-tree 2> /dev/null)
 
     if test -n "$is_git_repository"
         set git_branch_name (command git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
 
         # Check if there are files to commit
-        set -l is_git_dirty (command git status --porcelain --ignore-submodules ^/dev/null)
+        set -l is_git_dirty (command git status --porcelain --ignore-submodules 2>/dev/null)
 
         if test -n "$is_git_dirty"
             set git_dirty $symbol_git_dirty
         end
 
         # Check if there is an upstream configured
-        command git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
+        command git rev-parse --abbrev-ref '@{upstream}' >/dev/null 2>/dev/null; and set -l has_upstream
         if set -q has_upstream
-            set -l git_status (command git rev-list --left-right --count 'HEAD...@{upstream}' | sed "s/[[:blank:]]/ /" ^/dev/null)
+            set -l git_status (command git rev-list --left-right --count 'HEAD...@{upstream}' | sed "s/[[:blank:]]/ /" 2>/dev/null)
 
             # Resolve Git arrows by treating `git_status` as an array
-            set -l git_arrow_left (command echo $git_status | cut -c 1 ^/dev/null)
-            set -l git_arrow_right (command echo $git_status | cut -c 3 ^/dev/null)
+            set -l git_arrow_left (command echo $git_status | cut -c 1 2>/dev/null)
+            set -l git_arrow_right (command echo $git_status | cut -c 3 2>/dev/null)
 
             # If arrow is not "0", it means it's dirty
             if test $git_arrow_left != 0
