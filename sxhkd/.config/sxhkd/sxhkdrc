@@ -2,6 +2,10 @@
 alt + ctrl + t
     tabbed -n "st" -d -r 2 st -w '' -e fish
 
+# ranger
+alt + ctrl + r
+    st -w '' -e ranger
+
 # suspend
 super + l
     betterlockscreen -s dim
