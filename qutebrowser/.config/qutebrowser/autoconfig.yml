@@ -6,6 +6,9 @@
 
 config_version: 2
 settings:
+  content.geolocation:
+    https://riff.net.pl: true
+    https://www.cinema-city.pl: false
   content.media.audio_capture:
     https://app.slack.com: true
     https://localhost:8081: true

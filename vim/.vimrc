@@ -64,6 +64,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'thanthese/Tortoise-Typing'
 Plug 'ElmCast/elm-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 if isdirectory('/usr/local/opt/fzf')
     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -84,9 +85,6 @@ Plug 'xolox/vim-session'
 "" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-"" Color
-Plug 'morhetz/gruvbox'
 
 "*****************************************************************************
 "" Custom bundles
@@ -116,11 +114,6 @@ Plug 'mattn/emmet-vim'
 " javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
-
-
-" lisp
-"" Lisp Bundle
-Plug 'vim-scripts/slimv.vim'
 
 
 " php
@@ -684,3 +677,4 @@ let g:ycm_confirm_extra_conf = 0
 if filereadable(expand("~/.vim/.coc.vimrc"))
     source ~/.vim/.coc.vimrc
 endif
+let g:node_client_debug = 1
