@@ -65,10 +65,10 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi CursorColumn guifg=NONE guibg=#312e39 guisp=NONE gui=NONE cterm=NONE
   hi CursorLine guifg=NONE guibg=#312e39 guisp=NONE gui=NONE cterm=NONE
   hi CursorLineNr guifg=#f8cd1a guibg=#312e39 guisp=NONE gui=NONE cterm=NONE
-  hi DiffAdd guifg=#978979 guibg=#312e39 guisp=NONE gui=reverse cterm=reverse
-  hi DiffChange guifg=#6262ae guibg=#312e39 guisp=NONE gui=reverse cterm=reverse
-  hi DiffDelete guifg=#c72e68 guibg=#312e39 guisp=NONE gui=reverse cterm=reverse
-  hi DiffText guifg=#f28920 guibg=#312e39 guisp=NONE gui=bold,reverse cterm=bold,reverse
+  hi DiffAdd guifg=#978979 guibg=#312e39 guisp=NONE gui=reverse cterm=NONE
+  hi DiffChange guifg=#6262ae guibg=#312e39 guisp=NONE gui=reverse cterm=NONE
+  hi DiffDelete guifg=#c72e68 guibg=#312e39 guisp=NONE gui=reverse cterm=NONE
+  hi DiffText guifg=#f28920 guibg=#312e39 guisp=NONE gui=bold,reverse cterm=bold
   hi Directory guifg=#978979 guibg=NONE guisp=NONE gui=bold cterm=bold
   hi EndOfBuffer guifg=#ebdbb2 guibg=#312e39 guisp=NONE gui=NONE cterm=NONE
   hi ErrorMsg guifg=#312e39 guibg=#f022fd guisp=NONE gui=bold cterm=bold
@@ -143,16 +143,17 @@ if s:t_Co >= 256
     endif
     hi Terminal ctermfg=187 ctermbg=NONE cterm=NONE
   endif
-  hi ColorColumn ctermfg=fg ctermbg=NONE cterm=NONE
+  hi ColorColumn ctermfg=fg ctermbg=236 cterm=NONE
   hi Conceal ctermfg=244 ctermbg=NONE cterm=NONE
   hi Cursor ctermfg=NONE ctermbg=NONE cterm=reverse
   hi CursorColumn ctermfg=NONE ctermbg=NONE cterm=NONE
   hi CursorLine ctermfg=NONE ctermbg=NONE cterm=NONE
   hi CursorLineNr ctermfg=220 ctermbg=NONE cterm=NONE
-  hi DiffAdd ctermfg=245 ctermbg=NONE cterm=reverse
-  hi DiffChange ctermfg=61 ctermbg=NONE cterm=reverse
-  hi DiffDelete ctermfg=161 ctermbg=NONE cterm=reverse
-  hi DiffText ctermfg=208 ctermbg=NONE cterm=bold,reverse
+  " hi DiffAdd ctermfg=245 ctermbg=NONE cterm=NONE
+  hi DiffAdd ctermfg=64 ctermbg=NONE cterm=bold
+  hi DiffChange ctermfg=61 ctermbg=NONE cterm=NONE
+  hi DiffDelete ctermfg=161 ctermbg=NONE cterm=bold
+  hi DiffText ctermfg=208 ctermbg=NONE cterm=bold
   hi Directory ctermfg=245 ctermbg=NONE cterm=bold
   hi EndOfBuffer ctermfg=187 ctermbg=NONE cterm=NONE
   hi ErrorMsg ctermfg=236 ctermbg=201 cterm=bold
@@ -224,7 +225,7 @@ if s:t_Co >= 8
     hi Normal ctermfg=LightGrey ctermbg=NONE cterm=NONE
     hi Terminal ctermfg=LightGrey ctermbg=NONE cterm=NONE
   endif
-  hi ColorColumn ctermfg=fg ctermbg=NONE cterm=NONE
+  hi ColorColumn ctermfg=fg ctermbg=DarkGrey cterm=NONE
   hi Conceal ctermfg=DarkGrey ctermbg=NONE cterm=NONE
   hi Cursor ctermfg=NONE ctermbg=NONE cterm=reverse
   hi CursorColumn ctermfg=NONE ctermbg=NONE cterm=NONE
@@ -299,7 +300,7 @@ endif
 
 if s:t_Co >= 2
   hi Normal term=NONE
-  hi ColorColumn term=reverse
+  hi ColorColumn term=None
   hi Conceal term=NONE
   hi Cursor term=NONE
   hi CursorColumn term=reverse

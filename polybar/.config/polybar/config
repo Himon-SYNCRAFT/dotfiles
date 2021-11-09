@@ -122,7 +122,7 @@ inherit = bar/base
 ; modules-left = launcher i3
 modules-left = launcher workspaces
 modules-center = cmus-info separator window-name
-modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date
+modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date xkeyboard
 width = 100%
 tray-position = right
 tray-padding = 2
@@ -196,7 +196,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
-label-layout = %layout%
+label-layout = %layout%, %name%
 label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2

@@ -45,7 +45,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -64,7 +64,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'thanthese/Tortoise-Typing'
 Plug 'ElmCast/elm-vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 if isdirectory('/usr/local/opt/fzf')
     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -198,6 +201,7 @@ syntax on
 set ruler
 set number
 set relativenumber
+set colorcolumn=80
 
 let no_buffers_menu=1
 silent! colorscheme cyberpunk
@@ -265,8 +269,6 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-" let g:airline_theme = 'minimalist'
-" let g:airline_theme = 'cyberpunk'
 let g:airline_theme = 'neutral'
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#ale#enabled = 1
@@ -652,8 +654,6 @@ set updatetime=100
 set redrawtime=10000
 set noswapfile
 let g:ycm_server_python_interpreter="python3"
-" let g:python3_host_prog = '/usr/bin/python3'
-" let g:python_host_prog = '/usr/bin/python'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -665,10 +665,9 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 set timeoutlen=1000
 set ttimeoutlen=0
 
-" autocmd vimenter * colorscheme gruvbox
 autocmd vimenter * colorscheme cyberpunk
 autocmd vimenter * AirlineTheme neutral
-" autocmd vimenter * colorscheme wal
+
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 

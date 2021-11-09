@@ -1,4 +1,71 @@
+global !p
+def snake_to_camel_case(text: str):
+	return text.replace('_', ' ').title().replace(' ', '')
+endglobal
+
 snippet test
 def test_${1}():
 	${2}
+endsnippet
+
+snippet prestoaf
+from dataclasses import dataclass
+from presto.core.actions.action_base import ActionBase
+from presto.core.actions.validator_base import ValidatorBase
+
+
+@dataclass(frozen=True)
+class $1Request:
+	${2:pass}
+
+
+class $1Validator(ValidatorBase):
+	def is_valid(self, request: $1Request):
+		${3:pass}
+
+
+class ${1:`!p snip.rv = snake_to_camel_case(snip.basename)`}(ActionBase):
+	def __init__(self):
+		super().__init__()
+
+		self._validator = $1Validator()
+		self.is_atomic = True
+
+	def process(self, request: $1Request):
+		${4:pass}
+endsnippet
+
+snippet prestoa
+from presto.core.actions.action_base import ActionBase
+
+
+class ${1:`!p snip.rv = snake_to_camel_case(snip.basename)`}(ActionBase):
+	def __init__(self):
+		super().__init__()
+		self.is_atomic = True
+
+	def process(self, request=None):
+		${2:pass}
+endsnippet
+
+snippet prop
+self.${1} = $1
+endsnippet
+
+snippet data
+@dataclass(frozen=True)
+class ${1}:
+	${2}
+
+	def to_dict(self) -> Dict:
+		return ${3:asdict(self)}
+endsnippet
+
+snippet enum
+class ${1}(Enum):
+	${2}
+endsnippet
+
+snippet ev
+${1} = '$1'
 endsnippet
