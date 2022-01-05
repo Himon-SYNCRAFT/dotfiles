@@ -241,6 +241,7 @@ c.url.searchengines = {
     'wa': 'https://wiki.archlinux.org/?search={}',
     'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web',
     'od': 'https://odysee.com/$/search?q={}',
+    'mvn': 'https://mvnrepository.com/search?q={}',
 }
 
 # Foreground color for prompts.
