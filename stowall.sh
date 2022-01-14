@@ -13,21 +13,22 @@ if ! command -v stow &> /dev/null; then
     exit 1
 fi
 
-stow -v -t ~/ alacritty
-stow -v -t ~/ home
-stow -v -t ~/ polybar
-stow -v -t ~/ ranger
-stow -v -t ~/ dunst
-stow -v -t ~/ i3
-stow -v -t ~/ picom
-stow -v -t ~/ qutebrowser
-stow -v -t ~/ vim
-stow -v -t ~/ nvim
-stow -v -t ~/ cmus
-stow -v -t ~/ fish
-stow -v -t ~/ ideavim
-stow -v -t ~/ bspwm
-stow -v -t ~/ sxhkd
-stow -v -t ~/ scripts
+stow --no-folding -v -t ~/ alacritty
+stow --no-folding -v -t ~/ home
+stow --no-folding -v -t ~/ polybar
+stow --no-folding -v -t ~/ ranger
+stow --no-folding -v -t ~/ dunst
+stow --no-folding -v -t ~/ i3
+stow --no-folding -v -t ~/ picom
+stow --no-folding -v -t ~/ qutebrowser
+stow --no-folding -v -t ~/ vim
+stow --no-folding -v -t ~/ nvim
+stow --no-folding -v -t ~/ cmus
+stow --no-folding -v -t ~/ fish
+stow --no-folding -v -t ~/ ideavim
+stow --no-folding -v -t ~/ bspwm
+stow --no-folding -v -t ~/ xmonad
+stow --no-folding -v -t ~/ sxhkd
+stow --no-folding -v -t ~/ scripts
 
 xrdb ~/.Xresources

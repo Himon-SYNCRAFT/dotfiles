@@ -63,7 +63,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'thanthese/Tortoise-Typing'
-Plug 'ElmCast/elm-vim'
+Plug 'elm-tooling/elm-vim'
 
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -665,8 +665,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 set timeoutlen=1000
 set ttimeoutlen=0
 
-autocmd vimenter * colorscheme cyberpunk
-autocmd vimenter * AirlineTheme neutral
+silent! autocmd vimenter * colorscheme cyberpunk
+silent! autocmd vimenter * AirlineTheme neutral
 
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE

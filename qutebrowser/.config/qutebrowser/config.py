@@ -239,6 +239,7 @@ c.tabs.show = 'never'
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'wa': 'https://wiki.archlinux.org/?search={}',
+    'ap': 'https://archlinux.org/packages/?q={}',
     'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web',
     'od': 'https://odysee.com/$/search?q={}',
     'mvn': 'https://mvnrepository.com/search?q={}',

@@ -76,7 +76,7 @@ super + shift + w
 
 # alternate between the tiled and monocle layout
 super + m
-    bspc desktop -l next
+    bsp-layout cycle --layouts tall,tile,wide
 
 # send the focused node to the newest preselected node
 super + y
