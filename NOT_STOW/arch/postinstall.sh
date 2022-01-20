@@ -8,7 +8,7 @@ projects_dir=$home_dir/Projects
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-sudo pacman -Syyuu --noconfirm
+sudo pacman -Syyu --noconfirm
 
 echo ""
 echo -e "${RED}make dir for projects${NC}"
@@ -162,8 +162,8 @@ yay -S --noconfirm nerd-fonts-hack ttf-material-design-icons nerd-fonts-source-c
 
 echo ""
 echo -e "${RED}cli apps${NC}"
-sudo pacman -Sq --noconfirm cmus ranger neomutt lm_sensors cava dunst ueberzug bat tree unclutter
-yay -S --noconfirm pfetch gotop mutt-wizard tty-clock
+sudo pacman -Sq --noconfirm cmus ranger lm_sensors dunst ueberzug bat tree unclutter exa diff-so-fancy
+yay -S --noconfirm gotop
 
 echo ""
 echo -e "${RED}vpn utils${NC}"

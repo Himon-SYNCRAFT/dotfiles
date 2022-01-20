@@ -121,6 +121,7 @@ monitor = ${env:MONITOR:}
 inherit = bar/base
 ; modules-left = launcher i3
 modules-left = launcher workspaces
+; modules-left = launcher workspaces current-layout
 modules-center = cmus-info separator window-name
 modules-right = pulseaudio checkupdates cpu-info memory-info temperature wlan date xkeyboard
 width = 100%
@@ -212,8 +213,13 @@ format-prefix = "  "
 [module/window-name]
 type = custom/script
 exec = python ~/.config/scripts/active_window.py
-interval = 1
+interval = 0
 label = %output:0:50:...%
+
+[module/current-layout]
+type = custom/script
+exec = ~/.config/scripts/get_bspwm_current_layout.sh
+interval = 0
 
 [module/checkupdates]
 type = custom/script
@@ -323,13 +329,14 @@ icon-default = %{T5}■︁%{T-}
 
 format = <label-state>
 
-label-occupied = "%index% %icon%"
-label-active = "%index% %icon%"
+label-occupied = "%icon%"
+label-active = "%icon%"
 label-empty = ""
-label-urgent = "%index% %icon%"
+label-urgent = "%icon%"
 
 label-active-background = ${colors.background}
 label-active-underline= ${colors.green}
+label-urgent-underline = ${colors.red}
 
 label-empty-background = ${colors.background}
 

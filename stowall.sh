@@ -27,6 +27,7 @@ stow --no-folding -v -t ~/ cmus
 stow --no-folding -v -t ~/ fish
 stow --no-folding -v -t ~/ ideavim
 stow --no-folding -v -t ~/ bspwm
+stow --no-folding -v -t ~/ xmonad
 stow --no-folding -v -t ~/ sxhkd
 stow --no-folding -v -t ~/ scripts
 
