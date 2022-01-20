@@ -677,3 +677,5 @@ if filereadable(expand("~/.vim/.coc.vimrc"))
     source ~/.vim/.coc.vimrc
 endif
 let g:node_client_debug = 1
+
+set pyx=3
