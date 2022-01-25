@@ -6,14 +6,23 @@
 
 config_version: 2
 settings:
+  content.desktop_capture:
+    https://cloud.syncraft.pl: true
   content.geolocation:
+    https://cloud.syncraft.pl: true
     https://riff.net.pl: true
     https://www.cinema-city.pl: false
   content.media.audio_capture:
     https://app.slack.com: true
+    https://cloud.syncraft.pl: true
     https://localhost:8081: true
+  content.media.audio_video_capture:
+    https://cloud.syncraft.pl: true
+  content.media.video_capture:
+    https://cloud.syncraft.pl: true
   content.notifications.enabled:
     https://calendar.google.com: true
+    https://cloud.syncraft.pl: true
     https://localhost:8081: true
     https://www.facebook.com: false
     https://www.filmweb.pl: false

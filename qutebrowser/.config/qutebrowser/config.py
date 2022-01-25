@@ -178,6 +178,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.meczyki.pl')
 
+config.set('content.blocking.method', 'both')
+config.set('content.autoplay', False)
+
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
 # Type: Int

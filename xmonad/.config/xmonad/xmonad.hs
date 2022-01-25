@@ -90,11 +90,11 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    ) -- %! Swap the focused window with the previous window
 
     -- resizing the master/slave ratio
-    , ((mod4Mask,               xK_h     ), sendMessage Shrink) -- %! Shrink the master area
-    , ((mod4Mask,               xK_l     ), sendMessage Expand) -- %! Expand the master area
+    , ((controlMask .|. shiftMask,               xK_h     ), sendMessage Shrink) -- %! Shrink the master area
+    , ((controlMask .|. shiftMask,               xK_l     ), sendMessage Expand) -- %! Expand the master area
 
     -- floating layer support
-    , ((modMask,               xK_t     ), withFocused $ windows . W.sink) -- %! Push window back into tiling
+    , ((modMask .|. shiftMask, xK_t     ), withFocused $ windows . W.sink) -- %! Push window back into tiling
 
     -- increase or decrease number of windows in the master area
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1)) -- %! Increment the number of windows in the master area
@@ -102,7 +102,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q     ), io exitSuccess) -- %! Quit xmonad
-    , ((modMask .|. shiftMask, xK_r     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
+    , ((modMask .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart; notify-send 'xmonad restarted'") -- %! Restart xmonad
 
     ]
     ++
@@ -123,6 +123,8 @@ myManageHook = composeAll
     [ className =? "confirm"         --> doFloat
      , className =? "file_progress"   --> doFloat
      , className =? "dialog"          --> doFloat
+     , className =? "Dialog"          --> doFloat
+     , title =? "Reklama"          --> doFloat
      , className =? "download"        --> doFloat
      , className =? "error"           --> doFloat
      , className =? "notification"    --> doFloat
@@ -136,6 +138,7 @@ myManageHook = composeAll
      , className =? "GG"   --> doShift "8"
      , className =? "Gg"   --> doShift "8"
      , title =? "cmus v2.9.1"   --> doShift "7"
+     , title =? "cmus"   --> doShift "7"
      , isFullscreen  -->  doFullFloat
      ]
 

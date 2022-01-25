@@ -52,13 +52,6 @@ primary = #f28920
 secondary = #98971a
 alert = #c72e68
 
-; background = ${xrdb:color0:#222}
-; foreground = ${xrdb:color7:#222}
-; foreground-alt = ${xrdb:color7:#222}
-; primary = ${xrdb:color1:#222}
-; secondary = ${xrdb:color2:#222}
-; alert = ${xrdb:color3:#222}
-
 black = #282828
 red = #c72e68
 green = #f8cd1a
@@ -67,6 +60,7 @@ blue = #458588
 magenta = #b16286
 cyan = #689d6a,
 white = #a89984
+
 bright_black = #928374
 bright_red = #fb4934
 bright_green = #b8bb26
@@ -84,6 +78,14 @@ magenta1 = #c72e68
 magenta2 = #ff2975
 magenta3 = #f022fd
 orange = #f28920
+
+; background = ${xrdb:color0:#222}
+; foreground = ${xrdb:color7:#222}
+; foreground-alt = ${xrdb:color7:#222}
+; primary = ${xrdb:color1:#222}
+; secondary = ${xrdb:color2:#222}
+; alert = ${xrdb:color3:#222}
+
 
 [bar/base]
 enable-ipc=true
@@ -115,6 +117,8 @@ font-3 = Font Awesome 5 Free:pixelsize=12;3
 font-4 = Font Awesome 5 Free Solid:pixelsize=12;3
 font-5 = Font Awesome 5 Brands:pixelsize=12;3
 font-6 = "Hack Nerd Font:size=13;3"
+font-7 = SauceCodePro Nerd Font:pixelsize=14;4
+font-8 = SauceCodePro Nerd Font:pixelsize=18;5
 
 [bar/all]
 monitor = ${env:MONITOR:}
@@ -297,16 +301,27 @@ label-urgent-padding = 2
 
 ; icons
 
-ws-icon-0 = 1;%{T5}%{T-}
-ws-icon-1 = 9;%{T5}%{T-}
-ws-icon-2 = 10;%{T5}%{T-}
-ws-icon-3 = 8;%{T5}%{T-}
-ws-icon-4 = 2;%{T5}%{T-}
-ws-icon-5 = 3;%{T5}%{T-}
-ws-icon-6 = 4;%{T5}%{T-}
-ws-icon-7 = 5;%{T5}%{T-}
-ws-icon-8 = 6;%{T5}%{T-}
-ws-icon-9 = 7;%{T5}%{T-}
+; ws-icon-0 = 1;%{T5}%{T-}
+; ws-icon-1 = 9;%{T5}%{T-}
+; ws-icon-2 = 10;%{T5}%{T-}
+; ws-icon-3 = 8;%{T5}%{T-}
+; ws-icon-4 = 2;%{T5}%{T-}
+; ws-icon-5 = 3;%{T5}%{T-}
+; ws-icon-6 = 4;%{T5}%{T-}
+; ws-icon-7 = 5;%{T5}%{T-}
+; ws-icon-8 = 6;%{T5}%{T-}
+; ws-icon-9 = 7;%{T5}%{T-}
+;
+ws-icon-0 = 1;%{T8}%{T-}
+ws-icon-4 = 2;%{T8}%{T-}
+ws-icon-5 = 3;%{T8}%{T-}
+ws-icon-6 = 4;%{T8}%{T-}
+ws-icon-7 = 5;%{T8}%{T-}
+ws-icon-8 = 6;%{T8}%{T-}
+ws-icon-9 = 7;%{T8}%{T-}
+ws-icon-3 = 8;%{T8}%{T-}
+ws-icon-1 = 9;%{T8}%{T-}
+ws-icon-2 = 10;%{T8}%{T-}
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -315,16 +330,27 @@ enable-click = true
 enable-scroll = false
 format-padding = 0
 
-icon-0 = 1;%{T5}%{T-}
-icon-4 = 2;%{T5}%{T-}
-icon-5 = 3;%{T5}%{T-}
-icon-6 = 4;%{T5}%{T-}
-icon-7 = 5;%{T5}%{T-}
-icon-8 = 6;%{T5}%{T-}
-icon-9 = 7;%{T5}%{T-}
-icon-3 = 8;%{T5}%{T-}
-icon-1 = 9;%{T5}%{T-}
-icon-2 = 0;%{T5}%{T-}
+; icon-0 = 1;%{T8}爵%{T-}
+; icon-4 = 2;%{T5}%{T-}
+; icon-5 = 3;%{T5}%{T-}
+; icon-6 = 4;%{T5}%{T-}
+; icon-7 = 5;%{T5}%{T-}
+; icon-8 = 6;%{T5}%{T-}
+; icon-9 = 7;%{T5}%{T-}
+; icon-3 = 8;%{T5}%{T-}
+; icon-1 = 9;%{T5}%{T-}
+; icon-2 = 0;%{T5}%{T-}
+;
+icon-0 = 1;%{T8}%{T-}
+icon-4 = 2;%{T9}%{T-}
+icon-5 = 3;%{T8}%{T-}
+icon-6 = 4;%{T8}%{T-}
+icon-7 = 5;%{T8}%{T-}
+icon-8 = 6;%{T8}%{T-}
+icon-9 = 7;%{T8}%{T-}
+icon-3 = 8;%{T8}%{T-}
+icon-1 = 9;%{T8}%{T-}
+icon-2 = 0;%{T8}%{T-}
 icon-default = %{T5}■︁%{T-}
 
 format = <label-state>
@@ -460,7 +486,6 @@ format-volume = <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 label-volume-underline = ${colors.magenta2}
-; label-volume-foreground = ${colors.magenta2}
 
 label-muted = ﱝ 0%
 label-muted-foreground = ${colors.bright_black}
@@ -584,7 +609,7 @@ menu-0-1-exec = shutdown
 
 [module/launcher]
 type=custom/text
-content = ""
+content = %{T8}%{T-}
 content-margin = 1
 click-left = dmenu_run -c -b -l 10 -p "run:"
 

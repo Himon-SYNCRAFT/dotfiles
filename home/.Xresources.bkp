@@ -1,0 +1,50 @@
+*.alpha:  0.90
+
+! special
+*.foreground:   #ebdbb2
+*.background:   #312e39
+*.cursorColor:  #ebdbb2
+
+! black
+*.color0:       #312e39
+*.color8:       #8a7c6f
+
+! red
+*.color1:       #ff2975
+*.color9:       #c72e68
+
+! green
+/* *.color2:       #85990a */
+/* *.color10:      #5d6e04 */
+/* *.color2:       #99920a */
+/* *.color10:      #6e6904 */
+*.color2:       #aaa20b
+*.color10:      #7b7604
+
+
+! yellow
+*.color3:      #f28920
+*.color11:     #f8cd1a
+
+! blue
+*.color4:      #6262ae
+*.color12:       #3e518e
+/* *.color4:      #6262ae */
+/* *.color12:       #871ff5 */
+
+! magenta
+*.color5:       #e82c8a
+*.color13:      #b62a7b
+/* *.color13:      #d60a81 */
+
+! cyan
+*.color6:       #5a94b6
+*.color14:      #871ff5
+/* *.color6:       #6262ae */
+/* *.color14:      #3e518e */
+/* *.color6:       #1a9292 */
+/* *.color14:      #2d6d6d */
+
+! white
+*.color7:       #ebdbb2
+*.color15:      #f9c2a0
