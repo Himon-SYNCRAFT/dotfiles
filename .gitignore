@@ -1,2 +1,3 @@
 cmus/.config/cmus/lib.pl
 cmus/.config/cmus/playlists/default
+nvim/.config/nvim/plugin/packer_compiled.lua
