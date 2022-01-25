@@ -1,3 +1,9 @@
+let g:coc_global_extensions = [
+    \ 'coc-dash-complete', 'coc-dot-complete', 'coc-html', 'coc-java', 'coc-json',
+    \ 'coc-just-complete', 'coc-lua', 'coc-phpls', 'coc-pyright', 'coc-sh',
+    \ 'coc-sqlfluff', 'coc-tsserver', 'coc-yaml'
+\ ]
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
