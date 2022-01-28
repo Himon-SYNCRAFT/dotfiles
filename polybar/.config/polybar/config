@@ -43,48 +43,40 @@
 ; bright_cyan = #8ec07c
 ; bright_white = #ebdbb2
 ;
+; onedark
+; [colors]
+; background = #282C34
+; foreground = #ABB2BF
+; foreground-alt = #ABB2BF
+; primary = #C678DD
+; secondary = #61AFEF
+; alert = #E06C75
+
+; black = #2C323C
+; red = #E06C75
+; green = #98C379
+; yellow = #E5C07B
+; blue = #61AFEF
+; magenta = #C678DD
+; cyan = #56B6C2
+; white = #5C6370
+;
 [colors]
-background = #312e39
-background-alt = #928374
-foreground = #ebdbb2
-foreground-alt = #ebdbb2
-primary = #f28920
-secondary = #98971a
-alert = #c72e68
+background = #282A36
+foreground = #F8F8F2
+foreground-alt = #F8F8F2
+primary = #FF79C6
+secondary = #FF79C6
+alert = #FF5555
 
-black = #282828
-red = #c72e68
-green = #f8cd1a
-yellow = #d79921
-blue = #458588
-magenta = #b16286
-cyan = #689d6a,
-white = #a89984
-
-bright_black = #928374
-bright_red = #fb4934
-bright_green = #b8bb26
-bright_yellow = #f28932
-bright_blue = #83a598
-bright_magenta = #d3869b
-bright_cyan = #8ec07c
-bright_white = #ebdbb2
-
-blue1 = #342d59
-blue2 = #3e518e
-blue3 = #6262ae
-blue4 = #871ff5
-magenta1 = #c72e68
-magenta2 = #ff2975
-magenta3 = #f022fd
-orange = #f28920
-
-; background = ${xrdb:color0:#222}
-; foreground = ${xrdb:color7:#222}
-; foreground-alt = ${xrdb:color7:#222}
-; primary = ${xrdb:color1:#222}
-; secondary = ${xrdb:color2:#222}
-; alert = ${xrdb:color3:#222}
+black = #4D4D4D
+red = #FF5555
+green = #50FA7B
+yellow = #F1FA8C
+blue = #BD93F9
+magenta = #FF79C6
+cyan = #8BE9FD
+white = #BFBFBF
 
 
 [bar/base]
@@ -199,15 +191,15 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = ${colors.red}
 
 label-layout = %layout%, %name%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.red}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.red}
+label-indicator-underline = ${colors.red}
 
 [module/cmus-info]
 type = custom/script
@@ -230,14 +222,14 @@ type = custom/script
 exec = checkupdates 2> /dev/null | wc -l
 interval = 30
 format-prefix = " "
-format-underline = ${colors.orange}
+format-underline = ${colors.yellow}
 label = %output:0:5:...%
 
 [module/memory-info]
 type = custom/script
 exec = free -h | awk '/^Mem:/ {print $3 "/" $2}'
 format-prefix = " "
-format-underline = ${colors.blue2}
+format-underline = ${colors.blue}
 interval = 10
 click-left = notify-send --icon="" --app-name="Mem Info" "Top10" "$(~/.config/scripts/meminfo.sh)"
 
@@ -246,7 +238,7 @@ type = custom/script
 label = %output%%
 exec = top -b -n1 -d1 | grep -Ei "cpu\\(s\\)\\s*:" | awk '{usage=$2+$4} END {printf("%.0f", usage)}'
 format-prefix = " "
-format-underline = ${colors.blue4}
+format-underline = ${colors.cyan}
 interval = 5
 click-left = notify-send --icon="" --app-name="Cpu Info" "Top10" "$(~/.config/scripts/cpuinfo.sh)"
 
@@ -361,7 +353,7 @@ label-empty = ""
 label-urgent = "%icon%"
 
 label-active-background = ${colors.background}
-label-active-underline= ${colors.green}
+label-active-underline= ${colors.magenta}
 label-urgent-underline = ${colors.red}
 
 label-empty-background = ${colors.background}
@@ -411,7 +403,7 @@ type = internal/cpu
 interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground}
-format-underline = ${colors.blue4}
+format-underline = ${colors.blue}
 label = %percentage:2%%
 
 [module/memory]
@@ -426,7 +418,7 @@ label = %percentage_used%%
 type = internal/network
 interface = wlp5s0
 interval = 3.0
-format-connected-underline = ${colors.blue3}
+format-connected-underline = ${colors.blue}
 
 ; format-connected = <ramp-signal> <label-connected>
 format-connected =   <label-connected>
@@ -485,10 +477,10 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
-label-volume-underline = ${colors.magenta2}
+label-volume-underline = ${colors.magenta}
 
 label-muted = ﱝ 0%
-label-muted-foreground = ${colors.bright_black}
+label-muted-foreground = ${colors.black}
 
 bar-volume-width = 20
 bar-volume-foreground-0 = ${colors.green}
@@ -575,7 +567,7 @@ thermal-zone = 5
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${colors.magenta3}
+format-underline = ${colors.magenta}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

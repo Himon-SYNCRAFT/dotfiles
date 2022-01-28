@@ -21,10 +21,12 @@ augroup end
 
 return require("packer").startup {
     function(use)
+        use 'sainnhe/everforest'
+        use 'joshdick/onedark.vim'
+        use {'dracula/vim', as = 'dracula'}
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'
         use 'tpope/vim-commentary'
-        -- use "jiangmiao/auto-pairs"
         use 'Raimondi/delimitMate'
         use 'airblade/vim-gitgutter'
         use 'francoiscabrol/ranger.vim'

@@ -30,5 +30,6 @@ stow --no-folding -v -t ~/ bspwm
 stow --no-folding -v -t ~/ xmonad
 stow --no-folding -v -t ~/ sxhkd
 stow --no-folding -v -t ~/ scripts
+stow --no-folding -v -t ~/ zathura
 
 xrdb ~/.Xresources

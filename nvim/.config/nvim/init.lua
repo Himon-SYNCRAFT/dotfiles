@@ -1,6 +1,12 @@
 vim.cmd [[
-	autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-	colorscheme cyberpunk
+	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
+    set background=dark
+    "" let g:everforest_transparent_background = 1
+    "" let g:everforest_background = 'hard'
+	"" silent! colorscheme cyberpunk
+    "" silent! colorscheme everforest
+    "" silent! colorscheme onedark
+    silent! colorscheme dracula
 	let mapleader=','
 ]]
 
