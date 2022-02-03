@@ -1,50 +1,108 @@
-*.alpha:  0.90
+!*.alpha:  0.90
+*.alpha:  0.95
+!*.alpha:  1
 
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.cursorColor: #F8F8F2
+! black
+*.color0:     #000000
+*.color8:     #4D4D4D
+! red
+*.color1:     #FF5555
+*.color9:     #FF6E67
+! green
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+! yellow
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+! blue
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+! magenta
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+! cyan
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+! white
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
+! everforest theme
 ! special
-*.foreground:   #ebdbb2
-*.background:   #312e39
-*.cursorColor:  #ebdbb2
+!*.foreground:   #d3c6aa
+!*.background:   #2b3339
+!*.cursorColor:  #d3c6aa
 
 ! black
-*.color0:       #312e39
-*.color8:       #8a7c6f
+!*.color0:       #4e3e43
+!*.color8:       #2b3339
 
 ! red
-*.color1:       #ff2975
-*.color9:       #c72e68
+!*.color1:       #e67e80
+!*.color9:       #f85552
 
 ! green
-/* *.color2:       #85990a */
-/* *.color10:      #5d6e04 */
-/* *.color2:       #99920a */
-/* *.color10:      #6e6904 */
-*.color2:       #aaa20b
-*.color10:      #7b7604
-
+!*.color2:       #a7c080
+!*.color10:      #8da101
 
 ! yellow
-*.color3:      #f28920
-*.color11:     #f8cd1a
+!*.color3:      #dbbc7f
+!*.color11:     #dfa000
 
 ! blue
-*.color4:      #6262ae
-*.color12:       #3e518e
-/* *.color4:      #6262ae */
-/* *.color12:       #871ff5 */
+!*.color4:      #7fbbb3
+!*.color12:     #3a94c5
 
 ! magenta
-*.color5:       #e82c8a
-*.color13:      #b62a7b
-/* *.color13:      #d60a81 */
+!*.color5:       #d699b6
+!*.color13:      #df69ba
 
 ! cyan
-*.color6:       #5a94b6
-*.color14:      #871ff5
-/* *.color6:       #6262ae */
-/* *.color14:      #3e518e */
-/* *.color6:       #1a9292 */
-/* *.color14:      #2d6d6d */
+!*.color6:       #83c092
+!*.color14:      #35a77c
 
 ! white
-*.color7:       #ebdbb2
-*.color15:      #f9c2a0
+!*.color7:       #d3c6aa
+!*.color15:      #7a8478
+
+! onedark theme
+! special
+!*.foreground:   #ABB2BF
+!*.background:   #282C34
+!*.cursorColor:  #ABB2BF
+
+! black
+!*.color0:       #2C323C
+!*.color8:       #3E4452
+
+! red
+!*.color1:       #E06C75
+!*.color9:       #E06C75
+
+! green
+!*.color2:       #98C379
+!*.color10:      #98C379
+
+! yellow
+!*.color3:       #E5C07B
+!*.color11:      #E5C07B
+
+! blue
+!*.color4:       #61AFEF
+!*.color12:      #61AFEF
+
+! magenta
+!*.color5:       #C678DD
+!*.color13:      #C678DD
+
+! cyan
+!*.color6:       #56B6C2
+!*.color14:      #56B6C2
+
+! white
+!*.color7:       #5C6370
+!*.color15:      #ABB2BF

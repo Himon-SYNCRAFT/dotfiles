@@ -11,8 +11,11 @@
 #   qute://help/settings.html
 
 
+import dracula.draw
+
 # Block YouTube ads
 from qutebrowser.api import interceptor
+
 
 def filter_yt(info: interceptor.Request):
     url = info.request_url
@@ -22,6 +25,7 @@ def filter_yt(info: interceptor.Request):
             and "&adformat=" in url.query()
     ):
         info.block()
+
 
 interceptor.register(filter_yt)
 
@@ -80,7 +84,8 @@ config.set('content.cookies.accept', 'all', 'devtools://*')
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
+config.set('content.headers.user_agent',
+           'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -96,7 +101,8 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{w
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://accounts.google.com/*')
+config.set('content.headers.user_agent',
+           'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://accounts.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -112,7 +118,8 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
+config.set('content.headers.user_agent',
+           'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -128,7 +135,8 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/53
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://docs.google.com/*')
+config.set('content.headers.user_agent',
+           'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://docs.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -144,7 +152,8 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
+config.set('content.headers.user_agent',
+           'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
 
 # Load images automatically in web pages.
 # Type: Bool
@@ -177,6 +186,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 #   - false
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.meczyki.pl')
+
+config.set('content.blocking.method', 'both')
+config.set('content.autoplay', False)
 
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
@@ -325,6 +337,8 @@ c.colors.tabs.selected.even.bg = '#282828'
 # Type: Bool
 c.colors.webpage.darkmode.enabled = False
 
+c.content.user_stylesheets = ['~/.config/qutebrowser/css/github.css']
+
 # Bindings for normal mode
 config.bind('F', 'hint all tab-fg')
 config.bind('J', 'tab-prev')
@@ -339,4 +353,9 @@ config.bind('x', 'tab-close')
 
 config.bind('e', 'edit-url')
 
-
+dracula.draw.blood(c, {
+    'spacing': {
+        'vertical': 6,
+        'horizontal': 8
+    }
+})

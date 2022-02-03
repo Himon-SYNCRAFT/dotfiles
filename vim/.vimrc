@@ -46,7 +46,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+" Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -64,6 +64,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'thanthese/Tortoise-Typing'
 Plug 'elm-tooling/elm-vim'
+Plug 'chipsenkbeil/distant'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -80,10 +82,6 @@ if exists('make')
     let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
-
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
 
 "" Snippets
 Plug 'SirVer/ultisnips'
@@ -187,12 +185,6 @@ if exists('$SHELL')
 else
     set shell=/bin/sh
 endif
-
-" session management
-let g:session_directory = "~/.vim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "no"
-let g:session_command_aliases = 1
 
 "*****************************************************************************
 "" Visual Settings
@@ -369,16 +361,6 @@ set autoread
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
-
 " session management
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
@@ -485,9 +467,6 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
-
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
@@ -582,8 +561,8 @@ if !exists('g:airline_powerline_fonts')
     let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
     let g:airline_left_sep = ''
-    let g:airline_left_alt_sep = ''
     let g:airline_right_sep = ''
+    let g:airline_left_alt_sep = ''
     let g:airline_right_alt_sep = ''
     let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
     let g:airline#extensions#readonly#symbol   = ''

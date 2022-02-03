@@ -1,0 +1,5 @@
+[data-qb-domain="www.github.com"] .blob-code-inner,
+[data-qb-domain="github.com"] .blob-code-inner {
+    font-family: "SauceCodePro Nerd Font" !important;
+    font-size: 15px !important;
+}
