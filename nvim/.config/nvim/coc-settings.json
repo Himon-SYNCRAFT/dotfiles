@@ -4,7 +4,8 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "elm",
         "py",
-        "python"
+        "python",
+        "javascript"
     ],
     "codeLens.enable": true,
     "languageserver": {
