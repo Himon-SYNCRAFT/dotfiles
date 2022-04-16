@@ -1,6 +1,7 @@
 # terminal emulator
 alt + ctrl + t
-    tabbed -n "st" -d -r 2 st -w '' -e fish
+    st -w '' -e fish
+    # tabbed -n "st" -d -r 2 st -w '' -e fish
 
 # ranger
 alt + ctrl + r

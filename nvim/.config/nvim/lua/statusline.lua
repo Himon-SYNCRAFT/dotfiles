@@ -88,7 +88,7 @@ require("lualine").setup {
     },
     lualine_c = { {
         "filename",
-        path = 0,
+        path = 1,
         symbols = { modified = " ", readonly = " " },
     } },
     lualine_x = { { "filetype", icon_only = true, colored = true } },

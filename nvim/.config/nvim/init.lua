@@ -14,6 +14,7 @@ require "plugins2"
 require "statusline"
 require "mappings"
 require "telescope_config"
+require "lint_config"
 
 -- silent! colorscheme cyberpunk
 vim.cmd [[
@@ -80,10 +81,28 @@ vim.cmd [[
     " vim-javascript
     augroup vimrc-javascript
         autocmd!
-        autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+        " autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+        autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
     nnoremap <silent> <F2> :Ranger<CR>
     nnoremap <silent> <F3> :RangerWorkingDirectory<CR>
+
+    " Private dir for UltiSnip snippets
+    set rtp+=~/.vim/UltiSnips/
+    let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
+    let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/UltiSnips"]
+
+    "" Vmap for maintain Visual Mode after shifting > and <
+    vmap < <gv
+    vmap > >gv
+
+    "" Remember cursor position
+    augroup vimrc-remember-cursor-position
+        autocmd!
+        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    augroup END
+
+    au BufWritePost <buffer> lua require('lint').try_lint()
 ]]
 

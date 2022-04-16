@@ -189,6 +189,7 @@ config.set('content.notifications.enabled', False, 'https://www.meczyki.pl')
 
 config.set('content.blocking.method', 'both')
 config.set('content.autoplay', False)
+config.set('editor.command',  ['st', '-e', 'nvim', '{}'])
 
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
@@ -249,7 +250,8 @@ c.tabs.show = 'never'
 # qutebrowser`.
 # Type: Dict
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://search.brave.com/search?q={}',
+    'dd': 'https://duckduckgo.com/?q={}',
     'wa': 'https://wiki.archlinux.org/?search={}',
     'ap': 'https://archlinux.org/packages/?q={}',
     'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web',

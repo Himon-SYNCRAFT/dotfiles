@@ -27,6 +27,7 @@ return require("packer").startup {
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'
         use 'tpope/vim-commentary'
+        use 'SirVer/ultisnips'
         use 'Raimondi/delimitMate'
         use 'airblade/vim-gitgutter'
         use 'francoiscabrol/ranger.vim'
@@ -53,7 +54,9 @@ return require("packer").startup {
         use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/popup.nvim'
         use "chrisbra/Colorizer"
+        use 'mfussenegger/nvim-lint'
         use 'fannheyward/telescope-coc.nvim'
+        use 'adelarsq/neofsharp.vim'
         use {
             'chipsenkbeil/distant.nvim',
             config = function()
