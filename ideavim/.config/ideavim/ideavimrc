@@ -1,3 +1,5 @@
+set visualbell
+set noerrorbells
 set number
 set relativenumber
 set ignorecase
