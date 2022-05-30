@@ -1,4 +1,5 @@
 Plug 'preservim/nerdtree'
+Plug 'easymotion/vim-easymotion'
 
 set visualbell
 set noerrorbells
@@ -32,3 +33,5 @@ noremap <Leader>h :action SplitHorizontally<CR>
 " noremap <F2> :NERDTree<CR>
 noremap <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
+nmap s <Plug>(easymotion-f)
+nmap S <Plug>(easymotion-F)
