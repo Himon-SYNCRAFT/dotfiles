@@ -89,6 +89,7 @@ require("telescope").setup {
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "coc"
+require("telescope").load_extension "repo"
 
 -- my telescopic customizations
 local M = {}
@@ -190,6 +191,21 @@ function M.file_explorer()
         layout_strategy = "horizontal",
         layout_config = { preview_width = 0.65, width = 0.75 },
     }
+end
+
+-- requires repo extension
+function M.repo_list()
+  local opts = {}
+  opts.prompt_title = " Repos"
+  opts.file_ignore_patterns={
+      "^".. vim.env.HOME .. "/%.cache/",
+      "^".. vim.env.HOME .. "/%.cargo/",
+      "^".. vim.env.HOME .. "/%.vim/",
+      "^".. vim.env.HOME .. "/%.config/",
+      "^".. vim.env.HOME .. "/%.local/",
+  }
+  -- require("telescope").extensions.repo.list(opts)
+  require("telescope").extensions.repo.cached_list(opts)
 end
 
 return M

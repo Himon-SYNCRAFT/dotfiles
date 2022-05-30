@@ -47,6 +47,8 @@ return require("packer").startup {
         -- Telescope Extensions
         use 'nvim-telescope/telescope.nvim'
         use "nvim-telescope/telescope-file-browser.nvim"
+        use 'cljoly/telescope-repo.nvim'
+        use 'glepnir/dashboard-nvim'
         use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
         use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
@@ -83,6 +85,8 @@ return require("packer").startup {
           "lewis6991/gitsigns.nvim",
           requires = { "nvim-lua/plenary.nvim" },
         }
+
+        use 'phpactor/phpactor'
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()

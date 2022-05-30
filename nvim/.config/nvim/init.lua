@@ -16,6 +16,27 @@ require "mappings"
 require "telescope_config"
 require "lint_config"
 
+-- vim.g.dashboard_custom_section={
+--     buffer_list = {
+--         {
+--             description = 'ﱮ Projects               , r l',
+--             command = ":lua require('telescope_config').repo_list()"
+--         },
+--         {
+--             description = ' New File',
+--             command = ":DashboardNewFile"
+--         },
+--     }
+-- }
+vim.g.dashboard_custom_section={
+    buffer_list = {
+        {
+            description = 'ﱮ Projects               , r l',
+            command = ":lua require('telescope_config').repo_list()"
+        }
+    }
+}
+
 -- silent! colorscheme cyberpunk
 vim.cmd [[
     filetype plugin indent on
@@ -104,5 +125,8 @@ vim.cmd [[
     augroup END
 
     au BufWritePost <buffer> lua require('lint').try_lint()
+
+    let g:dashboard_default_executive = 'telescope'
+
 ]]
 

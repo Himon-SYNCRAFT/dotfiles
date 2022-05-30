@@ -1,16 +1,16 @@
 #! /bin/sh
 
+wmname LG3D
 # pgrep -x sxhkd > /dev/null || sxhkd &
-"$HOME/.config/polybar/launch.sh" &
+$HOME/.config/polybar/launch.sh &
 nm-applet &
 nitrogen --restore &
-picom &
+# picom &
 dunst &
-# birdtray &
 thunderbird &
 electron-mail &
 caffeine &
-unclutter --timeout 1 --jitter 50 --ignore-scrolling &
+unclutter --timeout 1 --jitter 25 --ignore-scrolling &
 redshift-gtk &
 
 xmodmap ~/.Xmodmap

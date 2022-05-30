@@ -1,3 +1,5 @@
+Plug 'preservim/nerdtree'
+
 set visualbell
 set noerrorbells
 set number
@@ -6,6 +8,8 @@ set ignorecase
 set ideaput
 set surround
 set commentary
+set clipboard+=ideaput
+set clipboard+=unnamed
 
 let mapleader=','
 
@@ -24,4 +28,7 @@ noremap <Leader>e :action GotoFile<CR>
 noremap <Leader>r :action IdeaVim.ReloadVimRc.reload<CR>
 noremap <Leader>v :action SplitVertically<CR>
 noremap <Leader>h :action SplitHorizontally<CR>
-noremap <F2> :action ActivateProjectToolWindow<CR>
+" noremap <F2> :action ActivateProjectToolWindow<CR>
+" noremap <F2> :NERDTree<CR>
+noremap <F2> :NERDTreeFind<CR>
+noremap <F3> :NERDTreeToggle<CR>

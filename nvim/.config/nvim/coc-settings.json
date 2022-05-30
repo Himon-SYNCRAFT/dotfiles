@@ -1,6 +1,17 @@
 {
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Path": "/usr/bin/autopep8",
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.analysis.stubPath": "sqlalchemy-stubs",
+  "diagnostic.checkCurrentLine": false,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "   ",
+  "diagnostic.infoSign": "",
+  "diagnostic.errorSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.warningSign": "",
+  "sqlfluff.formatEnable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "elm",
     "py",
