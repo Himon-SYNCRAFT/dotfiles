@@ -29,7 +29,7 @@ return require("packer").startup {
         use 'tpope/vim-commentary'
         use 'SirVer/ultisnips'
         use 'Raimondi/delimitMate'
-        use 'airblade/vim-gitgutter'
+        -- use 'airblade/vim-gitgutter'
         use 'francoiscabrol/ranger.vim'
         use {
             'neoclide/coc.nvim',

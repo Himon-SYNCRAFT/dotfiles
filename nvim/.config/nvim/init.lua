@@ -34,6 +34,10 @@ vim.g.dashboard_custom_section = {
         description = {' Find File'},
         command = "Telescope file_browser"
     },
+    e = {
+        description = {'漣Nvim Config'},
+        command = ":lua require('telescope_config').find_configs()"
+    },
 }
 
 vim.g.dashboard_custom_header = {
