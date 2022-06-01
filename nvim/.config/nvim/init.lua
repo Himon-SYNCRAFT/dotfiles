@@ -10,7 +10,7 @@ vim.cmd [[
 	let mapleader=','
 ]]
 
-require "plugins2"
+require "plugins"
 require "statusline"
 require "mappings"
 require "telescope_config"
@@ -155,9 +155,5 @@ vim.cmd [[
 
     " Turn on case-insensitive feature
     let g:EasyMotion_smartcase = 1
-
-    " JK motions: Line motions
-    map <Leader>j <Plug>(easymotion-j)
-    map <Leader>k <Plug>(easymotion-k)
 ]]
 

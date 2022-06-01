@@ -80,6 +80,8 @@ require("telescope").setup {
             i = {
                 ["<esc>"] = actions.close,
                 ["<C-A>"] = telescope_custom_actions.multi_selection_open,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
             },
         },
         dynamic_preview_title = true,
