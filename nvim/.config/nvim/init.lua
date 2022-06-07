@@ -117,8 +117,8 @@ vim.cmd [[
     " vim-javascript
     augroup vimrc-javascript
         autocmd!
-        " autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
-        autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
+        autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+        " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
     nnoremap <silent> <F2> :Ranger<CR>
@@ -128,6 +128,11 @@ vim.cmd [[
     set rtp+=~/.vim/UltiSnips/
     let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
     let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/UltiSnips"]
+
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+    let g:UltiSnipsEditSplit="vertical"
 
     "" Vmap for maintain Visual Mode after shifting > and <
     vmap < <gv
@@ -155,5 +160,16 @@ vim.cmd [[
 
     " Turn on case-insensitive feature
     let g:EasyMotion_smartcase = 1
+
+    " templates
+    if has("autocmd")
+      augroup templates
+        autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
+      augroup END
+    endif
+
+    augroup vimrc-php
+    augroup END
+    nmap <Leader>m :PhpactorContextMenu<CR>
 ]]
 

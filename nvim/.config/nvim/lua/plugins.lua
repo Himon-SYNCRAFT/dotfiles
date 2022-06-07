@@ -70,6 +70,7 @@ return require("packer").startup {
             "nvim-lualine/lualine.nvim",
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
+        use { "dag/vim-fish" }
         -- use 'nekonako/xresources-nvim'
         use {
             'folke/which-key.nvim',

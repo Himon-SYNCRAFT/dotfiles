@@ -1,17 +1,39 @@
 snippet th
-$this->${1}
+$this->${1};
 endsnippet
 
 snippet get
 public function get${1}()
 {
-	return $this->${2}
+	return $this->${2};
 }
 endsnippet
 
 snippet set
 public function set${1}
 {
-	$this->${2}
+	$this->${2};
+}
+endsnippet
+
+snippet con
+public function __construct(${1})
+{
+	${2}
+}
+endsnippet
+
+snippet "(\S.*).p" "parenthesis postfix code" br
+${1}(`!p snip.rv = match.group(1)`)
+endsnippet
+
+snippet "(\S.*).var" "extract variable" br
+$${1} = `!p snip.rv = match.group(1)`;
+endsnippet
+
+snippet "(\S.*).if" "extract variable" br
+if (`!p snip.rv = match.group(1)`${1})
+{
+	${2}
 }
 endsnippet
