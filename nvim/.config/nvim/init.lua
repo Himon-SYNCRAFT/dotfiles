@@ -169,7 +169,10 @@ vim.cmd [[
     endif
 
     augroup vimrc-php
+        autocmd!
+        autocmd FileType php nmap <Leader>m :PhpactorContextMenu<CR>
+        autocmd FileType php inoremap .. ->
+        autocmd FileType php nnoremap ; A;
     augroup END
-    nmap <Leader>m :PhpactorContextMenu<CR>
 ]]
 

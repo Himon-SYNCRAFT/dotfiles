@@ -48,7 +48,6 @@ return require("packer").startup {
         use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
         use 'fannheyward/telescope-coc.nvim'
 
-        use 'glepnir/dashboard-nvim'
         use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
