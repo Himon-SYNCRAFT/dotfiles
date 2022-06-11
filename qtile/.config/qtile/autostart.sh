@@ -16,7 +16,7 @@ redshift-gtk &
 xmodmap ~/.Xmodmap
 setxkbmap -layout pl,pl -variant ,dvorak &
 setxkbmap -option caps:escape &
-xset r rate 300 40 &
+xset r rate 300 50 &
 
 rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon
 keepassxc &
