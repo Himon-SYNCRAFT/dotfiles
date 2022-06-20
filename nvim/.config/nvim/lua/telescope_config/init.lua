@@ -180,6 +180,10 @@ function M.nvim_config()
     require("telescope").extensions.file_browser.file_browser {
         prompt_title = " NVim Config Browse",
         cwd = "~/.config/nvim/",
+        path_display = {shorten = {
+            len = 1,
+            exclude = {-1},
+        }},
         layout_strategy = "horizontal",
         layout_config = { preview_width = 0.65, width = 0.75 },
     }

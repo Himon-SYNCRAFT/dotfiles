@@ -160,6 +160,7 @@ call s:h('DraculaSubtle', s:subtle)
 
 call s:h('DraculaCyan', s:cyan)
 call s:h('DraculaCyanItalic', s:cyan, s:none, [s:attrs.italic])
+call s:h('DraculaCyanBold', s:cyan, s:none, [s:attrs.bold])
 
 call s:h('DraculaGreen', s:green)
 call s:h('DraculaGreenBold', s:green, s:none, [s:attrs.bold])
@@ -322,7 +323,7 @@ hi! link StorageClass DraculaPink
 hi! link Structure DraculaPink
 hi! link Typedef DraculaPink
 
-hi! link Type DraculaCyanItalic
+hi! link Type DraculaCyanBold
 
 hi! link Delimiter DraculaFg
 

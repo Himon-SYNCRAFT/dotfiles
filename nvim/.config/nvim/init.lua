@@ -15,6 +15,8 @@ require "statusline"
 require "mappings"
 require "telescope_config"
 require "lint_config"
+require "treesitter_config"
+require "debugging"
 
 
 vim.g.dashboard_custom_section = {
@@ -71,6 +73,8 @@ vim.cmd [[
 	let g:indentLine_char = '┆'
 	let g:indentLine_faster = 1
 
+    set laststatus=3
+
 	"" Fix backspace indent
 	set backspace=indent,eol,start
 
@@ -109,7 +113,7 @@ vim.cmd [[
     " vim-python
     augroup vimrc-python
         autocmd!
-        autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+        autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
                     \ formatoptions+=croq softtabstop=4
                     \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     augroup END
@@ -173,6 +177,7 @@ vim.cmd [[
         autocmd FileType php nmap <Leader>m :PhpactorContextMenu<CR>
         autocmd FileType php inoremap .. ->
         autocmd FileType php nnoremap ; A;
+        autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
     augroup END
 ]]
 

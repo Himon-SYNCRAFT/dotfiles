@@ -2,7 +2,7 @@ let g:coc_global_extensions = [
     \ 'coc-html', 'coc-java', 'coc-json', 'coc-lua','coc-pyright',
     \ 'coc-sh', 'coc-sqlfluff', 'coc-tsserver', 'coc-yaml', 'coc-snippets',
     \ 'coc-prettier', '@yaegassy/coc-phpstan', 'coc-phpactor',
-    \ 'coc-phpls', 
+    \ 'coc-phpls', 'coc-tslint-plugin'
 \ ]
 
 " TextEdit might fail if hidden is not set.

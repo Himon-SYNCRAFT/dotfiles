@@ -27,20 +27,20 @@ return require("packer").startup {
         use 'tpope/vim-commentary'
         use 'SirVer/ultisnips'
         use 'Raimondi/delimitMate'
-        -- use 'airblade/vim-gitgutter'
         use 'francoiscabrol/ranger.vim'
         use {
             'neoclide/coc.nvim',
             branch = 'release',
         }
-        -- use 'mikelue/vim-maven-plugin'
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
         }
         use "nvim-treesitter/nvim-treesitter-refactor"
         use 'nvim-treesitter/nvim-treesitter-textobjects'
+        use "p00f/nvim-ts-rainbow"
         use "David-Kunz/treesitter-unit"
+
         -- Telescope Extensions
         use 'nvim-telescope/telescope.nvim'
         use "nvim-telescope/telescope-file-browser.nvim"
@@ -53,24 +53,13 @@ return require("packer").startup {
         use "wbthomason/packer.nvim"
         use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/popup.nvim'
-        use "chrisbra/Colorizer"
         use 'mfussenegger/nvim-lint'
-        use 'adelarsq/neofsharp.vim'
-        use {
-            'chipsenkbeil/distant.nvim',
-            config = function()
-                require('distant').setup {
-                    ['*'] = require('distant.settings').chip_default()
-                }
-            end
-        }
         use 'easymotion/vim-easymotion'
         use {
             "nvim-lualine/lualine.nvim",
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use { "dag/vim-fish" }
-        -- use 'nekonako/xresources-nvim'
         use {
             'folke/which-key.nvim',
             config = function()
@@ -128,7 +117,24 @@ return require("packer").startup {
               end
         }
 
+        use {
+          'rmagatti/auto-session',
+          config = function()
+            require('auto-session').setup {
+              log_level = 'info',
+              auto_session_suppress_dirs = {'~/', '~/Projects'}
+            }
+          end
+        }
+
+        use 'renerocksai/telekasten.nvim'
+
         use 'phpactor/phpactor'
+
+        -- debugger
+        use 'mfussenegger/nvim-dap'
+        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+        use 'Pocco81/dap-buddy.nvim'
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()

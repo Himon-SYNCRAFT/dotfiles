@@ -345,8 +345,6 @@ c.content.user_stylesheets = ['~/.config/qutebrowser/css/github.css']
 config.bind('F', 'hint all tab-fg')
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
-config.bind('<', 'tab-prev')
-config.bind('>', 'tab-next')
 config.unbind('d')
 config.bind('f', 'hint all')
 config.bind('j', 'run-with-count 1 scroll down')

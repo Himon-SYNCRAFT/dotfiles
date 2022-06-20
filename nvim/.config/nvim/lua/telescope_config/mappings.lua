@@ -101,7 +101,7 @@ key_map("n", "gr", [[:Telescope coc references_used<CR>]], { noremap = true, sil
 key_map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], { noremap = true, silent = true })
 
 -- line code actions
-key_map("n", "<leader><space>", [[:Telescope coc file_code_actions<CR>]], { noremap = true, silent = true })
+key_map("n", "<leader>dg", [[:Telescope coc diagnostics<CR>]], { noremap = true, silent = true })
 
 -- telescope-repo
 key_map("n", "<leader>rl", [[<Cmd>lua require'telescope_config'.repo_list()<CR>]], { noremap = true, silent = true })

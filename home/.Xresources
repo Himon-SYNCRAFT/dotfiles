@@ -106,3 +106,10 @@
 ! white
 !*.color7:       #5C6370
 !*.color15:      #ABB2BF
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
