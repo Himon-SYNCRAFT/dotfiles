@@ -1,5 +1,29 @@
-snippet th
-$this->${1};
+global !p
+import vim
+import json
+import os
+
+def projectRoot():
+	root = vim.eval("finddir('.git/..', expand('%:p:h').';')")
+	return root
+
+def main_module_from_composer():
+	filepath = projectRoot() + '/composer.json'
+	if not os.path.isfile(filepath):
+		return ''
+	
+	with open(filepath) as json_file:
+		data = json.load(json_file)
+		psr4 = data.get('autoload', dict()).get('psr-4', dict())
+		for k, v in psr4.items():
+			if v == 'src/':
+				return k.replace('\\\\', '\\')
+
+	return ''
+endglobal
+
+snippet th "this" w
+$this->${1}
 endsnippet
 
 snippet get
@@ -51,7 +75,69 @@ for ($i = 0; $i ${1:<}; $i++) {
 endsnippet
 
 snippet fore
-foreach (${1:$array} as ${2:$item}) {
+foreach ($${1:array} as $${2:item}) {
 	${3}
+}
+endsnippet
+
+snippet fun
+${1:public} function ${2}($3): ${4:void}
+{
+	${5}
+}
+endsnippet
+
+snippet class "class declaration template" b
+<?php
+
+declare(strict_types=1);
+
+namespace ${1:`!p
+relpath = os.path.relpath(path)
+m = re.search(r'[A-Z].+(?=/)', relpath)
+if m:
+	snip.rv = main_module_from_composer() + m.group().replace('/', '\\')
+`};
+
+
+class ${2:`!p snip.rv = snip.basename`}
+{
+}
+endsnippet
+
+snippet interface "Interface declaration template" b
+<?php
+
+declare(strict_types=1);
+
+namespace ${1:`!p
+relpath = os.path.relpath(path)
+m = re.search(r'[A-Z].+(?=/)', relpath)
+if m:
+	snip.rv = main_module_from_composer() + m.group().replace('/', '\\')
+`};
+
+
+interface ${2:`!p snip.rv = snip.basename`}
+{
+	public function ${3:someFunction}();$4
+}
+endsnippet
+
+snippet trait "Trait declaration template" b
+<?php
+
+declare(strict_types=1);
+
+namespace ${1:`!p
+relpath = os.path.relpath(path)
+m = re.search(r'[A-Z].+(?=/)', relpath)
+if m:
+	snip.rv = main_module_from_composer + m.group().replace('/', '\\')
+`};
+
+
+trait ${2:`!p snip.rv = snip.basename`}
+{
 }
 endsnippet

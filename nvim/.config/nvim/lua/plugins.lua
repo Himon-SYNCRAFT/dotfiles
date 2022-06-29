@@ -22,12 +22,21 @@ augroup end
 return require("packer").startup {
     function(use)
         use {'dracula/vim', as = 'dracula'}
+        -- use { "catppuccin/nvim", as = "catppuccin" }
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'
         use 'tpope/vim-commentary'
         use 'SirVer/ultisnips'
         use 'Raimondi/delimitMate'
-        use 'francoiscabrol/ranger.vim'
+        -- use 'francoiscabrol/ranger.vim'
+        use {
+            'kyazdani42/nvim-tree.lua',
+            requires = {
+                'kyazdani42/nvim-web-devicons', -- optional, for file icons
+            },
+            tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        }
+
         use {
             'neoclide/coc.nvim',
             branch = 'release',
@@ -131,10 +140,13 @@ return require("packer").startup {
 
         use 'phpactor/phpactor'
 
+        -- use 'folke/trouble.nvim'
+
         -- debugger
         use 'mfussenegger/nvim-dap'
         use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
         use 'Pocco81/dap-buddy.nvim'
+        use 'vim-vdebug/vdebug'
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()

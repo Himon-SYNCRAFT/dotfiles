@@ -1,0 +1,43 @@
+snippet while "while" b
+while ${1} do
+	${2}
+end
+endsnippet
+
+snippet if "if" b
+if ${1} then
+	${2}
+end
+endsnippet
+
+snippet elif "elseif" b
+elseif ${1} then
+	${2}
+endsnippet
+
+snippet else "else" b
+else
+	${2}
+endsnippet
+
+snippet for "for" b
+for i = ${1:1}, ${2:100} do
+	${3}
+end
+endsnippet
+
+snippet ifor "for loop counting down" b
+for i = ${1:100}, ${2:1}, ${3:-1} do
+	${4}
+end
+endsnippet
+
+snippet fun "function" b
+function ${1:name}(${2:args})
+	${3}
+end
+endsnippet
+
+snippet tab "table like dict" b
+${1:var} = { ${2:key} = '${3:value}'${4} }
+endsnippet

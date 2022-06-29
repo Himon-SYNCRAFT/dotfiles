@@ -1,6 +1,7 @@
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set background=dark
+    set fcs=eob:\ 
     "" let g:everforest_transparent_background = 1
     "" let g:everforest_background = 'hard'
 	"" silent! colorscheme cyberpunk
@@ -10,6 +11,9 @@ vim.cmd [[
 	let mapleader=','
 ]]
 
+-- vim.g.catppuccin_falour = "mocha"
+-- vim.cmd[[colorscheme catppuccin]]
+
 require "plugins"
 require "statusline"
 require "mappings"
@@ -17,6 +21,7 @@ require "telescope_config"
 require "lint_config"
 require "treesitter_config"
 require "debugging"
+require "nvim_tree_config"
 
 
 vim.g.dashboard_custom_section = {
@@ -67,6 +72,7 @@ vim.cmd [[
 	set number
 	set relativenumber
 	set colorcolumn=80
+
 	" IndentLine
 	let g:indentLine_enabled = 1
 	let g:indentLine_concealcursor = 0
@@ -82,6 +88,11 @@ vim.cmd [[
 	set softtabstop=0
 	set shiftwidth=4
 	set expandtab
+    set shiftround
+    set nofoldenable
+
+    set splitright
+    set splitbelow
 
 	noremap <C-j> <C-w>j
 	noremap <C-k> <C-w>k
@@ -125,8 +136,8 @@ vim.cmd [[
         " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
-    nnoremap <silent> <F2> :Ranger<CR>
-    nnoremap <silent> <F3> :RangerWorkingDirectory<CR>
+    nnoremap <silent> <F2> :NvimTreeToggle<CR>
+    nnoremap <silent> <F3> :NvimTreeFocus<CR>
 
     " Private dir for UltiSnip snippets
     set rtp+=~/.vim/UltiSnips/

@@ -66,8 +66,8 @@ key_map(
 key_map("n", "<leader>e", [[<Cmd>lua require'telescope_config'.project_files()<CR>]], { noremap = true, silent = true })
 
 -- Browse files from cwd - File Browser
+-- autocmd VimEnter * nunmap <leader>f
 vim.cmd [[
-    autocmd VimEnter * nunmap <leader>f
     autocmd VimEnter * nmap <leader>f :Telescope file_browser<CR>
 ]]
 
