@@ -89,19 +89,23 @@ key_map("n", "<space>e", [[<Cmd>lua require'telescope_config'.find_configs()<CR>
 key_map("n", "<leader>nc", [[<Cmd>lua require'telescope_config'.nvim_config()<CR>]], { noremap = true, silent = true })
 
 -- go to definitions
-key_map("n", "gd", [[:Telescope coc definitions<CR>]], { noremap = true, silent = true })
+-- key_map("n", "gd", [[:Telescope coc definitions<CR>]], { noremap = true, silent = true })
+key_map("n", "gd", [[:Telescope lsp_definitions<CR>]], { noremap = true, silent = true })
 
 -- go to implementations
-key_map("n", "gi", [[:Telescope coc implementations<CR>]], { noremap = true, silent = true })
+-- key_map("n", "gi", [[:Telescope coc implementations<CR>]], { noremap = true, silent = true })
+key_map("n", "gi", [[:Telescope lsp_implementations<CR>]], { noremap = true, silent = true })
 
 -- go to references
-key_map("n", "gr", [[:Telescope coc references_used<CR>]], { noremap = true, silent = true })
+-- key_map("n", "gr", [[:Telescope coc references_used<CR>]], { noremap = true, silent = true })
+key_map("n", "gr", [[:Telescope lsp_references<CR>]], { noremap = true, silent = true })
 
 -- line code actions
-key_map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], { noremap = true, silent = true })
+-- key_map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], { noremap = true, silent = true })
 
 -- line code actions
-key_map("n", "<leader>dg", [[:Telescope coc diagnostics<CR>]], { noremap = true, silent = true })
+-- key_map("n", "<leader>dg", [[:Telescope coc diagnostics<CR>]], { noremap = true, silent = true })
+-- key_map("n", "<leader>dg", [[:Telescope diagnostics<CR>]], { noremap = true, silent = true })
 
 -- telescope-repo
 key_map("n", "<leader>rl", [[<Cmd>lua require'telescope_config'.repo_list()<CR>]], { noremap = true, silent = true })

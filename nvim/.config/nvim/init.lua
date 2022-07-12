@@ -21,43 +21,35 @@ require "telescope_config"
 require "lint_config"
 require "treesitter_config"
 require "debugging"
-require "nvim_tree_config"
+-- require "nvim_tree_config"
+require "gitsigns_config"
+require "lsp_config"
+require "dressing_config"
+require "user.cmp"
+require "user.nullls"
+require "user.ranger"
 
 
-vim.g.dashboard_custom_section = {
-    a = {
-        description = {'ﱮ Projects'},
-        command = ":lua require('telescope_config').repo_list()"
-    },
-    b = {
-        description = {' New File'},
-        command = "DashboardNewFile"
-    },
-    c = {
-        description = {' Recent files'},
-        command = "DashboardFindHistory"
-    },
-    d = {
-        description = {' Find File'},
-        command = "Telescope file_browser"
-    },
-    e = {
-        description = {'漣Nvim Config'},
-        command = ":lua require('telescope_config').find_configs()"
-    },
-}
+vim.fn.sign_define(
+    "DiagnosticSignError",
+    { texthl = "DiagnosticSignError", text = "", numhl = "" }
+)
 
-vim.g.dashboard_custom_header = {
-    "                                         █▀ █▄█ █▄░█ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀",
-    "                                         ▄█ ░█░ █░▀█ █▄▄ █▀▄ █▀█ █▀░ ░█░",
-    "                                                                                                               ",
-    "██████╗░░█████╗░███╗░░██╗██╗███████╗██╗░░░░░  ███████╗░█████╗░░██╗░░░░░░░██╗██╗░░░░░░█████╗░░█████╗░██╗░░██╗██╗",
-    "██╔══██╗██╔══██╗████╗░██║██║██╔════╝██║░░░░░  ╚════██║██╔══██╗░██║░░██╗░░██║██║░░░░░██╔══██╗██╔══██╗██║░██╔╝██║",
-    "██║░░██║███████║██╔██╗██║██║█████╗░░██║░░░░░  ░░███╔═╝███████║░╚██╗████╗██╔╝██║░░░░░██║░░██║██║░░╚═╝█████═╝░██║",
-    "██║░░██║██╔══██║██║╚████║██║██╔══╝░░██║░░░░░  ██╔══╝░░██╔══██║░░████╔═████║░██║░░░░░██║░░██║██║░░██╗██╔═██╗░██║",
-    "██████╔╝██║░░██║██║░╚███║██║███████╗███████╗  ███████╗██║░░██║░░╚██╔╝░╚██╔╝░███████╗╚█████╔╝╚█████╔╝██║░╚██╗██║",
-    "╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚══════╝╚══════╝  ╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚══════╝░╚════╝░░╚════╝░╚═╝░░╚═╝╚═╝"
-}
+vim.fn.sign_define(
+    "DiagnosticSignWarn",
+    { texthl = "DiagnosticSignWarn", text = "", numhl = "" }
+)
+
+vim.fn.sign_define(
+    "DiagnosticSignHint",
+    { texthl = "DiagnosticSignHint", text = "", numhl = "" }
+)
+
+vim.fn.sign_define(
+    "DiagnosticSignInformation",
+    { texthl = "DiagnosticSignInformation", text = "", numhl = "" }
+)
+
 
 -- silent! colorscheme cyberpunk
 vim.cmd [[
@@ -72,6 +64,7 @@ vim.cmd [[
 	set number
 	set relativenumber
 	set colorcolumn=80
+    set signcolumn=yes
 
 	" IndentLine
 	let g:indentLine_enabled = 1
@@ -109,9 +102,9 @@ vim.cmd [[
 	set ignorecase
 	set smartcase
 
-	if filereadable(expand("~/.vim/.coc.vimrc"))
-	    source ~/.vim/.coc.vimrc
-	endif
+"	if filereadable(expand("~/.vim/.coc.vimrc"))
+"	    source ~/.vim/.coc.vimrc
+"	endif
 
     function! FixIndentAndTrailingWhitespace()
         let l:save_cursor = getpos(".")
@@ -136,8 +129,8 @@ vim.cmd [[
         " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
-    nnoremap <silent> <F2> :NvimTreeToggle<CR>
-    nnoremap <silent> <F3> :NvimTreeFocus<CR>
+    nnoremap <silent> <F2> :Ranger<CR>
+    nnoremap <silent> <F3> :RangerWorkingDirectory<CR>
 
     " Private dir for UltiSnip snippets
     set rtp+=~/.vim/UltiSnips/
@@ -191,4 +184,3 @@ vim.cmd [[
         autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
     augroup END
 ]]
-

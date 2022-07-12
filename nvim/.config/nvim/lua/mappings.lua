@@ -13,3 +13,6 @@ vim.cmd [[
     cnoreabbrev Q q
     cnoreabbrev Qall qall
 ]]
+
+
+map("n", "<leader>dg", "<cmd>Trouble<cr>", {noremap = true, silent = true})

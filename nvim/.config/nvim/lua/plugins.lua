@@ -21,26 +21,27 @@ augroup end
 
 return require("packer").startup {
     function(use)
-        use {'dracula/vim', as = 'dracula'}
-        -- use { "catppuccin/nvim", as = "catppuccin" }
+        use { 'dracula/vim', as = 'dracula' }
+        use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'
         use 'tpope/vim-commentary'
-        use 'SirVer/ultisnips'
+        use {
+            'SirVer/ultisnips',
+            requires = { { 'honza/vim-snippets', rtp = '.' } },
+            config = function()
+                vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+                vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+                vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+                vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+                vim.g.UltiSnipsRemoveSelectModeMappings = 0
+            end
+        }
         use 'Raimondi/delimitMate'
-        -- use 'francoiscabrol/ranger.vim'
-        use {
-            'kyazdani42/nvim-tree.lua',
-            requires = {
-                'kyazdani42/nvim-web-devicons', -- optional, for file icons
-            },
-            tag = 'nightly' -- optional, updated every week. (see issue #1193)
-        }
+        use 'francoiscabrol/ranger.vim'
+        use 'rbgrouleff/bclose.vim'
 
-        use {
-            'neoclide/coc.nvim',
-            branch = 'release',
-        }
+        -- Treesitter
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
@@ -56,11 +57,11 @@ return require("packer").startup {
         use 'cljoly/telescope-repo.nvim'
         use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
         use 'fannheyward/telescope-coc.nvim'
+        use { 'stevearc/dressing.nvim' }
 
         use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
-        use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/popup.nvim'
         use 'mfussenegger/nvim-lint'
         use 'easymotion/vim-easymotion'
@@ -79,74 +80,46 @@ return require("packer").startup {
         }
 
         use {
-          "lewis6991/gitsigns.nvim",
-          requires = { "nvim-lua/plenary.nvim" },
-          config = function ()
-            require('gitsigns').setup {
-                signs = {
-                   add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-                    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-                    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-                    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-                    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-                },
-                signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-                numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-                linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-                word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-                watch_gitdir = {
-                    interval = 1000,
-                    follow_files = true
-                },
-                attach_to_untracked = true,
-                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-                current_line_blame_opts = {
-                   virt_text = true,
-                   virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-                   delay = 1000,
-                   ignore_whitespace = false,
-                },
-                current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-                sign_priority = 6,
-                update_debounce = 100,
-                status_formatter = nil, -- Use default
-                max_file_length = 40000,
-                preview_config = {
-                    -- Options passed to nvim_open_win
-                    border = 'single',
-                    style = 'minimal',
-                    relative = 'cursor',
-                    row = 0,
-                    col = 1
-                },
-                yadm = {
-                    enable = false
-                },
-            }
-              end
+            "lewis6991/gitsigns.nvim",
+            requires = { "nvim-lua/plenary.nvim" },
         }
 
         use {
-          'rmagatti/auto-session',
-          config = function()
-            require('auto-session').setup {
-              log_level = 'info',
-              auto_session_suppress_dirs = {'~/', '~/Projects'}
-            }
-          end
+            'rmagatti/auto-session',
+            config = function()
+                require('auto-session').setup {
+                    log_level = 'info',
+                    auto_session_suppress_dirs = { '~/', '~/Projects' }
+                }
+            end
         }
 
         use 'renerocksai/telekasten.nvim'
 
         use 'phpactor/phpactor'
 
-        -- use 'folke/trouble.nvim'
+        use 'folke/trouble.nvim'
 
         -- debugger
         use 'mfussenegger/nvim-dap'
-        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+        use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
         use 'Pocco81/dap-buddy.nvim'
         use 'vim-vdebug/vdebug'
+
+        -- lsp
+        use {
+            "williamboman/nvim-lsp-installer",
+            "neovim/nvim-lspconfig",
+            "jose-elias-alvarez/null-ls.nvim",
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/nvim-cmp',
+            'quangnguyen30192/cmp-nvim-ultisnips',
+        }
+
+        use { 'nvim-neorg/neorg' }
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()
