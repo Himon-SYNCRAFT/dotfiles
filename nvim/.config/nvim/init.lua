@@ -2,32 +2,24 @@ vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set background=dark
     set fcs=eob:\ 
-    "" let g:everforest_transparent_background = 1
-    "" let g:everforest_background = 'hard'
 	"" silent! colorscheme cyberpunk
-    "" silent! colorscheme everforest
-    "" silent! colorscheme onedark
     silent! colorscheme dracula
 	let mapleader=','
 ]]
 
--- vim.g.catppuccin_falour = "mocha"
--- vim.cmd[[colorscheme catppuccin]]
-
 require "plugins"
 require "statusline"
-require "mappings"
-require "telescope_config"
-require "lint_config"
-require "treesitter_config"
-require "debugging"
--- require "nvim_tree_config"
-require "gitsigns_config"
-require "lsp_config"
-require "dressing_config"
 require "user.cmp"
+require "user.debugging"
+require "user.dressing"
+require "user.gitsigns"
+require "user.lsp"
 require "user.nullls"
 require "user.ranger"
+require "user.telescope"
+require "user.treesitter"
+require "mappings"
+require "user.markdown_previewer"
 
 
 vim.fn.sign_define(
@@ -51,7 +43,6 @@ vim.fn.sign_define(
 )
 
 
--- silent! colorscheme cyberpunk
 vim.cmd [[
     filetype plugin indent on
     set nocompatible
@@ -87,17 +78,9 @@ vim.cmd [[
     set splitright
     set splitbelow
 
-	noremap <C-j> <C-w>j
-	noremap <C-k> <C-w>k
-	noremap <C-l> <C-w>l
-	noremap <C-h> <C-w>h
-
 	if has('unnamedplus')
 	    set clipboard=unnamed,unnamedplus
 	endif
-
-	noremap <Leader>h :<C-u>split<CR>
-	noremap <Leader>v :<C-u>vsplit<CR>
 
 	set ignorecase
 	set smartcase
@@ -129,9 +112,6 @@ vim.cmd [[
         " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
-    nnoremap <silent> <F2> :Ranger<CR>
-    nnoremap <silent> <F3> :RangerWorkingDirectory<CR>
-
     " Private dir for UltiSnip snippets
     set rtp+=~/.vim/UltiSnips/
     let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
@@ -142,10 +122,6 @@ vim.cmd [[
     let g:UltiSnipsJumpBackwardTrigger="<c-b>"
     let g:UltiSnipsEditSplit="vertical"
 
-    "" Vmap for maintain Visual Mode after shifting > and <
-    vmap < <gv
-    vmap > >gv
-
     "" Remember cursor position
     augroup vimrc-remember-cursor-position
         autocmd!
@@ -154,17 +130,8 @@ vim.cmd [[
 
     au BufWritePost <buffer> lua require('lint').try_lint()
 
-    let g:dashboard_default_executive = 'telescope'
-
-    let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-    " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-    " `s{char}{label}`
-    " nmap s <Plug>(easymotion-overwin-f)
-    " or
-    " `s{char}{char}{label}`
-    " Need one more keystroke, but on average, it may be more comfortable.
-    nmap s <Plug>(easymotion-overwin-f2)
+    " Disable default mappings
+    let g:EasyMotion_do_mapping = 0
 
     " Turn on case-insensitive feature
     let g:EasyMotion_smartcase = 1

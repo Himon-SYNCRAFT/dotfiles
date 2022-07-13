@@ -63,7 +63,7 @@ return require("packer").startup {
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'
-        use 'mfussenegger/nvim-lint'
+        -- use 'mfussenegger/nvim-lint'
         use 'easymotion/vim-easymotion'
         use {
             "nvim-lualine/lualine.nvim",
@@ -95,7 +95,12 @@ return require("packer").startup {
         }
 
         use 'renerocksai/telekasten.nvim'
-
+        use 'renerocksai/calendar-vim'
+        use({
+            "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+            setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+            ft = { "markdown" },
+        })
         use 'phpactor/phpactor'
 
         use 'folke/trouble.nvim'
@@ -118,8 +123,6 @@ return require("packer").startup {
             'hrsh7th/nvim-cmp',
             'quangnguyen30192/cmp-nvim-ultisnips',
         }
-
-        use { 'nvim-neorg/neorg' }
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()

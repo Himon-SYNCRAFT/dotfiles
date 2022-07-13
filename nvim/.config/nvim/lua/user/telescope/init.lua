@@ -1,5 +1,4 @@
 -- Telescope 🔭 - setup and customized pickers
-require "telescope_config.mappings"
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local utils = require "telescope.utils"
