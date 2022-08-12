@@ -18,6 +18,7 @@ require "user.nullls"
 require "user.ranger"
 require "user.telescope"
 require "user.treesitter"
+require "user.lightbulb"
 require "mappings"
 require "user.markdown_previewer"
 
@@ -128,7 +129,7 @@ vim.cmd [[
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
 
-    au BufWritePost <buffer> lua require('lint').try_lint()
+    " au BufWritePost <buffer> lua require('lint').try_lint()
 
     " Disable default mappings
     let g:EasyMotion_do_mapping = 0

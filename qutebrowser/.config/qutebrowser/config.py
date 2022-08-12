@@ -339,7 +339,9 @@ c.colors.tabs.selected.even.bg = '#282828'
 # Type: Bool
 c.colors.webpage.darkmode.enabled = False
 
-c.content.user_stylesheets = ['~/.config/qutebrowser/css/github.css']
+c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
+
+config.bind(',cs', 'config-cycle content.user_stylesheets ./css/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
 
 # Bindings for normal mode
 config.bind('F', 'hint all tab-fg')

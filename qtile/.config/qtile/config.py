@@ -276,7 +276,7 @@ dgroups_app_rules: List[Rule] = [
     Rule(Match(wm_class='Thunderbird'), group='9'),
     Rule(Match(title='cmus'), group='7'),
 ]
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 floating_layout = Floating(

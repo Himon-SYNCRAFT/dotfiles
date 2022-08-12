@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  colors.webpage.darkmode.enabled:
+    global: true
   content.desktop_capture:
     https://cloud.syncraft.pl: true
     https://meet.google.com: true
@@ -41,7 +43,7 @@ settings:
   content.register_protocol_handler:
     https://calendar.google.com?cid=%25s: true
   content.user_stylesheets:
-    global: ~/.config/qutebrowser/css/github.css
+    global: null
   editor.command:
     global:
     - st

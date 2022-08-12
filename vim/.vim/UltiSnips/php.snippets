@@ -87,7 +87,7 @@ ${1:public} function ${2}($3): ${4:void}
 }
 endsnippet
 
-snippet class "class declaration template" b
+snippet cl "class declaration template" b
 <?php
 
 declare(strict_types=1);
@@ -98,14 +98,13 @@ m = re.search(r'[A-Z].+(?=/)', relpath)
 if m:
 	snip.rv = main_module_from_composer() + m.group().replace('/', '\\')
 `};
-
 
 class ${2:`!p snip.rv = snip.basename`}
 {
 }
 endsnippet
 
-snippet interface "Interface declaration template" b
+snippet in "Interface declaration template" b
 <?php
 
 declare(strict_types=1);
@@ -116,7 +115,6 @@ m = re.search(r'[A-Z].+(?=/)', relpath)
 if m:
 	snip.rv = main_module_from_composer() + m.group().replace('/', '\\')
 `};
-
 
 interface ${2:`!p snip.rv = snip.basename`}
 {
@@ -124,7 +122,7 @@ interface ${2:`!p snip.rv = snip.basename`}
 }
 endsnippet
 
-snippet trait "Trait declaration template" b
+snippet tr "Trait declaration template" b
 <?php
 
 declare(strict_types=1);
@@ -135,7 +133,6 @@ m = re.search(r'[A-Z].+(?=/)', relpath)
 if m:
 	snip.rv = main_module_from_composer + m.group().replace('/', '\\')
 `};
-
 
 trait ${2:`!p snip.rv = snip.basename`}
 {

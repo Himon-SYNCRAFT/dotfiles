@@ -7,6 +7,7 @@ require("nvim-lsp-installer").setup {
 }
 
 local lspconfig = require("lspconfig")
+local lsp_signature = require("lsp_signature")
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -33,6 +34,13 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('x', '<space><space>', vim.lsp.buf.range_code_action, bufopts)
     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+
+    lsp_signature.on_attach({
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {
+            border = "rounded"
+        }
+    }, bufnr)
 end
 
 lspconfig.bashls.setup {
@@ -93,13 +101,13 @@ lspconfig.jsonls.setup {
 }
 
 local python_root_files = {
-  'WORKSPACE', -- added for Bazel; items below are from default config
-  'pyproject.toml',
-  'setup.py',
-  'setup.cfg',
-  'requirements.txt',
-  'Pipfile',
-  'pyrightconfig.json',
+    'WORKSPACE', -- added for Bazel; items below are from default config
+    'pyproject.toml',
+    'setup.py',
+    'setup.cfg',
+    'requirements.txt',
+    'Pipfile',
+    'pyrightconfig.json',
 }
 
 lspconfig.pyright.setup {

@@ -122,6 +122,12 @@ return require("packer").startup {
             'hrsh7th/cmp-cmdline',
             'hrsh7th/nvim-cmp',
             'quangnguyen30192/cmp-nvim-ultisnips',
+            "ray-x/lsp_signature.nvim",
+        }
+
+        use {
+            'kosayoda/nvim-lightbulb',
+            requires = 'antoinemadec/FixCursorHold.nvim',
         }
 
         if PACKER_BOOTSTRAP then

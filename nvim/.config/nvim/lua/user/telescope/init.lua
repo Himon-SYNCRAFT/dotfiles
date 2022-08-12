@@ -130,7 +130,10 @@ M.project_files = function()
         "--is-inside-work-tree",
     }
 
-    local gopts = {}
+    local gopts = {
+        show_untracked = true
+    }
+
     local fopts = {}
 
     gopts.prompt_title = " Find"
