@@ -14,6 +14,7 @@ settings:
     https://wirtualny.eltrox.pl: true
   content.geolocation:
     https://cloud.syncraft.pl: true
+    https://katalog.eltrox.pl: false
     https://riff.net.pl: true
     https://www.cinema-city.pl: false
   content.media.audio_capture:
