@@ -1,4 +1,5 @@
 global !p
+
 import vim
 import json
 import os
@@ -20,6 +21,17 @@ def main_module_from_composer():
 				return k.replace('\\\\', '\\')
 
 	return ''
+
+def first_letter_lower(text):
+    if not text:
+        return ''
+    return text[0].lower() + text[1:]
+
+def first_letter_upper(text):
+    if not text:
+        return ''
+    return text[0].upper() + text[1:]
+
 endglobal
 
 snippet th "this" w
@@ -29,14 +41,14 @@ endsnippet
 snippet get
 public function get${1}()
 {
-	return $this->${2};
+	return $this->`!p snip.rv = first_letter_lower(t[1])`;
 }
 endsnippet
 
 snippet set
 public function set${1}
 {
-	$this->${2};
+	$this->$1;
 }
 endsnippet
 

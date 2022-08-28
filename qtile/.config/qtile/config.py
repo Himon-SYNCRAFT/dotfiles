@@ -107,8 +107,18 @@ keys = [
 ]
 
 
-groups = [Group(name=str(name), label=label)
-          for name, label in zip("1234567890", [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "])]
+groups = []
+
+for name, label in zip("1234567890", [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]):
+    layout = 'monadtall'
+    group = Group(name=str(name), label=label, layout=layout)
+
+    if name == '8':
+        layout = 'monadwide'
+        group = Group(name=str(name), label=label, layout=layout,
+                      layout_opts=dict(ratio=0.25, min_ratio=0.20, max_ratio=0.80))
+
+    groups.append(group)
 
 for i in groups:
     keys.extend(
@@ -161,8 +171,9 @@ layouts = [
     # Try more layouts by unleashing below layouts.
     # Stack(num_stacks=2),
     # Matrix(**layout_config),
-    MonadTall(**monad_layout_config),
-    MonadWide(**monad_layout_config),
+    MonadTall(**monad_layout_config, max_ratio=0.80, min_ratio=0.20),
+    MonadWide(**monad_layout_config, max_ratio=0.7,
+              min_ratio=0.3, ratio=0.3),
     Columns(**layout_config, insert_position=1),
     # RatioTile(**layout_config),
     # Tile(**layout_config, master_length=4, ratio=0.5, shift_windows=True),
