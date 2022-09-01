@@ -21,6 +21,7 @@ require "user.treesitter"
 require "user.lightbulb"
 require "mappings"
 require "user.markdown_previewer"
+require "user.telekasten"
 
 
 vim.fn.sign_define(

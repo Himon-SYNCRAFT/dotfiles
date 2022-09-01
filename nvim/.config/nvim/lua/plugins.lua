@@ -56,6 +56,7 @@ return require("packer").startup {
         use "nvim-telescope/telescope-file-browser.nvim"
         use 'cljoly/telescope-repo.nvim'
         use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+        use 'nvim-telescope/telescope-media-files.nvim'
         use 'fannheyward/telescope-coc.nvim'
         use { 'stevearc/dressing.nvim' }
 
@@ -97,7 +98,7 @@ return require("packer").startup {
         use 'renerocksai/telekasten.nvim'
         use 'renerocksai/calendar-vim'
         use({
-            "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+            "iamcco/markdown-preview.nvim", run = "cd app && yarn install",
             setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
             ft = { "markdown" },
         })

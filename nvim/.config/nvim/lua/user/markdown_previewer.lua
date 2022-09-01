@@ -32,7 +32,7 @@ let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
 
 function OpenMarkdownPreview (url)
-    execute "silent ! qutebrowser --target window . a:url
+    execute "silent ! qutebrowser --target window " . a:url
 endfunction
 
 " specify browser to open preview page
@@ -40,7 +40,7 @@ endfunction
 " valid: `/path/with\ space/xxx`
 " invalid: `/path/with\\ space/xxx`
 " default: ''
-let g:mkdp_browser = 'OpenMarkdownPreview'
+let g:mkdp_browser = ''
 
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
@@ -49,7 +49,7 @@ let g:mkdp_echo_preview_url = 0
 " a custom vim function name to open preview page
 " this function will receive url as param
 " default is empty
-let g:mkdp_browserfunc = ''
+let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
 " options for markdown render
 " mkit: markdown-it options for render
