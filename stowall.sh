@@ -33,5 +33,7 @@ stow --no-folding -v -t ~/ xmonad
 stow --no-folding -v -t ~/ sxhkd
 stow --no-folding -v -t ~/ scripts
 stow --no-folding -v -t ~/ zathura
+stow --no-folding -v -t ~/ mpd
+stow --no-folding -v -t ~/ ncmpcpp
 
 xrdb ~/.Xresources

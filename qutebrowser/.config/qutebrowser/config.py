@@ -11,7 +11,8 @@
 #   qute://help/settings.html
 
 
-import dracula.draw
+# import dracula.draw
+import catppuccin
 
 # Block YouTube ads
 from qutebrowser.api import interceptor
@@ -355,9 +356,10 @@ config.bind('x', 'tab-close')
 
 config.bind('e', 'edit-url')
 
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})
+# dracula.draw.blood(c, {
+#     'spacing': {
+#         'vertical': 6,
+#         'horizontal': 8
+#     }
+# })
+catppuccin.setup(c, 'macchiato')

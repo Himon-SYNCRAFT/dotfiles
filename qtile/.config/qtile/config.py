@@ -45,6 +45,24 @@ class DraculaTheme:
     white = "#BFBFBF"
 
 
+class CatppuccinMacchiato:
+    background = "#24273A"
+    foreground = "#CAD3F5"
+    foreground_alt = "#b8c0e0"
+    primary = "#ee99a0"
+    secondary = "#8aadf4"
+    alert = "#c6a0f6"
+
+    black = "#181926"
+    red = "#ed8796"
+    green = "#a6da95"
+    yellow = "#eed49f"
+    blue = "#8aadf4"
+    magenta = "#ee99a0"
+    cyan = "#8bd5ca"
+    white = "#cad3f5"
+
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -147,11 +165,11 @@ for i in groups:
     )
 
 
-border_focus = DraculaTheme.primary
-border_normal = DraculaTheme.background
+border_focus = CatppuccinMacchiato.primary
+border_normal = CatppuccinMacchiato.background
 
 border_width = 2
-margin = [10, 10, 10, 10]
+margin = [7, 7, 7, 7]
 layout_config = dict(
     border_focus=border_focus,
     border_normal=border_normal,
@@ -163,7 +181,7 @@ monad_layout_config = dict(
     border_focus=border_focus,
     border_normal=border_normal,
     border_width=border_width,
-    margin=10,
+    margin=7,
 )
 
 layouts = [
@@ -208,10 +226,10 @@ group_box_config['padding'] = 0
 
 screens = [
     Screen(
-        top=bar.Gap(36),
-        left=bar.Gap(5),
-        right=bar.Gap(5),
-        bottom=bar.Gap(5),
+        top=bar.Gap(32),
+        left=bar.Gap(0),
+        right=bar.Gap(0),
+        bottom=bar.Gap(0),
         # bottom=bar.Bar(
         #     widgets=[
         #         widget.Sep(),
@@ -264,7 +282,7 @@ screens = [
         #         ),
         #     ],
         #     size=36,
-        #     background=DraculaTheme.background,
+        #     background=CatppuccinMacchiato.background,
         # ),
     ),
 ]
@@ -286,6 +304,7 @@ dgroups_app_rules: List[Rule] = [
     Rule(Match(wm_class='Mail'), group='9'),
     Rule(Match(wm_class='Thunderbird'), group='9'),
     Rule(Match(title='cmus'), group='7'),
+    Rule(Match(title='ncmpcpp'), group='7'),
 ]
 follow_mouse_focus = False
 bring_front_click = False
@@ -301,8 +320,8 @@ floating_layout = Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus=DraculaTheme.primary,
-    border_normal=DraculaTheme.background,
+    border_focus=CatppuccinMacchiato.primary,
+    border_normal=CatppuccinMacchiato.background,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

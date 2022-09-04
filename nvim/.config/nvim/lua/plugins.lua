@@ -22,6 +22,7 @@ augroup end
 return require("packer").startup {
     function(use)
         use { 'dracula/vim', as = 'dracula' }
+        use { "catppuccin/nvim", as = "catppuccin" }
         use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'

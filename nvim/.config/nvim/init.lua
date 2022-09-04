@@ -1,9 +1,15 @@
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+
+require("catppuccin").setup()
+
+vim.cmd [[colorscheme catppuccin]]
+
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set background=dark
     set fcs=eob:\ 
 	"" silent! colorscheme cyberpunk
-    silent! colorscheme dracula
+    "" silent! colorscheme dracula
 	let mapleader=','
 ]]
 

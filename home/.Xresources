@@ -3,33 +3,107 @@
 *.alpha:  1
 
 ! Dracula Xresources palette
-*.foreground: #F8F8F2
-*.background: #282A36
-*.cursorColor: #F8F8F2
+!*.foreground: #F8F8F2
+!*.background: #282A36
+!*.cursorColor: #F8F8F2
+!! black
+!*.color0:     #000000
+!*.color8:     #4D4D4D
+!! red
+!*.color1:     #FF5555
+!*.color9:     #FF6E67
+!! green
+!*.color2:     #50FA7B
+!*.color10:    #5AF78E
+!! yellow
+!*.color3:     #F1FA8C
+!*.color11:    #F4F99D
+!! blue
+!*.color4:     #BD93F9
+!*.color12:    #CAA9FA
+!! magenta
+!*.color5:     #FF79C6
+!*.color13:    #FF92D0
+!! cyan
+!*.color6:     #8BE9FD
+!*.color14:    #9AEDFE
+!! white
+!*.color7:     #BFBFBF
+!*.color15:    #E6E6E6
+
+! Catppuccin Macchiato
+*background: #24273A
+*foreground: #CAD3F5
+*cursorColor: #CAD3F5
+
 ! black
-*.color0:     #000000
-*.color8:     #4D4D4D
+*color0: #494D64
+*color8: #5B6078
+
 ! red
-*.color1:     #FF5555
-*.color9:     #FF6E67
+*color1: #ED8796
+*color9: #ED8796
+
 ! green
-*.color2:     #50FA7B
-*.color10:    #5AF78E
+*color2: #A6DA95
+*color10: #A6DA95
+
 ! yellow
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
+*color3: #EED49F
+*color11: #EED49F
+
 ! blue
-*.color4:     #BD93F9
-*.color12:    #CAA9FA
+*color4: #8AADF4
+*color12: #8AADF4
+
 ! magenta
-*.color5:     #FF79C6
-*.color13:    #FF92D0
+*color5: #F5BDE6
+*color13: #F5BDE6
+
 ! cyan
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
+*color6: #8BD5CA
+*color14: #8BD5CA
+
 ! white
-*.color7:     #BFBFBF
-*.color15:    #E6E6E6
+*color7: #B8C0E0
+*color15: #A5ADCB
+
+! Catppuccin Frappe
+!*background: #303446
+!*foreground: #C6D0F5
+!*cursorColor: #C6D0F5
+!
+!! black
+!*color0: #51576D
+!*color8: #626880
+!
+!! red
+!*color1: #E78284
+!*color9: #E78284
+!
+!! green
+!*color2: #A6D189
+!*color10: #A6D189
+!
+!! yellow
+!*color3: #E5C890
+!*color11: #E5C890
+!
+!! blue
+!*color4: #8CAAEE
+!*color12: #8CAAEE
+!
+!! magenta
+!*color5: #F4B8E4
+!*color13: #F4B8E4
+!
+!! cyan
+!*color6: #81C8BE
+!*color14: #81C8BE
+!
+!! white
+!*color7: #B5BFE2
+!*color15: #A5ADCE
 
 ! everforest theme
 ! special
