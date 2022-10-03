@@ -46,12 +46,12 @@ mpd_music_dir = ~/Music
 ## visualization or 44100:16:2 for stereo visualization. As an example here is
 ## the relevant section for mpd.conf:
 ##
-## audio_output {
-##        type            "fifo"
-##        name            "Visualizer feed"
-##        path            "/tmp/mpd.fifo"
-##        format          "44100:16:2"
-## }
+ # audio_output {
+ #        type            "fifo"
+ #        name            "Visualizer feed"
+ #        path            "/tmp/mpd.fifo"
+ #        format          "44100:16:2"
+# }
 ##
 ## If the visualization on occasion diverges from the audio output, please set
 ## 'buffer_time' parameter of your audio output in mpd.conf to '100000' (100ms)
@@ -69,7 +69,7 @@ mpd_music_dir = ~/Music
 ## visualizer.
 ##
 #
-#visualizer_data_source = /tmp/mpd.fifo
+visualizer_data_source = /tmp/mpd.fifo
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp to determine which output
@@ -82,7 +82,7 @@ mpd_music_dir = ~/Music
 ##
 ## If you set format to 44100:16:2, make it 'yes'.
 ##
-#visualizer_in_stereo = yes
+visualizer_in_stereo = yes
 #
 ##
 ## Note: set below to >=10 only if you have synchronization issues with
@@ -107,6 +107,7 @@ mpd_music_dir = ~/Music
 #visualizer_look = ●▮
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_color = red, yellow, green, cyan, blue, magenta
 #
 ## Alternative subset of 256 colors for terminals that support it.
 ##
@@ -121,13 +122,13 @@ mpd_music_dir = ~/Music
 ## and visualizer_in_stereo set, artifacts may be visible on the bottom half of
 ## the visualization.
 #
-#visualizer_spectrum_smooth_look = yes
+visualizer_spectrum_smooth_look = yes
 #
 ## A value between 1 and 5 inclusive. Specifying a larger value makes the
 ## visualizer look at a larger slice of time, which results in less jumpy
 ## visualizer output.
 #
-#visualizer_spectrum_dft_size = 2
+visualizer_spectrum_dft_size = 1
 #
 #visualizer_spectrum_gain = 10
 #
@@ -574,7 +575,7 @@ state_line_color = blue
 #
 #state_flags_color = default:b
 #
-main_window_color = magenta
+main_window_color = white
 #
 #color1 = white
 #

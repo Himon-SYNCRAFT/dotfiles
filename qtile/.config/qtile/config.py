@@ -305,9 +305,10 @@ dgroups_app_rules: List[Rule] = [
     Rule(Match(wm_class='Thunderbird'), group='9'),
     Rule(Match(title='cmus'), group='7'),
     Rule(Match(title='ncmpcpp'), group='7'),
+    Rule(Match(title='Spotify'), group='7'),
 ]
-follow_mouse_focus = False
-bring_front_click = False
+follow_mouse_focus = True
+bring_front_click = True
 cursor_warp = False
 floating_layout = Floating(
     float_rules=[

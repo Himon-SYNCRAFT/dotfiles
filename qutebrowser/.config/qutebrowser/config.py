@@ -258,6 +258,9 @@ c.url.searchengines = {
     'so': 'https://duckduckgo.com/?q=site%3Astackoverflow.com+{}&ia=web',
     'od': 'https://odysee.com/$/search?q={}',
     'mvn': 'https://mvnrepository.com/search?q={}',
+    'tr': 'https://translate.google.com/?sl=pl&tl=en&text={}&op=translate',
+    'trpl': 'https://translate.google.com/?sl=pl&tl=en&text={}&op=translate',
+    'tren': 'https://translate.google.com/?sl=en&tl=pl&text={}&op=translate',
 }
 
 # Foreground color for prompts.

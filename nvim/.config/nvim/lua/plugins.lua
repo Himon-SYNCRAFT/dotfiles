@@ -86,15 +86,15 @@ return require("packer").startup {
             requires = { "nvim-lua/plenary.nvim" },
         }
 
-        use {
-            'rmagatti/auto-session',
-            config = function()
-                require('auto-session').setup {
-                    log_level = 'info',
-                    auto_session_suppress_dirs = { '~/', '~/Projects' }
-                }
-            end
-        }
+        -- use {
+        --     'rmagatti/auto-session',
+        --     config = function()
+        --         require('auto-session').setup {
+        --             log_level = 'info',
+        --             auto_session_suppress_dirs = { '~/', '~/Projects' }
+        --         }
+        --     end
+        -- }
 
         use 'renerocksai/telekasten.nvim'
         use 'renerocksai/calendar-vim'

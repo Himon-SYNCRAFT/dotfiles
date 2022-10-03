@@ -1,3 +1,20 @@
+require "plugins"
+require "user.cmp"
+require "user.debugging"
+require "user.dressing"
+require "user.gitsigns"
+require "user.lsp"
+require "user.nullls"
+require "user.ranger"
+require "user.telescope"
+require "user.treesitter"
+require "user.lightbulb"
+require "user.markdown_previewer"
+require "user.telekasten"
+require "statusline"
+require "mappings"
+
+
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup()
@@ -10,25 +27,7 @@ vim.cmd [[
     set fcs=eob:\ 
 	"" silent! colorscheme cyberpunk
     "" silent! colorscheme dracula
-	let mapleader=','
 ]]
-
-require "plugins"
-require "statusline"
-require "user.cmp"
-require "user.debugging"
-require "user.dressing"
-require "user.gitsigns"
-require "user.lsp"
-require "user.nullls"
-require "user.ranger"
-require "user.telescope"
-require "user.treesitter"
-require "user.lightbulb"
-require "mappings"
-require "user.markdown_previewer"
-require "user.telekasten"
-
 
 vim.fn.sign_define(
     "DiagnosticSignError",

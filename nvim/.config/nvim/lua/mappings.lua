@@ -1,6 +1,8 @@
 local map = vim.api.nvim_set_keymap
 local unmap = vim.api.nvim_del_keymap
 
+vim.cmd [[let mapleader=',']]
+
 vim.cmd [[
     cnoreabbrev W! w!
     cnoreabbrev Q! q!
