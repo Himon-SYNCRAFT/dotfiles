@@ -612,3 +612,6 @@ def_key "."
 
 def_key ","
   previous
+
+def_key "ctrl-l"
+  refetch_lyrics

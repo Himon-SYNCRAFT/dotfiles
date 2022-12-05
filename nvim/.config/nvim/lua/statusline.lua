@@ -1,25 +1,23 @@
 local function current_buffer_number()
-  return "﬘ " .. vim.api.nvim_get_current_buf()
+    return "﬘ " .. vim.api.nvim_get_current_buf()
 end
 
 local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
     if gitsigns then
-    return {
-      added = gitsigns.added,
-      modified = gitsigns.changed,
-      removed = gitsigns.removed,
-    }
-  end
+        return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed
+        }
+    end
 end
 
-local function current_date()
-  return string.sub(os.date "%x", 1, 5)
-end
+local function current_date() return string.sub(os.date "%x", 1, 5) end
 
 local function current_working_dir()
-  local cwd = string.sub(vim.fn.getcwd(), 12)
-  return "~" .. cwd
+    local cwd = string.sub(vim.fn.getcwd(), 12)
+    return "~" .. cwd
 end
 
 -- local custom_auto = require "lualine.themes.auto"
@@ -62,49 +60,54 @@ end
 -- custom_auto.visual.x = custom_auto.visual.c
 -- custom_auto.visual.y = custom_auto.visual.b
 -- custom_auto.visual.z = custom_auto.visual.a
+--
+local custom_auto = require "lualine.themes.catppuccin"
 
 require("lualine").setup {
-  options = {
-    -- theme = 'everforest',
-    -- theme = custom_auto,
-    icons_enabled = true,
-    component_separators = { left = "⦚", right = "  " },
-    section_separators = { left = "", right = "" },
-    disabled_filetypes = {},
-    always_divide_middle = false,
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = {
-      {
-          "diagnostics",
-          sources = { "nvim_diagnostic", "coc" },
-          always_visible = true,
-          update_in_insert = false,
-          sections = { "error", "warn", "info", "hint" },
-      },
-      { "b:gitsigns_head", icon = "" },
-      { "diff", source = diff_source },
+    options = {
+        -- theme = 'everforest',
+        theme = custom_auto,
+        icons_enabled = true,
+        component_separators = {left = "⦚", right = "  "},
+        section_separators = {left = "", right = ""},
+        disabled_filetypes = {},
+        always_divide_middle = false
     },
-    lualine_c = { {
-        "filename",
-        path = 1,
-        symbols = { modified = " ", readonly = " " },
-    } },
-    lualine_x = { { "filetype", icon_only = true, colored = true } },
-    lualine_y = {
-      { current_working_dir },
-      { current_date },
+    sections = {
+        lualine_a = {"mode"},
+        lualine_b = {
+            {
+                "diagnostics",
+                sources = {"nvim_diagnostic", "coc"},
+                always_visible = true,
+                update_in_insert = false,
+                sections = {"error", "warn", "info", "hint"}
+            }, {"b:gitsigns_head", icon = ""}, {"diff", source = diff_source}
+        },
+        lualine_c = {
+            {
+                "filename",
+                path = 1,
+                symbols = {modified = " ", readonly = " "}
+            }
+        },
+        lualine_x = {{"filetype", icon_only = true, colored = true}},
+        lualine_y = {{current_working_dir}, {current_date}},
+        lualine_z = {{"location"}}
     },
-    lualine_z = { { "location" } },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { { "filename", path = 0, symbols = { modified = " ", readonly = " " } } },
-    lualine_x = { "location" },
-    lualine_y = { { current_buffer_number } },
-    lualine_z = {},
-  },
-  extensions = {},
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+            {
+                "filename",
+                path = 0,
+                symbols = {modified = " ", readonly = " "}
+            }
+        },
+        lualine_x = {"location"},
+        lualine_y = {{current_buffer_number}},
+        lualine_z = {}
+    },
+    extensions = {}
 }

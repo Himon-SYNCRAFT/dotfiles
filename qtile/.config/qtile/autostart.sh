@@ -8,10 +8,10 @@ nitrogen --restore &
 # picom &
 dunst &
 thunderbird &
-electron-mail &
+# electron-mail &
 caffeine &
 unclutter --timeout 1 --jitter 25 --ignore-scrolling &
-redshift-gtk &
+# redshift-gtk &
 
 xmodmap ~/.Xmodmap
 setxkbmap -layout pl,pl -variant ,dvorak &
@@ -21,3 +21,6 @@ xset r rate 250 60 &
 xsettingsd &
 rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon
 # keepassxc &
+
+udisksvm >/dev/null &
+syncthing --no-browser &

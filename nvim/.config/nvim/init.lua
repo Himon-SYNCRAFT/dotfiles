@@ -14,10 +14,12 @@ require "user.telekasten"
 require "statusline"
 require "mappings"
 
-
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
-require("catppuccin").setup()
+require("catppuccin").setup({
+    dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
+    transparent_background = true
+})
 
 vim.cmd [[colorscheme catppuccin]]
 
@@ -29,26 +31,20 @@ vim.cmd [[
     "" silent! colorscheme dracula
 ]]
 
-vim.fn.sign_define(
-    "DiagnosticSignError",
-    { texthl = "DiagnosticSignError", text = "", numhl = "" }
-)
+vim.fn.sign_define("DiagnosticSignError",
+                   {texthl = "DiagnosticSignError", text = "", numhl = ""})
 
-vim.fn.sign_define(
-    "DiagnosticSignWarn",
-    { texthl = "DiagnosticSignWarn", text = "", numhl = "" }
-)
+vim.fn.sign_define("DiagnosticSignWarn",
+                   {texthl = "DiagnosticSignWarn", text = "", numhl = ""})
 
-vim.fn.sign_define(
-    "DiagnosticSignHint",
-    { texthl = "DiagnosticSignHint", text = "", numhl = "" }
-)
+vim.fn.sign_define("DiagnosticSignHint",
+                   {texthl = "DiagnosticSignHint", text = "", numhl = ""})
 
-vim.fn.sign_define(
-    "DiagnosticSignInformation",
-    { texthl = "DiagnosticSignInformation", text = "", numhl = "" }
-)
-
+vim.fn.sign_define("DiagnosticSignInformation", {
+    texthl = "DiagnosticSignInformation",
+    text = "",
+    numhl = ""
+})
 
 vim.cmd [[
     filetype plugin indent on

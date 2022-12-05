@@ -34,6 +34,25 @@ def first_letter_upper(text):
 
 endglobal
 
+snippet php
+<?php
+
+declare(strict_types=1);
+endsnippet
+
+snippet strict
+declare(strict_types=1);
+endsnippet
+
+snippet namespace
+namespace ${1:`!p
+relpath = os.path.relpath(path)
+m = re.search(r'[A-Z].+(?=/)', relpath)
+if m:
+	snip.rv = main_module_from_composer() + m.group().replace('/', '\\')
+`};
+endsnippet
+
 snippet th "this" w
 $this->${1}
 endsnippet

@@ -24,6 +24,7 @@ settings:
     https://meet.google.com: true
     https://teams.microsoft.com: true
     https://wirtualny.eltrox.pl: true
+    https://www.facebook.com: true
   content.media.audio_video_capture:
     https://cloud.syncraft.pl: true
     https://meet.google.com: true
@@ -32,6 +33,7 @@ settings:
     https://meet.google.com: true
     https://teams.microsoft.com: true
   content.notifications.enabled:
+    https://app.clickup.com: true
     https://calendar.google.com: true
     https://cloud.syncraft.pl: true
     https://localhost:8081: true

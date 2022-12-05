@@ -10,12 +10,14 @@ local sources = {
     null_ls.builtins.formatting.phpcsfixer,
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.sqlformat,
+    null_ls.builtins.formatting.lua_format,
 
     -- null_ls.builtins.code_actions.refactoring,
 }
 
 null_ls.setup({
     sources = sources,
+    debug = true,
 
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
@@ -26,6 +28,12 @@ null_ls.setup({
                 callback = function()
                     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                     -- vim.lsp.buf.formatting_sync()
+                    vim.lsp.buf.format({
+                        bufnr = bufnr,
+                        filter = function(c)
+                            return c.name == "null-ls"
+                        end
+                    })
                 end,
             })
         end
