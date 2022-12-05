@@ -139,11 +139,12 @@ map("n", "<leader>i", [[<Cmd>IconPickerNormal emoji<CR>]], mapopts)
 
 -- telekasten
 map("n", "<leader>z", ":Telekasten panel<CR>", mapopts)
-map("n", "<leader>zn", ":Telekasten new_templated_note<CR>", mapopts)
 map("n", "<leader>zb", ":Telekasten show_backlinks<CR>", mapopts)
 map("n", "<leader>ze", ":Telekasten find_notes<CR>", mapopts)
 map("n", "<leader>zf", ":Telekasten find_friends<CR>", mapopts)
 map("n", "<leader>zg", ":Telekasten search_notes<CR>", mapopts)
+map("n", "<leader>zl", ":Telekasten insert_link<CR>", mapopts)
+map("n", "<leader>zn", ":Telekasten new_templated_note<CR>", mapopts)
 map("n", "<leader>zrn", ":Telekasten rename_note<CR>", mapopts)
 map("n", "<leader>zt", ":Telekasten show_tags<CR>", mapopts)
 map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
