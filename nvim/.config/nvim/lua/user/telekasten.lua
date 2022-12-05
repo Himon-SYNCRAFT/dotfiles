@@ -11,7 +11,7 @@ require('telekasten').setup({
 
     extension = '.md',
 
-    new_note_filename = 'title-uuid',
+    new_note_filename = 'title',
     uuid_type = "%Y%m%d",
     uuid_sep = '-',
 
@@ -35,7 +35,7 @@ require('telekasten').setup({
         -- use monday as first day of week: 1 .. true, 0 .. false
         calendar_monday = 1,
         -- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
-        calendar_mark = 'left-fit',
+        calendar_mark = 'left-fit'
     },
 
     -- telescope actions behavior
@@ -95,5 +95,5 @@ require('telekasten').setup({
     -- how to preview media files
     -- "telescope-media-files" if you have telescope-media-files.nvim installed
     -- "catimg-previewer" if you have catimg installed
-    media_previewer = "telescope-media-files",
+    media_previewer = "telescope-media-files"
 })

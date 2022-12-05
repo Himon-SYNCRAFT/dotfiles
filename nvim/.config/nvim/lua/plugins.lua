@@ -119,6 +119,12 @@ return require("packer").startup {
 
         use 'aca/emmet-ls'
         use 'nvim-tree/nvim-web-devicons'
+        use({
+            "ziontee113/icon-picker.nvim",
+            config = function()
+                require("icon-picker").setup({disable_legacy_commands = true})
+            end
+        })
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,
