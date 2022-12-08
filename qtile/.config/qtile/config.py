@@ -298,6 +298,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules: List[Rule] = [
+    Rule(Match(wm_class='obsidian'), group='6'),
     Rule(Match(wm_class='GG'), group='8'),
     Rule(Match(wm_class='Gg'), group='8'),
     Rule(Match(wm_class='microsoft teams - preview'), group='0'),

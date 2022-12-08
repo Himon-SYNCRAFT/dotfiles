@@ -22,5 +22,5 @@ xsettingsd &
 rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon
 # keepassxc &
 
-udisksvm >/dev/null &
 syncthing --no-browser &
+udiskie --tray &
