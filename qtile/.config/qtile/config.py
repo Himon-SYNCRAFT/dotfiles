@@ -107,21 +107,30 @@ keys = [
     Key(["control"], "x", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     Key([mod, "control"], "t", lazy.spawn(
         terminal_in_fish), desc="Launch terminal"),
-    Key([mod, "control"], "r", lazy.spawn(
+    Key([mod], "r", lazy.spawn(
         "st -w '' -e ranger"), desc="Launch ranger"),
     Key([super_key], "l", lazy.spawn("betterlockscreen -s dim"), desc="Suspend"),
     Key([mod], "d", lazy.spawn('dmenu_run -b -l 10 -p "run:"'),
         desc="Program launcher"),
-    Key([mod], "t", lazy.spawn('/home/himon/.config/scripts/openinterminal.sh'),
+    Key([mod], "t", lazy.spawn(os.path.expanduser('~/.config/scripts/openinterminal.sh')),
         desc="Open in terminal"),
     Key([mod], 'period', lazy.screen.next_group(
         True), desc="Switch to next group"),
     Key([mod], 'comma', lazy.screen.prev_group(
         True), desc="Switch to previous group"),
+    # Switch focus of monitors
+    Key(["control"], "period",
+        lazy.next_screen(),
+        desc='Move focus to next monitor'
+        ),
+    Key(["control"], "comma",
+        lazy.prev_screen(),
+        desc='Move focus to prev monitor'
+        ),
 ]
 
 
@@ -284,6 +293,12 @@ screens = [
         #     size=36,
         #     background=CatppuccinMacchiato.background,
         # ),
+    ),
+    Screen(
+        top=bar.Gap(32),
+        left=bar.Gap(0),
+        right=bar.Gap(0),
+        bottom=bar.Gap(0),
     ),
 ]
 
