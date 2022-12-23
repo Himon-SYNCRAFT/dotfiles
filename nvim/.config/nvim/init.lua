@@ -59,6 +59,7 @@ vim.cmd [[
 	set relativenumber
 	set colorcolumn=80
     set signcolumn=yes
+    set scrolloff=8
 
 	" IndentLine
 	let g:indentLine_enabled = 1
@@ -113,6 +114,12 @@ vim.cmd [[
         autocmd!
         autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
         " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
+    augroup END
+
+    " ocaml
+    augroup vimrc-ocaml
+        autocmd!
+        autocmd FileType ocaml setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
     " Private dir for UltiSnip snippets

@@ -192,6 +192,11 @@ config.set('content.blocking.method', 'both')
 config.set('content.autoplay', False)
 config.set('editor.command',  ['st', '-e', 'nvim', '{}'])
 
+c.fileselect.folder.command = ['st', '-e', 'ranger', '--choosedir={}']
+c.fileselect.multiple_files.command = [
+    'st', '-e', 'ranger', '--choosefiles={}']
+c.fileselect.single_file.command = ['st', '-e', 'ranger', '--choosefile={}']
+
 # Duration (in milliseconds) to wait before removing finished downloads.
 # If set to -1, downloads are never removed.
 # Type: Int
@@ -345,6 +350,11 @@ c.colors.tabs.selected.even.bg = '#282828'
 c.colors.webpage.darkmode.enabled = False
 
 c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
+
+c.completion.open_categories = [
+    'searchengines', 'history', 'bookmarks', 'quickmarks', 'filesystem']
+c.completion.use_best_match = True
+c.completion.web_history.max_items = 20
 
 config.bind(',cs', 'config-cycle content.user_stylesheets ./css/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
 

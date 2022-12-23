@@ -105,12 +105,15 @@ return require("packer").startup {
 
         -- lsp
         use {
-            "williamboman/nvim-lsp-installer", "neovim/nvim-lspconfig",
-            "jose-elias-alvarez/null-ls.nvim", 'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline',
-            'hrsh7th/nvim-cmp', 'quangnguyen30192/cmp-nvim-ultisnips',
-            "ray-x/lsp_signature.nvim"
+            "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig", "jose-elias-alvarez/null-ls.nvim",
+            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp',
+            'quangnguyen30192/cmp-nvim-ultisnips', "ray-x/lsp_signature.nvim"
         }
+
+        -- f#
+        use 'ionide/Ionide-vim'
 
         use {
             'kosayoda/nvim-lightbulb',

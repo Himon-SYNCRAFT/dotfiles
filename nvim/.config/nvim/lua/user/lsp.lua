@@ -2,7 +2,8 @@ vim.cmd [[
     set completeopt=menu,menuone,noselect
 ]]
 
-require("nvim-lsp-installer").setup {automatic_installation = true}
+require("mason").setup {}
+require("mason-lspconfig").setup({automatic_installation = true})
 
 local lspconfig = require("lspconfig")
 local lsp_signature = require("lsp_signature")
@@ -10,6 +11,20 @@ local lsp_signature = require("lsp_signature")
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
                                                                       .protocol
                                                                       .make_client_capabilities())
+local border = {
+    {"┌", "FloatBorder"}, {"─", "FloatBorder"}, {"┐", "FloatBorder"},
+    {"│", "FloatBorder"}, {"┘", "FloatBorder"}, {"─", "FloatBorder"},
+    {"└", "FloatBorder"}, {"│", "FloatBorder"}
+
+}
+
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
+                                          {border = border}),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers
+                                                      .signature_help,
+                                                  {border = border})
+}
 
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
@@ -43,35 +58,73 @@ local on_attach = function(client, bufnr)
     }, bufnr)
 end
 
-lspconfig.bashls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.cssls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.cssls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.elmls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.elmls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.tailwindcss.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.tailwindcss.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
 -- lspconfig.gradlels.setup {}
-lspconfig.groovyls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.groovyls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.hls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.html.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
 lspconfig.intelephense.setup {
     init_options = {licenceKey = "/home/himon/intelephense/license.txt"},
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    handlers = handlers
 }
 
-lspconfig.jdtls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.jdtls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
 lspconfig.kotlin_language_server.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    handlers = handlers
 }
 
-lspconfig.metals.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.metals.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
 lspconfig.jsonls.setup {on_attach = on_attach, capabilities = capabilities}
 
@@ -84,16 +137,33 @@ local python_root_files = {
 lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dit = lspconfig.util.root_pattern(unpack(python_root_files))
+    root_dit = lspconfig.util.root_pattern(unpack(python_root_files)),
+    handlers = handlers
 }
 
-lspconfig.sqlls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.sqlls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.sumneko_lua.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.sumneko_lua.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.tsserver.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
-lspconfig.vimls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.vimls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 
 lspconfig.emmet_ls.setup({
     on_attach = on_attach,
@@ -109,5 +179,38 @@ lspconfig.emmet_ls.setup({
                 ["bem.enabled"] = true
             }
         }
-    }
+    },
+    handlers = handlers
 })
+
+lspconfig.ocamllsp.setup {on_attach = on_attach, capabilities = capabilities}
+require("ionide").setup({cmd = {'fsautocomplete'}, handlers = handlers})
+
+vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
+
+vim.cmd [[
+" Here we configure Ionide-vim.
+function! s:fsharp()
+    " Required: to be used with nvim-cmp.
+    let g:fsharp#lsp_auto_setup = 0
+
+    " Recommended: show tooptip when you hold cursor over something for 1 second.
+    if has('nvim') && exists('*nvim_open_win')
+        set updatetime=2000
+        augroup FSharpShowTooltip
+            autocmd!
+            autocmd CursorHold *.fs,*.fsi,*.fsx call fsharp#showTooltip()
+        augroup END
+    endif
+
+    " Recommended: Paket files are excluded from the project loader.
+    let g:fsharp#exclude_project_directories = ['paket-files']
+endfunction
+
+let g:fsharp#fsautocomplete_command = 'fsautocomplete'
+
+
+" Finally, we call each functions.
+call s:fsharp()
+]]

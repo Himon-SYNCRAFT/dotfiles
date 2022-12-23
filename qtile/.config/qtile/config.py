@@ -131,6 +131,10 @@ keys = [
         lazy.prev_screen(),
         desc='Move focus to prev monitor'
         ),
+    Key([], "Print", lazy.spawn(
+        "gscreenshot"),
+        desc="Screenshot"
+        ),
 ]
 
 
