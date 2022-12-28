@@ -25,4 +25,4 @@ rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cach
 syncthing --no-browser &
 udiskie --tray &
 
-picom --experimental-backend &
+picom &
