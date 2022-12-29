@@ -3,3 +3,5 @@ cmus/.config/cmus/playlists/default
 nvim/.config/nvim/plugin/packer_compiled.lua
 bkp
 *.pyc
+qutebrowser/.config/qutebrowser/catppuccin
+qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
