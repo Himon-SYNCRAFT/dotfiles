@@ -135,6 +135,7 @@ keys = [
         "gscreenshot"),
         desc="Screenshot"
         ),
+    Key([super_key], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
 ]
 
 

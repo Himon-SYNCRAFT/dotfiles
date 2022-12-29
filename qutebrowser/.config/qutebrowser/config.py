@@ -354,7 +354,7 @@ c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
 c.completion.open_categories = [
     'searchengines', 'history', 'bookmarks', 'quickmarks', 'filesystem']
 c.completion.use_best_match = True
-c.completion.web_history.max_items = 20
+c.completion.web_history.max_items = -1
 
 config.bind(',cs', 'config-cycle content.user_stylesheets ./css/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
 
