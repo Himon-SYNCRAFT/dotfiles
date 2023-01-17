@@ -122,6 +122,12 @@ vim.cmd [[
         autocmd FileType ocaml setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
 
+    " ocaml
+    augroup vimrc-gleam
+        autocmd!
+        autocmd FileType ocaml setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+    augroup END
+
     " Private dir for UltiSnip snippets
     set rtp+=~/.vim/UltiSnips/
     let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"

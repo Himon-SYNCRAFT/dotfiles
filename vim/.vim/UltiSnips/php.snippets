@@ -58,7 +58,7 @@ $this->${1}
 endsnippet
 
 snippet get
-public function get${1}()
+public function get${1}(): ${2}
 {
 	return $this->`!p snip.rv = first_letter_lower(t[1])`;
 }
@@ -168,4 +168,8 @@ if m:
 trait ${2:`!p snip.rv = snip.basename`}
 {
 }
+endsnippet
+
+snippet pra "private attribute in class" b
+private ${1};
 endsnippet

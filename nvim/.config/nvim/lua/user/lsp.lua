@@ -165,6 +165,12 @@ lspconfig.vimls.setup {
     handlers = handlers
 }
 
+lspconfig.gleam.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
 lspconfig.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -183,7 +189,6 @@ lspconfig.emmet_ls.setup({
     handlers = handlers
 })
 
-lspconfig.ocamllsp.setup {on_attach = on_attach, capabilities = capabilities}
 require("ionide").setup({cmd = {'fsautocomplete'}, handlers = handlers})
 
 vim.lsp.handlers["textDocument/hover"] =

@@ -35,5 +35,6 @@ stow --no-folding -v -t ~/ scripts
 stow --no-folding -v -t ~/ zathura
 stow --no-folding -v -t ~/ mpd
 stow --no-folding -v -t ~/ ncmpcpp
+stow --no-folding -v -t ~/ macchina
 
 xrdb ~/.Xresources
