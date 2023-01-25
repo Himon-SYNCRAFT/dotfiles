@@ -350,6 +350,8 @@ c.colors.tabs.selected.even.bg = '#282828'
 # Type: Bool
 c.colors.webpage.darkmode.enabled = False
 
+c.colors.webpage.preferred_color_scheme = 'dark'
+
 c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
 
 c.completion.open_categories = [
