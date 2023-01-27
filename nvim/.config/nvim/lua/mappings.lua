@@ -110,7 +110,9 @@ map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]],
     mapopts)
 
 -- find or create neovim configs
-map("n", "<leader>nc", [[<Cmd>lua require'user.telescope'.nvim_config()<CR>]],
+-- map("n", "<leader>nc", [[<Cmd>lua require'user.telescope'.nvim_config()<CR>]],
+--     mapopts)
+map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]],
     mapopts)
 
 -- go to definitions

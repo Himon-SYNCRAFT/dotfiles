@@ -89,7 +89,7 @@ lspconfig.groovyls.setup {
     handlers = handlers
 }
 
-lspconfig.hls.setup {
+lspconfig.haskel_language_server.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
