@@ -3,9 +3,9 @@ local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system {
-            "git", "clone", "--depth", "1",
-            "https://github.com/wbthomason/packer.nvim", install_path
-        }
+        "git", "clone", "--depth", "1",
+        "https://github.com/wbthomason/packer.nvim", install_path
+    }
 end
 
 vim.cmd [[
@@ -29,31 +29,31 @@ return require("packer").startup {
                 vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
                 vim.g.UltiSnipsJumpForwardTrigger =
                     '<Plug>(ultisnips_jump_forward)'
-                    vim.g.UltiSnipsJumpBackwardTrigger =
+                vim.g.UltiSnipsJumpBackwardTrigger =
                     '<Plug>(ultisnips_jump_backward)'
-                    vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
-                    vim.g.UltiSnipsRemoveSelectModeMappings = 0
-                end
-            }
-            use 'Raimondi/delimitMate'
-            use 'francoiscabrol/ranger.vim'
-            use 'rbgrouleff/bclose.vim'
+                vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+                vim.g.UltiSnipsRemoveSelectModeMappings = 0
+            end
+        }
+        use 'Raimondi/delimitMate'
+        use 'francoiscabrol/ranger.vim'
+        use 'rbgrouleff/bclose.vim'
 
-            -- Treesitter
-            use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-            use "nvim-treesitter/nvim-treesitter-refactor"
-            use 'nvim-treesitter/nvim-treesitter-textobjects'
-            use "p00f/nvim-ts-rainbow"
-            use "David-Kunz/treesitter-unit"
+        -- Treesitter
+        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use "nvim-treesitter/nvim-treesitter-refactor"
+        use 'nvim-treesitter/nvim-treesitter-textobjects'
+        use "p00f/nvim-ts-rainbow"
+        use "David-Kunz/treesitter-unit"
 
-            -- Telescope Extensions
-            use 'nvim-telescope/telescope.nvim'
-            use "nvim-telescope/telescope-file-browser.nvim"
-            use 'cljoly/telescope-repo.nvim'
-            use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-            use 'nvim-telescope/telescope-media-files.nvim'
-            use 'fannheyward/telescope-coc.nvim'
-            use { 'stevearc/dressing.nvim' }
+        -- Telescope Extensions
+        use 'nvim-telescope/telescope.nvim'
+        use "nvim-telescope/telescope-file-browser.nvim"
+        use 'cljoly/telescope-repo.nvim'
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+        use 'nvim-telescope/telescope-media-files.nvim'
+        use 'fannheyward/telescope-coc.nvim'
+        use {'stevearc/dressing.nvim'}
 
         use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
@@ -70,49 +70,49 @@ return require("packer").startup {
             config = function() require("which-key").setup {} end
         }
 
-            use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
+        use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
 
-            use 'renerocksai/telekasten.nvim'
-            use 'renerocksai/calendar-vim'
-            use({
-                "iamcco/markdown-preview.nvim",
-                run = "cd app && yarn install",
-                setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-                ft = { "markdown" }
-            })
-            use 'phpactor/phpactor'
-            use 'nelsyeung/twig.vim'
+        use 'renerocksai/telekasten.nvim'
+        use 'renerocksai/calendar-vim'
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && yarn install",
+            setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
+            ft = {"markdown"}
+        })
+        use 'phpactor/phpactor'
+        use 'nelsyeung/twig.vim'
 
-            use 'folke/trouble.nvim'
+        use 'folke/trouble.nvim'
 
-            -- debugger
-            use 'mfussenegger/nvim-dap'
-            use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-            use 'Pocco81/dap-buddy.nvim'
-            use 'vim-vdebug/vdebug'
+        -- debugger
+        use 'mfussenegger/nvim-dap'
+        use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+        use 'Pocco81/dap-buddy.nvim'
+        use 'vim-vdebug/vdebug'
 
-            -- lsp
-            use {
-                "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-                "neovim/nvim-lspconfig", "jose-elias-alvarez/null-ls.nvim",
-                'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
-                'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp',
-                'quangnguyen30192/cmp-nvim-ultisnips', "ray-x/lsp_signature.nvim"
-            }
+        -- lsp
+        use {
+            "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig", "jose-elias-alvarez/null-ls.nvim",
+            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp',
+            'quangnguyen30192/cmp-nvim-ultisnips', "ray-x/lsp_signature.nvim"
+        }
 
         use {
             'kosayoda/nvim-lightbulb',
             requires = 'antoinemadec/FixCursorHold.nvim'
         }
 
-            use 'aca/emmet-ls'
-            use 'nvim-tree/nvim-web-devicons'
-            use({
-                "ziontee113/icon-picker.nvim",
-                config = function()
-                    require("icon-picker").setup({ disable_legacy_commands = true })
-                end
-            })
+        use 'aca/emmet-ls'
+        use 'nvim-tree/nvim-web-devicons'
+        use({
+            "ziontee113/icon-picker.nvim",
+            config = function()
+                require("icon-picker").setup({disable_legacy_commands = true})
+            end
+        })
 
         use('kmonad/kmonad-vim')
 
