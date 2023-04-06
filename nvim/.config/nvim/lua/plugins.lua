@@ -17,7 +17,6 @@ augroup end
 
 return require("packer").startup {
     function(use)
-        -- use {'dracula/vim', as = 'dracula'}
         use {"catppuccin/nvim", as = "catppuccin"}
         use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
@@ -60,7 +59,6 @@ return require("packer").startup {
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'
-        -- use 'mfussenegger/nvim-lint'
         use 'easymotion/vim-easymotion'
         use {
             "nvim-lualine/lualine.nvim",
@@ -112,9 +110,6 @@ return require("packer").startup {
             'quangnguyen30192/cmp-nvim-ultisnips', "ray-x/lsp_signature.nvim"
         }
 
-        -- f#
-        use 'ionide/Ionide-vim'
-
         use {
             'kosayoda/nvim-lightbulb',
             requires = 'antoinemadec/FixCursorHold.nvim'
@@ -128,6 +123,8 @@ return require("packer").startup {
                 require("icon-picker").setup({disable_legacy_commands = true})
             end
         })
+
+        use('kmonad/kmonad-vim')
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,

@@ -34,6 +34,9 @@ map("v", ">", ">gv", mapopts)
 -- trouble
 map("n", "<leader>dg", "<cmd>Trouble<cr>", mapopts)
 
+map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
+map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
+
 -- ranger
 map("n", "<F2>", ":Ranger<CR>", mapopts)
 map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
@@ -112,8 +115,8 @@ map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]],
 -- find or create neovim configs
 -- map("n", "<leader>nc", [[<Cmd>lua require'user.telescope'.nvim_config()<CR>]],
 --     mapopts)
-map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]],
-    mapopts)
+map("n", "<leader>nc",
+    [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
 
 -- go to definitions
 -- map("n", "gd", [[:Telescope coc definitions<CR>]], mapopts)

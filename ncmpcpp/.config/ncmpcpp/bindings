@@ -615,3 +615,15 @@ def_key ","
 
 def_key "ctrl-l"
   refetch_lyrics
+
+def_key "4"
+  show_browser
+
+def_key "4"
+  change_browse_mode
+
+def_key "2"
+  show_media_library
+
+def_key "2"
+  toggle_media_library_columns_mode

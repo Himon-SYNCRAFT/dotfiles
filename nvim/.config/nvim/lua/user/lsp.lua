@@ -89,12 +89,6 @@ lspconfig.groovyls.setup {
     handlers = handlers
 }
 
-lspconfig.haskel_language_server.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
 lspconfig.html.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -147,7 +141,7 @@ lspconfig.sqlls.setup {
     handlers = handlers
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
@@ -188,8 +182,6 @@ lspconfig.emmet_ls.setup({
     },
     handlers = handlers
 })
-
-require("ionide").setup({cmd = {'fsautocomplete'}, handlers = handlers})
 
 vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
