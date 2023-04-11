@@ -91,7 +91,14 @@ require("lualine").setup {
                 symbols = {modified = " ", readonly = " "}
             }
         },
-        lualine_x = {{"filetype", icon_only = true, colored = true}},
+        lualine_x = {
+            {
+                "filetype",
+                icon_only = true,
+                colored = true,
+                icon = {align = "left"}
+            }
+        },
         lualine_y = {{current_working_dir}, {current_date}},
         lualine_z = {{"location"}}
     },

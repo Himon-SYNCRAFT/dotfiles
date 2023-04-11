@@ -82,7 +82,6 @@ lspconfig.tailwindcss.setup {
     handlers = handlers
 }
 
--- lspconfig.gradlels.setup {}
 lspconfig.groovyls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -97,6 +96,12 @@ lspconfig.html.setup {
 
 lspconfig.intelephense.setup {
     init_options = {licenceKey = "/home/himon/intelephense/license.txt"},
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
+lspconfig.phpactor.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers

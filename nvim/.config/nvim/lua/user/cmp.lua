@@ -30,7 +30,8 @@ local kind_icons = {
     Struct = "",
     Event = "",
     Operator = "",
-    TypeParameter = ""
+    TypeParameter = "",
+    Codeium = ""
 }
 
 local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
@@ -39,18 +40,19 @@ cmp.setup({
     snippet = {
         expand = function(args)
             vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        end,
+        end
     },
 
     window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
     },
 
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind],
+                                          vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- Source
             vim_item.menu = ({
                 buffer = "[Buffer]",
@@ -58,25 +60,19 @@ cmp.setup({
                 luasnip = "[LuaSnip]",
                 ultisnips = "[Snip]",
                 nvim_lua = "[Lua]",
-                latex_symbols = "[LaTeX]",
+                latex_symbols = "[LaTeX]"
             })[entry.source.name]
             return vim_item
         end
     },
 
     mapping = {
-        ["<Tab>"] = cmp.mapping(
-            function(fallback)
-                cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-            end,
-            { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-        ),
-        ["<S-Tab>"] = cmp.mapping(
-            function(fallback)
-                cmp_ultisnips_mappings.jump_backwards(fallback)
-            end,
-            { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-        ),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+        end, {"i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            cmp_ultisnips_mappings.jump_backwards(fallback)
+        end, {"i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
         -- ["<Tab>"] = cmp.mapping({
         --     i = function(fallback)
         --         if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
@@ -113,12 +109,16 @@ cmp.setup({
         --         end
         --     end
         -- }),
-        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
-        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
+            behavior = cmp.SelectBehavior.Select
+        }), {'i'}),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
+            behavior = cmp.SelectBehavior.Select
+        }), {'i'}),
         ['<C-n>'] = cmp.mapping({
             i = function(fallback)
                 if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                    cmp.select_next_item({behavior = cmp.SelectBehavior.Insert})
                 else
                     fallback()
                 end
@@ -127,27 +127,31 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping({
             i = function(fallback)
                 if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                    cmp.select_prev_item({behavior = cmp.SelectBehavior.Insert})
                 else
                     fallback()
                 end
             end
         }),
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
-        ['<CR>'] = cmp.mapping({
-            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.close(),
+            c = cmp.mapping.close()
         }),
+        ['<CR>'] = cmp.mapping({
+            i = cmp.mapping.confirm({
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false
+            })
+        })
     },
 
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'ultisnips' }, -- For ultisnips users.
-    }, {
-        { name = 'buffer', keyword_length = 5 }
-    })
+        {name = 'nvim_lsp'}, {name = 'ultisnips'}, -- For ultisnips users.
+        {name = 'codeium'}, {name = 'path'}
+    }, {{name = 'buffer', keyword_length = 5}})
 })
 
 local cmdline_mapping = {
@@ -176,7 +180,7 @@ local cmdline_mapping = {
             else
                 fallback()
             end
-        end,
+        end
     },
     ['<C-p>'] = {
         c = function(fallback)
@@ -185,11 +189,9 @@ local cmdline_mapping = {
             else
                 fallback()
             end
-        end,
+        end
     },
-    ['<C-e>'] = {
-        c = cmp.mapping.close(),
-    },
+    ['<C-e>'] = {c = cmp.mapping.close()},
 
     ['<CR>'] = cmp.mapping({
         c = function(fallback)
@@ -197,28 +199,26 @@ local cmdline_mapping = {
                 cmp.mapping.close()
                 fallback()
             elseif cmp.visible() then
-                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                cmp.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = false
+                })
             else
                 fallback()
             end
         end
-    }),
+    })
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmdline_mapping,
-    sources = {
-        { name = 'buffer', keyword_length = 5 }
-    }
+    sources = {{name = 'buffer', keyword_length = 5}}
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
     mapping = cmdline_mapping,
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline', keyword_length = 3 }
-    })
+    sources = cmp.config.sources({{name = 'path'}},
+                                 {{name = 'cmdline', keyword_length = 3}})
 })

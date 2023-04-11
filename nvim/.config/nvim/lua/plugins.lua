@@ -116,6 +116,8 @@ return require("packer").startup {
 
         use('kmonad/kmonad-vim')
 
+        use 'Exafunction/codeium.vim'
+
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,
     config = {display = {open_fn = require("packer.util").float}}
