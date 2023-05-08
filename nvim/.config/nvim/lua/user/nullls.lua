@@ -31,5 +31,6 @@ null_ls.setup({
                 end
             })
         end
-    end
+    end,
+    temp_dir = '/tmp/'
 })

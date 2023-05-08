@@ -37,6 +37,9 @@ map("n", "<leader>dg", "<cmd>Trouble<cr>", mapopts)
 map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
 
+-- netrw
+map('n', '<F4>', ':Explore<CR>', mapopts)
+
 -- ranger
 map("n", "<F2>", ":Ranger<CR>", mapopts)
 map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
@@ -129,6 +132,8 @@ map("n", "gi", [[:Telescope lsp_implementations<CR>]], mapopts)
 -- go to references
 -- map("n", "gr", [[:Telescope coc references_used<CR>]], mapopts)
 map("n", "gr", [[:Telescope lsp_references<CR>]], mapopts)
+
+map("n", "<leader>p", [[:Telescope projects<CR>]], mapopts)
 
 -- line code actions
 -- map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], mapopts)

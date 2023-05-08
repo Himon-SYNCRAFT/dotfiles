@@ -11,6 +11,7 @@ require "user.treesitter"
 require "user.lightbulb"
 require "user.markdown_previewer"
 require "user.telekasten"
+require "user.project"
 require "statusline"
 require "mappings"
 
@@ -32,17 +33,17 @@ vim.cmd [[
 ]]
 
 vim.fn.sign_define("DiagnosticSignError",
-                   {texthl = "DiagnosticSignError", text = "", numhl = ""})
+                   {texthl = "DiagnosticSignError", text = "󰅙", numhl = ""})
 
 vim.fn.sign_define("DiagnosticSignWarn",
-                   {texthl = "DiagnosticSignWarn", text = "", numhl = ""})
+                   {texthl = "DiagnosticSignWarn", text = "󰀦", numhl = ""})
 
 vim.fn.sign_define("DiagnosticSignHint",
-                   {texthl = "DiagnosticSignHint", text = "", numhl = ""})
+                   {texthl = "DiagnosticSignHint", text = "󰌵", numhl = ""})
 
 vim.fn.sign_define("DiagnosticSignInformation", {
     texthl = "DiagnosticSignInformation",
-    text = "",
+    text = "󰀨",
     numhl = ""
 })
 

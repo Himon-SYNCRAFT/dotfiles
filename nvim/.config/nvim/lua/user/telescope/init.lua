@@ -26,30 +26,19 @@ require("telescope").setup {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true,
             override_file_sorter = true,
-            case_mode = "smart_case", -- this is default
+            case_mode = "smart_case" -- this is default
         },
-        file_browser = {
-            hidden = true,
-        },
+        file_browser = {hidden = true}
         -- ["ui-select"] = {
         --   require("telescope.themes").get_cursor(),
         -- },
     },
     defaults = {
-        preview = {
-            timeout = 500,
-            msg_bg_fillchar = "",
-        },
+        preview = {timeout = 500, msg_bg_fillchar = ""},
         multi_icon = " ",
         vimgrep_arguments = {
-            "rg",
-	    "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
+            "rg", "--color=never", "--no-heading", "--with-filename",
+            "--line-number", "--column", "--smart-case", "--hidden"
         },
         prompt_prefix = "❯ ",
         selection_caret = "❯ ",
@@ -60,13 +49,13 @@ require("telescope").setup {
             horizontal = {
                 width_padding = 0.04,
                 height_padding = 0.1,
-                preview_width = 0.6,
+                preview_width = 0.6
             },
             vertical = {
                 width_padding = 0.05,
                 height_padding = 1,
-                preview_height = 0.5,
-            },
+                preview_height = 0.5
+            }
         },
 
         -- using custom temp multi-select maps
@@ -74,17 +63,17 @@ require("telescope").setup {
         mappings = {
             n = {
                 ["<Del>"] = actions.close,
-                ["<C-A>"] = telescope_custom_actions.multi_selection_open,
+                ["<C-A>"] = telescope_custom_actions.multi_selection_open
             },
             i = {
                 ["<esc>"] = actions.close,
                 ["<C-A>"] = telescope_custom_actions.multi_selection_open,
                 ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-            },
+                ["<C-k>"] = actions.move_selection_previous
+            }
         },
-        dynamic_preview_title = true,
-    },
+        dynamic_preview_title = true
+    }
 }
 
 require("telescope").load_extension "file_browser"
@@ -92,6 +81,7 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "coc"
 require("telescope").load_extension "repo"
 require("telescope").load_extension "media_files"
+require("telescope").load_extension "projects"
 
 -- my telescopic customizations
 local M = {}
@@ -100,40 +90,35 @@ local M = {}
 local function grep_filtered(opts)
     opts = opts or {}
     require("telescope.builtin").grep_string {
-        path_display = { "smart" },
-        search = opts.filter_word or "",
+        path_display = {"smart"},
+        search = opts.filter_word or ""
     }
 end
 
 -- open vim.ui.input dressing prompt for initial filter
 function M.grep_prompt()
-    vim.ui.input({ prompt = "Rg " }, function(input)
-        grep_filtered { filter_word = input }
-    end)
+    vim.ui.input({prompt = "Rg "},
+                 function(input) grep_filtered {filter_word = input} end)
 end
 
 -- grep Neovim source using cword
 function M.grep_nvim_src()
     require("telescope.builtin").grep_string {
         results_title = "Neovim Source Code",
-        path_display = { "smart" },
+        path_display = {"smart"},
         search_dirs = {
             "~/vim-dev/sources/neovim/runtime/lua/vim/",
-            "~/vim-dev/sources/neovim/src/nvim/",
-        },
+            "~/vim-dev/sources/neovim/src/nvim/"
+        }
     }
 end
 
 M.project_files = function()
     local _, ret, stderr = utils.get_os_command_output {
-        "git",
-        "rev-parse",
-        "--is-inside-work-tree",
+        "git", "rev-parse", "--is-inside-work-tree"
     }
 
-    local gopts = {
-        show_untracked = true
-    }
+    local gopts = {show_untracked = true}
 
     local fopts = {}
 
@@ -143,17 +128,8 @@ M.project_files = function()
 
     fopts.hidden = true
     fopts.file_ignore_patterns = {
-        ".vim/",
-        ".local/",
-        ".cache/",
-        "Downloads/",
-        ".git/",
-        "Dropbox/.*",
-        "Library/.*",
-        ".rustup/.*",
-        "Movies/",
-        ".cargo/registry/",
-        "~/Remote",
+        ".vim/", ".local/", ".cache/", "Downloads/", ".git/", "Dropbox/.*",
+        "Library/.*", ".rustup/.*", "Movies/", ".cargo/registry/", "~/Remote"
     }
 
     if ret == 0 then
@@ -168,14 +144,12 @@ function M.find_configs()
     require("telescope.builtin").find_files {
         prompt_title = " NVim & Term Config Find",
         results_title = "Config Files Results",
-        path_display = { "smart" },
+        path_display = {"smart"},
         search_dirs = {
-            "~/.config/fish/custom",
-            "~/.config/nvim",
-            "~/Projects/dotfiles",
+            "~/.config/fish/custom", "~/.config/nvim", "~/Projects/dotfiles"
         },
         layout_strategy = "horizontal",
-        layout_config = { preview_width = 0.65, width = 0.75 },
+        layout_config = {preview_width = 0.65, width = 0.75}
     }
 end
 
@@ -183,38 +157,33 @@ function M.nvim_config()
     require("telescope").extensions.file_browser.file_browser {
         prompt_title = " NVim Config Browse",
         cwd = "~/.config/nvim/",
-        path_display = {shorten = {
-            len = 1,
-            exclude = {-1},
-        }},
+        path_display = {shorten = {len = 1, exclude = {-1}}},
         layout_strategy = "horizontal",
-        layout_config = { preview_width = 0.65, width = 0.75 },
+        layout_config = {preview_width = 0.65, width = 0.75}
     }
 end
 
 function M.file_explorer()
     require("telescope").extensions.file_browser.file_browser {
         prompt_title = " File Browser",
-        path_display = { "smart" },
+        path_display = {"smart"},
         cwd = "~",
         layout_strategy = "horizontal",
-        layout_config = { preview_width = 0.65, width = 0.75 },
+        layout_config = {preview_width = 0.65, width = 0.75}
     }
 end
 
 -- requires repo extension
 function M.repo_list()
-  local opts = {}
-  opts.prompt_title = " Repos"
-  opts.file_ignore_patterns={
-      "^".. vim.env.HOME .. "/%.cache/",
-      "^".. vim.env.HOME .. "/%.cargo/",
-      "^".. vim.env.HOME .. "/%.vim/",
-      "^".. vim.env.HOME .. "/%.config/",
-      "^".. vim.env.HOME .. "/%.local/",
-  }
-  -- require("telescope").extensions.repo.list(opts)
-  require("telescope").extensions.repo.cached_list(opts)
+    local opts = {}
+    opts.prompt_title = " Repos"
+    opts.file_ignore_patterns = {
+        "^" .. vim.env.HOME .. "/%.cache/", "^" .. vim.env.HOME .. "/%.cargo/",
+        "^" .. vim.env.HOME .. "/%.vim/", "^" .. vim.env.HOME .. "/%.config/",
+        "^" .. vim.env.HOME .. "/%.local/"
+    }
+    -- require("telescope").extensions.repo.list(opts)
+    require("telescope").extensions.repo.cached_list(opts)
 end
 
 return M

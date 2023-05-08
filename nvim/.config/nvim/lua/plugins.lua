@@ -115,8 +115,14 @@ return require("packer").startup {
         })
 
         use('kmonad/kmonad-vim')
+        use {"ahmedkhalf/project.nvim"}
 
-        use 'Exafunction/codeium.vim'
+        -- use 'Exafunction/codeium.vim'
+        use {
+            "jcdickinson/codeium.nvim",
+            requires = {"nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp"},
+            config = function() require("codeium").setup({}) end
+        }
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,
