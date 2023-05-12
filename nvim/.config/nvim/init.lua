@@ -17,12 +17,28 @@ require "mappings"
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
-require("catppuccin").setup({
+-- require("catppuccin").setup({
+--     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
+--     transparent_background = true
+-- })
+
+-- vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme tokyonight-storm]]
+
+require('tokyonight').setup({
+    style = 'storm',
+    transparent = true,
+    terminal_colors = true,
     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
-    transparent_background = true
+    lualine_bold = true,
+    styles = {
+        keywords = {bold = true},
+        functions = {bold = true},
+        variables = {italic = true}
+    }
 })
 
-vim.cmd [[colorscheme catppuccin]]
+require('virt-column').setup({virtcolumn = "80", char = '|'})
 
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
@@ -58,15 +74,16 @@ vim.cmd [[
 	set ruler
 	set number
 	set relativenumber
-	set colorcolumn=80
+	" set colorcolumn=80
     set signcolumn=yes
     set scrolloff=8
 
 	" IndentLine
-	let g:indentLine_enabled = 1
-	let g:indentLine_concealcursor = 0
-	let g:indentLine_char = '┆'
-	let g:indentLine_faster = 1
+	" let g:indentLine_enabled = 1
+	" let g:indentLine_concealcursor = 0
+	" let g:indentLine_char = '┆'
+	" let g:indentLine_faster = 1
+    let g:indentLine_loaded = 0
 
     set laststatus=3
 

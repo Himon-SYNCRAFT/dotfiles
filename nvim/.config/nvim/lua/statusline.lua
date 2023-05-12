@@ -61,14 +61,15 @@ end
 -- custom_auto.visual.y = custom_auto.visual.b
 -- custom_auto.visual.z = custom_auto.visual.a
 --
-local custom_auto = require "lualine.themes.catppuccin"
+-- local custom_auto = require "lualine.themes.catppuccin"
 
 require("lualine").setup {
     options = {
         -- theme = 'everforest',
-        theme = custom_auto,
+        -- theme = custom_auto,
+        theme = 'tokyonight',
         icons_enabled = true,
-        component_separators = {left = "⦚", right = " ⦚ "},
+        component_separators = {left = "", right = ""},
         section_separators = {left = "", right = ""},
         disabled_filetypes = {},
         always_divide_middle = false
@@ -76,6 +77,9 @@ require("lualine").setup {
     sections = {
         lualine_a = {"mode"},
         lualine_b = {
+            {"b:gitsigns_head", icon = ""}, {"diff", source = diff_source}
+        },
+        lualine_c = {
             {
                 "diagnostics",
                 sources = {"nvim_diagnostic", "coc"},
@@ -92,9 +96,7 @@ require("lualine").setup {
                     -- info = '󰋽 ',
                     -- hint = '󰌶 '
                 }
-            }, {"b:gitsigns_head", icon = ""}, {"diff", source = diff_source}
-        },
-        lualine_c = {
+            },
             {
                 "filename",
                 path = 1,
@@ -109,7 +111,7 @@ require("lualine").setup {
                 icon = {align = "left"}
             }
         },
-        lualine_y = {{current_working_dir}, {current_date}},
+        lualine_y = {{current_working_dir}},
         lualine_z = {{"location"}}
     },
     inactive_sections = {

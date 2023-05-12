@@ -17,7 +17,9 @@ augroup end
 
 return require("packer").startup {
     function(use)
-        use {"catppuccin/nvim", as = "catppuccin"}
+        -- use {"catppuccin/nvim", as = "catppuccin"}
+        use 'folke/tokyonight.nvim'
+        use "lukas-reineke/virt-column.nvim"
         use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
         use 'tpope/vim-surround'
@@ -55,7 +57,7 @@ return require("packer").startup {
         use 'fannheyward/telescope-coc.nvim'
         use {'stevearc/dressing.nvim'}
 
-        use "lukas-reineke/indent-blankline.nvim"
+        -- use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'

@@ -63,6 +63,24 @@ class CatppuccinMacchiato:
     white = "#cad3f5"
 
 
+class TokyoNight:
+    background = "#24283b"
+    foreground = "#c0caf5"
+    foreground_alt = "#414868"
+    primary = "#7aa2f7"
+    secondary = "#bb9af7"
+    alert = "#f7768e"
+
+    black = "#1d202f"
+    red = "#f7768e"
+    green = "#9ece6a"
+    yellow = "#e0af68"
+    blue = "#7aa2f7"
+    magenta = "#bb9af7"
+    cyan = "#7dcfff"
+    white = "#a9b1d6"
+
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -179,8 +197,8 @@ for i in groups:
     )
 
 
-border_focus = CatppuccinMacchiato.primary
-border_normal = CatppuccinMacchiato.background
+border_focus = TokyoNight.primary
+border_normal = TokyoNight.background
 
 border_width = 2
 margin = [7, 7, 7, 7]
@@ -342,8 +360,8 @@ floating_layout = Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus=CatppuccinMacchiato.primary,
-    border_normal=CatppuccinMacchiato.background,
+    border_focus=TokyoNight.primary,
+    border_normal=TokyoNight.background,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
