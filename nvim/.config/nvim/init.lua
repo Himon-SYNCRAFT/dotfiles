@@ -32,8 +32,8 @@ require('tokyonight').setup({
     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
     lualine_bold = true,
     styles = {
-        keywords = {bold = true},
-        functions = {bold = true},
+        keywords = {bold = true, italic = false},
+        functions = {bold = true, italic = false},
         variables = {italic = true}
     }
 })

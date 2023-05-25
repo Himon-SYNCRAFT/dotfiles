@@ -3,7 +3,13 @@ vim.cmd [[
 ]]
 
 require("mason").setup {}
-require("mason-lspconfig").setup({automatic_installation = true})
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+    ensured_installed = {
+        'phpstan', 'phpcs', 'php-cs-fixer', 'phpactor', 'intelephense',
+        'pyright', 'tsserver'
+    }
+})
 
 local lspconfig = require("lspconfig")
 local lsp_signature = require("lsp_signature")
@@ -76,12 +82,6 @@ lspconfig.elmls.setup {
     handlers = handlers
 }
 
-lspconfig.tailwindcss.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
 lspconfig.groovyls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -107,13 +107,13 @@ lspconfig.phpactor.setup {
     handlers = handlers
 }
 
-lspconfig.jdtls.setup {
+lspconfig.phpcs.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
 }
 
-lspconfig.kotlin_language_server.setup {
+lspconfig.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
