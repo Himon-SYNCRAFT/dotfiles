@@ -13,8 +13,6 @@ local function diff_source()
     end
 end
 
-local function current_date() return string.sub(os.date "%x", 1, 5) end
-
 local function current_working_dir()
     local cwd = string.sub(vim.fn.getcwd(), 12)
     return "~" .. cwd

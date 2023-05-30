@@ -10,8 +10,6 @@ require "user.telescope"
 require "user.treesitter"
 require "user.lightbulb"
 require "user.markdown_previewer"
-require "user.telekasten"
-require "user.project"
 require "statusline"
 require "mappings"
 
@@ -34,11 +32,11 @@ require('tokyonight').setup({
     styles = {
         keywords = {bold = true, italic = false},
         functions = {bold = true, italic = false},
-        variables = {italic = true}
+        variables = {italic = false}
     }
 })
 
-require('virt-column').setup({virtcolumn = "80", char = '|'})
+require('virt-column').setup({virtcolumn = "80", char = '｜'})
 
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
@@ -183,5 +181,10 @@ vim.cmd [[
         autocmd FileType php inoremap .. ->
         autocmd FileType php nnoremap ; A;
         autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+    augroup END
+
+    augroup vimrc-rust
+        autocmd!
+        autocmd FileType rust nnoremap ; A;
     augroup END
 ]]

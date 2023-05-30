@@ -43,10 +43,10 @@ return require("packer").startup {
 
         -- Treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        use "nvim-treesitter/nvim-treesitter-refactor"
-        use 'nvim-treesitter/nvim-treesitter-textobjects'
+        -- use "nvim-treesitter/nvim-treesitter-refactor"
+        -- use 'nvim-treesitter/nvim-treesitter-textobjects'
         use "p00f/nvim-ts-rainbow"
-        use "David-Kunz/treesitter-unit"
+        -- use "David-Kunz/treesitter-unit"
 
         -- Telescope Extensions
         use 'nvim-telescope/telescope.nvim'
@@ -57,7 +57,6 @@ return require("packer").startup {
         use 'fannheyward/telescope-coc.nvim'
         use {'stevearc/dressing.nvim'}
 
-        -- use "lukas-reineke/indent-blankline.nvim"
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'
@@ -74,14 +73,6 @@ return require("packer").startup {
 
         use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
 
-        use 'renerocksai/telekasten.nvim'
-        use 'renerocksai/calendar-vim'
-        use({
-            "iamcco/markdown-preview.nvim",
-            run = "cd app && yarn install",
-            setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
-            ft = {"markdown"}
-        })
         use 'phpactor/phpactor'
         use 'nelsyeung/twig.vim'
 
@@ -117,7 +108,6 @@ return require("packer").startup {
         })
 
         use('kmonad/kmonad-vim')
-        use {"ahmedkhalf/project.nvim"}
 
         -- use 'Exafunction/codeium.vim'
         use {
@@ -125,6 +115,8 @@ return require("packer").startup {
             requires = {"nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp"},
             config = function() require("codeium").setup({}) end
         }
+
+        use 'elkowar/yuck.vim'
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,

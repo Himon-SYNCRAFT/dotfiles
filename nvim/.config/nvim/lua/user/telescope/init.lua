@@ -81,7 +81,6 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "coc"
 require("telescope").load_extension "repo"
 require("telescope").load_extension "media_files"
-require("telescope").load_extension "projects"
 
 -- my telescopic customizations
 local M = {}
