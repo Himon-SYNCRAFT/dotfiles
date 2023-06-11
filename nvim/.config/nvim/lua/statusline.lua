@@ -62,13 +62,20 @@ end
 -- custom_auto.visual.z = custom_auto.visual.a
 --
 -- local custom_auto = require "lualine.themes.catppuccin"
+local custom_auto = require "lualine.themes.kanagawa"
+
+custom_auto.normal.a.gui = "bold"
+custom_auto.command.a.gui = "bold"
+custom_auto.insert.a.gui = "bold"
+custom_auto.replace.a.gui = "bold"
+custom_auto.visual.a.gui = "bold"
 
 require("lualine").setup {
     options = {
         -- theme = 'everforest',
-        -- theme = custom_auto,
+        theme = custom_auto,
         -- theme = 'tokyonight',
-        theme = 'kanagawa',
+        -- theme = 'kanagawa',
         icons_enabled = true,
         component_separators = {left = "", right = ""},
         section_separators = {left = "", right = ""},
