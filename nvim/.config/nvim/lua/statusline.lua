@@ -67,7 +67,8 @@ require("lualine").setup {
     options = {
         -- theme = 'everforest',
         -- theme = custom_auto,
-        theme = 'tokyonight',
+        -- theme = 'tokyonight',
+        theme = 'kanagawa',
         icons_enabled = true,
         component_separators = {left = "", right = ""},
         section_separators = {left = "", right = ""},

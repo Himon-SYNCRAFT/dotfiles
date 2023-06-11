@@ -200,7 +200,7 @@ for i in groups:
 border_focus = TokyoNight.primary
 border_normal = TokyoNight.background
 
-border_width = 2
+border_width = 1
 margin = [7, 7, 7, 7]
 layout_config = dict(
     border_focus=border_focus,

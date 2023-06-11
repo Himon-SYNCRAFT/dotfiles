@@ -68,41 +68,101 @@
 ! *color7: #B8C0E0
 ! *color15: #A5ADCB
 
-! TokyoNight Storm
-*background: #24283b
-*foreground: #c0caf5
+/* ! TokyoNight Storm */
+/* *background: #24283b */
+/* *foreground: #c0caf5 */
+
+/* ! black */
+/* *color0: #1d202f */
+/* *color8: #414868 */
+
+/* ! red */
+/* *color1: #f7768e */
+/* *color9: #f7768e */
+
+/* ! green */
+/* *color2: #9ece6a */
+/* *color10: #9ece6a */
+
+/* ! yellow */
+/* *color3: #e0af68 */
+/* *color11: #e0af68 */
+
+/* ! blue */
+/* *color4: #7aa2f7 */
+/* *color12: #7aa2f7 */
+
+/* ! magenta */
+/* *color5: #bb9af7 */
+/* *color13: #bb9af7 */
+
+/* ! cyan */
+/* *color6: #7dcfff */
+/* *color14: #7dcfff */
+
+/* ! white */
+/* *color7: #a9b1d6 */
+/* *color15: #c0caf5 */
+
+! TokyoNight Day
+/* *background: #e1e2e7 */
+/* *foreground: #3760bf */
+
+/* *color0: #e9e9ed */
+/* *color1: #f52a65 */
+/* *color2: #587539 */
+/* *color3: #8c6c3e */
+/* *color4: #2e7de9 */
+/* *color5: #9854f1 */
+/* *color6: #007197 */
+/* *color7: #6172b0 */
+
+/* *color8: #a1a6c5 */
+/* *color9: #f52a65 */
+/* *color10: #587539 */
+/* *color11: #8c6c3e */
+/* *color12: #2e7de9 */
+/* *color13: #9854f1 */
+/* *color14: #007197 */
+/* *color15: #3760bf */
+
+! Kanagawa
+! special
+*foreground:   #dcd7ba
+*background:   #1f1f28
+*cursorColor:  #dcd7ba
 
 ! black
-*color0: #1d202f
-*color8: #414868
+*color0:       #090618
+*color8:       #727169
 
 ! red
-*color1: #f7768e
-*color9: #f7768e
+*color1:       #c34043
+*color9:       #e82424
 
 ! green
-*color2: #9ece6a
-*color10: #9ece6a
+*color2:       #76946a
+*color10:      #98bb6c
 
 ! yellow
-*color3: #e0af68
-*color11: #e0af68
+*color3:       #c0a36e
+*color11:      #e6c384
 
 ! blue
-*color4: #7aa2f7
-*color12: #7aa2f7
+*color4:       #7e9cd8
+*color12:      #7fb4ca
 
 ! magenta
-*color5: #bb9af7
-*color13: #bb9af7
+*color5:       #957fb8
+*color13:      #938aa9
 
 ! cyan
-*color6: #7dcfff
-*color14: #7dcfff
+*color6:       #6a9589
+*color14:      #7aa89f
 
 ! white
-*color7: #a9b1d6
-*color15: #c0caf5
+*color7:       #c8c093
+*color15:      #dcd7ba
 
 
 ! Catppuccin Frappe

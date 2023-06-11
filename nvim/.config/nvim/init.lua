@@ -16,6 +16,26 @@ require "statusline"
 require "mappings"
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+require('kanagawa').setup({
+    compile = false, -- enable compiling the colorscheme
+    undercurl = true, -- enable undercurls
+    commentStyle = {italic = true},
+    functionStyle = {},
+    keywordStyle = {italic = true},
+    statementStyle = {bold = true},
+    typeStyle = {},
+    transparent = false, -- do not set background color
+    dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+    terminalColors = true, -- define vim.g.terminal_color_{0,17}
+    theme = "wave", -- Load "wave" theme when 'background' option is not set
+    background = { -- map the value of 'background' option to a theme
+        dark = "wave", -- try "dragon" !
+        light = "lotus"
+    }
+})
+
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")
 
 -- require("catppuccin").setup({
 --     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
@@ -23,20 +43,20 @@ vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 -- })
 
 -- vim.cmd [[colorscheme catppuccin]]
-vim.cmd [[colorscheme tokyonight-storm]]
+-- vim.cmd [[colorscheme tokyonight-storm]]
 
-require('tokyonight').setup({
-    style = 'storm',
-    transparent = true,
-    terminal_colors = true,
-    dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
-    lualine_bold = true,
-    styles = {
-        keywords = {bold = true, italic = false},
-        functions = {bold = true, italic = false},
-        variables = {italic = true}
-    }
-})
+-- require('tokyonight').setup({
+--     style = 'storm',
+--     transparent = true,
+--     terminal_colors = true,
+--     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
+--     lualine_bold = true,
+--     styles = {
+--         keywords = {bold = true, italic = false},
+--         functions = {bold = true, italic = false},
+--         variables = {italic = true}
+--     }
+-- })
 
 require('virt-column').setup({virtcolumn = "80", char = '|'})
 
