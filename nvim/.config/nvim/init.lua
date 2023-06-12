@@ -16,12 +16,6 @@ require "mappings"
 
 require('virt-column').setup({virtcolumn = "80", char = '|'})
 
-vim.cmd [[
-	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
-    set background=dark
-    set fcs=eob:\
-]]
-
 vim.fn.sign_define("DiagnosticSignError",
                    {texthl = "DiagnosticSignError", text = "󰅙", numhl = ""})
 
