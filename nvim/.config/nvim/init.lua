@@ -46,11 +46,6 @@ vim.cmd [[
     set signcolumn=yes
     set scrolloff=8
 
-	" IndentLine
-	" let g:indentLine_enabled = 1
-	" let g:indentLine_concealcursor = 0
-	" let g:indentLine_char = '┆'
-	" let g:indentLine_faster = 1
     let g:indentLine_loaded = 0
 
     set laststatus=3
@@ -74,10 +69,6 @@ vim.cmd [[
 
 	set ignorecase
 	set smartcase
-
-"	if filereadable(expand("~/.vim/.coc.vimrc"))
-"	    source ~/.vim/.coc.vimrc
-"	endif
 
     function! FixIndentAndTrailingWhitespace()
         let l:save_cursor = getpos(".")
@@ -129,8 +120,6 @@ vim.cmd [[
         autocmd!
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
-
-    " au BufWritePost <buffer> lua require('lint').try_lint()
 
     " Disable default mappings
     let g:EasyMotion_do_mapping = 0
