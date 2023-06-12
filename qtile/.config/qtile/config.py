@@ -81,6 +81,27 @@ class TokyoNight:
     white = "#a9b1d6"
 
 
+class Kanagawa:
+    background = "#1f1f28"
+    foreground = "#dcd7ba"
+    foreground_alt = "#c8c093"
+    primary = "#6a9589"
+    secondary = "#76946a"
+    alert = "#c34043"
+
+    black = "#090618"
+    red = "#c34043"
+    green = "#76946a"
+    yellow = "#c0a36e"
+    blue = "#7e9cd8"
+    magenta = "#957fb8"
+    cyan = "#6a9589"
+    white = "#c8c093"
+
+
+theme = Kanagawa
+
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -197,11 +218,13 @@ for i in groups:
     )
 
 
-border_focus = TokyoNight.primary
-border_normal = TokyoNight.background
+border_focus = theme.primary
+border_normal = theme.background
 
 border_width = 2
-margin = [7, 7, 7, 7]
+default_margin = 10
+margin = [default_margin, default_margin, default_margin, default_margin]
+
 layout_config = dict(
     border_focus=border_focus,
     border_normal=border_normal,
@@ -213,7 +236,7 @@ monad_layout_config = dict(
     border_focus=border_focus,
     border_normal=border_normal,
     border_width=border_width,
-    margin=7,
+    margin=default_margin,
 )
 
 layouts = [
@@ -360,8 +383,8 @@ floating_layout = Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus=TokyoNight.primary,
-    border_normal=TokyoNight.background,
+    border_focus=theme.primary,
+    border_normal=theme.background,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
