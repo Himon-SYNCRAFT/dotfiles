@@ -10,40 +10,16 @@ require "user.telescope"
 require "user.treesitter"
 require "user.lightbulb"
 require "user.markdown_previewer"
+require "user.theme"
 require "statusline"
 require "mappings"
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
--- require("catppuccin").setup({
---     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
---     transparent_background = true
--- })
-
--- vim.cmd [[colorscheme catppuccin]]
-vim.cmd [[colorscheme tokyonight-storm]]
-
-require('tokyonight').setup({
-    style = 'storm',
-    transparent = true,
-    terminal_colors = true,
-    dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
-    lualine_bold = true,
-    styles = {
-        keywords = {bold = true, italic = false},
-        functions = {bold = true, italic = false},
-        variables = {italic = false}
-    }
-})
-
-require('virt-column').setup({virtcolumn = "80", char = '｜'})
+require('virt-column').setup({virtcolumn = "80", char = '|'})
 
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set background=dark
-    set fcs=eob:\ 
-	"" silent! colorscheme cyberpunk
-    "" silent! colorscheme dracula
+    set fcs=eob:\
 ]]
 
 vim.fn.sign_define("DiagnosticSignError",

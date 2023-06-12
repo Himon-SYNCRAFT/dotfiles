@@ -108,12 +108,6 @@ lspconfig.phpactor.setup {
     handlers = handlers
 }
 
-lspconfig.phpcs.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
 lspconfig.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,

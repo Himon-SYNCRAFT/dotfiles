@@ -18,7 +18,8 @@ augroup end
 return require("packer").startup {
     function(use)
         -- use {"catppuccin/nvim", as = "catppuccin"}
-        use 'folke/tokyonight.nvim'
+        -- use 'folke/tokyonight.nvim'
+        use "rebelot/kanagawa.nvim"
         use "lukas-reineke/virt-column.nvim"
         use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
@@ -117,6 +118,19 @@ return require("packer").startup {
         }
 
         use 'elkowar/yuck.vim'
+
+        use({
+            "jackMort/ChatGPT.nvim",
+            config = function()
+                require("chatgpt").setup({
+                    api_key_cmd = "/usr/bin/cat ~/.openai"
+                })
+            end,
+            requires = {
+                "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim"
+            }
+        })
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,

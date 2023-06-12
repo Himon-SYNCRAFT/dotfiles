@@ -19,7 +19,7 @@ xsettingsd &
 syncthing --no-browser &
 udiskie --tray &
 
-# picom &
+picom &
 
 thunderbird &
 solaar -w hide &
