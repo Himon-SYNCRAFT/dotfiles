@@ -7,7 +7,8 @@ local sources = {
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.phpcsfixer,
     null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.sqlformat,
-    null_ls.builtins.formatting.lua_format, null_ls.builtins.formatting.rustfmt
+    null_ls.builtins.formatting.lua_format, null_ls.builtins.formatting.rustfmt,
+    null_ls.builtins.formatting.gofmt
 
     -- null_ls.builtins.code_actions.refactoring,
 }

@@ -120,6 +120,12 @@ lspconfig.metals.setup {
     handlers = handlers
 }
 
+lspconfig.gopls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
 lspconfig.jsonls.setup {on_attach = on_attach, capabilities = capabilities}
 
 local python_root_files = {
