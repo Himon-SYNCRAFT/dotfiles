@@ -55,13 +55,13 @@ return require("packer").startup {
         use 'cljoly/telescope-repo.nvim'
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
         use 'nvim-telescope/telescope-media-files.nvim'
-        use 'fannheyward/telescope-coc.nvim'
         use {'stevearc/dressing.nvim'}
 
         use "rcarriga/nvim-notify"
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'
         use 'easymotion/vim-easymotion'
+        use 'chaoren/vim-wordmotion'
         use {
             "nvim-lualine/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true}
@@ -118,19 +118,6 @@ return require("packer").startup {
         }
 
         use 'elkowar/yuck.vim'
-
-        use({
-            "jackMort/ChatGPT.nvim",
-            config = function()
-                require("chatgpt").setup({
-                    api_key_cmd = "/usr/bin/cat ~/.openai"
-                })
-            end,
-            requires = {
-                "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
-                "nvim-telescope/telescope.nvim"
-            }
-        })
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,

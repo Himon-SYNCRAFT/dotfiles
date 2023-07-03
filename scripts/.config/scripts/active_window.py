@@ -15,6 +15,10 @@ try:
             window_id = line.strip().replace(
                 '_NET_ACTIVE_WINDOW(WINDOW): window id #', '').strip()
 
+    if window_id is None:
+        print(window_name)
+        exit()
+
     info = subprocess.run(
         ['xprop', '-id', window_id],
         capture_output=True

@@ -267,7 +267,8 @@ c.url.searchengines = {
     'trpl': 'https://translate.google.com/?sl=pl&tl=en&text={}&op=translate',
     'tren': 'https://translate.google.com/?sl=en&tl=pl&text={}&op=translate',
     'phpdoc': 'https://www.php.net/manual-lookup.php?pattern={}&scope=quickref',
-    'code': 'https://you.com/search?q={}&fromSearchBar=true&tbm=youcode'
+    'code': 'https://you.com/search?q={}&fromSearchBar=true&tbm=youcode',
+    'you': 'https://www.youtube.com/results?search_query={}',
 }
 
 # Foreground color for prompts.

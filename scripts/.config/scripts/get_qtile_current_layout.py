@@ -1,9 +1,11 @@
 from typing import Dict
 from libqtile.command.client import InteractiveCommandClient
 
+try:
+    client = InteractiveCommandClient()
 
-client = InteractiveCommandClient()
+    info: Dict = client.group.info()
 
-info: Dict = client.group.info()
-
-print(info.get('layout', ''))
+    print(info.get('layout', ''))
+except:
+    print('')

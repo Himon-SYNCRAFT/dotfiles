@@ -1,0 +1,1 @@
+feh -B black -d -N -S name --scale-down --fontpath /usr/share/fonts/TTF --font "OpenSans-Regular/10"
