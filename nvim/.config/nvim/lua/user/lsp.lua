@@ -77,18 +77,6 @@ lspconfig.cssls.setup {
     handlers = handlers
 }
 
-lspconfig.elmls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
-lspconfig.groovyls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
 lspconfig.html.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -121,6 +109,12 @@ lspconfig.metals.setup {
 }
 
 lspconfig.gopls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
+lspconfig.ocamllsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
