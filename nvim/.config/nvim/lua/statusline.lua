@@ -59,8 +59,8 @@ end
 -- custom_auto.visual.y = custom_auto.visual.b
 -- custom_auto.visual.z = custom_auto.visual.a
 --
--- local custom_auto = require "lualine.themes.catppuccin"
-local custom_auto = require "lualine.themes.kanagawa"
+local custom_auto = require "lualine.themes.catppuccin"
+-- local custom_auto = require "lualine.themes.kanagawa"
 
 custom_auto.normal.a.gui = "bold"
 custom_auto.command.a.gui = "bold"

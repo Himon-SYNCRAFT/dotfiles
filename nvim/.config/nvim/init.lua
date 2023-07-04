@@ -11,6 +11,7 @@ require "user.treesitter"
 require "user.lightbulb"
 require "user.markdown_previewer"
 require "user.theme"
+require "user.org"
 require "statusline"
 require "mappings"
 

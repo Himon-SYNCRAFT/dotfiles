@@ -150,7 +150,7 @@ cmp.setup({
 
     sources = cmp.config.sources({
         {name = 'nvim_lsp'}, {name = 'ultisnips'}, -- For ultisnips users.
-        {name = 'codeium'}, {name = 'path'}
+        {name = 'codeium'}, {name = 'path'}, {name = 'orgmode'}
     }, {{name = 'buffer', keyword_length = 5}})
 })
 
