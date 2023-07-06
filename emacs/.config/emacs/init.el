@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;; mode key to super
+(setq x-super-keysym 'meta)
+
 ;; remove default transparency (from .Xresources)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
@@ -37,6 +40,8 @@
 ;; set ssh for tramp-mode
 (setq tramp-default-method "ssh")
 
+(setq native-comp-async-report-warnings-errors nil)
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -47,8 +52,10 @@
                                    company
                                    company-box
                                    dap-mode
+				   dashboard
                                    doom-modeline
                                    evil
+				   evil-org
                                    flycheck
                                    flycheck-phpstan
                                    fzf
@@ -102,30 +109,43 @@
 (use-package evil
   :config
   (evil-set-leader nil (kbd ","))
-  (evil-define-key 'normal 'global (kbd "C-h") 'windmove-left)
-  (evil-define-key 'normal 'global (kbd "C-l") 'windmove-right)
-  (evil-define-key 'normal 'global (kbd "C-j") 'windmove-down)
-  (evil-define-key 'normal 'global (kbd "C-k") 'windmove-up)
-  (evil-define-key 'normal 'global (kbd "SPC SPC") 'lsp-execute-code-action)
-  (evil-define-key 'normal 'global (kbd "<leader>rn") 'lsp-rename)
-  (evil-define-key 'normal 'global (kbd "K") 'lsp-ui-doc-show)
-  (evil-define-key 'normal 'global (kbd "gd") 'xref-find-definitions)
-  (evil-define-key 'normal 'global (kbd "gr") 'xref-find-references)
-  (evil-define-key 'normal 'global (kbd "<leader>v") 'evil-window-vsplit)
-  (evil-define-key 'normal 'global (kbd "<leader>h") 'evil-window-split)
+  (evil-define-key 'normal 'global (kbd "<f2>") 'ranger)
   (evil-define-key 'normal 'global (kbd "<leader>e") 'fzf-git)
   (evil-define-key 'normal 'global (kbd "<leader>g") 'fzf-grep)
-  (evil-define-key 'normal 'global (kbd "<f2>") 'ranger)
+  (evil-define-key 'normal 'global (kbd "<leader>h") 'evil-window-split)
+  (evil-define-key 'normal 'global (kbd "<leader>v") 'evil-window-vsplit)
+  (evil-define-key 'normal 'global (kbd "C-h") 'windmove-left)
+  (evil-define-key 'normal 'global (kbd "C-j") 'windmove-down)
+  (evil-define-key 'normal 'global (kbd "C-k") 'windmove-up)
+  (evil-define-key 'normal 'global (kbd "C-l") 'windmove-right)
+  (evil-define-key 'normal 'global (kbd "SPC SPC") 'lsp-execute-code-action)
+  (evil-define-key 'normal 'global (kbd "<leader>oa") 'org-agenda)
+  (evil-define-key 'normal 'global (kbd "<leader>oc") 'org-capture)
+  (evil-define-key 'normal 'global (kbd "RET") 'org-toggle-checkbox)
   (evil-define-key 'normal 'global (kbd "SPC f") 'lsp-format-buffer)
   (evil-define-key 'normal 'global (kbd "SPC m h") 'org-toggle-heading)
   (evil-define-key 'normal 'global (kbd "SPC m i") 'org-toggle-item)
-  (evil-define-key 'normal 'global (kbd "RET") 'org-toggle-checkbox)
+  (evil-define-key 'normal 'global (kbd "gd") 'lsp-find-definition)
+  (evil-define-key 'normal 'global (kbd "gi") 'lsp-find-implementation)
+  (evil-define-key 'normal 'global (kbd "gr") 'lsp-find-references)
+  (evil-define-key 'normal 'global (kbd "gt") 'lsp-find-type-definition)
+  (evil-define-key 'normal 'global (kbd "<leader>rn") 'lsp-rename)
+  (evil-define-key 'normal 'global (kbd "K") 'lsp-ui-doc-show)
   (evil-define-key 'normal 'global (kbd "M-RET") 'eval-buffer)
-  ;; (evil-define-key 'visual 'global (kbd "M-RET") 'eval-region)
   (evil-define-key 'visual 'global (kbd "M-RET") 'eval-expression)
 )
 
+(use-package org
+  :config
+  (evil-set-initial-state 'org-agenda-mode 'motion))
+
+(use-package evil-org-agenda
+  :after org-agenda
+  :config
+  (evil-org-agenda-set-keys))
+
 (evil-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -244,5 +264,10 @@
      "|"
      "DONE(d)"
      "CANCELLED(c)" )))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 ;;; init.el ends here
