@@ -61,12 +61,15 @@
                                    fzf
                                    lsp-mode
                                    lsp-ui
+				   lsp-pyright
+				   nerd-icons
 				   org-bullets
                                    php-mode
 				   ranger
                                    tree-sitter
                                    tree-sitter-langs
                                    which-key
+				   with-venv
                                    yasnippet
                                    ))
 
@@ -83,6 +86,8 @@
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
+
+(use-package nerd-icons)
 
 (use-package fzf
   :config
@@ -132,6 +137,8 @@
   (evil-define-key 'normal 'global (kbd "<leader>rn") 'lsp-rename)
   (evil-define-key 'normal 'global (kbd "K") 'lsp-ui-doc-show)
   (evil-define-key 'normal 'global (kbd "M-RET") 'eval-buffer)
+  (evil-define-key 'normal 'global (kbd "gcc") 'comment-line)
+  (evil-define-key 'visual 'global (kbd "gc") 'comment-or-uncomment-region)
   (evil-define-key 'visual 'global (kbd "M-RET") 'eval-expression)
 )
 
@@ -158,6 +165,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+'(dashboard-banner-logo-title ((t (:height 3.0 :weight bold))))
  )
 
 (use-package tree-sitter)
@@ -246,6 +254,18 @@
   (php-mode . (lambda() (flycheck-add-next-checker 'lsp 'php-phpcs)))
   )
 
+(use-package lsp-pyright
+  :ensure t
+  :config
+  (with-venv
+    (executable-find "python"))
+  :hook
+  (python-mode . (lambda ()
+	 	 (require 'lsp-pyright)
+		 (lsp-deferred)))
+  (python-mode . (lambda() (flycheck-add-next-checker 'lsp 'python-pyright)))
+  )
+
 (use-package org-bullets
   :hook org-mode . (lambda() (org-bullets-mode 1)))
 
@@ -265,9 +285,29 @@
      "DONE(d)"
      "CANCELLED(c)" )))
 
+(defun dashboard-useful-functions (list-size)
+  (dashboard-insert-heading "Useful functions:"
+			    nil
+			    (nerd-icons-mdicon "nf-md-function"
+			    :height: 1.2
+			    :v-adjust 0.0
+			    :face 'dashboard-heading))
+  (insert "\n")
+  (insert "    apropos-command:    show commands that match PATTERN"))
+
+(setq dashboard-items '((recents . 10)
+			(bookmarks . 5)
+			(agenda . 10)))
+
+(setq dashboard-banner-logo-title "Dashboard")
+(setq dashboard-startup-banner nil)
+(setq dashboard-center-content t)
+
 (use-package dashboard
   :ensure t
   :config
   (dashboard-setup-startup-hook))
 
+(add-to-list 'dashboard-item-generators  '(custom . dashboard-useful-functions))
+(add-to-list 'dashboard-items '(custom) t)
 ;;; init.el ends here
