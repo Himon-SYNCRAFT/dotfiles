@@ -99,7 +99,7 @@ class Kanagawa:
     white = "#c8c093"
 
 
-theme = Kanagawa
+theme = CatppuccinMacchiato
 
 
 keys = [

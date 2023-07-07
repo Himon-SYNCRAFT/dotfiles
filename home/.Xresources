@@ -32,41 +32,41 @@
 !*.color15:    #E6E6E6
 
 ! Catppuccin Macchiato
-! *background: #24273A
-! *foreground: #CAD3F5
-! *cursorColor: #CAD3F5
+*background: #24273A
+*foreground: #CAD3F5
+*cursorColor: #CAD3F5
 
 ! black
-! *color0: #494D64
-! *color8: #5B6078
+*color0: #494D64
+*color8: #5B6078
 
 ! red
-! *color1: #ED8796
-! *color9: #ED8796
+*color1: #ED8796
+*color9: #ED8796
 
 ! green
-! *color2: #A6DA95
-! *color10: #A6DA95
+*color2: #A6DA95
+*color10: #A6DA95
 
 ! yellow
-! *color3: #EED49F
-! *color11: #EED49F
+*color3: #EED49F
+*color11: #EED49F
 
 ! blue
-! *color4: #8AADF4
-! *color12: #8AADF4
+*color4: #8AADF4
+*color12: #8AADF4
 
 ! magenta
-! *color5: #F5BDE6
-! *color13: #F5BDE6
+*color5: #F5BDE6
+*color13: #F5BDE6
 
 ! cyan
-! *color6: #8BD5CA
-! *color14: #8BD5CA
+*color6: #8BD5CA
+*color14: #8BD5CA
 
 ! white
-! *color7: #B8C0E0
-! *color15: #A5ADCB
+*color7: #B8C0E0
+*color15: #A5ADCB
 
 /* ! TokyoNight Storm */
 /* *background: #24283b */
@@ -127,42 +127,42 @@
 /* *color15: #3760bf */
 
 ! Kanagawa
-! special
-*foreground:   #dcd7ba
-*background:   #1f1f28
-*cursorColor:  #dcd7ba
+/* ! special */
+/* *foreground:   #dcd7ba */
+/* *background:   #1f1f28 */
+/* *cursorColor:  #dcd7ba */
 
-! black
-*color0:       #090618
-*color8:       #727169
+/* ! black */
+/* *color0:       #090618 */
+/* *color8:       #727169 */
 
-! red
-*color1:       #c34043
-*color9:       #e82424
+/* ! red */
+/* *color1:       #c34043 */
+/* *color9:       #e82424 */
 
-! green
-*color2:       #76946a
-*color10:      #98bb6c
+/* ! green */
+/* *color2:       #76946a */
+/* *color10:      #98bb6c */
 
-! yellow
-*color3:       #c0a36e
-*color11:      #e6c384
+/* ! yellow */
+/* *color3:       #c0a36e */
+/* *color11:      #e6c384 */
 
-! blue
-*color4:       #7e9cd8
-*color12:      #7fb4ca
+/* ! blue */
+/* *color4:       #7e9cd8 */
+/* *color12:      #7fb4ca */
 
-! magenta
-*color5:       #957fb8
-*color13:      #938aa9
+/* ! magenta */
+/* *color5:       #957fb8 */
+/* *color13:      #938aa9 */
 
-! cyan
-*color6:       #6a9589
-*color14:      #7aa89f
+/* ! cyan */
+/* *color6:       #6a9589 */
+/* *color14:      #7aa89f */
 
-! white
-*color7:       #c8c093
-*color15:      #dcd7ba
+/* ! white */
+/* *color7:       #c8c093 */
+/* *color15:      #dcd7ba */
 
 
 ! Catppuccin Frappe

@@ -5,6 +5,9 @@
 ;; mode key to super
 (setq x-super-keysym 'meta)
 
+;; stops creating temporary .# files
+(setq create-lockfiles nil)
+
 ;; remove default transparency (from .Xresources)
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
@@ -54,11 +57,13 @@
                                    dap-mode
 				   dashboard
                                    doom-modeline
+				   emmet-mode
                                    evil
 				   evil-org
                                    flycheck
                                    flycheck-phpstan
                                    fzf
+				   js2-mode
                                    lsp-mode
                                    lsp-ui
 				   lsp-pyright
@@ -68,9 +73,12 @@
 				   ranger
                                    tree-sitter
                                    tree-sitter-langs
+				   typescript-mode
                                    which-key
 				   with-venv
                                    yasnippet
+                                   yasnippet-snippets
+				   zoxide
                                    ))
 
 (if (package-installed-p 'catppuccin-theme)
@@ -137,9 +145,10 @@
   (evil-define-key 'normal 'global (kbd "<leader>rn") 'lsp-rename)
   (evil-define-key 'normal 'global (kbd "K") 'lsp-ui-doc-show)
   (evil-define-key 'normal 'global (kbd "M-RET") 'eval-buffer)
+  (evil-define-key 'visual 'global (kbd "M-RET") 'eval-region)
   (evil-define-key 'normal 'global (kbd "gcc") 'comment-line)
   (evil-define-key 'visual 'global (kbd "gc") 'comment-or-uncomment-region)
-  (evil-define-key 'visual 'global (kbd "M-RET") 'eval-expression)
+  (evil-define-key 'normal 'global (kbd "gz") 'zoxide-travel-with-query)
 )
 
 (use-package org
@@ -203,6 +212,15 @@
 (use-package lsp-treemacs
   :after lsp)
 
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package emmet-mode
+  :hook
+  (sgml-mode . emmet-mode)
+  (css-mode . emmet-mode))
+
 (use-package company
   :unless (file-remote-p default-directory)
   :after lsp-mode
@@ -254,6 +272,26 @@
   (php-mode . (lambda() (flycheck-add-next-checker 'lsp 'php-phpcs)))
   )
 
+(use-package js2-mode
+  :mode
+  "\\.js\\'"
+  "\\.jsx\\'"
+  :after flycheck lsp-mode
+  :hook
+  (js2-mode . lsp-deferred)
+  (js2-mode . tree-sitter-hl-mode)
+  )
+
+(use-package typescript-mode
+  :mode
+  "\\.ts\\'"
+  "\\.tsx\\'"
+  :after flycheck lsp-mode
+  :hook
+  (typescript-mode . lsp-deferred)
+  (typescript-mode . tree-sitter-hl-mode)
+  )
+
 (use-package lsp-pyright
   :ensure t
   :config
@@ -293,7 +331,10 @@
 			    :v-adjust 0.0
 			    :face 'dashboard-heading))
   (insert "\n")
-  (insert "    apropos-command:    show commands that match PATTERN"))
+  (insert "    apropos-command:          show commands that match PATTERN\n")
+  (insert "    emmed-expand-line (C-j):  replace the current line's emmet expression with the expansion\n")
+  (insert "    zoxide-travel-with-query (gz):  open folder/file by query\n")
+  )
 
 (setq dashboard-items '((recents . 10)
 			(bookmarks . 5)
@@ -310,4 +351,3 @@
 
 (add-to-list 'dashboard-item-generators  '(custom . dashboard-useful-functions))
 (add-to-list 'dashboard-items '(custom) t)
-;;; init.el ends here
