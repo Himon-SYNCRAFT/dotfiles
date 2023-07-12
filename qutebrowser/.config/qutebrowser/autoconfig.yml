@@ -6,15 +6,17 @@
 
 config_version: 2
 settings:
+  colors.webpage.bg:
+    global: white
   colors.webpage.darkmode.enabled:
     global: true
   completion.open_categories:
     global:
-      - searchengines
-      - quickmarks
-      - bookmarks
-      - history
-      - filesystem
+    - searchengines
+    - quickmarks
+    - bookmarks
+    - history
+    - filesystem
   content.desktop_capture:
     https://cloud.syncraft.pl: true
     https://meet.google.com: true
@@ -56,9 +58,9 @@ settings:
     global: null
   editor.command:
     global:
-      - st
-      - -e
-      - vim
-      - "{}"
+    - st
+    - -e
+    - vim
+    - '{}'
   scrolling.bar:
     global: never

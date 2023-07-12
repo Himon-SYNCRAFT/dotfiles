@@ -6,7 +6,7 @@ nm-applet &
 nitrogen --restore &
 dunst &
 # electron-mail &
-caffeine &
+# caffeine &
 unclutter --timeout 1 --jitter 25 --ignore-scrolling &
 # redshift-gtk &
 

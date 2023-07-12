@@ -81,11 +81,12 @@
 				   zoxide
                                    ))
 
-(if (package-installed-p 'catppuccin-theme)
-  (load-theme 'catppuccin :no-confirm))
-
 (setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha
-(catppuccin-reload)
+(if (package-installed-p 'catppuccin-theme)
+  (load-theme 'catppuccin :no-confirm)
+  (catppuccin-reload)
+  )
+
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -168,14 +169,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("86b46391e744b8fea6015224acd27e95de4c25dfd519167126e7cc5d45435864" default)))
+   '("86b46391e744b8fea6015224acd27e95de4c25dfd519167126e7cc5d45435864" default))
+ '(org-display-remote-inline-images 'cache)
+ '(org-hide-leading-stars t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-'(dashboard-banner-logo-title ((t (:height 3.0 :weight bold))))
- )
+ '(dashboard-banner-logo-title ((t (:height 3.0 :weight bold)))))
 
 (use-package tree-sitter)
 (use-package tree-sitter-langs)
