@@ -23,8 +23,8 @@ from libqtile.layout.xmonad import MonadTall, MonadWide
 
 mod = "mod1"
 super_key = "mod4"
-terminal = guess_terminal('st')
-terminal_in_fish = "st -w '' -e fish"
+terminal = guess_terminal('wezterm')
+terminal_in_fish = "wezterm"
 
 
 class DraculaTheme:
