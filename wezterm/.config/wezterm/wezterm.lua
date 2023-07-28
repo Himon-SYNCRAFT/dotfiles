@@ -13,15 +13,24 @@ config.font = wezterm.font_with_fallback {
 }
 
 config.font_rules = {
+    {
+        intensity = 'Bold',
+        italic = false,
+        font = wezterm.font('Hasklug Nerd Font', {
+            weight = 'Bold',
+            style = 'Normal',
+            stretch = 'Normal'
+        })
+    }, {
+        intensity = 'Bold',
+        italic = true,
+        font = wezterm.font('Hasklug Nerd Font', {
+            weight = 'Bold',
+            style = 'Italic',
+            stretch = 'Normal'
+        })
+    }
     -- {
-    -- intensity = 'Bold',
-    -- italic = false,
-    -- font = wezterm.font_with_fallback {
-    --     family = 'Hasklug Nerd Font',
-    --     weight = 'Bold',
-    --     style = 'Normal'
-    -- }
-    -- }, {
     -- intensity = 'Bold',
     -- italic = true,
     -- font = wezterm.font_with_fallback {
