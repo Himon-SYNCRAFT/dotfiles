@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local config = {}
 
@@ -38,5 +39,12 @@ config.freetype_load_target = 'Light'
 config.freetype_render_target = 'HorizontalLcd'
 config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = {'fish', '-l'}
+config.window_close_confirmation = "NeverPrompt"
+config.scrollback_lines = 3500
+
+config.keys = {
+    {key = 'k', mods = 'SUPER', action = act.ScrollByLine(-1)},
+    {key = 'j', mods = 'SUPER', action = act.ScrollByLine(1)}
+}
 
 return config

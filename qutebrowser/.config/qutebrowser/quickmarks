@@ -17,3 +17,4 @@ nginx http://syncraft-lab.ovh:81/login
 gitea http://git.syncraft.pl/himon/mokosh
 symfony https://symfony.com/doc/current/index.html
 sync http://localhost:8384/
+aker https://symfony.com/doc/current/setup.html
