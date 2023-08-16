@@ -256,7 +256,8 @@ c.tabs.show = 'never'
 # qutebrowser`.
 # Type: Dict
 c.url.searchengines = {
-    'DEFAULT': 'https://search.brave.com/search?q={}',
+    # 'DEFAULT': 'https://search.brave.com/search?q={}',
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'wa': 'https://wiki.archlinux.org/?search={}',
     'ap': 'https://archlinux.org/packages/?q={}',
