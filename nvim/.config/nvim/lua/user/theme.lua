@@ -24,15 +24,25 @@
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
-    dim_inactive = { enabled = false, shade = "dark", percentage = 0.5 },
+    dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
     transparent_background = true,
     styles = {
-        functions = { "bold" },
-        keywords = { "bold" },
-        booleans = { "bold" },
-        types = { "bold" }
+        functions = {"bold"},
+        keywords = {"bold"},
+        booleans = {"bold"},
+        types = {"bold"},
+        variables = {}
     },
-    integrations = { cmp = true, treesitter = true }
+    custom_highlights = function(colors)
+        return {["@parameter.php"] = {style = {}}}
+    end,
+    integrations = {
+        cmp = true,
+        treesitter = true,
+        gitsigns = true,
+        ts_rainbow = true,
+        telescope = {enabled = true}
+    }
 })
 vim.cmd [[colorscheme catppuccin]]
 -- Tokyonight
