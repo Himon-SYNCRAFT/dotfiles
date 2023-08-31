@@ -158,3 +158,11 @@ map("n", "<leader>zn", ":Telekasten new_templated_note<CR>", mapopts)
 map("n", "<leader>zrn", ":Telekasten rename_note<CR>", mapopts)
 map("n", "<leader>zt", ":Telekasten show_tags<CR>", mapopts)
 map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
+
+vim.keymap.set("n", "gf", function()
+    if require("obsidian").util.cursor_on_markdown_link() then
+        return "<cmd>ObsidianFollowLink<CR>"
+    else
+        return "gf"
+    end
+end, {noremap = false, expr = true})

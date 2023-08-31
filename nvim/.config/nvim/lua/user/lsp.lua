@@ -7,7 +7,7 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
     ensured_installed = {
         'phpstan', 'phpcs', 'php-cs-fixer', 'phpactor', 'intelephense',
-        'pyright', 'tsserver'
+        'pyright', 'tsserver', 'emmet_ls'
     }
 })
 
@@ -171,12 +171,14 @@ lspconfig.rust_analyzer.setup {
     handlers = handlers
 }
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lspconfig.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {
-        'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss',
-        'less', 'twig'
+        "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass",
+        "scss", "svelte", "pug", "typescriptreact", "vue", "twig"
     },
     init_options = {
         html = {
@@ -185,8 +187,7 @@ lspconfig.emmet_ls.setup({
                 ["bem.enabled"] = true
             }
         }
-    },
-    handlers = handlers
+    }
 })
 
 vim.lsp.handlers["textDocument/hover"] =

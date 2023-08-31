@@ -61,7 +61,7 @@ return require("packer").startup {
         use "wbthomason/packer.nvim"
         use 'nvim-lua/popup.nvim'
         use 'easymotion/vim-easymotion'
-        use 'chaoren/vim-wordmotion'
+        -- use 'chaoren/vim-wordmotion'
         use {
             "nvim-lualine/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true}
@@ -99,7 +99,6 @@ return require("packer").startup {
             requires = 'antoinemadec/FixCursorHold.nvim'
         }
 
-        use 'aca/emmet-ls'
         use 'nvim-tree/nvim-web-devicons'
         use({
             "ziontee113/icon-picker.nvim",
@@ -119,8 +118,14 @@ return require("packer").startup {
 
         use 'elkowar/yuck.vim'
 
-        use {'nvim-orgmode/orgmode'}
-        use 'akinsho/org-bullets.nvim'
+        -- use {'nvim-orgmode/orgmode'}
+        -- use 'akinsho/org-bullets.nvim'
+
+        use({
+            "epwalsh/obsidian.nvim",
+            requires = {"nvim-lua/plenary.nvim", 'hrsh7th/nvim-cmp'}
+            -- config = function() require('obsidian').setup({}) end
+        })
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,

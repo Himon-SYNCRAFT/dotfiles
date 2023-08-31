@@ -5,10 +5,14 @@ require("nvim-treesitter.configs").setup {
         'gleam', 'go', 'groovy', 'haskell', 'html', 'ini', 'javascript', 'json',
         'lua', 'make', 'norg', 'ocaml', 'ocaml_interface', 'ocamllex', 'org',
         'php', 'phpdoc', 'python', 'rust', 'scss', 'toml', 'tsx', 'twig',
-        'typescript', 'vim', 'vimdoc', 'yaml', 'yuck', 'zig'
+        'typescript', 'vim', 'vimdoc', 'yaml', 'yuck', 'zig', 'markdown',
+        'markdown_inline'
     },
 
-    highlight = {enable = true, additional_vim_regex_highlighting = {'org'}},
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = {'org', 'markdown'}
+    },
 
     indent = {
         enable = true,
