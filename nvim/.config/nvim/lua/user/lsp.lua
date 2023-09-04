@@ -11,6 +11,7 @@ require("mason-lspconfig").setup({
     }
 })
 
+local util = require("lspconfig/util")
 local lspconfig = require("lspconfig")
 local lsp_signature = require("lsp_signature")
 
@@ -96,22 +97,19 @@ lspconfig.phpactor.setup {
     handlers = handlers
 }
 
-lspconfig.jdtls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
-lspconfig.metals.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
 lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    handlers = handlers
+    handlers = handlers,
+    filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {unusedparams = true}
+        }
+    }
 }
 
 lspconfig.ocamllsp.setup {
@@ -131,7 +129,7 @@ local python_root_files = {
 lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dit = lspconfig.util.root_pattern(unpack(python_root_files)),
+    root_dir = util.root_pattern(unpack(python_root_files)),
     handlers = handlers
 }
 
@@ -148,24 +146,6 @@ lspconfig.lua_ls.setup {
 }
 
 lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
-lspconfig.vimls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
-lspconfig.gleam.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
-
-lspconfig.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
