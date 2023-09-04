@@ -7,30 +7,30 @@ end
 
 local kind_icons = {
     Text = "",
-    Method = "",
-    Function = "",
+    Method = "",
+    Function = "󰊕",
     Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "ﴯ",
+    Field = "󰭷",
+    Variable = "󰫧",
+    Class = "󰠱",
     Interface = "",
     Module = "",
-    Property = "ﰠ",
+    Property = "󰓹",
     Unit = "",
-    Value = "",
+    Value = "󰎠",
     Enum = "",
-    Keyword = "",
+    Keyword = "󰌋",
     Snippet = "",
-    Color = "",
-    File = "",
+    Color = "󰏘",
+    File = "󰈙",
     Reference = "",
-    Folder = "",
+    Folder = "󰉋",
     EnumMember = "",
-    Constant = "",
+    Constant = "󰏿",
     Struct = "",
     Event = "",
-    Operator = "",
-    TypeParameter = "",
+    Operator = "󱓉",
+    TypeParameter = "",
     Codeium = ""
 }
 
@@ -51,8 +51,9 @@ cmp.setup({
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind],
-                                          vim_item.kind) -- This concatonates the icons with the name of the item kind
+            -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind],
+            --                               vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format('%s ', kind_icons[vim_item.kind])
             -- Source
             vim_item.menu = ({
                 buffer = "[Buffer]",
@@ -150,7 +151,8 @@ cmp.setup({
 
     sources = cmp.config.sources({
         {name = 'nvim_lsp'}, {name = 'ultisnips'}, -- For ultisnips users.
-        {name = 'codeium'}, {name = 'path'}, {name = 'orgmode'}
+        {name = 'codeium'}, {name = 'path'}, {name = 'orgmode'},
+        {name = 'vim-dadbod-completion'}
     }, {{name = 'buffer', keyword_length = 5}})
 })
 

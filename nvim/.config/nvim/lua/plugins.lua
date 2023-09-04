@@ -17,9 +17,12 @@ augroup end
 
 return require("packer").startup {
     function(use)
+        use "wbthomason/packer.nvim"
+
         use {"catppuccin/nvim", as = "catppuccin"}
         -- use 'folke/tokyonight.nvim'
         -- use "rebelot/kanagawa.nvim"
+        --
         use "lukas-reineke/virt-column.nvim"
         use 'nvim-lua/plenary.nvim'
         use 'tpope/vim-repeat'
@@ -44,10 +47,7 @@ return require("packer").startup {
 
         -- Treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        -- use "nvim-treesitter/nvim-treesitter-refactor"
-        -- use 'nvim-treesitter/nvim-treesitter-textobjects'
         use "p00f/nvim-ts-rainbow"
-        -- use "David-Kunz/treesitter-unit"
 
         -- Telescope Extensions
         use 'nvim-telescope/telescope.nvim'
@@ -58,8 +58,6 @@ return require("packer").startup {
         use {'stevearc/dressing.nvim'}
 
         use "rcarriga/nvim-notify"
-        use "wbthomason/packer.nvim"
-        use 'nvim-lua/popup.nvim'
         use 'easymotion/vim-easymotion'
         -- use 'chaoren/vim-wordmotion'
         use {
@@ -74,7 +72,7 @@ return require("packer").startup {
 
         use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
 
-        use 'phpactor/phpactor'
+        -- use 'phpactor/phpactor'
         use 'nelsyeung/twig.vim'
 
         use 'folke/trouble.nvim'
@@ -107,6 +105,16 @@ return require("packer").startup {
             end
         })
 
+        use({
+            'folke/noice.nvim',
+            requires = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
+        })
+
+        -- db
+        use 'tpope/vim-dadbod'
+        use 'kristijanhusak/vim-dadbod-ui'
+        use 'kristijanhusak/vim-dadbod-completion'
+
         use('kmonad/kmonad-vim')
 
         -- use 'Exafunction/codeium.vim'
@@ -118,13 +126,9 @@ return require("packer").startup {
 
         use 'elkowar/yuck.vim'
 
-        -- use {'nvim-orgmode/orgmode'}
-        -- use 'akinsho/org-bullets.nvim'
-
         use({
             "epwalsh/obsidian.nvim",
             requires = {"nvim-lua/plenary.nvim", 'hrsh7th/nvim-cmp'}
-            -- config = function() require('obsidian').setup({}) end
         })
 
         if PACKER_BOOTSTRAP then require("packer").sync() end

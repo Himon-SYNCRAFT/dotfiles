@@ -12,6 +12,7 @@ require "user.lightbulb"
 require "user.markdown_previewer"
 require "user.theme"
 require "user.obsidian"
+require "user.noice"
 require "statusline"
 require "mappings"
 

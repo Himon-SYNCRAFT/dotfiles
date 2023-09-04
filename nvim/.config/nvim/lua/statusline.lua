@@ -68,6 +68,32 @@ custom_auto.insert.a.gui = "bold"
 custom_auto.replace.a.gui = "bold"
 custom_auto.visual.a.gui = "bold"
 
+local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+
+custom_auto.normal.a.bg = macchiato['sky']
+custom_auto.insert.a.bg = macchiato['maroon']
+custom_auto.command.a.bg = macchiato['blue']
+
+custom_auto.normal.b.bg = macchiato['mantle']
+custom_auto.command.b.bg = macchiato['mantle']
+custom_auto.insert.b.bg = macchiato['mantle']
+custom_auto.replace.b.bg = macchiato['mantle']
+custom_auto.visual.b.bg = macchiato['mantle']
+
+custom_auto.normal.c.bg = macchiato['mantle']
+
+custom_auto.normal.b.fg = macchiato['text']
+custom_auto.command.b.fg = macchiato['text']
+custom_auto.insert.b.fg = macchiato['text']
+custom_auto.replace.b.fg = macchiato['text']
+custom_auto.visual.b.fg = macchiato['text']
+
+custom_auto.normal.c.fg = macchiato['text']
+-- custom_auto.command.c.fg = macchiato['text']
+-- custom_auto.insert.c.fg = macchiato['text']
+-- custom_auto.replace.c.fg = macchiato['text']
+-- custom_auto.visual.c.fg = macchiato['text']
+
 require("lualine").setup {
     options = {
         -- theme = 'everforest',
@@ -75,17 +101,16 @@ require("lualine").setup {
         -- theme = 'tokyonight',
         -- theme = 'kanagawa',
         icons_enabled = true,
-        component_separators = {left = "", right = ""},
-        section_separators = {left = "", right = ""},
+        -- component_separators = {left = "", right = ""},
+        component_separators = {left = " 󰧟 ", right = " 󰧟 "},
+        -- section_separators = {left = "", right = ""},
+        section_separators = {left = "", right = ""},
         disabled_filetypes = {},
         always_divide_middle = false
     },
     sections = {
         lualine_a = {"mode"},
         lualine_b = {
-            {"b:gitsigns_head", icon = ""}, {"diff", source = diff_source}
-        },
-        lualine_c = {
             {
                 "diagnostics",
                 sources = {"nvim_diagnostic", "coc"},
@@ -97,16 +122,15 @@ require("lualine").setup {
                     warn = '󰀦 ',
                     info = '󰀨 ',
                     hint = '󰌵 '
-                    -- error = '󰅚 ',
-                    -- warn = '󰀪 ',
-                    -- info = '󰋽 ',
-                    -- hint = '󰌶 '
                 }
-            },
+            }
+        },
+        lualine_c = {
             {
                 "filename",
                 path = 1,
-                symbols = {modified = " ", readonly = " 󰌾"}
+                symbols = {modified = " ", readonly = " 󰌾"},
+                padding = 1
             }
         },
         lualine_x = {
@@ -117,7 +141,11 @@ require("lualine").setup {
                 icon = {align = "left"}
             }
         },
-        lualine_y = {{current_working_dir}},
+        -- lualine_y = {{current_working_dir}},
+        lualine_y = {
+            {current_working_dir}, {"b:gitsigns_head", icon = ""},
+            {"diff", source = diff_source}
+        },
         lualine_z = {{"location"}}
     },
     inactive_sections = {

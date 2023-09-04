@@ -159,6 +159,8 @@ map("n", "<leader>zrn", ":Telekasten rename_note<CR>", mapopts)
 map("n", "<leader>zt", ":Telekasten show_tags<CR>", mapopts)
 map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
 
+map("n", "<leader>db", ":DBUIToggle<CR>", mapopts)
+
 vim.keymap.set("n", "gf", function()
     if require("obsidian").util.cursor_on_markdown_link() then
         return "<cmd>ObsidianFollowLink<CR>"

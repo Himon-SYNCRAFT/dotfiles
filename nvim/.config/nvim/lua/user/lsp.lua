@@ -7,7 +7,7 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
     ensured_installed = {
         'phpstan', 'phpcs', 'php-cs-fixer', 'phpactor', 'intelephense',
-        'pyright', 'tsserver', 'emmet_ls'
+        'pyright', 'tsserver', 'emmet_ls', 'gopls'
     }
 })
 

@@ -25,7 +25,9 @@ vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
-    transparent_background = true,
+    -- transparent_background = true,
+    transparent_background = false,
+    no_italic = true,
     styles = {
         functions = {"bold"},
         keywords = {"bold"},
@@ -41,7 +43,9 @@ require("catppuccin").setup({
         treesitter = true,
         gitsigns = true,
         ts_rainbow = true,
-        telescope = {enabled = true}
+        telescope = {enabled = true},
+        noice = true,
+        notify = true
     }
 })
 vim.cmd [[colorscheme catppuccin]]
@@ -66,3 +70,7 @@ vim.cmd [[
     set background=dark
     set fcs=eob:\
 ]]
+
+local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+
+require("notify").setup({background_colour = macchiato['overlay2']})
