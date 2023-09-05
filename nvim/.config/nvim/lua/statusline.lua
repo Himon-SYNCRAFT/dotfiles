@@ -70,10 +70,6 @@ custom_auto.visual.a.gui = "bold"
 
 local macchiato = require('catppuccin.palettes').get_palette "macchiato"
 
-custom_auto.normal.a.bg = macchiato['sky']
-custom_auto.insert.a.bg = macchiato['maroon']
-custom_auto.command.a.bg = macchiato['blue']
-
 custom_auto.normal.b.bg = macchiato['mantle']
 custom_auto.command.b.bg = macchiato['mantle']
 custom_auto.insert.b.bg = macchiato['mantle']
