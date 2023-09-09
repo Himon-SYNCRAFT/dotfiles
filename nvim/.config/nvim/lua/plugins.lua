@@ -45,6 +45,14 @@ return require("packer").startup {
         use 'francoiscabrol/ranger.vim'
         use 'rbgrouleff/bclose.vim'
 
+        -- ai
+        use 'Exafunction/codeium.vim'
+        use({
+            "dpayne/CodeGPT.nvim",
+            requires = {"MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"},
+            config = function() require("codegpt.config") end
+        })
+
         -- Treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
         use "p00f/nvim-ts-rainbow"
@@ -116,13 +124,6 @@ return require("packer").startup {
         use 'kristijanhusak/vim-dadbod-completion'
 
         use('kmonad/kmonad-vim')
-
-        -- use 'Exafunction/codeium.vim'
-        use {
-            "jcdickinson/codeium.nvim",
-            requires = {"nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp"},
-            config = function() require("codeium").setup({}) end
-        }
 
         use 'elkowar/yuck.vim'
 

@@ -168,3 +168,15 @@ vim.keymap.set("n", "gf", function()
         return "gf"
     end
 end, {noremap = false, expr = true})
+
+-- codeium
+vim.keymap.set('i', '<C-o>', function() return vim.fn['codeium#Accept']() end,
+               {expr = true})
+-- vim.keymap.set('i', '<C-]>',
+--                function() return vim.fn['codeium#CycleCompletions'](1) end,
+--                {expr = true, remap = true})
+-- vim.keymap.set('i', '<C-}>',
+--                function() return vim.fn['codeium#CycleCompletions'](-1) end,
+--                {expr = true, remap = true})
+-- vim.keymap.set('i', '<C-?>', function() return vim.fn['codeium#Clear']() end,
+--                {expr = true, remap = true})

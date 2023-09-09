@@ -117,6 +117,8 @@ vim.cmd [[
     let g:UltiSnipsJumpBackwardTrigger="<c-b>"
     let g:UltiSnipsEditSplit="vertical"
 
+    let g:codeium_no_map_tab = 1
+
     "" Remember cursor position
     augroup vimrc-remember-cursor-position
         autocmd!
