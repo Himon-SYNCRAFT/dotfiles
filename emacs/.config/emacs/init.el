@@ -9,12 +9,12 @@
 (setq create-lockfiles nil)
 
 ;; remove default transparency (from .Xresources)
-(set-frame-parameter (selected-frame) 'alpha '(100 100))
-(add-to-list 'default-frame-alist '(alpha 100 100))
+; (set-frame-parameter (selected-frame) 'alpha '(100 100))
+; (add-to-list 'default-frame-alist '(alpha 100 100))
 
 ;; add transparent background in version 29
-(set-frame-parameter nil 'alpha-background 87)
-(add-to-list 'default-frame-alist '(alpha-background . 87))
+; (set-frame-parameter nil 'alpha-background 87)
+; (add-to-list 'default-frame-alist '(alpha-background . 87))
 
 ;; minimal ui
 (menu-bar-mode -1)

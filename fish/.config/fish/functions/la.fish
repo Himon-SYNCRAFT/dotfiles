@@ -1,7 +1,7 @@
 function la --description 'exa or ls'
     if ! command -v exa &> /dev/null
-        command ls -lA;
+        command ls -lAh --group-directories-first;
     else
-        command exa -la;
+        command exa -lah --group-directories-first;
     end
 end

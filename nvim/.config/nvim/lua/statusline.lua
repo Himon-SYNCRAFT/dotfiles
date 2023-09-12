@@ -20,6 +20,7 @@ local function current_working_dir()
 end
 
 local function codium_status() return vim.fn['codeium#GetStatusString']() end
+local CodeGPTModule = require("codegpt")
 
 -- local custom_auto = require "lualine.themes.auto"
 -- custom_auto.normal.a.bg = "#3a3a3a"
@@ -97,62 +98,62 @@ require("lualine").setup {
         icons_enabled = true,
         -- component_separators = {left = "", right = ""},
         -- component_separators = {left = " 󰧟 ", right = " 󰧟 "},
-        component_separators = {left = "", right = ""},
+        component_separators = { left = "", right = "" },
         -- section_separators = {left = "", right = ""},
-        section_separators = {left = "", right = ""},
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {},
         always_divide_middle = false
     },
     sections = {
-        lualine_a = {{"mode", padding = {left = 1, right = 1}}},
+        lualine_a = { { "mode", padding = { left = 1, right = 1 } } },
         lualine_b = {
             {
                 "diagnostics",
-                sources = {"nvim_diagnostic", "coc"},
+                sources = { "nvim_diagnostic", "coc" },
                 always_visible = true,
                 update_in_insert = false,
-                sections = {"error", "warn", "info", "hint"},
+                sections = { "error", "warn", "info", "hint" },
                 symbols = {
                     error = '󰅙 ',
                     warn = '󰀦 ',
                     info = '󰀨 ',
                     hint = '󰌵 '
                 },
-                padding = {right = 2, left = 3}
+                padding = { right = 2, left = 3 }
             }
         },
         lualine_c = {
             {
                 "filename",
                 path = 1,
-                symbols = {modified = " ", readonly = " 󰌾"},
-                color = {fg = palette['mauve']}
+                symbols = { modified = " ", readonly = " 󰌾" },
+                color = { fg = palette['mauve'] }
             },
             {
                 "filetype",
                 icon_only = true,
                 colored = true,
-                icon = {align = "left"}
-            }, {codium_status}
+                icon = { align = "left" }
+            }, { codium_status }, { CodeGPTModule.get_status }
         },
         lualine_x = {
             {
                 "b:gitsigns_head",
                 icon = "",
-                padding = {left = 2, right = 2},
-                color = {fg = palette['lavender']}
-            }, {"diff", source = diff_source, padding = {left = 2, right = 2}}
+                padding = { left = 2, right = 2 },
+                color = { fg = palette['lavender'] }
+            }, { "diff", source = diff_source, padding = { left = 2, right = 2 } }
         },
         lualine_y = {
             -- {current_working_dir},
             {
                 "location",
-                icon = {'', align = 'right'},
-                padding = {left = 2, right = 3},
-                color = {fg = palette['teal']}
+                icon = { '', align = 'right' },
+                padding = { left = 2, right = 3 },
+                color = { fg = palette['teal'] }
             }
         },
-        lualine_z = {{function() return '' end, padding = 0, draw_empty = true}}
+        lualine_z = { { function() return '' end, padding = 0, draw_empty = true } }
     },
     inactive_sections = {
         lualine_a = {},
@@ -161,12 +162,12 @@ require("lualine").setup {
             {
                 "filename",
                 path = 0,
-                symbols = {modified = " ", readonly = " 󰌾"}
+                symbols = { modified = " ", readonly = " 󰌾" }
             }
         },
-        lualine_x = {"location"},
-        lualine_y = {{current_buffer_number}},
+        lualine_x = { "location" },
+        lualine_y = { { current_buffer_number } },
         lualine_z = {}
     },
-    extensions = {'trouble', 'quickfix'}
+    extensions = { 'trouble', 'quickfix' }
 }
