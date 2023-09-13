@@ -16,21 +16,21 @@ local lspconfig = require("lspconfig")
 local lsp_signature = require("lsp_signature")
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
-                                                                      .protocol
-                                                                      .make_client_capabilities())
+    .protocol
+    .make_client_capabilities())
 local border = {
-    {"┌", "FloatBorder"}, {"─", "FloatBorder"}, {"┐", "FloatBorder"},
-    {"│", "FloatBorder"}, {"┘", "FloatBorder"}, {"─", "FloatBorder"},
-    {"└", "FloatBorder"}, {"│", "FloatBorder"}
+    { "┌", "FloatBorder" }, { "─", "FloatBorder" }, { "┐", "FloatBorder" },
+    { "│", "FloatBorder" }, { "┘", "FloatBorder" }, { "─", "FloatBorder" },
+    { "└", "FloatBorder" }, { "│", "FloatBorder" }
 
 }
 
 local handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
-                                          {border = border}),
+        { border = border }),
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers
-                                                      .signature_help,
-                                                  {border = border})
+        .signature_help,
+        { border = border })
 }
 
 local on_attach = function(client, bufnr)
@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = {noremap = true, silent = true, buffer = bufnr}
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -62,7 +62,7 @@ local on_attach = function(client, bufnr)
 
     lsp_signature.on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {border = "rounded"}
+        handler_opts = { border = "rounded" }
     }, bufnr)
 end
 
@@ -78,14 +78,15 @@ lspconfig.cssls.setup {
     handlers = handlers
 }
 
-lspconfig.html.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers
-}
+-- lspconfig.html.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     handlers = handlers,
+--     init_options = {provideFormatter = false}
+-- }
 
 lspconfig.intelephense.setup {
-    init_options = {licenceKey = "/home/himon/intelephense/license.txt"},
+    init_options = { licenceKey = "/home/himon/intelephense/license.txt" },
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers
@@ -101,13 +102,13 @@ lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers,
-    filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
         gopls = {
             completeUnimported = true,
             usePlaceholders = true,
-            analyses = {unusedparams = true}
+            analyses = { unusedparams = true }
         }
     }
 }
@@ -118,7 +119,7 @@ lspconfig.ocamllsp.setup {
     handlers = handlers
 }
 
-lspconfig.jsonls.setup {on_attach = on_attach, capabilities = capabilities}
+lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities }
 
 local python_root_files = {
     'WORKSPACE', -- added for Bazel; items below are from default config
@@ -171,7 +172,7 @@ lspconfig.emmet_ls.setup({
 })
 
 vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
+    vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
 
 vim.cmd [[
 " Here we configure Ionide-vim.

@@ -1,24 +1,23 @@
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
         'bash', 'c', 'cmake', 'comment', 'commonlisp', 'cpp', 'css', 'diff',
-        'dockerfile', 'dot', 'elixir', 'elm', 'erlang', 'fennel', 'fish',
-        'gleam', 'go', 'groovy', 'haskell', 'html', 'ini', 'javascript', 'json',
-        'lua', 'make', 'norg', 'ocaml', 'ocaml_interface', 'ocamllex', 'org',
-        'php', 'phpdoc', 'python', 'rust', 'scss', 'toml', 'tsx', 'twig',
-        'typescript', 'vim', 'vimdoc', 'yaml', 'yuck', 'zig', 'markdown',
-        'markdown_inline'
+        'dockerfile', 'dot', 'elixir', 'elm', 'erlang', 'fennel', 'fish', 'go',
+        'groovy', 'html', 'ini', 'json', 'lua', 'make', 'ocaml',
+        'ocaml_interface', 'ocamllex', 'org', 'php', 'phpdoc', 'python', 'scss',
+        'toml', 'tsx', 'twig', 'typescript', 'yaml', 'yuck', 'markdown',
+        'markdown_inline' -- , 'javascript',
     },
 
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = {'org', 'markdown'}
+        additional_vim_regex_highlighting = { 'org', 'markdown' }
     },
 
     indent = {
         enable = true,
         -- enable = false,
-        disable = {"python"}
+        disable = { "python" }
     },
 
-    rainbow = {enable = true, extended_mode = true, max_file_lines = nil}
+    rainbow = { enable = true, extended_mode = true, max_file_lines = nil }
 }

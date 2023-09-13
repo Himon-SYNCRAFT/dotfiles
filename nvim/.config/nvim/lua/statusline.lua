@@ -13,10 +13,14 @@ local function diff_source()
     end
 end
 
+---@diagnostic disable-next-line: unused-function, unused-local
 local function current_working_dir()
     local cwd = string.sub(vim.fn.getcwd(), 12)
     return "~" .. cwd
 end
+
+local function codium_status() return vim.fn['codeium#GetStatusString']() end
+local CodeGPTModule = require("codegpt")
 
 -- local custom_auto = require "lualine.themes.auto"
 -- custom_auto.normal.a.bg = "#3a3a3a"
@@ -59,90 +63,97 @@ end
 -- custom_auto.visual.y = custom_auto.visual.b
 -- custom_auto.visual.z = custom_auto.visual.a
 --
-local custom_auto = require "lualine.themes.catppuccin"
--- local custom_auto = require "lualine.themes.kanagawa"
+local theme = require "lualine.themes.catppuccin"
 
-custom_auto.normal.a.gui = "bold"
-custom_auto.command.a.gui = "bold"
-custom_auto.insert.a.gui = "bold"
-custom_auto.replace.a.gui = "bold"
-custom_auto.visual.a.gui = "bold"
+theme.normal.a.gui = "bold"
+theme.command.a.gui = "bold"
+theme.insert.a.gui = "bold"
+theme.replace.a.gui = "bold"
+theme.visual.a.gui = "bold"
 
-local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+local palette = require('catppuccin.palettes').get_palette "macchiato"
 
-custom_auto.normal.b.bg = macchiato['mantle']
-custom_auto.command.b.bg = macchiato['mantle']
-custom_auto.insert.b.bg = macchiato['mantle']
-custom_auto.replace.b.bg = macchiato['mantle']
-custom_auto.visual.b.bg = macchiato['mantle']
+theme.normal.b.bg = palette['mantle']
+theme.command.b.bg = palette['mantle']
+theme.insert.b.bg = palette['mantle']
+theme.replace.b.bg = palette['mantle']
+theme.visual.b.bg = palette['mantle']
 
-custom_auto.normal.c.bg = macchiato['mantle']
+theme.normal.c.bg = palette['mantle']
 
-custom_auto.normal.b.fg = macchiato['text']
-custom_auto.command.b.fg = macchiato['text']
-custom_auto.insert.b.fg = macchiato['text']
-custom_auto.replace.b.fg = macchiato['text']
-custom_auto.visual.b.fg = macchiato['text']
+theme.normal.b.fg = palette['text']
+theme.command.b.fg = palette['text']
+theme.insert.b.fg = palette['text']
+theme.replace.b.fg = palette['text']
+theme.visual.b.fg = palette['text']
 
-custom_auto.normal.c.fg = macchiato['text']
--- custom_auto.command.c.fg = macchiato['text']
--- custom_auto.insert.c.fg = macchiato['text']
--- custom_auto.replace.c.fg = macchiato['text']
--- custom_auto.visual.c.fg = macchiato['text']
+-- theme.normal.c.fg = palette['text']
 
 require("lualine").setup {
     options = {
         -- theme = 'everforest',
-        theme = custom_auto,
+        theme = theme,
         -- theme = 'tokyonight',
         -- theme = 'kanagawa',
         icons_enabled = true,
         -- component_separators = {left = "", right = ""},
-        component_separators = {left = " 󰧟 ", right = " 󰧟 "},
+        -- component_separators = {left = " 󰧟 ", right = " 󰧟 "},
+        component_separators = { left = "", right = "" },
         -- section_separators = {left = "", right = ""},
-        section_separators = {left = "", right = ""},
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {},
         always_divide_middle = false
     },
     sections = {
-        lualine_a = {"mode"},
+        lualine_a = { { "mode", padding = { left = 1, right = 1 } } },
         lualine_b = {
             {
                 "diagnostics",
-                sources = {"nvim_diagnostic", "coc"},
+                sources = { "nvim_diagnostic", "coc" },
                 always_visible = true,
                 update_in_insert = false,
-                sections = {"error", "warn", "info", "hint"},
+                sections = { "error", "warn", "info", "hint" },
                 symbols = {
                     error = '󰅙 ',
                     warn = '󰀦 ',
                     info = '󰀨 ',
                     hint = '󰌵 '
-                }
+                },
+                padding = { right = 2, left = 3 }
             }
         },
         lualine_c = {
             {
                 "filename",
                 path = 1,
-                symbols = {modified = " ", readonly = " 󰌾"},
-                padding = 1
-            }
-        },
-        lualine_x = {
+                symbols = { modified = " ", readonly = " 󰌾" },
+                color = { fg = palette['mauve'] }
+            },
             {
                 "filetype",
                 icon_only = true,
                 colored = true,
-                icon = {align = "left"}
+                icon = { align = "left" }
+            }, { codium_status }, { CodeGPTModule.get_status }
+        },
+        lualine_x = {
+            {
+                "b:gitsigns_head",
+                icon = "",
+                padding = { left = 2, right = 2 },
+                color = { fg = palette['lavender'] }
+            }, { "diff", source = diff_source, padding = { left = 2, right = 2 } }
+        },
+        lualine_y = {
+            -- {current_working_dir},
+            {
+                "location",
+                icon = { '', align = 'right' },
+                padding = { left = 2, right = 3 },
+                color = { fg = palette['teal'] }
             }
         },
-        -- lualine_y = {{current_working_dir}},
-        lualine_y = {
-            {current_working_dir}, {"b:gitsigns_head", icon = ""},
-            {"diff", source = diff_source}
-        },
-        lualine_z = {{"location"}}
+        lualine_z = { { function() return '' end, padding = 0, draw_empty = true } }
     },
     inactive_sections = {
         lualine_a = {},
@@ -151,12 +162,12 @@ require("lualine").setup {
             {
                 "filename",
                 path = 0,
-                symbols = {modified = " ", readonly = " 󰌾"}
+                symbols = { modified = " ", readonly = " 󰌾" }
             }
         },
-        lualine_x = {"location"},
-        lualine_y = {{current_buffer_number}},
+        lualine_x = { "location" },
+        lualine_y = { { current_buffer_number } },
         lualine_z = {}
     },
-    extensions = {}
+    extensions = { 'trouble', 'quickfix' }
 }

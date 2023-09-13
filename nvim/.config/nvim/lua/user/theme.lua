@@ -27,7 +27,7 @@ require("catppuccin").setup({
     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
     -- transparent_background = true,
     transparent_background = false,
-    no_italic = true,
+    no_italic = false,
     styles = {
         functions = {"bold"},
         keywords = {"bold"},
@@ -36,7 +36,10 @@ require("catppuccin").setup({
         variables = {}
     },
     custom_highlights = function(colors)
-        return {["@parameter.php"] = {style = {}}}
+        return {
+            ["@parameter.php"] = {style = {}}
+            -- ["@conditional.php"] = {style = {'bold'}}
+        }
     end,
     integrations = {
         cmp = true,

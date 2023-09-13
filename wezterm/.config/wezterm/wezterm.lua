@@ -6,8 +6,8 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 config.color_scheme = "Catppuccin Macchiato"
-config.window_background_opacity = 0.87
--- config.window_background_opacity = 1.0
+-- config.window_background_opacity = 0.87
+config.window_background_opacity = 1.0
 
 config.font = wezterm.font_with_fallback {
     'Hasklug Nerd Font', 'Noto Color Emoji'
@@ -17,7 +17,7 @@ config.font_rules = {
     {
         intensity = 'Bold',
         italic = false,
-        font = wezterm.font('Hasklug Nerd Font', {
+        font = wezterm.font('LiterationMono Nerd Font', {
             weight = 'Bold',
             style = 'Normal',
             stretch = 'Normal'
@@ -25,8 +25,25 @@ config.font_rules = {
     }, {
         intensity = 'Bold',
         italic = true,
-        font = wezterm.font('Hasklug Nerd Font', {
+        font = wezterm.font('LiterationMono Nerd Font', {
             weight = 'Bold',
+            style = 'Italic',
+            stretch = 'Normal'
+        })
+    }, {
+        intensity = 'Normal',
+        italic = false,
+        font = wezterm.font('LiterationMono Nerd Font', {
+            weight = 'Medium',
+            style = 'Normal',
+            stretch = 'Normal'
+        })
+
+    }, {
+        intensity = 'Normal',
+        italic = true,
+        font = wezterm.font('LiterationMono Nerd Font', {
+            weight = 'Medium',
             style = 'Italic',
             stretch = 'Normal'
         })
@@ -35,8 +52,11 @@ config.font_rules = {
 config.use_cap_height_to_scale_fallback_fonts = true
 config.font_size = 10
 config.dpi = 96
-config.freetype_load_target = 'Light'
+config.display_pixel_geometry = "RGB"
+config.freetype_load_target = 'Normal'
 config.freetype_render_target = 'HorizontalLcd'
+config.freetype_interpreter_version = 38
+config.freetype_load_flags = 'NO_AUTOHINT|DEFAULT'
 config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = {'fish', '-l'}
 config.window_close_confirmation = "NeverPrompt"

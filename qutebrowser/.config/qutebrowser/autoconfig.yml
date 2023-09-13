@@ -62,6 +62,8 @@ settings:
     - -e
     - vim
     - '{}'
+  qt.highdpi:
+    global: true
   scrolling.bar:
     global: never
   scrolling.smooth:
