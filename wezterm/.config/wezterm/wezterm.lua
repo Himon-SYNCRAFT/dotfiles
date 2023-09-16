@@ -61,6 +61,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = {'fish', '-l'}
 config.window_close_confirmation = "NeverPrompt"
 config.scrollback_lines = 3500
+config.enable_wayland = false
 
 config.keys = {
     {key = 'k', mods = 'SUPER', action = act.ScrollByLine(-1)},
