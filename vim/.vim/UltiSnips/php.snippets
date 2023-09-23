@@ -119,10 +119,6 @@ ${1:public} function ${2}($3): ${4:void}
 endsnippet
 
 snippet cl "class declaration template" b
-<?php
-
-declare(strict_types=1);
-
 namespace ${1:`!p
 relpath = os.path.relpath(path)
 m = re.search(r'[A-Z].+(?=/)', relpath)
@@ -136,10 +132,6 @@ class ${2:`!p snip.rv = snip.basename`}
 endsnippet
 
 snippet in "Interface declaration template" b
-<?php
-
-declare(strict_types=1);
-
 namespace ${1:`!p
 relpath = os.path.relpath(path)
 m = re.search(r'[A-Z].+(?=/)', relpath)
@@ -154,10 +146,6 @@ interface ${2:`!p snip.rv = snip.basename`}
 endsnippet
 
 snippet tr "Trait declaration template" b
-<?php
-
-declare(strict_types=1);
-
 namespace ${1:`!p
 relpath = os.path.relpath(path)
 m = re.search(r'[A-Z].+(?=/)', relpath)

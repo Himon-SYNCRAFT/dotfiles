@@ -33,6 +33,10 @@ require("catppuccin").setup({
         keywords = {"bold"},
         booleans = {"bold"},
         types = {"bold"},
+        -- functions = {},
+        -- keywords = {},
+        -- booleans = {},
+        -- types = {},
         variables = {}
     },
     custom_highlights = function(colors)

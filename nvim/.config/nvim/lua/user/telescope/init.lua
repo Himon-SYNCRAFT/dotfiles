@@ -123,6 +123,11 @@ M.project_files = function()
     gopts.prompt_title = " Find"
     gopts.prompt_prefix = "  "
     gopts.results_title = " Repo Files"
+    gopts.file_ignore_patterns = {
+        "node_modules", '.woff', '.woff2', '.svg', '.eot', '.ttf', '.jpg',
+        '.png', '.jpeg', '.nib', '.strings', '.gif', '.mp3', '.mp4', '.webm',
+        '.icns'
+    }
 
     fopts.hidden = true
     fopts.file_ignore_patterns = {

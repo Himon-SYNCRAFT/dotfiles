@@ -279,8 +279,8 @@
 !*.color15:      #ABB2BF
 
 Xft.autohint: 0
-/* Xft.lcdfilter: lcddefault */
-Xft.lcdfilter: lcdlight
+Xft.lcdfilter: lcddefault
+/* Xft.lcdfilter: lcdlight */
 /* Xft.hintstyle: hintslight */
 Xft.hintstyle: hintsfull
 Xft.hinting: 1

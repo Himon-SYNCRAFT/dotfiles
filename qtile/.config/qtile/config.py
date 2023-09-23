@@ -27,6 +27,8 @@ super_key = "mod4"
 # terminal_in_fish = "wezterm"
 terminal = guess_terminal('st')
 terminal_in_fish = "st -w '' -e fish"
+# terminal = guess_terminal('kitty')
+# terminal_in_fish = "kitty"
 
 
 class DraculaTheme:
