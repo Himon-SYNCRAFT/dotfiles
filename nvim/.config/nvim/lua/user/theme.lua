@@ -27,7 +27,7 @@ require("catppuccin").setup({
     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
     -- transparent_background = true,
     transparent_background = false,
-    no_italic = false,
+    no_italic = true,
     styles = {
         functions = {"bold"},
         keywords = {"bold"},
