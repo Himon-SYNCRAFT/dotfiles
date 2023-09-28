@@ -10,14 +10,14 @@ config.color_scheme = "Catppuccin Macchiato"
 config.window_background_opacity = 1.0
 
 config.font = wezterm.font_with_fallback {
-    'Hasklug Nerd Font', 'Noto Color Emoji'
+    'BlexMono Nerd Font Mono', 'Noto Color Emoji'
 }
 
 config.font_rules = {
     {
         intensity = 'Bold',
         italic = false,
-        font = wezterm.font('LiterationMono Nerd Font', {
+        font = wezterm.font('BlexMono Nerd Font Mono', {
             weight = 'Bold',
             style = 'Normal',
             stretch = 'Normal'
@@ -25,7 +25,7 @@ config.font_rules = {
     }, {
         intensity = 'Bold',
         italic = true,
-        font = wezterm.font('LiterationMono Nerd Font', {
+        font = wezterm.font('BlexMono Nerd Font Mono', {
             weight = 'Bold',
             style = 'Italic',
             stretch = 'Normal'
@@ -33,7 +33,7 @@ config.font_rules = {
     }, {
         intensity = 'Normal',
         italic = false,
-        font = wezterm.font('LiterationMono Nerd Font', {
+        font = wezterm.font('BlexMono Nerd Font Mono', {
             weight = 'Medium',
             style = 'Normal',
             stretch = 'Normal'
@@ -42,7 +42,7 @@ config.font_rules = {
     }, {
         intensity = 'Normal',
         italic = true,
-        font = wezterm.font('LiterationMono Nerd Font', {
+        font = wezterm.font('BlexMono Nerd Font Mono', {
             weight = 'Medium',
             style = 'Italic',
             stretch = 'Normal'
