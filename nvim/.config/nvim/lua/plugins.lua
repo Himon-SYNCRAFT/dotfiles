@@ -19,7 +19,7 @@ return require("packer").startup {
     function(use)
         use "wbthomason/packer.nvim"
 
-        use {"catppuccin/nvim", as = "catppuccin"}
+        use { "catppuccin/nvim", as = "catppuccin" }
         -- use 'folke/tokyonight.nvim'
         -- use "rebelot/kanagawa.nvim"
         --
@@ -30,13 +30,13 @@ return require("packer").startup {
         use 'tpope/vim-commentary'
         use {
             'SirVer/ultisnips',
-            requires = {{'honza/vim-snippets', rtp = '.'}},
+            requires = { { 'honza/vim-snippets', rtp = '.' } },
             config = function()
                 vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
                 vim.g.UltiSnipsJumpForwardTrigger =
-                    '<Plug>(ultisnips_jump_forward)'
+                '<Plug>(ultisnips_jump_forward)'
                 vim.g.UltiSnipsJumpBackwardTrigger =
-                    '<Plug>(ultisnips_jump_backward)'
+                '<Plug>(ultisnips_jump_backward)'
                 vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
                 vim.g.UltiSnipsRemoveSelectModeMappings = 0
             end
@@ -49,36 +49,36 @@ return require("packer").startup {
         use 'Exafunction/codeium.vim'
         use({
             "dpayne/CodeGPT.nvim",
-            requires = {"MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"},
+            requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
             config = function() require("codegpt.config") end
         })
 
         -- Treesitter
-        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
         use "p00f/nvim-ts-rainbow"
 
         -- Telescope Extensions
         use 'nvim-telescope/telescope.nvim'
         use "nvim-telescope/telescope-file-browser.nvim"
         use 'cljoly/telescope-repo.nvim'
-        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+        use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
         use 'nvim-telescope/telescope-media-files.nvim'
-        use {'stevearc/dressing.nvim'}
+        use { 'stevearc/dressing.nvim' }
 
         use "rcarriga/nvim-notify"
         use 'easymotion/vim-easymotion'
         -- use 'chaoren/vim-wordmotion'
         use {
             "nvim-lualine/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons", opt = true}
+            requires = { "kyazdani42/nvim-web-devicons", opt = true }
         }
-        use {"dag/vim-fish"}
+        use { "dag/vim-fish" }
         use {
             'folke/which-key.nvim',
             config = function() require("which-key").setup {} end
         }
 
-        use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
+        use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
         -- use 'phpactor/phpactor'
         use 'nelsyeung/twig.vim'
@@ -87,7 +87,7 @@ return require("packer").startup {
 
         -- debugger
         use 'mfussenegger/nvim-dap'
-        use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+        use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
         use 'Pocco81/dap-buddy.nvim'
         use 'vim-vdebug/vdebug'
 
@@ -109,13 +109,13 @@ return require("packer").startup {
         use({
             "ziontee113/icon-picker.nvim",
             config = function()
-                require("icon-picker").setup({disable_legacy_commands = true})
+                require("icon-picker").setup({ disable_legacy_commands = true })
             end
         })
 
         use({
             'folke/noice.nvim',
-            requires = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
+            requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
         })
 
         -- db
@@ -129,10 +129,12 @@ return require("packer").startup {
 
         use({
             "epwalsh/obsidian.nvim",
-            requires = {"nvim-lua/plenary.nvim", 'hrsh7th/nvim-cmp'}
+            requires = { "nvim-lua/plenary.nvim", 'hrsh7th/nvim-cmp' }
         })
+
+        use 'tjdevries/templ.nvim'
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,
-    config = {display = {open_fn = require("packer.util").float}}
+    config = { display = { open_fn = require("packer.util").float } }
 }

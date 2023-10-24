@@ -10,14 +10,14 @@ config.color_scheme = "Catppuccin Macchiato"
 config.window_background_opacity = 1.0
 
 config.font = wezterm.font_with_fallback {
-    'BlexMono Nerd Font Mono', 'Noto Color Emoji'
+    'LigaConsolas Nerd Font', 'Noto Color Emoji'
 }
 
 config.font_rules = {
     {
         intensity = 'Bold',
         italic = false,
-        font = wezterm.font('BlexMono Nerd Font Mono', {
+        font = wezterm.font('LigaConsolas Nerd Font', {
             weight = 'Bold',
             style = 'Normal',
             stretch = 'Normal'
@@ -25,7 +25,7 @@ config.font_rules = {
     }, {
         intensity = 'Bold',
         italic = true,
-        font = wezterm.font('BlexMono Nerd Font Mono', {
+        font = wezterm.font('LigaConsolas Nerd Font', {
             weight = 'Bold',
             style = 'Italic',
             stretch = 'Normal'
@@ -33,7 +33,7 @@ config.font_rules = {
     }, {
         intensity = 'Normal',
         italic = false,
-        font = wezterm.font('BlexMono Nerd Font Mono', {
+        font = wezterm.font('LigaConsolas Nerd Font', {
             weight = 'Medium',
             style = 'Normal',
             stretch = 'Normal'
@@ -42,7 +42,7 @@ config.font_rules = {
     }, {
         intensity = 'Normal',
         italic = true,
-        font = wezterm.font('BlexMono Nerd Font Mono', {
+        font = wezterm.font('LigaConsolas Nerd Font', {
             weight = 'Medium',
             style = 'Italic',
             stretch = 'Normal'
@@ -50,7 +50,8 @@ config.font_rules = {
     }
 }
 config.use_cap_height_to_scale_fallback_fonts = true
-config.font_size = 10
+config.font_size = 11
+config.line_height = 1.1
 config.dpi = 96
 config.display_pixel_geometry = "RGB"
 config.freetype_load_target = 'Normal'
