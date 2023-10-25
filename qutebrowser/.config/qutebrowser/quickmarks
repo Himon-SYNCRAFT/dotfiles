@@ -18,3 +18,5 @@ gitea http://git.syncraft.pl/himon/mokosh
 symfony https://symfony.com/doc/current/index.html
 sync http://localhost:8384/
 aker https://symfony.com/doc/current/setup.html
+prod swag http://192.168.1.71:7070/webservice-doc/
+swagger http://192.168.1.71:7070/webservice-doc/
