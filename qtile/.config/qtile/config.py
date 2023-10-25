@@ -23,10 +23,12 @@ from libqtile.layout.xmonad import MonadTall, MonadWide
 
 mod = "mod1"
 super_key = "mod4"
-# terminal = guess_terminal('wezterm')
-# terminal_in_fish = "wezterm"
 terminal = guess_terminal('st')
 terminal_in_fish = "st -w '' -e fish"
+# terminal = guess_terminal('alacritty')
+# terminal_in_fish = "alacritty"
+# terminal = guess_terminal('wezterm')
+# terminal_in_fish = "wezterm"
 # terminal = guess_terminal('kitty')
 # terminal_in_fish = "kitty"
 
@@ -248,7 +250,7 @@ layouts = [
     # Try more layouts by unleashing below layouts.
     # Stack(num_stacks=2),
     # Matrix(**layout_config),
-    MonadTall(**monad_layout_config, max_ratio=0.80, min_ratio=0.20),
+    MonadTall(**monad_layout_config, max_ratio=0.81, min_ratio=0.19),
     MonadWide(**monad_layout_config, max_ratio=0.8,
               min_ratio=0.20, ratio=0.20),
     Columns(**layout_config, insert_position=1),
@@ -372,6 +374,7 @@ dgroups_app_rules: List[Rule] = [
     Rule(Match(title='cmus'), group='7'),
     Rule(Match(title='ncmpcpp'), group='7'),
     Rule(Match(title='Spotify'), group='7'),
+    Rule(Match(wm_class='pl-com-stream-next-opus-Platform'), float=False),
 ]
 follow_mouse_focus = True
 bring_front_click = True
@@ -379,7 +382,7 @@ cursor_warp = False
 floating_layout = Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
-        *Floating.default_float_rules,
+        # *Floating.default_float_rules,
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
