@@ -62,6 +62,8 @@ settings:
     - -e
     - vim
     - '{}'
+  fonts.default_family:
+    global: Monaspace Neon Regular
   qt.highdpi:
     global: true
   scrolling.bar:

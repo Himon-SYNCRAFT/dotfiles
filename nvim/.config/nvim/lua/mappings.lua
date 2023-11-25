@@ -180,3 +180,6 @@ vim.keymap.set('i', '<C-o>', function() return vim.fn['codeium#Accept']() end,
 --                {expr = true, remap = true})
 -- vim.keymap.set('i', '<C-?>', function() return vim.fn['codeium#Clear']() end,
 --                {expr = true, remap = true})
+--
+map("n", "<leader>ga", [[:PhpactorGenerateAccessors<CR>]], mapopts)
+map("n", "<leader>gs", [[:PhpactorGenerateMutators<CR>]], mapopts)
