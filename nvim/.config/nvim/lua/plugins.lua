@@ -22,6 +22,7 @@ return require("packer").startup {
         use {"catppuccin/nvim", as = "catppuccin"}
         -- use 'folke/tokyonight.nvim'
         -- use "rebelot/kanagawa.nvim"
+        use "rose-pine/neovim"
         --
         use "lukas-reineke/virt-column.nvim"
         use 'nvim-lua/plenary.nvim'

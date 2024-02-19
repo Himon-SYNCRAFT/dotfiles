@@ -32,42 +32,80 @@
 !*.color7:     #BFBFBF
 !*.color15:    #E6E6E6
 
-! Catppuccin Macchiato
-*background: #24273A
-*foreground: #CAD3F5
-*cursorColor: #CAD3F5
+!! Catppuccin Macchiato
+!*background: #24273A
+!*foreground: #CAD3F5
+!*cursorColor: #CAD3F5
+!
+!! black
+!*color0: #494D64
+!*color8: #5B6078
+!
+!! red
+!*color1: #ED8796
+!*color9: #ED8796
+!
+!! green
+!*color2: #A6DA95
+!*color10: #A6DA95
+!
+!! yellow
+!*color3: #EED49F
+!*color11: #EED49F
+!
+!! blue
+!*color4: #8AADF4
+!*color12: #8AADF4
+!
+!! magenta
+!*color5: #F5BDE6
+!*color13: #F5BDE6
+!
+!! cyan
+!*color6: #8BD5CA
+!*color14: #8BD5CA
+!
+!! white
+!*color7: #B8C0E0
+!*color15: #A5ADCB
+
+! RosePine Moon
+! special
+*foreground:   #e0def4
+*background:   #232136
+*cursorColor:  #e0def4
 
 ! black
-*color0: #494D64
-*color8: #5B6078
+*color0:       #2a273f
+*color8:       #393552
 
 ! red
-*color1: #ED8796
-*color9: #ED8796
+*color1:       #eb6f92
+*color9:       #eb6f92
 
 ! green
-*color2: #A6DA95
-*color10: #A6DA95
+*color2:       #f6c177
+*color10:      #f6c177
 
 ! yellow
-*color3: #EED49F
-*color11: #EED49F
+*color3:       #ea9a97
+*color11:      #ea9a97
 
 ! blue
-*color4: #8AADF4
-*color12: #8AADF4
+*color4:       #3e8fb0
+*color12:      #3e8fb0
 
 ! magenta
-*color5: #F5BDE6
-*color13: #F5BDE6
+*color5:       #c4a7e7
+*color13:      #c4a7e7
 
 ! cyan
-*color6: #8BD5CA
-*color14: #8BD5CA
+*color6:       #9ccfd8
+*color14:      #9ccfd8
 
 ! white
-*color7: #B8C0E0
-*color15: #A5ADCB
+*color7:       #6e6a86
+*color15:      #908caa
 
 /* ! TokyoNight Storm */
 /* *background: #24283b */

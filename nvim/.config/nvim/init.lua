@@ -119,6 +119,8 @@ vim.cmd [[
 
     let g:codeium_no_map_tab = 1
 
+    let g:db_ui_auto_execute_table_helpers = 1
+
     "" Remember cursor position
     augroup vimrc-remember-cursor-position
         autocmd!
