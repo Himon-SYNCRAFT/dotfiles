@@ -105,7 +105,26 @@ class Kanagawa:
     white = "#c8c093"
 
 
-theme = CatppuccinMacchiato
+class RosePineMoon:
+    foreground = "#e0def4"
+    background = "#232136"
+
+    foreground_alt = "#6e6a86"
+    primary = "#eb6f92"
+    secondary = "#ea9a97"
+
+    alert = "#c34043"
+    black = "#2a273f"
+    red = "#eb6f92"
+    green = "#f6c177"
+    yellow = "#ea9a97"
+    blue = "#3e8fb0"
+    magenta = "#c4a7e7"
+    cyan = "#9ccfd8"
+    white = "#6e6a86"
+
+
+theme = RosePineMoon
 
 
 keys = [

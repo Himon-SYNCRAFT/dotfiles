@@ -28,10 +28,10 @@ local border = {
 
 local handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
-                                          {border = border}),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers
-                                                      .signature_help,
-                                                  {border = border})
+                                          {border = border})
+    -- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers
+    --                                                   .signature_help,
+    --                                               {border = border})
 }
 
 local on_attach = function(client, bufnr)
@@ -54,17 +54,15 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space><space>', vim.lsp.buf.code_action, bufopts)
-    vim.keymap
-        .set('v', '<space><space>', vim.lsp.buf.range_code_action, bufopts)
-    vim.keymap
-        .set('x', '<space><space>', vim.lsp.buf.range_code_action, bufopts)
+    vim.keymap.set('v', '<space><space>', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('x', '<space><space>', vim.lsp.buf.code_action, bufopts)
     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 
-    lsp_signature.on_attach({
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {border = "rounded"}
-    }, bufnr)
+    -- lsp_signature.on_attach({
+    --     bind = true, -- This is mandatory, otherwise border config won't get registered.
+    --     handler_opts = {border = "rounded"}
+    -- }, bufnr)
 end
 
 -- TODO: może to się przyda

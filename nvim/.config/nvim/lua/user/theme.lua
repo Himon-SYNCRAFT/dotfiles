@@ -126,8 +126,10 @@ require("rose-pine").setup({
         Type = {bold = true},
         ["@type"] = {bold = true},
         ["@function.method.call"] = {bold = true},
+        ["@function.method"] = {bold = true},
         Keyword = {bold = true},
         ["@keyword.conditional"] = {bold = true},
+        ["@keyword.repeat"] = {bold = true},
         Boolean = {bold = true}
     },
 
