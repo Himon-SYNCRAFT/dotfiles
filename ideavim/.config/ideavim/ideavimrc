@@ -36,6 +36,8 @@ noremap <F3> :NERDTreeToggle<CR>
 nmap s <Plug>(easymotion-f)
 nmap S <Plug>(easymotion-F)
 
+noremap gi :action GotoImplementation<CR>
+
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
