@@ -147,11 +147,11 @@ require("rose-pine").setup({
 })
 
 vim.cmd("colorscheme rose-pine")
+vim.opt.fillchars = 'eob: '
 
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
-    set background=dark
-    set fcs=eob:\
+	set background=dark
 ]]
 
 -- local macchiato = require('catppuccin.palettes').get_palette "macchiato"
