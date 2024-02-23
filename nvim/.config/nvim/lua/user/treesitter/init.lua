@@ -10,14 +10,14 @@ require("nvim-treesitter.configs").setup {
 
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = { 'org', 'markdown' }
+        additional_vim_regex_highlighting = {'org', 'markdown'}
     },
 
     indent = {
         enable = true,
         -- enable = false,
-        disable = { "python" }
+        disable = {"python"}
     },
 
-    rainbow = { enable = true, extended_mode = true, max_file_lines = nil }
+    rainbow = {enable = false, extended_mode = true, max_file_lines = nil}
 }

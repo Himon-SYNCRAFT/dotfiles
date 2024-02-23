@@ -22,6 +22,7 @@ return require("packer").startup {
         use {"catppuccin/nvim", as = "catppuccin"}
         -- use 'folke/tokyonight.nvim'
         -- use "rebelot/kanagawa.nvim"
+        use "rose-pine/neovim"
         --
         use "lukas-reineke/virt-column.nvim"
         use 'nvim-lua/plenary.nvim'
@@ -145,6 +146,18 @@ return require("packer").startup {
         })
 
         use 'tjdevries/templ.nvim'
+
+        use {
+            'rmagatti/auto-session',
+            config = function()
+                require("auto-session").setup {
+                    log_level = "error",
+                    auto_session_suppress_dirs = {
+                        "~/", "~/Projects", "~/Downloads", "/"
+                    }
+                }
+            end
+        }
 
         if PACKER_BOOTSTRAP then require("packer").sync() end
     end,
