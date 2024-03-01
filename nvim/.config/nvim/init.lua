@@ -16,7 +16,7 @@ require "user.noice"
 require "statusline"
 require "mappings"
 
-require('virt-column').setup({virtcolumn = "80", char = '|'})
+-- require('virt-column').setup({virtcolumn = "80", char = '|'})
 
 vim.fn.sign_define("DiagnosticSignError",
                    {texthl = "DiagnosticSignError", text = "󰅙", numhl = ""})
