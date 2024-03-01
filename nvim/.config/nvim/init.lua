@@ -13,7 +13,8 @@ require "user.markdown_previewer"
 require "user.theme"
 require "user.obsidian"
 require "user.noice"
-require "statusline"
+-- require "statusline"
+require "native_statusline"
 require "mappings"
 
 -- require('virt-column').setup({virtcolumn = "80", char = '|'})

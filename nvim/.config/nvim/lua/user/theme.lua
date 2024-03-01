@@ -130,7 +130,9 @@ require("rose-pine").setup({
         Keyword = {bold = true},
         ["@keyword.conditional"] = {bold = true},
         ["@keyword.repeat"] = {bold = true},
-        Boolean = {bold = true}
+        Boolean = {bold = true},
+        StatusLine = {fg = "love", bg = "love", blend = 10, bold = true},
+        StatusLineNC = {fg = "subtle", bg = "surface"}
     },
 
     before_highlight = function(group, highlight, palette)
