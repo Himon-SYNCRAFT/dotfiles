@@ -153,6 +153,9 @@ vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
 	set background=dark
     set cursorline
+
+    highlight ColorColumn ctermbg=12 guibg=#eb6f92 guifg=#2a273f
+    call matchadd('ColorColumn', '\%81v', 100)
 ]]
 
 -- local macchiato = require('catppuccin.palettes').get_palette "macchiato"
