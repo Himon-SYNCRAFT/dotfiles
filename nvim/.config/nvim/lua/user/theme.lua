@@ -147,8 +147,7 @@ require("rose-pine").setup({
 })
 
 vim.cmd("colorscheme rose-pine")
-vim.opt.fillchars = 'eob: '
-vim.opt.fillchars = 'vert: '
+vim.opt.fillchars = 'eob: ,vert: '
 
 vim.cmd [[
 	autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE

@@ -5,7 +5,8 @@ require("noice").setup({
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true
-        }
+        },
+        progress = {enabled = false}
     },
     -- you can enable a preset for easier configuration
     presets = {
@@ -32,6 +33,12 @@ require("noice").setup({
                     FloatBorder = "DiagnosticInfo"
                 }
             }
+        }
+    },
+    routes = {
+        {
+            filter = {event = "msg_show", kind = "search_count"},
+            opts = {skip = true}
         }
     }
 })
