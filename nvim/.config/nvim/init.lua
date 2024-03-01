@@ -1,40 +1,37 @@
-require "plugins"
-require "user.cmp"
-require "user.debugging"
-require "user.dressing"
-require "user.gitsigns"
-require "user.lsp"
-require "user.nullls"
-require "user.ranger"
-require "user.telescope"
-require "user.treesitter"
-require "user.lightbulb"
-require "user.markdown_previewer"
-require "user.theme"
-require "user.obsidian"
-require "user.noice"
+require("plugins")
+require("user.cmp")
+require("user.debugging")
+require("user.dressing")
+require("user.gitsigns")
+require("user.lsp")
+require("user.nullls")
+require("user.ranger")
+require("user.telescope")
+require("user.treesitter")
+require("user.lightbulb")
+require("user.markdown_previewer")
+require("user.theme")
+-- require "user.obsidian"
+require("user.noice")
 -- require "statusline"
-require "native_statusline"
-require "mappings"
+require("native_statusline")
+require("mappings")
 
 -- require('virt-column').setup({virtcolumn = "80", char = '|'})
 
-vim.fn.sign_define("DiagnosticSignError",
-                   {texthl = "DiagnosticSignError", text = "󰅙", numhl = ""})
+vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "󰅙", numhl = "" })
 
-vim.fn.sign_define("DiagnosticSignWarn",
-                   {texthl = "DiagnosticSignWarn", text = "󰀦", numhl = ""})
+vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "󰀦", numhl = "" })
 
-vim.fn.sign_define("DiagnosticSignHint",
-                   {texthl = "DiagnosticSignHint", text = "󰌵", numhl = ""})
+vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "󰌵", numhl = "" })
 
 vim.fn.sign_define("DiagnosticSignInformation", {
-    texthl = "DiagnosticSignInformation",
-    text = "󰀨",
-    numhl = ""
+	texthl = "DiagnosticSignInformation",
+	text = "󰀨",
+	numhl = "",
 })
 
-vim.cmd [[
+vim.cmd([[
     filetype plugin indent on
     set nocompatible
 
@@ -153,4 +150,4 @@ vim.cmd [[
         autocmd!
         autocmd FileType rust nnoremap ; A;
     augroup END
-]]
+]])

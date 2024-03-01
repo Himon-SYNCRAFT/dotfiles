@@ -24,8 +24,8 @@ picom &
 thunderbird &
 solaar -w hide &
 
-xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap &
 
 $HOME/.config/polybar/launch.sh &
 
-rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon
+rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon &

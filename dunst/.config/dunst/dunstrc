@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "500x5-10+80"
+    geometry = "600x6-10+80"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -57,7 +57,7 @@
     padding = 12
 
     # Horizontal padding.
-    horizontal_padding = 20
+    horizontal_padding = 30
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
@@ -86,7 +86,7 @@
 
     ### Text ###
 
-    font = Hack Nerd Font 10
+    font = monospace 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -293,23 +293,23 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282a36"
-    foreground = "#6272a4"
+    background = "#e0def4"
+    foreground = "#232136"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     icon = " "
 
 [urgency_normal]
-    background = "#282a36"
-    foreground = "#bd93f9"
+    background = "#e0def4"
+    foreground = "#232136"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     icon = " "
 
 [urgency_critical]
-    background = "#ff5555"
-    foreground = "#f8f8f2"
-    frame_color = "#ff5555"
+    background = "#eb6f92"
+    foreground = "#e0def4"
+    frame_color = "#eb6f92"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     icon = " "

@@ -385,3 +385,8 @@ config.bind('e', 'edit-url')
 catppuccin.setup(c, 'macchiato')
 
 c.colors.webpage.bg = 'white'
+
+c.qt.args = ["enable-gpu-rasterization", "ignore-gpu-blocklist",
+             "disable-site-isolation-trials"]
+# c.qt.args = ["enable-gpu-rasterization", "ignore-gpu-blocklist",
+#              "disable-site-isolation-trials", "single-process"]
