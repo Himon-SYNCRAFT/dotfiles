@@ -91,13 +91,34 @@ local CodeGPTModule = require("codegpt")
 
 -- theme.normal.c.fg = palette['text']
 
+local palette = require("rose-pine.palette")
+local theme = require "lualine.themes.rose-pine"
+
+-- theme.normal.a.bg = palette.love
+-- theme.command.a.bg = palette.love
+-- theme.insert.a.bg = palette.love
+-- theme.replace.a.bg = palette.love
+-- theme.visual.a.bg = palette.love
+
+-- theme.normal.b.bg = palette.love
+-- theme.command.b.bg = palette.love
+-- theme.insert.b.bg = palette.love
+-- theme.replace.b.bg = palette.love
+-- theme.visual.b.bg = palette.love
+
+-- theme.normal.c.bg = palette.love
+-- theme.command.c.bg = palette.love
+-- theme.insert.c.bg = palette.love
+-- theme.replace.c.bg = palette.love
+-- theme.visual.c.bg = palette.love
+
 require("lualine").setup {
     options = {
         -- theme = 'everforest',
         -- theme = theme,
         -- theme = 'tokyonight',
         -- theme = 'kanagawa',
-        theme = 'rose-pine',
+        theme = 'rose-pine-alt',
         icons_enabled = true,
         -- component_separators = {left = "", right = ""},
         -- component_separators = {left = " 󰧟 ", right = " 󰧟 "},
@@ -108,7 +129,12 @@ require("lualine").setup {
         always_divide_middle = false
     },
     sections = {
-        lualine_a = {{"mode", padding = {left = 1, right = 1}}},
+        lualine_a = {
+            {
+                "mode"
+                -- padding = {left = 1, right = 1}
+            }
+        },
         lualine_b = {
             {
                 "diagnostics",
@@ -121,8 +147,8 @@ require("lualine").setup {
                     warn = '󰀦 ',
                     info = '󰀨 ',
                     hint = '󰌵 '
-                },
-                padding = {right = 2, left = 2}
+                }
+                -- padding = {right = 2, left = 2}
             }
         },
         lualine_c = {
@@ -142,17 +168,21 @@ require("lualine").setup {
         lualine_x = {
             {
                 "b:gitsigns_head",
-                icon = "",
-                padding = {left = 2, right = 2}
+                icon = ""
+                -- padding = {left = 2, right = 2}
                 -- color = {fg = palette['lavender']}
-            }, {"diff", source = diff_source, padding = {left = 2, right = 2}}
+            }, {
+                "diff",
+                source = diff_source
+                -- padding = {left = 2, right = 2}
+            }
         },
         lualine_y = {
             -- {current_working_dir},
             {
                 "location",
-                icon = {'', align = 'right'},
-                padding = {left = 2, right = 2}
+                icon = {'', align = 'right'}
+                -- padding = {left = 2, right = 2}
                 -- color = {fg = palette['teal']}
             }
         },
