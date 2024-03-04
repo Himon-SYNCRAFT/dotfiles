@@ -82,7 +82,7 @@ local function filename()
 	local fname = vim.fn.expand("%:t")
 
 	if fname == "" then
-		fname = "[No Name]"
+		fname = "- No Name -"
 	end
 
 	if not is_buffer_writable() then

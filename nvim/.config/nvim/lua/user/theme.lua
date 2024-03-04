@@ -130,6 +130,9 @@ require("rose-pine").setup({
 		Keyword = { bold = true },
 		["@keyword.conditional"] = { bold = true },
 		["@keyword.repeat"] = { bold = true },
+		["@keyword.operator"] = { bold = true, fg = "pine" },
+		["@punctuation.bracket"] = { fg = "pine" },
+		Operator = { fg = "love" },
 		Boolean = { bold = true },
 		StatusLine = { fg = "love", bg = "love", blend = 10, bold = true },
 		StatusLineNC = { fg = "subtle", bg = "surface" },
@@ -158,7 +161,7 @@ vim.cmd([[
     set noshowmode
 
     highlight ColorColumn ctermbg=12 guibg=#eb6f92 guifg=#2a273f
-    call matchadd('ColorColumn', '\%81v', 100)
+    call matchadd('ColorColumn', '\%82v', 100)
 ]])
 
 -- local macchiato = require('catppuccin.palettes').get_palette "macchiato"
