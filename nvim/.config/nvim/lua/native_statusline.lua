@@ -70,13 +70,30 @@ local function filepath()
 	return string.format(" %%<%s/", fpath)
 end
 
+local function is_buffer_writable()
+	return vim.bo.modifiable and vim.bo.readonly == false
+end
+
+local function is_buffer_modified()
+	return vim.bo.modified
+end
+
 local function filename()
 	local fname = vim.fn.expand("%:t")
 
 	if fname == "" then
-		return "[No Name]"
+		fname = "[No Name]"
 	end
-	return " " .. fname .. "%r%m "
+
+	if not is_buffer_writable() then
+		fname = "󰌾 " .. fname
+	end
+
+	if is_buffer_modified() then
+		fname = "󰧞 " .. fname
+	end
+
+	return " " .. fname .. " "
 end
 
 local function filetype()
@@ -113,7 +130,7 @@ local function lineinfo()
 	if vim.bo.filetype == "alpha" then
 		return ""
 	end
-	return " %P %l:%c "
+	return " %l/%L: %c "
 end
 
 Statusline = {}
