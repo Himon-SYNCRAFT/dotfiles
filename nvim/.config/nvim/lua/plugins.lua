@@ -23,12 +23,12 @@ return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
 
-		use({ "catppuccin/nvim", as = "catppuccin" })
+		-- use({ "catppuccin/nvim", as = "catppuccin" })
 		-- use 'folke/tokyonight.nvim'
-		-- use "rebelot/kanagawa.nvim"
+		-- use("rebelot/kanagawa.nvim")
 		use("rose-pine/neovim")
 		--
-		use("lukas-reineke/virt-column.nvim")
+		-- use("lukas-reineke/virt-column.nvim")
 		use("nvim-lua/plenary.nvim")
 		use("tpope/vim-repeat")
 		use("tpope/vim-surround")
@@ -50,13 +50,13 @@ return require("packer").startup({
 
 		-- ai
 		use("Exafunction/codeium.vim")
-		use({
-			"dpayne/CodeGPT.nvim",
-			requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-			config = function()
-				require("codegpt.config")
-			end,
-		})
+		-- use({
+		-- 	"dpayne/CodeGPT.nvim",
+		-- 	requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		-- 	config = function()
+		-- 		require("codegpt.config")
+		-- 	end,
+		-- })
 
 		-- Treesitter
 		use({
@@ -73,48 +73,37 @@ return require("packer").startup({
 		use("nvim-telescope/telescope-file-browser.nvim")
 		use("cljoly/telescope-repo.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-		use("nvim-telescope/telescope-media-files.nvim")
-		use({ "stevearc/dressing.nvim" })
+		-- use("nvim-telescope/telescope-media-files.nvim")
+		-- use({ "stevearc/dressing.nvim" })
 
-		use("rcarriga/nvim-notify")
-		use("easymotion/vim-easymotion")
+		-- use("rcarriga/nvim-notify")
+		-- use("easymotion/vim-easymotion")
 		-- use 'chaoren/vim-wordmotion'
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		})
-		use({ "dag/vim-fish" })
-		use({
-			"folke/which-key.nvim",
-			config = function()
-				require("which-key").setup({})
-			end,
-		})
+		-- use({
+		-- 	"nvim-lualine/lualine.nvim",
+		-- 	requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		-- })
+		-- use({ "dag/vim-fish" })
+		-- use({
+		-- 	"folke/which-key.nvim",
+		-- 	config = function()
+		-- 		require("which-key").setup({})
+		-- 	end,
+		-- })
 
 		use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		use("phpactor/phpactor")
-		-- use({
-		--     "gbprod/phpactor.nvim",
-		--     -- run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-		--     requires = {
-		--         "nvim-lua/plenary.nvim", -- required to update phpactor
-		--         "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
-		--     },
-		--     config = function()
-		--         require("phpactor").setup({install = {bin = "phpactor"}})
-		--     end
-		-- })
 
-		use("nelsyeung/twig.vim")
+		-- use("nelsyeung/twig.vim")
 
 		use("folke/trouble.nvim")
 
 		-- debugger
-		use("mfussenegger/nvim-dap")
-		use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-		use("Pocco81/dap-buddy.nvim")
-		use("vim-vdebug/vdebug")
+		-- use("mfussenegger/nvim-dap")
+		-- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+		-- use("Pocco81/dap-buddy.nvim")
+		-- use("vim-vdebug/vdebug")
 
 		-- lsp
 		use({
@@ -137,31 +126,30 @@ return require("packer").startup({
 		})
 
 		use("nvim-tree/nvim-web-devicons")
-		use({
-			"ziontee113/icon-picker.nvim",
-			config = function()
-				require("icon-picker").setup({ disable_legacy_commands = true })
-			end,
-		})
+		-- use({
+		-- 	"ziontee113/icon-picker.nvim",
+		-- 	config = function()
+		-- 		require("icon-picker").setup({ disable_legacy_commands = true })
+		-- 	end,
+		-- })
 
-		use({
-			"folke/noice.nvim",
-			requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-		})
+		-- use({
+		-- 	"folke/noice.nvim",
+		-- 	requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+		-- })
 
 		-- db
 		use("tpope/vim-dadbod")
 		use("kristijanhusak/vim-dadbod-ui")
 		use("kristijanhusak/vim-dadbod-completion")
 
-		use("kmonad/kmonad-vim")
+		-- use("kmonad/kmonad-vim")
+		-- use("elkowar/yuck.vim")
 
-		use("elkowar/yuck.vim")
-
-		use({
-			"epwalsh/obsidian.nvim",
-			requires = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
-		})
+		-- use({
+		-- 	"epwalsh/obsidian.nvim",
+		-- 	requires = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
+		-- })
 
 		use("tjdevries/templ.nvim")
 

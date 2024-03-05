@@ -1,3 +1,4 @@
+!*.alpha:  0.5
 *.alpha:  0.87
 !*.alpha:  0.92
 !*.alpha:  0.95
@@ -33,7 +34,7 @@
 !*.color7:     #BFBFBF
 !*.color15:    #E6E6E6
 
-!! Catppuccin Macchiato
+! Catppuccin Macchiato
 !*background: #24273A
 !*foreground: #CAD3F5
 !*cursorColor: #CAD3F5
@@ -167,42 +168,42 @@
 /* *color15: #3760bf */
 
 ! Kanagawa
-/* ! special */
-/* *foreground:   #dcd7ba */
-/* *background:   #1f1f28 */
-/* *cursorColor:  #dcd7ba */
-
-/* ! black */
-/* *color0:       #090618 */
-/* *color8:       #727169 */
-
-/* ! red */
-/* *color1:       #c34043 */
-/* *color9:       #e82424 */
-
-/* ! green */
-/* *color2:       #76946a */
-/* *color10:      #98bb6c */
-
-/* ! yellow */
-/* *color3:       #c0a36e */
-/* *color11:      #e6c384 */
-
-/* ! blue */
-/* *color4:       #7e9cd8 */
-/* *color12:      #7fb4ca */
-
-/* ! magenta */
-/* *color5:       #957fb8 */
-/* *color13:      #938aa9 */
-
-/* ! cyan */
-/* *color6:       #6a9589 */
-/* *color14:      #7aa89f */
-
-/* ! white */
-/* *color7:       #c8c093 */
-/* *color15:      #dcd7ba */
+! special
+!*foreground:   #dcd7ba
+!*background:   #1f1f28
+!*cursorColor:  #dcd7ba
+!
+!! black
+!*color0:       #090618
+!*color8:       #727169
+!
+!! red
+!*color1:       #c34043
+!*color9:       #e82424
+!
+!! green
+!*color2:       #76946a
+!*color10:      #98bb6c
+!
+!! yellow
+!*color3:       #c0a36e
+!*color11:      #e6c384
+!
+!! blue
+!*color4:       #7e9cd8
+!*color12:      #7fb4ca
+!
+!! magenta
+!*color5:       #957fb8
+!*color13:      #938aa9
+!
+!! cyan
+!*color6:       #6a9589
+!*color14:      #7aa89f
+!
+!! white
+!*color7:       #c8c093
+!*color15:      #dcd7ba
 
 
 ! Catppuccin Frappe
