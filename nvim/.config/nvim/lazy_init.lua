@@ -23,7 +23,9 @@ require("lazy").setup({
     { "tpope/vim-commentary" },
     {
         "SirVer/ultisnips",
-        event = { "VeryLazy" },
+        -- dependencies = {
+        --     { "honza/vim-snippets", rtp = "." }
+        -- },
         config = function()
             vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
             vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
@@ -32,20 +34,16 @@ require("lazy").setup({
             vim.g.UltiSnipsRemoveSelectModeMappings = 0
         end,
     },
-    { "Raimondi/delimitMate",                      event = "VeryLazy" },
+    { "Raimondi/delimitMate" },
     {
         "francoiscabrol/ranger.vim",
-        event = { "VeryLazy" },
         dependencies = {
             { "rbgrouleff/bclose.vim" },
         },
     },
 
     -- ai
-    {
-        "Exafunction/codeium.vim",
-        event = { "VeryLazy" },
-    },
+    { "Exafunction/codeium.vim" },
 
     -- Treesitter
     {
@@ -85,7 +83,6 @@ require("lazy").setup({
                     "python",
                     "scss",
                     "toml",
-                    "templ",
                     "tsx",
                     "twig",
                     "typescript",
@@ -106,21 +103,21 @@ require("lazy").setup({
             })
         end,
     },
+    -- {
+    -- 	"p00f/nvim-ts-rainbow",
+    -- 	dependencies = {
+    -- 		"nvim-treesitter/nvim-treesitter",
+    -- 	},
+    -- },
 
     -- Telescope Extensions
     { "nvim-telescope/telescope.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
     { "cljoly/telescope-repo.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
-    { "stevearc/dressing.nvim",                    event = "VeryLazy" },
-    {
-        "lewis6991/gitsigns.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
-    {
-        "phpactor/phpactor",
-        event = { "VeryLazy" },
-    },
+    { "stevearc/dressing.nvim" },
+    { "lewis6991/gitsigns.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
+    { "phpactor/phpactor" },
     { "folke/trouble.nvim" },
 
     -- lsp
@@ -129,19 +126,13 @@ require("lazy").setup({
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         "nvimtools/none-ls.nvim",
-        "ray-x/lsp_signature.nvim",
-    },
-
-    {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "quangnguyen30192/cmp-nvim-ultisnips",
-        },
-        event = "VeryLazy"
+        "quangnguyen30192/cmp-nvim-ultisnips",
+        "ray-x/lsp_signature.nvim",
     },
 
     {
@@ -152,16 +143,9 @@ require("lazy").setup({
     { "nvim-tree/nvim-web-devicons" },
 
     -- db
-    {
-        "tpope/vim-dadbod",
-    },
-    {
-        "kristijanhusak/vim-dadbod-ui",
-    },
-    {
-        "kristijanhusak/vim-dadbod-completion",
-        event = { "VeryLazy" },
-    },
+    { "tpope/vim-dadbod" },
+    { "kristijanhusak/vim-dadbod-ui" },
+    { "kristijanhusak/vim-dadbod-completion" },
 
     {
         "rmagatti/auto-session",
@@ -179,18 +163,27 @@ require("lazy").setup({
     },
 })
 
+require("user.cmp")
 require("user.dressing")
 require("user.gitsigns")
+require("user.lsp")
+require("user.nullls")
 require("user.ranger")
 require("user.telescope")
 -- require("user.treesitter")
-require("user.theme")
-require("user.lsp")
-require("user.cmp")
 require("user.lightbulb")
-require("user.nullls")
+require("user.theme")
 require("native_statusline")
 require("mappings")
+
+vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "󰅙", numhl = "" })
+vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "󰀦", numhl = "" })
+vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "󰌵", numhl = "" })
+vim.fn.sign_define("DiagnosticSignInformation", {
+    texthl = "DiagnosticSignInformation",
+    text = "󰀨",
+    numhl = "",
+})
 
 vim.cmd([[
     filetype plugin indent on
@@ -224,8 +217,6 @@ vim.cmd([[
 
     set splitright
     set splitbelow
-
-    set shortmess=filnxtToOFcsWAICS
 
 	if has('unnamedplus')
 	    set clipboard=unnamed,unnamedplus
@@ -261,8 +252,15 @@ vim.cmd([[
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
 
+    " Disable default mappings
+    let g:EasyMotion_do_mapping = 0
+
+    " Turn on case-insensitive feature
+    let g:EasyMotion_smartcase = 1
+
     augroup vimrc-php
         autocmd!
+        autocmd FileType php nmap <Leader>m :PhpactorContextMenu<CR>
         autocmd FileType php inoremap .. ->
         autocmd FileType php nnoremap ; A;
         autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4

@@ -74,7 +74,7 @@ return require("packer").startup({
 		use("cljoly/telescope-repo.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		-- use("nvim-telescope/telescope-media-files.nvim")
-		-- use({ "stevearc/dressing.nvim" })
+		use({ "stevearc/dressing.nvim" })
 
 		-- use("rcarriga/nvim-notify")
 		-- use("easymotion/vim-easymotion")
