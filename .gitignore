@@ -4,3 +4,5 @@ nvim/.config/nvim/plugin/packer_compiled.lua
 bkp
 *.pyc
 qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
+qutebrowser/.config/qutebrowser/catppuccin
+qutebrowser/.config/qutebrowser/catppuccin
