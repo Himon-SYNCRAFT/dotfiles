@@ -110,7 +110,7 @@ class RosePineMoon:
     background = "#232136"
 
     foreground_alt = "#6e6a86"
-    primary = "#6e6a86"
+    primary = "#3b3946"
     secondary = "#ea9a97"
 
     alert = "#c34043"
@@ -246,7 +246,7 @@ for i in groups:
 border_focus = theme.primary
 border_normal = theme.background
 
-border_width = 1
+border_width = 0
 default_margin = 20
 margin = [default_margin, default_margin, default_margin, default_margin]
 

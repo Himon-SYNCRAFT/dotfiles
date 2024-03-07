@@ -10,6 +10,8 @@ settings:
     global: white
   colors.webpage.darkmode.enabled:
     global: true
+  colors.webpage.preferred_color_scheme:
+    global: light
   completion.open_categories:
     global:
     - searchengines

@@ -382,7 +382,8 @@ config.bind('e', 'edit-url')
 #         'horizontal': 8
 #     }
 # })
-catppuccin.setup(c, 'macchiato')
+# catppuccin.setup(c, 'macchiato')
+catppuccin.setup(c, 'latte')
 
 c.colors.webpage.bg = 'white'
 

@@ -1,9 +1,9 @@
 !*.alpha:  0.5
-*.alpha:  0.87
+!*.alpha:  0.87
 !*.alpha:  0.92
 !*.alpha:  0.95
 !*.alpha:  0.98
-!*.alpha:  1
+*.alpha:  1
 
 ! Dracula Xresources palette
 !*.foreground: #F8F8F2
@@ -71,43 +71,81 @@
 !*color7: #B8C0E0
 !*color15: #A5ADCB
 
-! RosePine Moon
+/* ! RosePine Moon */
+/* ! special */
+/* *foreground:   #e0def4 */
+/* *background:   #232136 */
+/* *cursorColor:  #e0def4 */
+
+/* ! black */
+/* *color0:       #2a273f */
+/* *color8:       #393552 */
+
+/* ! red */
+/* *color1:       #eb6f92 */
+/* *color9:       #eb6f92 */
+
+/* ! green */
+/* *color2:       #f6c177 */
+/* *color10:      #f6c177 */
+
+/* ! yellow */
+/* *color3:       #ea9a97 */
+/* *color11:      #ea9a97 */
+
+/* ! blue */
+/* *color4:       #3e8fb0 */
+/* *color12:      #3e8fb0 */
+
+/* ! magenta */
+/* *color5:       #c4a7e7 */
+/* *color13:      #c4a7e7 */
+
+/* ! cyan */
+/* *color6:       #9ccfd8 */
+/* *color14:      #9ccfd8 */
+
+/* ! white */
+/* *color7:       #6e6a86 */
+/* *color15:      #908caa */
+
+! Rose Pine Dawn
 ! special
-*foreground:   #e0def4
-*background:   #232136
-*cursorColor:  #e0def4
+*foreground:   #575279
+*background:   #faf4ed
+*cursorColor:  #575279
 
-! black
-*color0:       #2a273f
-*color8:       #393552
+!black
+*color0:       #fffaf3
+*color8:       #f2e9e1
 
-! red
-*color1:       #eb6f92
-*color9:       #eb6f92
+!red
+*color1:       #b4637a
+*color9:       #b4637a
 
-! green
-*color2:       #f6c177
-*color10:      #f6c177
+!green
+*color2:       #ea9d34
+*color10:      #ea9d34
 
-! yellow
-*color3:       #ea9a97
-*color11:      #ea9a97
+!yellow
+*color3:       #d7827e
+*color11:      #d7827e
 
-! blue
-*color4:       #3e8fb0
-*color12:      #3e8fb0
+!blue
+*color4:       #286983
+*color12:      #286983
 
-! magenta
-*color5:       #c4a7e7
-*color13:      #c4a7e7
+!magenta
+*color5:       #907aa9
+*color13:      #907aa9
 
-! cyan
-*color6:       #9ccfd8
-*color14:      #9ccfd8
+!cyan
+*color6:       #56949f
+*color14:      #56949f
 
-! white
-*color7:       #6e6a86
-*color15:      #908caa
+!white
+*color7:       #9893a5
+*color15:      #797593
 
 /* ! TokyoNight Storm */
 /* *background: #24283b */
@@ -319,16 +357,13 @@
 !*.color7:       #5C6370
 !*.color15:      #ABB2BF
 
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-/* Xft.lcdfilter: lcdlight */
-/* Xft.hintstyle: hintslight */
-Xft.hintstyle: hintsfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
 Xft.dpi: 96
-/* Xft.dpi: 102 */
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 
 xterm*faceName: Monospace
 xterm*faceSize: 9
