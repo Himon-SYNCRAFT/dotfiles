@@ -17,10 +17,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { "rose-pine/neovim",     name = "rose-pine" },
+    { "RRethy/base16-nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "tpope/vim-repeat" },
-    { "tpope/vim-surround" },
-    { "tpope/vim-commentary" },
+    { "tpope/vim-repeat",     event = "VeryLazy" },
+    { "tpope/vim-surround",   event = "VeryLazy" },
+    { "tpope/vim-commentary", event = "VeryLazy" },
     {
         "SirVer/ultisnips",
         -- event = { "VeryLazy" },

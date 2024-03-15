@@ -353,6 +353,7 @@ c.colors.tabs.selected.even.bg = '#282828'
 c.colors.webpage.darkmode.enabled = False
 
 c.colors.webpage.preferred_color_scheme = 'dark'
+# c.colors.webpage.preferred_color_scheme = 'light'
 
 c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
 
@@ -382,8 +383,8 @@ config.bind('e', 'edit-url')
 #         'horizontal': 8
 #     }
 # })
-# catppuccin.setup(c, 'macchiato')
-catppuccin.setup(c, 'latte')
+catppuccin.setup(c, 'macchiato')
+# catppuccin.setup(c, 'latte')
 
 c.colors.webpage.bg = 'white'
 

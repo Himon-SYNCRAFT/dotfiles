@@ -171,9 +171,9 @@ vim.opt.fillchars = "eob: ,vert: "
 
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
-	" set background=dark
     set termguicolors
-	set background=light
+    " set background=light
+    set background=dark
     " set cursorline
     set noshowmode
 

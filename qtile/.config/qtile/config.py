@@ -243,10 +243,10 @@ for i in groups:
     )
 
 
-border_focus = theme.primary
+border_focus = theme.magenta
 border_normal = theme.background
 
-border_width = 0
+border_width = 2
 default_margin = 20
 margin = [default_margin, default_margin, default_margin, default_margin]
 

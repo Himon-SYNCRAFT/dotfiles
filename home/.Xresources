@@ -1,9 +1,9 @@
 !*.alpha:  0.5
-!*.alpha:  0.87
+*.alpha:  0.87
 !*.alpha:  0.92
 !*.alpha:  0.95
 !*.alpha:  0.98
-*.alpha:  1
+!*.alpha:  1
 
 ! Dracula Xresources palette
 !*.foreground: #F8F8F2
@@ -33,6 +33,35 @@
 !! white
 !*.color7:     #BFBFBF
 !*.color15:    #E6E6E6
+
+!! Cyberpunk
+!*foreground: #ebdbb2
+!*background: #312e39
+!*cursorColor: #ebdbb2
+!! black
+!*color0:     #312e39
+!*color8:     #312e39
+!! red
+!*color1:     #ff2975
+!*color9:     #f0c2a0
+!! green
+!*color2:     #8a7c6f
+!*color10:    #978979
+!! yellow
+!*color3:     #f28920
+!*color11:    #f8cd1a
+!! blue
+!*color4:     #3e518e
+!*color12:    #6262ae
+!! magenta
+!*color5:     #c72e68
+!*color13:    #f022fd
+!! cyan
+!*color6:     #afa38b
+!*color14:    #afa38b
+!! white
+!*color7:     #BFBFBF
+!*color15:    #E6E6E6
 
 ! Catppuccin Macchiato
 !*background: #24273A
@@ -71,81 +100,81 @@
 !*color7: #B8C0E0
 !*color15: #A5ADCB
 
-/* ! RosePine Moon */
-/* ! special */
-/* *foreground:   #e0def4 */
-/* *background:   #232136 */
-/* *cursorColor:  #e0def4 */
-
-/* ! black */
-/* *color0:       #2a273f */
-/* *color8:       #393552 */
-
-/* ! red */
-/* *color1:       #eb6f92 */
-/* *color9:       #eb6f92 */
-
-/* ! green */
-/* *color2:       #f6c177 */
-/* *color10:      #f6c177 */
-
-/* ! yellow */
-/* *color3:       #ea9a97 */
-/* *color11:      #ea9a97 */
-
-/* ! blue */
-/* *color4:       #3e8fb0 */
-/* *color12:      #3e8fb0 */
-
-/* ! magenta */
-/* *color5:       #c4a7e7 */
-/* *color13:      #c4a7e7 */
-
-/* ! cyan */
-/* *color6:       #9ccfd8 */
-/* *color14:      #9ccfd8 */
-
-/* ! white */
-/* *color7:       #6e6a86 */
-/* *color15:      #908caa */
-
-! Rose Pine Dawn
+! RosePine Moon
 ! special
-*foreground:   #575279
-*background:   #faf4ed
-*cursorColor:  #575279
+*foreground:   #e0def4
+*background:   #232136
+*cursorColor:  #e0def4
 
-!black
-*color0:       #fffaf3
-*color8:       #f2e9e1
+! black
+*color0:       #2a273f
+*color8:       #393552
 
-!red
-*color1:       #b4637a
-*color9:       #b4637a
+! red
+*color1:       #eb6f92
+*color9:       #eb6f92
 
-!green
-*color2:       #ea9d34
-*color10:      #ea9d34
+! green
+*color2:       #f6c177
+*color10:      #f6c177
 
-!yellow
-*color3:       #d7827e
-*color11:      #d7827e
+! yellow
+*color3:       #ea9a97
+*color11:      #ea9a97
 
-!blue
-*color4:       #286983
-*color12:      #286983
+! blue
+*color4:       #3e8fb0
+*color12:      #3e8fb0
 
-!magenta
-*color5:       #907aa9
-*color13:      #907aa9
+! magenta
+*color5:       #c4a7e7
+*color13:      #c4a7e7
 
-!cyan
-*color6:       #56949f
-*color14:      #56949f
+! cyan
+*color6:       #9ccfd8
+*color14:      #9ccfd8
 
-!white
-*color7:       #9893a5
-*color15:      #797593
+! white
+*color7:       #6e6a86
+*color15:      #908caa
+
+/* ! Rose Pine Dawn */
+/* ! special */
+/* *foreground:   #575279 */
+/* *background:   #faf4ed */
+/* *cursorColor:  #575279 */
+
+/* !black */
+/* *color0:       #fffaf3 */
+/* *color8:       #f2e9e1 */
+
+/* !red */
+/* *color1:       #b4637a */
+/* *color9:       #b4637a */
+
+/* !green */
+/* *color2:       #ea9d34 */
+/* *color10:      #ea9d34 */
+
+/* !yellow */
+/* *color3:       #d7827e */
+/* *color11:      #d7827e */
+
+/* !blue */
+/* *color4:       #286983 */
+/* *color12:      #286983 */
+
+/* !magenta */
+/* *color5:       #907aa9 */
+/* *color13:      #907aa9 */
+
+/* !cyan */
+/* *color6:       #56949f */
+/* *color14:      #56949f */
+
+/* !white */
+/* *color7:       #9893a5 */
+/* *color15:      #797593 */
 
 /* ! TokyoNight Storm */
 /* *background: #24283b */
