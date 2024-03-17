@@ -34,6 +34,35 @@
 !*.color7:     #BFBFBF
 !*.color15:    #E6E6E6
 
+!! Cyberpunk
+!*foreground: #ebdbb2
+!*background: #312e39
+!*cursorColor: #ebdbb2
+!! black
+!*color0:     #312e39
+!*color8:     #312e39
+!! red
+!*color1:     #ff2975
+!*color9:     #f0c2a0
+!! green
+!*color2:     #8a7c6f
+!*color10:    #978979
+!! yellow
+!*color3:     #f28920
+!*color11:    #f8cd1a
+!! blue
+!*color4:     #3e518e
+!*color12:    #6262ae
+!! magenta
+!*color5:     #c72e68
+!*color13:    #f022fd
+!! cyan
+!*color6:     #afa38b
+!*color14:    #afa38b
+!! white
+!*color7:     #BFBFBF
+!*color15:    #E6E6E6
+
 ! Catppuccin Macchiato
 !*background: #24273A
 !*foreground: #CAD3F5
@@ -441,7 +470,7 @@
 !*.color7:       #5C6370
 !*.color15:      #ABB2BF
 
-Xft.dpi: 96
+Xft.dpi: 103
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
