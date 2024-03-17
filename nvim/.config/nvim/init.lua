@@ -17,6 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { "rose-pine/neovim",     name = "rose-pine" },
+    -- { "rebelot/kanagawa.nvim" },
+    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    -- { "savq/melange-nvim" },
     { "nvim-lua/plenary.nvim" },
     { "tpope/vim-repeat" },
     { "tpope/vim-surround" },
@@ -177,14 +180,16 @@ require("lazy").setup({
             })
         end,
     },
+
+    { "tjdevries/templ.nvim" }
 })
 
+require("user.theme")
 require("user.dressing")
 require("user.gitsigns")
 require("user.ranger")
 require("user.telescope")
 -- require("user.treesitter")
-require("user.theme")
 require("user.lsp")
 require("user.cmp")
 require("user.lightbulb")
