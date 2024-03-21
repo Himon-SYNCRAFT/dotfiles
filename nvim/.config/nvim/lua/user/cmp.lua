@@ -52,7 +52,7 @@ cmp.setup({
         format = function(entry, vim_item)
             -- Kind icons
             vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind],
-                                          vim_item.kind) -- This concatonates the icons with the name of the item kind
+                vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- vim_item.kind = string.format('%s ', kind_icons[vim_item.kind])
             -- Source
             -- vim_item.menu = ({
@@ -70,10 +70,10 @@ cmp.setup({
     mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
             cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-        end, {"i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
+        end, { "i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             cmp_ultisnips_mappings.jump_backwards(fallback)
-        end, {"i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
+        end, { "i", "s" --[[ "c" (to enable the mapping in command mode) ]] }),
         -- ["<Tab>"] = cmp.mapping({
         --     i = function(fallback)
         --         if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
@@ -112,14 +112,14 @@ cmp.setup({
         -- }),
         ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
             behavior = cmp.SelectBehavior.Select
-        }), {'i'}),
+        }), { 'i' }),
         ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
             behavior = cmp.SelectBehavior.Select
-        }), {'i'}),
+        }), { 'i' }),
         ['<C-n>'] = cmp.mapping({
             i = function(fallback)
                 if cmp.visible() then
-                    cmp.select_next_item({behavior = cmp.SelectBehavior.Insert})
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                 else
                     fallback()
                 end
@@ -128,15 +128,15 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping({
             i = function(fallback)
                 if cmp.visible() then
-                    cmp.select_prev_item({behavior = cmp.SelectBehavior.Insert})
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
                 else
                     fallback()
                 end
             end
         }),
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-e>'] = cmp.mapping({
             i = cmp.mapping.close(),
             c = cmp.mapping.close()
@@ -150,10 +150,10 @@ cmp.setup({
     },
 
     sources = cmp.config.sources({
-        {name = 'nvim_lsp'}, {name = 'ultisnips'}, -- For ultisnips users.
-        {name = 'codeium', keyword_length = 2}, {name = 'path'},
-        {name = 'orgmode'}, {name = 'vim-dadbod-completion'}
-    }, {{name = 'buffer', keyword_length = 5}})
+        { name = 'nvim_lsp' }, { name = 'ultisnips' }, -- For ultisnips users.
+        { name = 'codeium', keyword_length = 2 }, { name = 'path' },
+        { name = 'orgmode' }, { name = 'vim-dadbod-completion' }
+    }, { { name = 'buffer', keyword_length = 5 } })
 })
 
 local cmdline_mapping = {
@@ -193,7 +193,7 @@ local cmdline_mapping = {
             end
         end
     },
-    ['<C-e>'] = {c = cmp.mapping.close()},
+    ['<C-e>'] = { c = cmp.mapping.close() },
 
     ['<CR>'] = cmp.mapping({
         c = function(fallback)
@@ -215,12 +215,29 @@ local cmdline_mapping = {
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmdline_mapping,
-    sources = {{name = 'buffer', keyword_length = 5}}
+    sources = { { name = 'buffer', keyword_length = 5 } }
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
     mapping = cmdline_mapping,
-    sources = cmp.config.sources({{name = 'path'}},
-                                 {{name = 'cmdline', keyword_length = 3}})
+    sources = cmp.config.sources({ { name = 'path' } },
+        { { name = 'cmdline', keyword_length = 3 } })
 })
+
+vim.cmd([[
+    autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+
+    " Source is automatically added, you just need to include it in the chain complete list
+    let g:completion_chain_complete_list = {
+        \   'sql': [
+        \    {'complete_items': ['vim-dadbod-completion']},
+        \   ],
+        \ }
+    " Make sure `substring` is part of this list. Other items are optional for this completion source
+    let g:completion_matching_strategy_list = ['exact', 'substring']
+    " Useful if there's a lot of camel case items
+    let g:completion_matching_ignore_case = 1
+
+    let g:vim_dadbod_completion_mark = '󰆼'
+]])

@@ -22,12 +22,11 @@ require("lazy").setup({
     -- { "savq/melange-nvim" },
     { "RRethy/base16-nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "tpope/vim-repeat",     event = "VeryLazy" },
-    { "tpope/vim-surround",   event = "VeryLazy" },
-    { "tpope/vim-commentary", event = "VeryLazy" },
+    { "tpope/vim-repeat" },
+    { "tpope/vim-surround" },
+    { "tpope/vim-commentary" },
     {
         "SirVer/ultisnips",
-        -- event = { "VeryLazy" },
         config = function()
             vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
             vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
@@ -36,10 +35,9 @@ require("lazy").setup({
             vim.g.UltiSnipsRemoveSelectModeMappings = 0
         end,
     },
-    { "Raimondi/delimitMate",                      event = "VeryLazy" },
+    { "Raimondi/delimitMate" },
     {
         "francoiscabrol/ranger.vim",
-        event = { "VeryLazy" },
         dependencies = {
             { "rbgrouleff/bclose.vim" },
         },
@@ -48,7 +46,7 @@ require("lazy").setup({
     -- ai
     {
         "Exafunction/codeium.vim",
-        event = { "VeryLazy" },
+        event = "VeryLazy"
     },
 
     -- Treesitter
@@ -112,28 +110,32 @@ require("lazy").setup({
     },
 
     -- Telescope Extensions
-    { "nvim-telescope/telescope.nvim" },
-    { "nvim-telescope/telescope-file-browser.nvim" },
-    { "cljoly/telescope-repo.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
-    { "stevearc/dressing.nvim",                    event = "VeryLazy" },
+    { "nvim-telescope/telescope.nvim",              lazy = true },
+    { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+    { "cljoly/telescope-repo.nvim",                 lazy = true },
+    { "nvim-telescope/telescope-fzf-native.nvim",   build = "make",    lazy = true },
+    { "stevearc/dressing.nvim",                     event = "VeryLazy" },
     {
         "lewis6991/gitsigns.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
     },
     {
         "phpactor/phpactor",
-        event = { "VeryLazy" },
+        lazy = true,
     },
     { "folke/trouble.nvim" },
 
     -- lsp
     {
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-        "nvimtools/none-ls.nvim",
-        "ray-x/lsp_signature.nvim",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "nvimtools/none-ls.nvim",
+            "ray-x/lsp_signature.nvim",
+        },
+        lazy = true
     },
 
     {
@@ -145,7 +147,6 @@ require("lazy").setup({
             "hrsh7th/cmp-cmdline",
             "quangnguyen30192/cmp-nvim-ultisnips",
         },
-        event = "VeryLazy"
     },
 
     {
@@ -153,18 +154,15 @@ require("lazy").setup({
         dependencies = "antoinemadec/FixCursorHold.nvim",
     },
 
-    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
     -- db
     {
         "tpope/vim-dadbod",
-    },
-    {
-        "kristijanhusak/vim-dadbod-ui",
-    },
-    {
-        "kristijanhusak/vim-dadbod-completion",
-        event = { "VeryLazy" },
+        dependencies = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion",
+        }
     },
 
     {

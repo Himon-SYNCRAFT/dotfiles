@@ -98,7 +98,7 @@ visualizer_in_stereo = yes
 #
 ## Available values: spectrum, wave, wave_filled, ellipse.
 ##
-#visualizer_type = spectrum
+visualizer_type = wave
 #
 #visualizer_fps = 60
 #
@@ -107,7 +107,7 @@ visualizer_in_stereo = yes
 #visualizer_look = ●▮
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
-visualizer_color = red, yellow, green, cyan, blue, magenta
+visualizer_color = red, red, red, red, red, red
 #
 ## Alternative subset of 256 colors for terminals that support it.
 ##
@@ -242,17 +242,17 @@ visualizer_spectrum_dft_size = 1
 #
 #alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
 #
-current_item_prefix = $(magenta)$b$r
+current_item_prefix = $(default)$b$r
 #
 current_item_suffix = $/r$/b$(end)
 #
 current_item_inactive_column_prefix = $(white)$r
 #
-#current_item_inactive_column_suffix = $/r$(end)
+current_item_inactive_column_suffix = $/r$(end)
 #
-#now_playing_prefix = $b
+now_playing_prefix = $(yellow)$b
 #
-#now_playing_suffix = $/b
+now_playing_suffix = $/b$(end)
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #
@@ -312,7 +312,8 @@ current_item_inactive_column_prefix = $(white)$r
 ##   available.
 ##
 #
-song_columns_list_format = (20)[red]{a} (6f)[green]{NE} (50)[yellow]{t|f:Title} (30)[magenta]{b} (7f)[blue]{l}
+# song_columns_list_format = (20)[default]{a} (6f)[green]{NE} (50)[yellow]{t|f:Title} (30)[magenta]{b} (7f)[blue]{l}
+song_columns_list_format = (50)[red]{t|fr:Title} (20)[default]{a}
 #
 ##### various settings #####
 #
@@ -349,7 +350,7 @@ search_engine_display_mode = columns
 
 playlist_editor_display_mode = columns
 #
-#discard_colors_if_item_is_selected = yes
+discard_colors_if_item_is_selected = yes
 #
 #show_duplicate_tags = yes
 #
@@ -367,7 +368,9 @@ volume_change_step = 10
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+# progressbar_look = 󱘹󱘹
+progressbar_look = ——
+
 #
 ## Available values: database, playlist.
 ##
@@ -393,7 +396,7 @@ volume_change_step = 10
 #
 #default_tag_editor_pattern = %n - %t
 #
-#header_visibility = yes
+header_visibility = no
 #
 #statusbar_visibility = yes
 #
@@ -567,29 +570,29 @@ enable_window_title = no
 #
 empty_tag_color = red
 #
-header_window_color = cyan
+header_window_color = default
 #
-volume_color = cyan
+volume_color = default
 #
-state_line_color = blue
+state_line_color = default
 #
 #state_flags_color = default:b
 #
-main_window_color = white
+main_window_color = default
 #
 #color1 = white
 #
 #color2 = green
 #
-progressbar_color = cyan:b
+progressbar_color = black:b
 #
-progressbar_elapsed_color = cyan:b
+progressbar_elapsed_color = red:b
 #
-statusbar_color = cyan
+statusbar_color = default
 #
-statusbar_time_color = cyan:b
+statusbar_time_color = default:b
 #
-player_state_color = cyan:b
+player_state_color = default:b
 #
 #alternative_ui_separator_color = black:b
 #
