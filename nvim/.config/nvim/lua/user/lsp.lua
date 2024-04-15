@@ -82,6 +82,12 @@ lspconfig.bashls.setup {
     handlers = handlers
 }
 
+lspconfig.clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
 lspconfig.cssls.setup {
     on_attach = on_attach,
     capabilities = capabilities,

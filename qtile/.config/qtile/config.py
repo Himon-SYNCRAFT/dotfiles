@@ -123,8 +123,27 @@ class RosePineMoon:
     cyan = "#9ccfd8"
     white = "#6e6a86"
 
+class GruvboxMaterialDarkSoft:
+    foreground = "#d4be98"
+    background = "#32302f"
 
-theme = RosePineMoon
+    primary = "#a9b665"
+    secondary = "#d8a657"
+
+    foreground_alt = "#ddc7a1"
+
+    alert = "#ea6962"
+    black = "#252423"
+    red = "#ea6962"
+    green = "#a9b665"
+    yellow = "#d8a657"
+    blue = "#7daea3"
+    magenta = "#d3869b"
+    cyan = "#89b482" 
+    white = "#ddc7a1"
+
+
+theme = GruvboxMaterialDarkSoft
 
 
 keys = [
@@ -243,7 +262,7 @@ for i in groups:
     )
 
 
-border_focus = theme.magenta
+border_focus = theme.primary
 border_normal = theme.background
 
 border_width = 2

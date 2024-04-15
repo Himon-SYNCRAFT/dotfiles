@@ -16,7 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "rose-pine/neovim",     name = "rose-pine" },
+    { "rose-pine/neovim",         name = "rose-pine" },
+    { "cryptomilk/nightcity.nvim" },
     -- { "rebelot/kanagawa.nvim" },
     -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     -- { "savq/melange-nvim" },
@@ -122,7 +123,6 @@ require("lazy").setup({
     },
     {
         "phpactor/phpactor",
-        lazy = true,
     },
     { "folke/trouble.nvim" },
 
@@ -136,6 +136,30 @@ require("lazy").setup({
             "ray-x/lsp_signature.nvim",
         },
         lazy = true
+    },
+
+    -- debugging
+    {
+        "mfussenegger/nvim-dap",
+    },
+    {
+        "leoluz/nvim-dap-go",
+        config = function()
+            require("dap-go").setup()
+        end,
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = function()
+            require("dapui").setup()
+        end
     },
 
     {
@@ -195,6 +219,7 @@ require("user.lightbulb")
 require("user.nullls")
 require("native_statusline")
 require("mappings")
+require("user.debugging")
 
 vim.cmd([[
     filetype plugin indent on
@@ -268,7 +293,7 @@ vim.cmd([[
     augroup vimrc-php
         autocmd!
         autocmd FileType php inoremap .. ->
-        autocmd FileType php nnoremap ; A;
+        autocmd FileType php nnoremap ; A;<ESC>
         autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
     augroup END
 ]])

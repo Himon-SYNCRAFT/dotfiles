@@ -167,7 +167,21 @@ require("rose-pine").setup({
     end,
 })
 
-vim.cmd("colorscheme rose-pine")
+-- require('nightcity').setup({
+--     -- style = 'kabuki',
+--     style = 'afterlife',
+--     font_style = {
+--         comments = { italic = true },
+--         keywords = { bold = true },
+--         functions = { bold = true },
+--         variables = { bold = true },
+--     }
+-- })
+
+
+-- vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme base16-gruvbox-material-dark-soft")
+-- vim.cmd("colorscheme nightcity")
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme catppuccin")
 vim.opt.fillchars = "eob: ,vert: "
@@ -182,6 +196,28 @@ vim.cmd([[
 
     highlight ColorColumn ctermbg=12 guibg=#eb6f92 guifg=#2a273f
     call matchadd('ColorColumn', '\%82v', 100)
+
+    " transparent background
+    highlight Normal guibg=none
+    highlight NonText guibg=none
+    highlight Normal ctermbg=none
+    highlight NonText ctermbg=none
+    highlight InactiveWindow ctermbg=none
+    highlight ActiveWindow ctermbg=none
+    highlight SignColumn guibg=none
+    highlight GitSignsAdd guibg=NONE
+    highlight GitGutterAdd guibg=NONE
+    highlight GitSignsChange guibg=NONE
+    highlight GitGutterChange guibg=NONE
+    highlight GitSignsDelete guibg=NONE
+    highlight GitGutterDelete guibg=NONE
+    hi DiffAdd guibg=none
+    hi DiffChange guibg=none
+    hi DiffDelete guibg=none
+    hi DiffText guibg=none
+    highlight clear LineNr
+    highlight clear VertSplit
+    set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
     augroup CursorLine
         au!

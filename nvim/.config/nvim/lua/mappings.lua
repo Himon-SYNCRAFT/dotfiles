@@ -16,7 +16,7 @@ vim.cmd [[
     cnoreabbrev Qall qall
 ]]
 
-local mapopts = {noremap = true, silent = true}
+local mapopts = { noremap = true, silent = true }
 -- split focus
 map("n", "<C-j>", "<C-w>j", mapopts)
 map("n", "<C-k>", "<C-w>k", mapopts)
@@ -45,7 +45,7 @@ map("n", "<F2>", ":Ranger<CR>", mapopts)
 map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
 
 -- easymotion
-map("n", "s", "<Plug>(easymotion-overwin-f2)", mapopts)
+-- map("n", "s", "<Plug>(easymotion-overwin-f2)", mapopts)
 
 -- telescope
 --
@@ -123,7 +123,12 @@ map("n", "<leader>nc",
 
 -- go to definitions
 -- map("n", "gd", [[:Telescope coc definitions<CR>]], mapopts)
-map("n", "gd", [[:Telescope lsp_definitions<CR>]], mapopts)
+-- map("n", "gd", [[:Telescope lsp_definitions<CR>]], mapopts)
+vim.keymap.set("n", "gd", function()
+    -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+    -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit", reuse_window = false })
+    require("telescope.builtin").lsp_definitions()
+end, mapopts)
 
 -- go to implementations
 -- map("n", "gi", [[:Telescope coc implementations<CR>]], mapopts)
@@ -167,11 +172,11 @@ vim.keymap.set("n", "gf", function()
     else
         return "gf"
     end
-end, {noremap = false, expr = true})
+end, { noremap = false, expr = true })
 
 -- codeium
 vim.keymap.set('i', '<C-o>', function() return vim.fn['codeium#Accept']() end,
-               {expr = true})
+    { expr = true })
 -- vim.keymap.set('i', '<C-]>',
 --                function() return vim.fn['codeium#CycleCompletions'](1) end,
 --                {expr = true, remap = true})

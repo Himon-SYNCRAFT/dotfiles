@@ -1,9 +1,9 @@
 !*.alpha:  0.5
-*.alpha:  0.87
+!*.alpha:  0.87
 !*.alpha:  0.92
 !*.alpha:  0.95
 !*.alpha:  0.98
-!*.alpha:  1
+*.alpha:  1
 
 ! Dracula Xresources palette
 !*.foreground: #F8F8F2
@@ -100,43 +100,81 @@
 !*color7: #B8C0E0
 !*color15: #A5ADCB
 
-! RosePine Moon
-! special
-*foreground:   #e0def4
-*background:   #232136
-*cursorColor:  #e0def4
+/* ! RosePine Moon */
+/* ! special */
+/* *foreground:   #e0def4 */
+/* *background:   #232136 */
+/* *cursorColor:  #e0def4 */
+
+/* ! black */
+/* *color0:       #2a273f */
+/* *color8:       #393552 */
+
+/* ! red */
+/* *color1:       #eb6f92 */
+/* *color9:       #eb6f92 */
+
+/* ! green */
+/* *color2:       #f6c177 */
+/* *color10:      #f6c177 */
+
+/* ! yellow */
+/* *color3:       #ea9a97 */
+/* *color11:      #ea9a97 */
+
+/* ! blue */
+/* *color4:       #3e8fb0 */
+/* *color12:      #3e8fb0 */
+
+/* ! magenta */
+/* *color5:       #c4a7e7 */
+/* *color13:      #c4a7e7 */
+
+/* ! cyan */
+/* *color6:       #9ccfd8 */
+/* *color14:      #9ccfd8 */
+
+/* ! white */
+/* *color7:       #6e6a86 */
+/* *color15:      #908caa */
+
+!! Gruvbox Material Soft
+*foreground:   #d4be98
+*background:   #32302f
+*cursorColor:  #ddc7a1
 
 ! black
-*color0:       #2a273f
-*color8:       #393552
+*color0:       #252423
+*color8:       #3c3836
 
 ! red
-*color1:       #eb6f92
-*color9:       #eb6f92
+*color1:       #ea6962
+*color9:       #ea6962
 
 ! green
-*color2:       #f6c177
-*color10:      #f6c177
+*color2:       #a9b665
+*color10:      #a9b665
 
 ! yellow
-*color3:       #ea9a97
-*color11:      #ea9a97
+*color3:       #d8a657
+*color11:      #d8a657
 
 ! blue
-*color4:       #3e8fb0
-*color12:      #3e8fb0
+*color4:       #7daea3
+*color12:      #7daea3
 
 ! magenta
-*color5:       #c4a7e7
-*color13:      #c4a7e7
+*color5:       #d3869b
+*color13:      #d3869b
 
 ! cyan
-*color6:       #9ccfd8
-*color14:      #9ccfd8
+*color6:       #89b482 
+*color14:      #89b482
 
 ! white
-*color7:       #6e6a86
-*color15:      #908caa
+*color7:       #ddc7a1
+*color15:      #a89984
+
 
 !! Rose Pine Dawn
 !! special
