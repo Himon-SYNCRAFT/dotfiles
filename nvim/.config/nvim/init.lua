@@ -3,211 +3,214 @@ vim.g.mapleader = ","
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "rose-pine/neovim",         name = "rose-pine" },
-    { "cryptomilk/nightcity.nvim" },
-    -- { "rebelot/kanagawa.nvim" },
-    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    -- { "savq/melange-nvim" },
-    { "RRethy/base16-nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "tpope/vim-repeat" },
-    { "tpope/vim-surround" },
-    { "tpope/vim-commentary" },
-    {
-        "SirVer/ultisnips",
-        config = function()
-            vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-            vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-            vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-            vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-            vim.g.UltiSnipsRemoveSelectModeMappings = 0
-        end,
-    },
-    { "Raimondi/delimitMate" },
-    {
-        "francoiscabrol/ranger.vim",
-        dependencies = {
-            { "rbgrouleff/bclose.vim" },
-        },
-    },
+	-- { "rose-pine/neovim", name = "rose-pine" },
+	-- { "cryptomilk/nightcity.nvim" },
+	-- { "rebelot/kanagawa.nvim" },
+	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	-- { "savq/melange-nvim" },
+	{ "nekonako/xresources-nvim" },
+	-- { "RRethy/base16-nvim" },
+	{ "nvim-lua/plenary.nvim" },
+	{ "tpope/vim-repeat" },
+	{ "tpope/vim-surround" },
+	{ "tpope/vim-commentary" },
+	{
+		"SirVer/ultisnips",
+		config = function()
+			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
+			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
+			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
+			vim.g.UltiSnipsRemoveSelectModeMappings = 0
+		end,
+	},
+	{ "Raimondi/delimitMate" },
+	{
+		"francoiscabrol/ranger.vim",
+		dependencies = {
+			{ "rbgrouleff/bclose.vim" },
+		},
+	},
 
-    -- ai
-    {
-        "Exafunction/codeium.vim",
-        event = "VeryLazy"
-    },
+	-- ai
+	{
+		"Exafunction/codeium.vim",
+	},
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        event = { "VeryLazy" },
-        init = function(plugin)
-            require("lazy.core.loader").add_to_rtp(plugin)
-        end,
-        config = function()
-            ---@diagnostic disable-next-line: missing-fields
-            require("nvim-treesitter.configs").setup({
-                auto_install = true,
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "cmake",
-                    "comment",
-                    "cpp",
-                    "css",
-                    "diff",
-                    "dockerfile",
-                    "dot",
-                    "fish",
-                    "go",
-                    "groovy",
-                    "html",
-                    "ini",
-                    "json",
-                    "lua",
-                    "make",
-                    "ocaml",
-                    "ocaml_interface",
-                    "org",
-                    "php",
-                    "phpdoc",
-                    "python",
-                    "scss",
-                    "toml",
-                    "templ",
-                    "tsx",
-                    "twig",
-                    "typescript",
-                    "yaml",
-                    "markdown",
-                    "markdown_inline", -- , 'javascript',
-                },
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		init = function(plugin)
+			require("lazy.core.loader").add_to_rtp(plugin)
+		end,
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("nvim-treesitter.configs").setup({
+				auto_install = true,
+				ensure_installed = {
+					"bash",
+					"c",
+					"cmake",
+					"comment",
+					"cpp",
+					"css",
+					"diff",
+					"dockerfile",
+					"dot",
+					"fish",
+					"go",
+					"groovy",
+					"html",
+					"ini",
+					"json",
+					"lua",
+					"make",
+					"ocaml",
+					"ocaml_interface",
+					"org",
+					"php",
+					"phpdoc",
+					"python",
+					"scss",
+					"toml",
+					"templ",
+					"tsx",
+					"twig",
+					"typescript",
+					"yaml",
+					"markdown",
+					"markdown_inline", -- , 'javascript',
+				},
 
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = { "org", "markdown" },
-                },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = { "org", "markdown" },
+				},
 
-                indent = {
-                    enable = true,
-                    disable = { "python" },
-                },
-            })
-        end,
-    },
+				indent = {
+					enable = true,
+					disable = { "python" },
+				},
+			})
+		end,
+	},
 
-    -- Telescope Extensions
-    { "nvim-telescope/telescope.nvim",              lazy = true },
-    { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
-    { "cljoly/telescope-repo.nvim",                 lazy = true },
-    { "nvim-telescope/telescope-fzf-native.nvim",   build = "make",    lazy = true },
-    { "stevearc/dressing.nvim",                     event = "VeryLazy" },
-    {
-        "lewis6991/gitsigns.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        event = "VeryLazy",
-    },
-    {
-        "phpactor/phpactor",
-    },
-    { "folke/trouble.nvim" },
+	-- Telescope Extensions
+	{ "nvim-telescope/telescope.nvim" },
+	{ "nvim-telescope/telescope-file-browser.nvim" },
+	{ "cljoly/telescope-repo.nvim" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "stevearc/dressing.nvim" },
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
+		"phpactor/phpactor",
+	},
+	{ "folke/trouble.nvim" },
 
-    -- lsp
-    {
-        "williamboman/mason.nvim",
-        dependencies = {
-            "williamboman/mason-lspconfig.nvim",
-            "neovim/nvim-lspconfig",
-            "nvimtools/none-ls.nvim",
-            "ray-x/lsp_signature.nvim",
-        },
-        lazy = true
-    },
+	-- lsp
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+			"nvimtools/none-ls.nvim",
+		},
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
+		end,
+	},
 
-    -- debugging
-    {
-        "mfussenegger/nvim-dap",
-    },
-    {
-        "leoluz/nvim-dap-go",
-        config = function()
-            require("dap-go").setup()
-        end,
-    },
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        config = function()
-            require("nvim-dap-virtual-text").setup()
-        end
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-        config = function()
-            require("dapui").setup()
-        end
-    },
+	-- debugging
+	{
+		"mfussenegger/nvim-dap",
+	},
+	{
+		"leoluz/nvim-dap-go",
+		config = function()
+			require("dap-go").setup()
+		end,
+	},
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		config = function()
+			require("nvim-dap-virtual-text").setup()
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		config = function()
+			require("dapui").setup()
+		end,
+	},
 
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "quangnguyen30192/cmp-nvim-ultisnips",
-        },
-    },
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"quangnguyen30192/cmp-nvim-ultisnips",
+		},
+	},
 
-    {
-        "kosayoda/nvim-lightbulb",
-        dependencies = "antoinemadec/FixCursorHold.nvim",
-    },
+	{
+		"kosayoda/nvim-lightbulb",
+		dependencies = "antoinemadec/FixCursorHold.nvim",
+	},
 
-    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+	{ "nvim-tree/nvim-web-devicons" },
 
-    -- db
-    {
-        "tpope/vim-dadbod",
-        dependencies = {
-            "kristijanhusak/vim-dadbod-ui",
-            "kristijanhusak/vim-dadbod-completion",
-        }
-    },
+	-- db
+	{
+		"tpope/vim-dadbod",
+		dependencies = {
+			"kristijanhusak/vim-dadbod-ui",
+			"kristijanhusak/vim-dadbod-completion",
+		},
+	},
 
-    {
-        "rmagatti/auto-session",
-        config = function()
-            require("auto-session").setup({
-                log_level = "error",
-                auto_session_suppress_dirs = {
-                    "~/",
-                    "~/Projects",
-                    "~/Downloads",
-                    "/",
-                },
-            })
-        end,
-    },
+	{
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = {
+					"~/",
+					"~/Projects",
+					"~/Downloads",
+					"/",
+				},
+			})
+		end,
+	},
 
-    { "tjdevries/templ.nvim" }
+	{ "tjdevries/templ.nvim" },
 })
 
-require("user.theme")
 require("user.dressing")
 require("user.gitsigns")
 require("user.ranger")
@@ -220,6 +223,7 @@ require("user.nullls")
 require("native_statusline")
 require("mappings")
 require("user.debugging")
+require("user.theme")
 
 vim.cmd([[
     filetype plugin indent on

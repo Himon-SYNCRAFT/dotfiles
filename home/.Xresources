@@ -1,9 +1,9 @@
 !*.alpha:  0.5
 !*.alpha:  0.87
-!*.alpha:  0.92
+*.alpha:  0.92
 !*.alpha:  0.95
 !*.alpha:  0.98
-*.alpha:  1
+!*.alpha:  1
 
 ! Dracula Xresources palette
 !*.foreground: #F8F8F2
@@ -105,6 +105,9 @@
 /* *foreground:   #e0def4 */
 /* *background:   #232136 */
 /* *cursorColor:  #e0def4 */
+/* *primary: #c4a7e7 */
+/* *secondary: 3e8fb0 */
+/* *alert: eb6f92 */
 
 /* ! black */
 /* *color0:       #2a273f */
@@ -142,6 +145,10 @@
 *foreground:   #d4be98
 *background:   #32302f
 *cursorColor:  #ddc7a1
+*foreground_alt: #c8c093
+*primary: #89b482
+*secondary: #7daea3
+*alert: #ea6962
 
 ! black
 *color0:       #252423
@@ -174,6 +181,10 @@
 ! white
 *color7:       #ddc7a1
 *color15:      #a89984
+
+! orange
+*color16:       #e78a4e
+*color24:       #e78a4e
 
 
 !! Rose Pine Dawn

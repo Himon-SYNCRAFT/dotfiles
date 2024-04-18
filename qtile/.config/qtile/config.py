@@ -126,13 +126,13 @@ class RosePineMoon:
 class GruvboxMaterialDarkSoft:
     foreground = "#d4be98"
     background = "#32302f"
-
-    primary = "#a9b665"
-    secondary = "#d8a657"
-
     foreground_alt = "#ddc7a1"
 
+    primary = "#89b482"
+    secondary = "#a9b665"
     alert = "#ea6962"
+
+
     black = "#252423"
     red = "#ea6962"
     green = "#a9b665"

@@ -1,9 +1,9 @@
 local map = vim.api.nvim_set_keymap
 local unmap = vim.api.nvim_del_keymap
 
-vim.cmd [[let mapleader=',']]
+vim.cmd([[let mapleader=',']])
 
-vim.cmd [[
+vim.cmd([[
     cnoreabbrev W! w!
     cnoreabbrev Q! q!
     cnoreabbrev Qall! qall!
@@ -14,7 +14,7 @@ vim.cmd [[
     cnoreabbrev W w
     cnoreabbrev Q q
     cnoreabbrev Qall qall
-]]
+]])
 
 local mapopts = { noremap = true, silent = true }
 -- split focus
@@ -38,7 +38,7 @@ map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
 
 -- netrw
-map('n', '<F4>', ':Explore<CR>', mapopts)
+map("n", "<F4>", ":Explore<CR>", mapopts)
 
 -- ranger
 map("n", "<F2>", ":Ranger<CR>", mapopts)
@@ -50,84 +50,72 @@ map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
 -- telescope
 --
 -- find files with names that contain cursor word
-map("n", "<leader>df",
-    [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
-    mapopts)
+map(
+	"n",
+	"<leader>df",
+	[[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
+	mapopts
+)
 
 -- show Workspace Diagnostics
-map("n", "<space>x", [[<Cmd>lua require'telescope.builtin'.diagnostics()<CR>]],
-    mapopts)
+map("n", "<space>x", [[<Cmd>lua require'telescope.builtin'.diagnostics()<CR>]], mapopts)
 
 -- open available commands & run it
-map("n", "<leader>c",
-    [[<Cmd>lua require'telescope.builtin'.commands({results_title='Commands Results'})<CR>]],
-    mapopts)
+map("n", "<leader>c", [[<Cmd>lua require'telescope.builtin'.commands({results_title='Commands Results'})<CR>]], mapopts)
 
 -- Telescope oldfiles
-map("n", "<leader>o",
-    [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
-    mapopts)
+map("n", "<leader>o", [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]], mapopts)
 
 -- Telescopic version of FZF's :Lines
-map("n", "<C-F>", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]],
-    mapopts)
+map("n", "<C-F>", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], mapopts)
 
 -- Fzf in current buffer
-map("n", "<C-f>",
-    [[<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>]],
-    mapopts)
+map("n", "<C-f>", [[<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>]], mapopts)
 
 -- show keymaps
-map("n", "<leader>k",
-    [[<Cmd>lua require'telescope.builtin'.keymaps({results_title='Key Maps Results'})<CR>]],
-    mapopts)
+map("n", "<leader>k", [[<Cmd>lua require'telescope.builtin'.keymaps({results_title='Key Maps Results'})<CR>]], mapopts)
 
 -- list open buffers
-map("n", "<leader>b",
-    [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = '', results_title='﬘', layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
-    mapopts)
+map(
+	"n",
+	"<leader>b",
+	[[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = '', results_title='﬘', layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
+	mapopts
+)
 
 -- help tags
-map("n", "<space>h",
-    [[<Cmd>lua require'telescope.builtin'.help_tags({results_title='Help Results'})<CR>]],
-    mapopts)
+map("n", "<space>h", [[<Cmd>lua require'telescope.builtin'.help_tags({results_title='Help Results'})<CR>]], mapopts)
 
 -- find files with gitfiles & fallback on find_files
-map("n", "<leader>e", [[<Cmd>lua require'user.telescope'.project_files()<CR>]],
-    mapopts)
+map("n", "<leader>e", [[<Cmd>lua require'user.telescope'.project_files()<CR>]], mapopts)
 
 -- Browse files from cwd - File Browser
 -- autocmd VimEnter * nunmap <leader>f
-vim.cmd [[
+vim.cmd([[
     autocmd VimEnter * nmap <leader>f :Telescope file_browser<CR>
-]]
+]])
 
 -- grep word under cursor
-map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]],
-    mapopts)
+map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], mapopts)
 
 -- grep word under cursor - case-sensitive (exact word) - made for use with Replace All - see <leader>ra
-map("n", "<leader>G",
-    [[<Cmd>lua require'telescope.builtin'.grep_string({word_match='-w'})<CR>]],
-    mapopts)
+map("n", "<leader>G", [[<Cmd>lua require'telescope.builtin'.grep_string({word_match='-w'})<CR>]], mapopts)
 
 -- Find files in config dirs
-map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]],
-    mapopts)
+map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]], mapopts)
 
 -- find or create neovim configs
 -- map("n", "<leader>nc", [[<Cmd>lua require'user.telescope'.nvim_config()<CR>]],
 --     mapopts)
-map("n", "<leader>nc",
-    [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
+map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
 
 -- go to definitions
 -- map("n", "gd", [[:Telescope coc definitions<CR>]], mapopts)
 -- map("n", "gd", [[:Telescope lsp_definitions<CR>]], mapopts)
 vim.keymap.set("n", "gd", function()
-    -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
-    -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit", reuse_window = false })
-    require("telescope.builtin").lsp_definitions()
+	-- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+	-- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit", reuse_window = false })
+	require("telescope.builtin").lsp_definitions()
 end, mapopts)
 
 -- go to implementations
@@ -148,8 +136,7 @@ map("n", "<leader>p", [[:Telescope projects<CR>]], mapopts)
 -- map("n", "<leader>dg", [[:Telescope diagnostics<CR>]], mapopts)
 
 -- telescope-repo
-map("n", "<leader>rl", [[<Cmd>lua require'user.telescope'.repo_list()<CR>]],
-    mapopts)
+map("n", "<leader>rl", [[<Cmd>lua require'user.telescope'.repo_list()<CR>]], mapopts)
 map("n", "<leader>i", [[<Cmd>IconPickerNormal emoji<CR>]], mapopts)
 
 -- telekasten
@@ -167,16 +154,17 @@ map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
 map("n", "<leader>db", ":DBUIToggle<CR>", mapopts)
 
 vim.keymap.set("n", "gf", function()
-    if require("obsidian").util.cursor_on_markdown_link() then
-        return "<cmd>ObsidianFollowLink<CR>"
-    else
-        return "gf"
-    end
+	if require("obsidian").util.cursor_on_markdown_link() then
+		return "<cmd>ObsidianFollowLink<CR>"
+	else
+		return "gf"
+	end
 end, { noremap = false, expr = true })
 
 -- codeium
-vim.keymap.set('i', '<C-o>', function() return vim.fn['codeium#Accept']() end,
-    { expr = true })
+vim.keymap.set("i", "<C-o>", function()
+	return vim.fn["codeium#Accept"]()
+end, { expr = true })
 -- vim.keymap.set('i', '<C-]>',
 --                function() return vim.fn['codeium#CycleCompletions'](1) end,
 --                {expr = true, remap = true})
@@ -188,3 +176,5 @@ vim.keymap.set('i', '<C-o>', function() return vim.fn['codeium#Accept']() end,
 --
 map("n", "<leader>ga", [[:PhpactorGenerateAccessors<CR>]], mapopts)
 map("n", "<leader>gs", [[:PhpactorGenerateMutators<CR>]], mapopts)
+
+map("n", "<Esc>", "<Cmd>nohlsearch<CR>", mapopts)

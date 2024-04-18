@@ -118,10 +118,10 @@ local function lsp()
 	local hints = ""
 	local info = ""
 
-	errors = " %#LspDiagnosticsSignError#󰅙 " .. count["errors"]
-	warnings = " %#LspDiagnosticsSignWarning#󰀦 " .. count["warnings"]
-	hints = " %#LspDiagnosticsSignHint#󰀨 " .. count["hints"]
-	info = " %#LspDiagnosticsSignInformation#󰌵 " .. count["info"]
+	errors = " %#StatusLineErrSign#󰅙 " .. count["errors"]
+	warnings = " %#StatusLineWarnSign#󰀦 " .. count["warnings"]
+	hints = " %#StatusLineHintSign#󰀨 " .. count["hints"]
+	info = " %#StatusLineInfoSign#󰌵 " .. count["info"]
 
 	return errors .. warnings .. hints .. info
 end
@@ -138,22 +138,21 @@ Statusline = {}
 Statusline.active = function()
 	return table.concat({
 		"%#Statusline#",
-		update_mode_colors(),
+		-- update_mode_colors(),
 		mode(),
 		lsp(),
 		" ",
+		"%#Statusline#",
 		filename(),
 		"%=%#StatusLine#",
 		lineinfo(),
 	})
 end
 
+-- print(Statusline.active())
+
 function Statusline.inactive()
 	return " %F"
-end
-
-function Statusline.short()
-	return "%#StatusLineNC#   NvimTree"
 end
 
 vim.api.nvim_exec(
@@ -162,7 +161,6 @@ vim.api.nvim_exec(
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
   augroup END
 ]],
 	false

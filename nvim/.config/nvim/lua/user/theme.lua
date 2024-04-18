@@ -2,189 +2,19 @@ vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text
 vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "󰀦", numhl = "" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "󰌵", numhl = "" })
 vim.fn.sign_define("DiagnosticSignInformation", {
-    texthl = "DiagnosticSignInformation",
-    text = "󰀨",
-    numhl = "",
+	texthl = "DiagnosticSignInformation",
+	text = "󰀨",
+	numhl = "",
 })
 
--- Kanagawa
--- require("kanagawa").setup({
---     compile = false,  -- enable compiling the colorscheme
---     undercurl = true, -- enable undercurls
---     commentStyle = { italic = true },
---     functionStyle = { bold = true },
---     keywordStyle = { bold = true },
---     statementStyle = { bold = true },
---     typeStyle = { bold = true },
---     transparent = true,    -- do not set background color
---     dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
---     terminalColors = true, -- define vim.g.terminal_color_{0,17}
---     theme = "wave",        -- Load "wave" theme when 'background' option is not set
---     background = {
---         -- map the value of 'background' option to a theme
---         dark = "wave", -- try "dragon" !
---         light = "lotus",
---     },
---     colors = {
---         theme = { all = { ui = { bg_gutter = "none" } } }
---     },
---     overrides = function(colors)
---         return {
---             StatusLine = { fg = colors.palette.fujiWhite, bg = colors.palette.waveAqua1, blend = 10, bold = true },
---             StatusLineNC = { fg = colors.palette.sumiInk0, bg = colors.palette.sumiInk6 },
---         }
---     end,
--- })
---
--- Catppuccin
-vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+vim.cmd("colorscheme xresources")
 
--- require("catppuccin").setup({
---     dim_inactive = { enabled = false, shade = "dark", percentage = 0.5 },
---     transparent_background = true,
---     -- transparent_background = false,
---     no_italic = true,
---     no_bold = false,
---     styles = {
---         functions = { "bold" },
---         keywords = { "bold" },
---         booleans = { "bold" },
---         types = { "bold" },
---         -- functions = {},
---         -- keywords = {},
---         -- booleans = {},
---         -- types = {},
---         variables = {},
---     },
---     custom_highlights = function(colors)
---         return {
---             ["@parameter.php"] = { style = {} },
---             -- ["@conditional.php"] = {style = {'bold'}}
---         }
---     end,
---     integrations = {
---         cmp = true,
---         treesitter = true,
---         gitsigns = true,
---         ts_rainbow = true,
---         telescope = { enabled = true },
---         noice = true,
---         notify = true,
---     },
--- })
-
--- Tokyonight
--- require('tokyonight').setup({
---     style = 'storm',
---     transparent = true,
---     terminal_colors = true,
---     dim_inactive = {enabled = false, shade = "dark", percentage = 0.5},
---     lualine_bold = true,
---     styles = {
---         keywords = {bold = true, italic = false},
---         functions = {bold = true, italic = false},
---         variables = {italic = true}
---     }
--- })
-
--- vim.cmd [[colorscheme tokyonight-storm]]
---
---
-require("rose-pine").setup({
-    variant = "auto",      -- auto, main, moon, or dawn
-    dark_variant = "moon", -- main, moon, or dawn
-    dim_inactive_windows = false,
-    extend_background_behind_borders = true,
-
-    enable = {
-        terminal = true,
-        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations = true,        -- Handle deprecated options automatically
-    },
-
-    styles = { bold = true, italic = false, transparency = true },
-
-    groups = {
-        border = "muted",
-        link = "iris",
-        panel = "surface",
-
-        error = "love",
-        hint = "iris",
-        info = "foam",
-        note = "pine",
-        todo = "rose",
-        warn = "gold",
-
-        git_add = "foam",
-        git_change = "rose",
-        git_delete = "love",
-        git_dirty = "rose",
-        git_ignore = "muted",
-        git_merge = "iris",
-        git_rename = "pine",
-        git_stage = "iris",
-        git_text = "rose",
-        git_untracked = "subtle",
-
-        h1 = "iris",
-        h2 = "foam",
-        h3 = "rose",
-        h4 = "gold",
-        h5 = "pine",
-        h6 = "foam",
-    },
-
-    highlight_groups = {
-        -- Comment = { fg = "foam" },
-        -- VertSplit = { fg = "muted", bg = "muted" },
-        Function = { bold = true },
-        Type = { bold = true },
-        ["@type"] = { bold = true },
-        ["@function.method.call"] = { bold = true },
-        ["@function.method"] = { bold = true },
-        Keyword = { bold = true },
-        ["@keyword.conditional"] = { bold = true },
-        ["@keyword.repeat"] = { bold = true },
-        ["@keyword.operator"] = { bold = true, fg = "pine" },
-        ["@punctuation.bracket"] = { fg = "pine" },
-        Operator = { fg = "love" },
-        Boolean = { bold = true },
-        StatusLine = { fg = "love", bg = "love", blend = 10, bold = true },
-        StatusLineNC = { fg = "subtle", bg = "surface" },
-    },
-
-    before_highlight = function(group, highlight, palette)
-        -- Disable all undercurls
-        -- if highlight.undercurl then
-        --     highlight.undercurl = false
-        -- end
-        --
-        -- Change palette colour
-        -- if highlight.fg == palette.pine then
-        --     highlight.fg = palette.foam
-        -- end
-    end,
-})
-
--- require('nightcity').setup({
---     -- style = 'kabuki',
---     style = 'afterlife',
---     font_style = {
---         comments = { italic = true },
---         keywords = { bold = true },
---         functions = { bold = true },
---         variables = { bold = true },
---     }
--- })
-
-
--- vim.cmd("colorscheme rose-pine")
-vim.cmd("colorscheme base16-gruvbox-material-dark-soft")
--- vim.cmd("colorscheme nightcity")
--- vim.cmd("colorscheme kanagawa")
--- vim.cmd("colorscheme catppuccin")
 vim.opt.fillchars = "eob: ,vert: "
+
+local function modify_hl(ns, name, changes)
+	local def = vim.api.nvim_get_hl(ns, { name = name, link = false })
+	vim.api.nvim_set_hl(ns, name, vim.tbl_deep_extend("force", def, changes))
+end
 
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
@@ -194,29 +24,8 @@ vim.cmd([[
     " set cursorline
     set noshowmode
 
-    highlight ColorColumn ctermbg=12 guibg=#eb6f92 guifg=#2a273f
     call matchadd('ColorColumn', '\%82v', 100)
 
-    " transparent background
-    highlight Normal guibg=none
-    highlight NonText guibg=none
-    highlight Normal ctermbg=none
-    highlight NonText ctermbg=none
-    highlight InactiveWindow ctermbg=none
-    highlight ActiveWindow ctermbg=none
-    highlight SignColumn guibg=none
-    highlight GitSignsAdd guibg=NONE
-    highlight GitGutterAdd guibg=NONE
-    highlight GitSignsChange guibg=NONE
-    highlight GitGutterChange guibg=NONE
-    highlight GitSignsDelete guibg=NONE
-    highlight GitGutterDelete guibg=NONE
-    hi DiffAdd guibg=none
-    hi DiffChange guibg=none
-    hi DiffDelete guibg=none
-    hi DiffText guibg=none
-    highlight clear LineNr
-    highlight clear VertSplit
     set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
     augroup CursorLine
@@ -226,7 +35,61 @@ vim.cmd([[
     augroup END
 ]])
 
--- local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+local color = require("xresources")
 
--- require("notify").setup({background_colour = macchiato['overlay2']})
--- require("notify").setup({ background_colour = "#393552" })
+local function dump(o)
+	if type(o) == "table" then
+		local s = "{ "
+		for k, v in pairs(o) do
+			if type(k) ~= "number" then
+				k = '"' .. k .. '"'
+			end
+			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
+		end
+		return s .. "} "
+	else
+		return tostring(o)
+	end
+end
+
+-- print(dump(color))
+
+modify_hl(0, "Normal", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "NonText", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "InactiveWindow", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "ActiveWindow", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "SignColumn", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitSignsAdd", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitGutterAdd", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitSignsChange", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitGutterChange", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitSignsDelete", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "GitGutterDelete", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "DiffAdd", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "DiffChange", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "DiffDelete", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "DiffText", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "Keyword", { fg = color.purple, bold = false })
+modify_hl(0, "Function", { bold = false })
+modify_hl(0, "TSVariable", { fg = color.red })
+modify_hl(0, "TSProperty", { fg = color.fg })
+modify_hl(0, "TSAttribute", { fg = color.yellow })
+modify_hl(0, "TSConstant", { fg = color.yellow })
+modify_hl(0, "StatusLineNC", { fg = color.fg, bg = color.light_black })
+modify_hl(0, "StatusLine", { fg = color.fg, bg = color.bg, bold = true })
+modify_hl(0, "StatusLineErrSign", { fg = color.red, bg = color.bg })
+modify_hl(0, "StatusLineWarnSign", { fg = color.yellow, bg = color.bg })
+modify_hl(0, "StatusLineHintSign", { fg = color.cyan, bg = color.bg })
+modify_hl(0, "StatusLineInfoSign", { fg = color.blue, bg = color.bg })
+modify_hl(0, "DiagnosticError", { fg = color.red })
+modify_hl(0, "DiagnosticHint", { fg = color.magenta })
+modify_hl(0, "DiagnosticInfo", { fg = color.blue })
+modify_hl(0, "DiagnosticWarn", { fg = color.yellow })
+modify_hl(0, "GitSignsAdd", { fg = color.green })
+modify_hl(0, "GitSignsChange", { fg = color.blue })
+modify_hl(0, "GitSignsDelete", { fg = color.red })
+modify_hl(0, "LineNr", { fg = color.fg, bg = color.none })
+modify_hl(0, "VertSplit", { fg = color.none, bg = color.none })
+modify_hl(0, "CursorLineNr", { fg = color.yellow, bg = color.none, bold = true })
+modify_hl(0, "ColorColumn", { fg = color.black, bg = color.purple })
+modify_hl(0, "@tag.twig", { fg = color.blue })
