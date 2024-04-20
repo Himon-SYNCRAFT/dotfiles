@@ -8,6 +8,9 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
 local l = require("luasnip.extras").lambda
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
+local rep = require("luasnip.extras").rep
 
 vim.keymap.set({ "i" }, "<C-K>", function()
 	ls.expand()
@@ -83,32 +86,87 @@ local function get_current_file_directory()
 	return directory_name
 end
 
+local function firstToLower(values)
+	local str = values[1][1]
+	if str == nil or str == "" then
+		return str
+	end
+	return str:sub(1, 1):lower() .. str:sub(2)
+end
+
 ls.add_snippets("php", {
-	s("cl", {
-		t({ "<?php", "" }),
-		t({ "", "" }),
-		t({ "declare(strict_types=1);", "" }),
-		t({ "", "" }),
-		t("namespace "),
-		f(get_namespace_for_src),
-		f(get_current_file_directory),
-		t({ ";", "" }),
-		t({ "", "" }),
-		t("class "),
-		f(get_filename),
-		t({ "", "" }),
-		t({ "{", "\t" }),
-		i(1),
-		t({ "", "" }),
-		t({ "}" }),
-	}),
-	s("con", {
-		t({ "public function __construct(" }),
-		i(1),
-		t({ ")", "" }),
-		t({ "{", "\t" }),
-		i(2),
-		t({ "", "" }),
-		t({ "}" }),
-	}),
+	s(
+		"cl",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root#`namespace#;
+
+            class `class_name#
+            {
+                `class_content#
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_current_file_directory),
+				class_name = f(get_filename),
+				class_content = i(1),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"get",
+		fmt(
+			[[
+            public function get`name#(): `typ#
+            {
+                return $this->`lowercased_name#;
+            }
+            ]],
+			{
+				name = i(1, "Name"),
+				typ = i(2, "Type"),
+				lowercased_name = f(firstToLower, { 1 }),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"con",
+		fmt(
+			[[
+		public function __construct(
+			`#
+		) {
+		}
+		]],
+			{
+				i(1),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"set",
+		fmt(
+			[[
+            public function set`name#(`typ# $`lowercased_name#): self
+            {
+                $this->`lowercased_name# = $`lowercased_name#;
+                return $this;
+            }
+            ]],
+			{
+				name = i(1, "Name"),
+				typ = i(2, "Type"),
+				lowercased_name = f(firstToLower, { 1 }),
+			},
+			{ delimiters = "`#" }
+		)
+	),
 })
