@@ -16,26 +16,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- { "rose-pine/neovim", name = "rose-pine" },
-	-- { "cryptomilk/nightcity.nvim" },
-	-- { "rebelot/kanagawa.nvim" },
-	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	-- { "savq/melange-nvim" },
 	{ "nekonako/xresources-nvim" },
-	-- { "RRethy/base16-nvim" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-commentary" },
 	{
-		"SirVer/ultisnips",
-		config = function()
-			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-			vim.g.UltiSnipsRemoveSelectModeMappings = 0
-		end,
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = {
+			"saadparwaiz1/cmp_luasnip",
+		},
 	},
 	{ "Raimondi/delimitMate" },
 	{
@@ -173,7 +165,6 @@ require("lazy").setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"quangnguyen30192/cmp-nvim-ultisnips",
 		},
 	},
 
@@ -224,6 +215,7 @@ require("native_statusline")
 require("mappings")
 require("user.debugging")
 require("user.theme")
+require("user.luasnip")
 
 vim.cmd([[
     filetype plugin indent on
@@ -273,16 +265,6 @@ vim.cmd([[
         autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
         " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
     augroup END
-
-    " Private dir for UltiSnip snippets
-    set rtp+=~/.vim/UltiSnips/
-    let g:UltiSnipsSnippetsDir = $HOME."/.vim/UltiSnips"
-    let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/UltiSnips"]
-
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<tab>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-    let g:UltiSnipsEditSplit="vertical"
 
     let g:codeium_no_map_tab = 1
 

@@ -1,9 +1,10 @@
 local cmp = require("cmp")
-local feedkeys = require("cmp.utils.feedkeys")
-local keymap = require("cmp.utils.keymap")
-local t = function(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+local luasnip = require("luasnip")
+-- local feedkeys = require("cmp.utils.feedkeys")
+-- local keymap = require("cmp.utils.keymap")
+-- local t = function(str)
+-- 	return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
 
 local kind_icons = {
 	Text = "",
@@ -34,12 +35,10 @@ local kind_icons = {
 	Codeium = "",
 }
 
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 
@@ -50,71 +49,12 @@ cmp.setup({
 
 	formatting = {
 		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			-- vim_item.kind = string.format('%s ', kind_icons[vim_item.kind])
-			-- Source
-			-- vim_item.menu = ({
-			--     buffer = "[Buffer]",
-			--     nvim_lsp = "[LSP]",
-			--     luasnip = "[LuaSnip]",
-			--     ultisnips = "[Snip]",
-			--     nvim_lua = "[Lua]",
-			--     latex_symbols = "[LaTeX]"
-			-- })[entry.source.name]
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 			return vim_item
 		end,
 	},
 
 	mapping = {
-		["<Tab>"] = cmp.mapping(function(fallback)
-			cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-		end, {
-			"i",
-			"s" --[[ "c" (to enable the mapping in command mode) ]],
-		}),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			cmp_ultisnips_mappings.jump_backwards(fallback)
-		end, {
-			"i",
-			"s" --[[ "c" (to enable the mapping in command mode) ]],
-		}),
-		-- ["<Tab>"] = cmp.mapping({
-		--     i = function(fallback)
-		--         if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-		--             vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
-		--         elseif cmp.visible() then
-		--             cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-		--         else
-		--             fallback()
-		--         end
-		--     end,
-		--     s = function(fallback)
-		--         if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-		--             vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
-		--         else
-		--             fallback()
-		--         end
-		--     end
-		-- }),
-		-- ["<S-Tab>"] = cmp.mapping({
-		--     i = function(fallback)
-		--         if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-		--             return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), 'm', true)
-		--         elseif cmp.visible() then
-		--             cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-		--         else
-		--             fallback()
-		--         end
-		--     end,
-		--     s = function(fallback)
-		--         if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-		--             return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), 'm', true)
-		--         else
-		--             fallback()
-		--         end
-		--     end
-		-- }),
 		["<Down>"] = cmp.mapping(
 			cmp.mapping.select_next_item({
 				behavior = cmp.SelectBehavior.Select,
@@ -158,11 +98,26 @@ cmp.setup({
 				select = false,
 			}),
 		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if luasnip.locally_jumpable(1) then
+				luasnip.jump(1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if luasnip.locally_jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	},
 
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "ultisnips" }, -- For ultisnips users.
+		{ name = "luasnip" },
 		{ name = "codeium", keyword_length = 2 },
 		{ name = "path" },
 		{ name = "orgmode" },
@@ -171,24 +126,6 @@ cmp.setup({
 })
 
 local cmdline_mapping = {
-	-- ['<Tab>'] = {
-	--     c = function()
-	--         if cmp.visible() then
-	--             cmp.select_next_item()
-	--         else
-	--             feedkeys.call(keymap.t('<C-z>'), 'n')
-	--         end
-	--     end,
-	-- },
-	-- ['<S-Tab>'] = {
-	--     c = function()
-	--         if cmp.visible() then
-	--             cmp.select_prev_item()
-	--         else
-	--             feedkeys.call(keymap.t('<C-z>'), 'n')
-	--         end
-	--     end,
-	-- },
 	["<C-n>"] = {
 		c = function(fallback)
 			if cmp.visible() then

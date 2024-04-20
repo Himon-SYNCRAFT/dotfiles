@@ -19,8 +19,8 @@ end
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set termguicolors
-    " set background=light
-    set background=dark
+    set background=light
+    " set background=dark
     " set cursorline
     set noshowmode
 
@@ -93,3 +93,13 @@ modify_hl(0, "VertSplit", { fg = color.none, bg = color.none })
 modify_hl(0, "CursorLineNr", { fg = color.yellow, bg = color.none, bold = true })
 modify_hl(0, "ColorColumn", { fg = color.black, bg = color.purple })
 modify_hl(0, "@tag.twig", { fg = color.blue })
+
+modify_hl(0, "CmpItemAbbrDeprecated", { bg = color.none, strikethrough = true })
+modify_hl(0, "CmpItemAbbrMatch", { fg = color.blue, bg = color.none })
+modify_hl(0, "CmpItemAbbrMatchFuzzy", { fg = color.blue, bg = color.none })
+modify_hl(0, "CmpItemKindVariable", { fg = color.light_blue, bg = color.none })
+modify_hl(0, "CmpItemKindInterface", { fg = color.light_blue, bg = color.none })
+modify_hl(0, "CmpItemKindText", { fg = color.light_blue, bg = color.none })
+modify_hl(0, "CmpItemKindFunction", { fg = color.pink, bg = color.none })
+modify_hl(0, "CmpItemKindMethod", { fg = color.pink, bg = color.none })
+modify_hl(0, "CmpItemKindKeyword", { fg = color.red, bg = color.none })
