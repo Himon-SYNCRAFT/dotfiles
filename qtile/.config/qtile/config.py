@@ -1,6 +1,7 @@
 import os
 import subprocess
 from typing import Any, Dict, List
+from pathlib import Path
 
 from libqtile import bar, hook  # , widget
 from libqtile.config import Click, Drag, Group, Key, Match, Rule, Screen
@@ -142,8 +143,92 @@ class GruvboxMaterialDarkSoft:
     cyan = "#89b482" 
     white = "#ddc7a1"
 
+class XresourcesTheme:
+    def __init__(self):
+        foreground = ""
+        background = ""
+        foreground_alt = ""
 
-theme = GruvboxMaterialDarkSoft
+        primary = ""
+        secondary = ""
+        alert = ""
+
+        black = ""
+        red = ""
+        green = ""
+        yellow = ""
+        blue = ""
+        magenta = ""
+        cyan = ""
+        white = ""
+
+        p = Path("~/.Xresources").expanduser()
+
+        with open(p) as f:
+            content = f.readlines()
+
+        for line in content:
+            if line.startswith("!") or line.startswith("/*"):
+                continue
+
+            if line.startswith("*foreground:"):
+                foreground = line.split(":")[1].strip()
+            if line.startswith("*background"):
+                background = line.split(":")[1].strip()
+            if line.startswith("*foreground_alt"):
+                foreground_alt = line.split(":")[1].strip()
+            if line.startswith("*primary"):
+                primary = line.split(":")[1].strip()
+            if line.startswith("*secondary"):
+                secondary = line.split(":")[1].strip()
+            if line.startswith("*alert"):
+                alert = line.split(":")[1].strip()
+            if line.startswith("*color0"):
+                black = line.split(":")[1].strip()
+            if line.startswith("*color1"):
+                red = line.split(":")[1].strip()
+            if line.startswith("*color2"):
+                green = line.split(":")[1].strip()
+            if line.startswith("*color3"):
+                yellow = line.split(":")[1].strip()
+            if line.startswith("*color4"):
+                blue = line.split(":")[1].strip()
+            if line.startswith("*color5"):
+                magenta = line.split(":")[1].strip()
+            if line.startswith("*color6"):
+                cyan = line.split(":")[1].strip()
+            if line.startswith("*color7"):
+                white = line.split(":")[1].strip()
+
+        self.foreground = foreground
+        self.background = background
+        self.foreground_alt = foreground_alt
+
+        self.primary = primary
+
+        if not primary:
+            self.primary = blue
+
+        self.secondary = secondary
+
+        if not secondary:
+            self.secondary = magenta
+
+        self.alert = alert
+
+        if not alert:
+            self.alert = red
+
+        self.black = black
+        self.red = red
+        self.green = green
+        self.yellow = yellow
+        self.blue = blue
+        self.magenta = magenta
+        self.cyan = cyan
+        self.white = white
+
+theme = XresourcesTheme()
 
 
 keys = [

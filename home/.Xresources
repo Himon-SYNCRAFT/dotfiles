@@ -142,49 +142,49 @@
 /* *color15:      #908caa */
 
 !! Gruvbox Material Soft
-*foreground:   #d4be98
-*background:   #32302f
-*cursorColor:  #ddc7a1
-*foreground_alt: #c8c093
-*primary: #89b482
-*secondary: #7daea3
-*alert: #ea6962
+/* *foreground:   #d4be98 */
+/* *background:   #32302f */
+/* *cursorColor:  #ddc7a1 */
+/* *foreground_alt: #c8c093 */
+/* *primary: #89b482 */
+/* *secondary: #7daea3 */
+/* *alert: #ea6962 */
 
-! black
-*color0:       #252423
-*color8:       #3c3836
+/* ! black */
+/* *color0:       #252423 */
+/* *color8:       #3c3836 */
 
-! red
-*color1:       #ea6962
-*color9:       #ea6962
+/* ! red */
+/* *color1:       #ea6962 */
+/* *color9:       #ea6962 */
 
-! green
-*color2:       #a9b665
-*color10:      #a9b665
+/* ! green */
+/* *color2:       #a9b665 */
+/* *color10:      #a9b665 */
 
-! yellow
-*color3:       #d8a657
-*color11:      #d8a657
+/* ! yellow */
+/* *color3:       #d8a657 */
+/* *color11:      #d8a657 */
 
-! blue
-*color4:       #7daea3
-*color12:      #7daea3
+/* ! blue */
+/* *color4:       #7daea3 */
+/* *color12:      #7daea3 */
 
-! magenta
-*color5:       #d3869b
-*color13:      #d3869b
+/* ! magenta */
+/* *color5:       #d3869b */
+/* *color13:      #d3869b */
 
-! cyan
-*color6:       #89b482 
-*color14:      #89b482
+/* ! cyan */
+/* *color6:       #89b482 */ 
+/* *color14:      #89b482 */
 
-! white
-*color7:       #ddc7a1
-*color15:      #a89984
+/* ! white */
+/* *color7:       #ddc7a1 */
+/* *color15:      #a89984 */
 
-! orange
-*color16:       #e78a4e
-*color24:       #e78a4e
+/* ! orange */
+/* *color16:       #e78a4e */
+/* *color24:       #e78a4e */
 
 
 !! Rose Pine Dawn
@@ -225,41 +225,44 @@
 !*color7:       #9893a5
 !*color15:      #797593
 
-/* ! TokyoNight Storm */
-/* *background: #24283b */
-/* *foreground: #c0caf5 */
+! TokyoNight Storm
+*background: #24283b
+*foreground: #c0caf5
+*primary: #7aa2f7
+*secondary: #bb9af7
+*alert: #f7768e
 
-/* ! black */
-/* *color0: #1d202f */
-/* *color8: #414868 */
+! black
+*color0: #1d202f
+*color8: #414868
 
-/* ! red */
-/* *color1: #f7768e */
-/* *color9: #f7768e */
+! red
+*color1: #f7768e
+*color9: #f7768e
 
-/* ! green */
-/* *color2: #9ece6a */
-/* *color10: #9ece6a */
+! green
+*color2: #9ece6a
+*color10: #9ece6a
 
-/* ! yellow */
-/* *color3: #e0af68 */
-/* *color11: #e0af68 */
+! yellow
+*color3: #e0af68
+*color11: #e0af68
 
-/* ! blue */
-/* *color4: #7aa2f7 */
-/* *color12: #7aa2f7 */
+! blue
+*color4: #7aa2f7
+*color12: #7aa2f7
 
-/* ! magenta */
-/* *color5: #bb9af7 */
-/* *color13: #bb9af7 */
+! magenta
+*color5: #bb9af7
+*color13: #bb9af7
 
-/* ! cyan */
-/* *color6: #7dcfff */
-/* *color14: #7dcfff */
+! cyan
+*color6: #7dcfff
+*color14: #7dcfff
 
-/* ! white */
-/* *color7: #a9b1d6 */
-/* *color15: #c0caf5 */
+! white
+*color7: #a9b1d6
+*color15: #c0caf5
 
 ! TokyoNight Day
 /* *background: #e1e2e7 */
