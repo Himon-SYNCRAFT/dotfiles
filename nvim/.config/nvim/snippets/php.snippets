@@ -387,8 +387,6 @@ snippet http_redirect
 	exit();
 snippet log "error_log(var_export($var, true));"
 	error_log(var_export(${1}, true));
-snippet var "var_export($var)"
-	var_export(${1});
 snippet ve "Dumb debug helper in HTML"
 	echo '<pre>' . var_export(${1}, 1) . '</pre>';
 snippet pc "Dumb debug helper in cli"

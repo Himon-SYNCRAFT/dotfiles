@@ -1,6 +1,7 @@
 require("luasnip.loaders.from_snipmate").lazy_load()
 local ls = require("luasnip")
 local s = ls.snippet
+local sn = ls.snippet_node
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
@@ -9,8 +10,12 @@ local d = ls.dynamic_node
 local r = ls.restore_node
 local l = require("luasnip.extras").lambda
 local fmt = require("luasnip.extras.fmt").fmt
-local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
+local postfix = require("luasnip.extras.postfix").postfix
+
+ls.config.setup({
+	enable_autosnippets = true,
+})
 
 vim.keymap.set({ "i" }, "<C-K>", function()
 	ls.expand()
@@ -169,4 +174,13 @@ ls.add_snippets("php", {
 			{ delimiters = "`#" }
 		)
 	),
+	postfix({
+		trig = ".var",
+		match_pattern = "^%s*(.*)",
+		snippetType = "autosnippet",
+	}, {
+		d(1, function(_, parent)
+			return sn(1, fmt("${} = " .. parent.snippet.env.POSTFIX_MATCH, { i(1, "name") }))
+		end),
+	}),
 })
