@@ -19,8 +19,8 @@ end
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set termguicolors
-    set background=light
-    " set background=dark
+    " set background=light
+    set background=dark
     " set cursorline
     set noshowmode
 
@@ -36,23 +36,6 @@ vim.cmd([[
 ]])
 
 local color = require("xresources")
-
-local function dump(o)
-	if type(o) == "table" then
-		local s = "{ "
-		for k, v in pairs(o) do
-			if type(k) ~= "number" then
-				k = '"' .. k .. '"'
-			end
-			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
-		end
-		return s .. "} "
-	else
-		return tostring(o)
-	end
-end
-
--- print(dump(color))
 
 modify_hl(0, "Normal", { bg = color.none, ctermbg = color.none })
 modify_hl(0, "NonText", { bg = color.none, ctermbg = color.none })
@@ -81,10 +64,14 @@ modify_hl(0, "StatusLineErrSign", { fg = color.red, bg = color.bg })
 modify_hl(0, "StatusLineWarnSign", { fg = color.yellow, bg = color.bg })
 modify_hl(0, "StatusLineHintSign", { fg = color.cyan, bg = color.bg })
 modify_hl(0, "StatusLineInfoSign", { fg = color.blue, bg = color.bg })
-modify_hl(0, "DiagnosticError", { fg = color.red })
+modify_hl(0, "DiagnosticError", { fg = color.red, bg = color.grey })
+modify_hl(0, "DiagnosticSignError", { fg = color.red, bg = color.none })
 modify_hl(0, "DiagnosticHint", { fg = color.magenta })
-modify_hl(0, "DiagnosticInfo", { fg = color.blue })
-modify_hl(0, "DiagnosticWarn", { fg = color.yellow })
+modify_hl(0, "DiagnosticSignHint", { fg = color.magenta })
+modify_hl(0, "DiagnosticInfo", { fg = color.blue, bg = color.grey })
+modify_hl(0, "DiagnosticSignInfo", { fg = color.blue, bg = color.none })
+modify_hl(0, "DiagnosticWarn", { fg = color.yellow, bg = color.grey })
+modify_hl(0, "DiagnosticSignWarn", { fg = color.yellow, bg = color.none })
 modify_hl(0, "GitSignsAdd", { fg = color.green })
 modify_hl(0, "GitSignsChange", { fg = color.blue })
 modify_hl(0, "GitSignsDelete", { fg = color.red })
@@ -93,6 +80,10 @@ modify_hl(0, "VertSplit", { fg = color.none, bg = color.none })
 modify_hl(0, "CursorLineNr", { fg = color.yellow, bg = color.none, bold = true })
 modify_hl(0, "ColorColumn", { fg = color.black, bg = color.purple })
 modify_hl(0, "@tag.twig", { fg = color.blue })
+modify_hl(0, "@tag.html", { fg = color.cyan })
+modify_hl(0, "@tag.attribute.html", { fg = color.blue })
+modify_hl(0, "@attribute.phpdoc", { fg = color.yellow })
+modify_hl(0, "@attribute.php", { fg = color.yellow })
 
 modify_hl(0, "CmpItemAbbrDeprecated", { bg = color.none, strikethrough = true })
 modify_hl(0, "CmpItemAbbrMatch", { fg = color.blue, bg = color.none })

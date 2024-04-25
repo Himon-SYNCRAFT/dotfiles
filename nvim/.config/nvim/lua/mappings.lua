@@ -126,7 +126,9 @@ map("n", "gi", [[:Telescope lsp_implementations<CR>]], mapopts)
 -- map("n", "gr", [[:Telescope coc references_used<CR>]], mapopts)
 map("n", "gr", [[:Telescope lsp_references<CR>]], mapopts)
 
-map("n", "<leader>p", [[:Telescope projects<CR>]], mapopts)
+vim.keymap.set("n", "<leader>p", function()
+	require("auto-session.session-lens").search_session()
+end, mapopts)
 
 -- line code actions
 -- map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], mapopts)
@@ -137,19 +139,19 @@ map("n", "<leader>p", [[:Telescope projects<CR>]], mapopts)
 
 -- telescope-repo
 map("n", "<leader>rl", [[<Cmd>lua require'user.telescope'.repo_list()<CR>]], mapopts)
-map("n", "<leader>i", [[<Cmd>IconPickerNormal emoji<CR>]], mapopts)
+-- map("n", "<leader>i", [[<Cmd>IconPickerNormal emoji<CR>]], mapopts)
 
 -- telekasten
-map("n", "<leader>z", ":Telekasten panel<CR>", mapopts)
-map("n", "<leader>zb", ":Telekasten show_backlinks<CR>", mapopts)
-map("n", "<leader>ze", ":Telekasten find_notes<CR>", mapopts)
-map("n", "<leader>zf", ":Telekasten find_friends<CR>", mapopts)
-map("n", "<leader>zg", ":Telekasten search_notes<CR>", mapopts)
-map("n", "<leader>zl", ":Telekasten insert_link<CR>", mapopts)
-map("n", "<leader>zn", ":Telekasten new_templated_note<CR>", mapopts)
-map("n", "<leader>zrn", ":Telekasten rename_note<CR>", mapopts)
-map("n", "<leader>zt", ":Telekasten show_tags<CR>", mapopts)
-map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
+-- map("n", "<leader>z", ":Telekasten panel<CR>", mapopts)
+-- map("n", "<leader>zb", ":Telekasten show_backlinks<CR>", mapopts)
+-- map("n", "<leader>ze", ":Telekasten find_notes<CR>", mapopts)
+-- map("n", "<leader>zf", ":Telekasten find_friends<CR>", mapopts)
+-- map("n", "<leader>zg", ":Telekasten search_notes<CR>", mapopts)
+-- map("n", "<leader>zl", ":Telekasten insert_link<CR>", mapopts)
+-- map("n", "<leader>zn", ":Telekasten new_templated_note<CR>", mapopts)
+-- map("n", "<leader>zrn", ":Telekasten rename_note<CR>", mapopts)
+-- map("n", "<leader>zt", ":Telekasten show_tags<CR>", mapopts)
+-- map("n", "<leader>zz", ":Telekasten follow_link<CR>", mapopts)
 
 map("n", "<leader>db", ":DBUIToggle<CR>", mapopts)
 

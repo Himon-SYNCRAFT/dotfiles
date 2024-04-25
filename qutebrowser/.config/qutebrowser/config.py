@@ -12,7 +12,8 @@
 
 
 # import dracula.draw
-import catppuccin
+# import catppuccin
+import rosepine
 
 # Block YouTube ads
 from qutebrowser.api import interceptor
@@ -383,8 +384,9 @@ config.bind('e', 'edit-url')
 #         'horizontal': 8
 #     }
 # })
-catppuccin.setup(c, 'macchiato')
+# catppuccin.setup(c, 'macchiato')
 # catppuccin.setup(c, 'latte')
+rosepine.setup(c, 'rose-pine-moon', True)
 
 c.colors.webpage.bg = 'white'
 
