@@ -241,7 +241,7 @@ border_focus = theme.primary
 border_normal = theme.background
 
 border_width = 2
-default_margin = 20
+default_margin = 15
 margin = [default_margin, default_margin, default_margin, default_margin]
 
 layout_config = dict(

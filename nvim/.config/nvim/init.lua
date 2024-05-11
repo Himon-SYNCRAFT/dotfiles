@@ -1,4 +1,5 @@
 vim.g.mapleader = ","
+vim.o.background = "light"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -270,6 +271,20 @@ vim.cmd([[
     let g:codeium_filetypes = { "sql": v:false }
 
     let g:db_ui_auto_execute_table_helpers = 1
+    let g:db_ui_table_helpers = {
+    \   'postgresql': {
+    \     'Count': 'SELECT count(*) FROM "{table}"',
+    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
+    \   },
+    \   'sqlite': {
+    \     'Count': 'SELECT count(*) FROM "{table}"',
+    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
+    \   },
+    \   'mysql': {
+    \     'Count': 'SELECT count(*) FROM "{table}"',
+    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
+    \   },
+    \ }
 
     "" Remember cursor position
     augroup vimrc-remember-cursor-position

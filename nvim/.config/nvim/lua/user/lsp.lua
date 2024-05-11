@@ -156,12 +156,6 @@ lspconfig.gopls.setup({
 	},
 })
 
-lspconfig.ocamllsp.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	handlers = handlers,
-})
-
 lspconfig.templ.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,

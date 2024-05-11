@@ -353,8 +353,8 @@ c.colors.tabs.selected.even.bg = '#282828'
 # Type: Bool
 c.colors.webpage.darkmode.enabled = False
 
-c.colors.webpage.preferred_color_scheme = 'dark'
-# c.colors.webpage.preferred_color_scheme = 'light'
+# c.colors.webpage.preferred_color_scheme = 'dark'
+c.colors.webpage.preferred_color_scheme = 'light'
 
 c.url.default_page = 'file:///home/himon/Projects/StarterPage/dashboard.html'
 
@@ -386,7 +386,8 @@ config.bind('e', 'edit-url')
 # })
 # catppuccin.setup(c, 'macchiato')
 # catppuccin.setup(c, 'latte')
-rosepine.setup(c, 'rose-pine-moon', True)
+# rosepine.setup(c, 'rose-pine-moon', True)
+rosepine.setup(c, 'rose-pine-dawn', True)
 
 c.colors.webpage.bg = 'white'
 

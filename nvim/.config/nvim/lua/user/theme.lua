@@ -19,8 +19,6 @@ end
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set termguicolors
-    " set background=light
-    set background=dark
     " set cursorline
     set noshowmode
 

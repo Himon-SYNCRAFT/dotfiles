@@ -91,12 +91,20 @@ local function get_current_file_directory()
 	return directory_name
 end
 
-local function firstToLower(values)
+local function first_to_lower(values)
 	local str = values[1][1]
 	if str == nil or str == "" then
 		return str
 	end
 	return str:sub(1, 1):lower() .. str:sub(2)
+end
+
+local function get_first_letter_lowercase(values)
+	local str = values[1][1]
+	if str == nil or str == "" then
+		return ""
+	end
+	return str:sub(1, 1):lower()
 end
 
 ls.add_snippets("php", {
@@ -125,6 +133,173 @@ ls.add_snippets("php", {
 		)
 	),
 	s(
+		"ent",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root^`namespace^;
+
+            use Doctrine\ORM\Mapping as ORM;
+
+            #[ORM\Entity()]
+            class `class_name^
+            {
+                #[ORM\Id]
+                #[ORM\GeneratedValue]
+                #[ORM\Column]
+                private ?int $id = null;
+
+                `class_content^
+
+                public function getId(): ?int
+                {
+                    return $this->id;
+                }
+
+                public function setId(?int $id): self
+                {
+                    $this->id = $id;
+                    return $this;
+                }
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_current_file_directory),
+				class_name = f(get_filename),
+				class_content = i(1),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"repo",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root^`namespace^;
+
+            use Doctrine\ORM\EntityManagerInterface;
+            use Doctrine\ORM\QueryBuilder;
+
+            class `class_name^
+            {
+                public function __construct(
+                    private EntityManagerInterface $_em,
+                ) {
+                }
+
+                public function findById(int $id): ?`find_by_id_type^
+                {
+                    return $this->createQueryBuilder('`alias^')
+                        ->where('`alias^.id = :id')
+                        ->setParameter('id', $id)
+                        ->getQuery()
+                        ->getOneOrNullResult();
+                }
+
+                public function save(`entity_name^ $`lowercased_entity_name^, bool $flush = false): void
+                {
+                    $this->_em->persist($`lowercased_entity_name^);
+
+                    if ($flush) {
+                        $this->_em->flush();
+                    }
+                }
+
+                /**
+                * @param `item_type^[] $items
+                */
+                public function saveAll(array $items, bool $flush = false): void
+                {
+                    foreach ($items as $item) {
+                        $this->_em->persist($item);
+                    }
+
+                    if ($flush) {
+                        $this->_em->flush();
+                    }
+                }`end_^
+
+                private function createQueryBuilder(string $alias, ?string $indexBy = null): QueryBuilder
+                {
+                    return $this->_em->createQueryBuilder()
+                        ->select($alias)
+                        ->from(`from^::class, $alias, $indexBy);
+                }
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_current_file_directory),
+				class_name = f(get_filename),
+				entity_name = i(1),
+				find_by_id_type = rep(1),
+				item_type = rep(1),
+				lowercased_entity_name = f(first_to_lower, { 1 }),
+				from = rep(1),
+				end_ = i(0),
+				alias = f(get_first_letter_lowercase, { 1 }),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"controller",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root^`namespace^;
+
+            use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+            use Symfony\Component\HttpFoundation\Request;
+            use Symfony\Component\HttpFoundation\Response;
+            use Symfony\Component\Routing\Attribute\Route;
+
+            class `class_name^ extends AbstractController
+            {
+                `end_^
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_current_file_directory),
+				class_name = f(get_filename),
+				end_ = i(0),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"route",
+		fmt(
+			[[
+            #[Route('`url^', name: '`route_name^', methods: [`methods^])]
+            public function `func^(): Response
+            {
+                `end_^
+            }
+            ]],
+			{
+				url = i(1),
+				route_name = i(2),
+				methods = i(3, '"GET"'),
+				func = i(4),
+				end_ = i(0),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
 		"get",
 		fmt(
 			[[
@@ -136,7 +311,43 @@ ls.add_snippets("php", {
 			{
 				name = i(1, "Name"),
 				typ = i(2, "Type"),
-				lowercased_name = f(firstToLower, { 1 }),
+				lowercased_name = f(first_to_lower, { 1 }),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"pubfn",
+		fmt(
+			[[
+            public function `name#(`args#): `typ#
+            {
+                `end_#
+            }
+            ]],
+			{
+				name = i(1, "functionName"),
+				typ = i(2, "returnType"),
+				args = i(3, "args"),
+				end_ = i(0),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"privfn",
+		fmt(
+			[[
+            private function `name#(`args#): `typ#
+            {
+                `end_#
+            }
+            ]],
+			{
+				name = i(1, "functionName"),
+				typ = i(2, "returnType"),
+				args = i(3, "args"),
+				end_ = i(0),
 			},
 			{ delimiters = "`#" }
 		)
@@ -169,7 +380,23 @@ ls.add_snippets("php", {
 			{
 				name = i(1, "Name"),
 				typ = i(2, "Type"),
-				lowercased_name = f(firstToLower, { 1 }),
+				lowercased_name = f(first_to_lower, { 1 }),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
+		"match",
+		fmt(
+			[[
+            match (`arg#) {
+                `case# => `return_#,
+            };
+            ]],
+			{
+				arg = i(1, "arg"),
+				case = i(2, "case"),
+				return_ = i(3, "return"),
 			},
 			{ delimiters = "`#" }
 		)
