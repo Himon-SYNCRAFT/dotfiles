@@ -231,6 +231,116 @@
 *color7:       #9893a5
 *color15:      #797593
 
+! Miasma
+/* *foreground:   #c2c2b0 */
+/* *background:   #222222 */
+/* *cursorColor:  #5f875f */
+/* *primary:       #bb7744 */
+/* *secondary:       #78824B */
+/* *alert:       #685742 */
+
+/* ! black */
+/* *color0:       #222222 */
+/* *color8:       #666666 */
+
+/* ! red */
+/* *color1:       #685742 */
+/* *color9:       #685742 */
+
+/* ! green */
+/* *color2:       #5f875f */
+/* *color10:      #5f875f */
+
+/* ! yellow */
+/* *color3:       #B36D43 */
+/* *color11:      #B36D43 */
+
+/* ! blue */
+/* *color4:       #78824B */
+/* *color12:      #78824b */
+
+/* ! magenta */
+/* *color5:       #bb7744 */
+/* *color13:      #bb7744 */
+
+/* ! cyan */
+/* *color6:       #C9A554 */
+/* *color14:      #C9A554 */
+
+/* ! white */
+/* *color7:       #D7C483 */
+/* *color15:      #D7C483 */
+
+! Solarized Light
+/* *background:              #fdf6e3 */
+/* *foreground:              #657b83 */
+/* *cursorColor:             #586e75 */
+/* *primary:                 #d33682 */
+/* *secondary:               #268bd2 */
+/* *alert:                   #dc322f */
+
+/* *color0:                  #eee8d5 */
+/* *color1:                  #dc322f */
+/* *color2:                  #859900 */
+/* *color3:                  #b58900 */
+/* *color4:                  #268bd2 */
+/* *color5:                  #d33682 */
+/* *color6:                  #2aa198 */
+/* *color7:                  #073642 */
+/* *color9:                  #cb4b16 */
+/* *color8:                  #fdf6e3 */
+/* *color10:                 #93a1a1 */
+/* *color11:                 #839496 */
+/* *color12:                 #657b83 */
+/* *color13:                 #6c71c4 */
+/* *color14:                 #586e75 */
+/* *color15:                 #002b36 */
+
+! Gruvbox Material Hard Light
+/* *foreground:   #654735 */
+/* *background:   #f9f5d7 */
+/* *cursorColor:  #654735 */
+/* *foreground_alt: #4f3829 */
+/* *primary: #945e80 */
+/* *secondary: #45707a */
+/* *alert: #c14a4a */
+
+/* ! black */
+/* *color0:       #7c6f64 */
+/* *color8:       #928374 */
+
+/* ! red */
+/* *color1:       #c14a4a */
+/* *color9:       #ae5858 */
+
+/* ! green */
+/* *color2:       #6c782e */
+/* *color10:      #6f8352 */
+
+/* ! yellow */
+/* *color3:       #b47109 */
+/* *color11:      #a96b2c */
+
+/* ! blue */
+/* *color4:       #45707a */
+/* *color12:      #45707a */
+
+/* ! magenta */
+/* *color5:       #945e80 */
+/* *color13:      #945e80 */
+
+/* ! cyan */
+/* *color6:       #4c7a5d */ 
+/* *color14:      #4c7a5d */
+
+/* ! white */
+/* *color7:       #ddc7a1 */
+/* *color15:      #a89984 */
+
+/* ! orange */
+/* *color16:       #f3eac7 */
+/* *color24:       #a89984 */
+
 /* ! TokyoNight Storm */
 /* *background: #24283b */
 /* *foreground: #c0caf5 */
