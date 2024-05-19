@@ -40,5 +40,6 @@ stow --no-folding -v -t ~/ vim
 stow --no-folding -v -t ~/ wezterm
 stow --no-folding -v -t ~/ zathura
 stow --no-folding -v -t ~/ fontconfig
+stow --no-folding -v -t ~/ fastfetch
 
 xrdb ~/.Xresources
