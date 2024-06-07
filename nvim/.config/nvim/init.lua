@@ -116,7 +116,11 @@ require("lazy").setup({
 	{
 		"phpactor/phpactor",
 	},
-	{ "folke/trouble.nvim" },
+	{
+		"folke/trouble.nvim",
+		opts = {},
+		cmd = "Trouble",
+	},
 
 	-- lsp
 	{

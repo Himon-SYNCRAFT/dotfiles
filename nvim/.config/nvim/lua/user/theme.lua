@@ -233,6 +233,7 @@ modify_hl(0, "@tag.html", { fg = color.cyan })
 modify_hl(0, "@tag.attribute.html", { fg = color.blue })
 modify_hl(0, "@attribute.phpdoc", { fg = color.yellow })
 modify_hl(0, "@attribute.php", { fg = color.yellow })
+modify_hl(0, "@variable", { fg = color.red })
 
 modify_hl(0, "CmpItemAbbrDeprecated", { bg = color.none, strikethrough = true })
 modify_hl(0, "CmpItemAbbrMatch", { fg = color.blue, bg = color.none })
@@ -270,3 +271,10 @@ modify_hl(0, "diffNewFile", { fg = "orange" })
 modify_hl(0, "diffFile", { fg = color.blue })
 modify_hl(0, "diffLine", { fg = color.grey })
 modify_hl(0, "diffIndexLine", { fg = color.purple })
+
+modify_hl(0, "NormalFloat", { bg = color.none })
+
+modify_hl(0, "Directory", { bg = color.none, fg = color.fg })
+modify_hl(0, "TroubleLspFileName", { bg = color.none, fg = color.fg })
+modify_hl(0, "TroubleNormal", { bg = color.none })
+modify_hl(0, "TroubleNormalNC", { bg = color.none })

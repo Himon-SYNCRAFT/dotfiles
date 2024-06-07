@@ -1,624 +1,87 @@
-!*.alpha:  0.5
-!*.alpha:  0.87
 *.alpha:  0.92
-!*.alpha:  0.95
-!*.alpha:  0.98
 !*.alpha:  1
 
-! Dracula Xresources palette
-!*.foreground: #F8F8F2
-!*.background: #282A36
-!*.cursorColor: #F8F8F2
-!! black
-!*.color0:     #000000
-!*.color8:     #4D4D4D
-!! red
-!*.color1:     #FF5555
-!*.color9:     #FF6E67
-!! green
-!*.color2:     #50FA7B
-!*.color10:    #5AF78E
-!! yellow
-!*.color3:     #F1FA8C
-!*.color11:    #F4F99D
-!! blue
-!*.color4:     #BD93F9
-!*.color12:    #CAA9FA
-!! magenta
-!*.color5:     #FF79C6
-!*.color13:    #FF92D0
-!! cyan
-!*.color6:     #8BE9FD
-!*.color14:    #9AEDFE
-!! white
-!*.color7:     #BFBFBF
-!*.color15:    #E6E6E6
-
-/* ! Cyberpunk */
-/* *foreground: #ebdbb2 */
-/* *background: #312e39 */
-/* *cursorColor: #ebdbb2 */
-/* *primary: #c72e68 */
-/* *secondary: #3e518e */
-/* *alert: #ff2975 */
+/* ! RosePine Moon */
+/* ! special */
+/* *foreground:   #e0def4 */
+/* *background:   #232136 */
+/* *cursorColor:  #e0def4 */
+/* *primary: #c4a7e7 */
+/* *secondary: #3e8fb0 */
+/* *alert: #eb6f92 */
 
 /* ! black */
-/* *color0:     #312e39 */
-/* *color8:     #312e39 */
+/* *color0:       #2a273f */
+/* *color8:       #393552 */
 
 /* ! red */
-/* *color1:     #ff2975 */
-/* *color9:     #f0c2a0 */
+/* *color1:       #eb6f92 */
+/* *color9:       #eb6f92 */
 
 /* ! green */
-/* *color2:     #8a7c6f */
-/* *color10:    #978979 */
+/* *color2:       #f6c177 */
+/* *color10:      #f6c177 */
 
 /* ! yellow */
-/* *color3:     #f28920 */
-/* *color11:    #f8cd1a */
+/* *color3:       #ea9a97 */
+/* *color11:      #ea9a97 */
 
 /* ! blue */
-/* *color4:     #3e518e */
-/* *color12:    #6262ae */
+/* *color4:       #3e8fb0 */
+/* *color12:      #3e8fb0 */
 
 /* ! magenta */
-/* *color5:     #c72e68 */
-/* *color13:    #f022fd */
+/* *color5:       #c4a7e7 */
+/* *color13:      #c4a7e7 */
 
 /* ! cyan */
-/* *color6:     #afa38b */
-/* *color14:    #afa38b */
+/* *color6:       #9ccfd8 */
+/* *color14:      #9ccfd8 */
 
 /* ! white */
-/* *color7:     #BFBFBF */
-/* *color15:    #E6E6E6 */
+/* *color7:       #6e6a86 */
+/* *color15:      #908caa */
 
-! Catppuccin Macchiato
-/* *background: #24273A */
-/* *foreground: #CAD3F5 */
-/* *cursorColor: #CAD3F5 */
-/* *primary: #F5BDE6 */
-/* *secondary: #8AADF4 */
-/* *alert: #ED8796 */
-
-/* ! black */
-/* *color0: #494D64 */
-/* *color8: #5B6078 */
-
-/* ! red */
-/* *color1: #ED8796 */
-/* *color9: #ED8796 */
-
-/* ! green */
-/* *color2: #A6DA95 */
-/* *color10: #A6DA95 */
-
-/* ! yellow */
-/* *color3: #EED49F */
-/* *color11: #EED49F */
-
-/* ! blue */
-/* *color4: #8AADF4 */
-/* *color12: #8AADF4 */
-
-/* ! magenta */
-/* *color5: #F5BDE6 */
-/* *color13: #F5BDE6 */
-
-/* ! cyan */
-/* *color6: #8BD5CA */
-/* *color14: #8BD5CA */
-
-/* ! white */
-/* *color7: #B8C0E0 */
-/* *color15: #A5ADCB */
-
-! RosePine Moon
+! Rose Pine Dawn
 ! special
-*foreground:   #e0def4
-*background:   #232136
-*cursorColor:  #e0def4
-*primary: #c4a7e7
-*secondary: #3e8fb0
-*alert: #eb6f92
-
-! black
-*color0:       #2a273f
-*color8:       #393552
-
-! red
-*color1:       #eb6f92
-*color9:       #eb6f92
-
-! green
-*color2:       #f6c177
-*color10:      #f6c177
-
-! yellow
-*color3:       #ea9a97
-*color11:      #ea9a97
-
-! blue
-*color4:       #3e8fb0
-*color12:      #3e8fb0
-
-! magenta
-*color5:       #c4a7e7
-*color13:      #c4a7e7
-
-! cyan
-*color6:       #9ccfd8
-*color14:      #9ccfd8
-
-! white
-*color7:       #6e6a86
-*color15:      #908caa
-
-/* !! Gruvbox Material Soft */
-/* *foreground:   #d4be98 */
-/* *background:   #32302f */
-/* *cursorColor:  #ddc7a1 */
-/* *foreground_alt: #c8c093 */
-/* *primary: #89b482 */
-/* *secondary: #7daea3 */
-/* *alert: #ea6962 */
-
-/* ! black */
-/* *color0:       #252423 */
-/* *color8:       #3c3836 */
-
-/* ! red */
-/* *color1:       #ea6962 */
-/* *color9:       #ea6962 */
-
-/* ! green */
-/* *color2:       #a9b665 */
-/* *color10:      #a9b665 */
-
-/* ! yellow */
-/* *color3:       #d8a657 */
-/* *color11:      #d8a657 */
-
-/* ! blue */
-/* *color4:       #7daea3 */
-/* *color12:      #7daea3 */
-
-/* ! magenta */
-/* *color5:       #d3869b */
-/* *color13:      #d3869b */
-
-/* ! cyan */
-/* *color6:       #89b482 */ 
-/* *color14:      #89b482 */
-
-/* ! white */
-/* *color7:       #ddc7a1 */
-/* *color15:      #a89984 */
-
-/* ! orange */
-/* *color16:       #e78a4e */
-/* *color24:       #e78a4e */
-
-
-/* ! Rose Pine Dawn */
-/* ! special */
-/* *foreground:   #575279 */
-/* *background:   #faf4ed */
-/* *cursorColor:  #575279 */
-/* *primary: #907aa9 */
-/* *secondary: #286983 */
-/* *alert: #b4637a */
-
-/* !black */
-/* *color0:       #fffaf3 */
-/* *color8:       #f2e9e1 */
-
-/* !red */
-/* *color1:       #b4637a */
-/* *color9:       #b4637a */
-
-/* !green */
-/* *color2:       #ea9d34 */
-/* *color10:      #ea9d34 */
-
-/* !yellow */
-/* *color3:       #d7827e */
-/* *color11:      #d7827e */
-
-/* !blue */
-/* *color4:       #286983 */
-/* *color12:      #286983 */
-
-/* !magenta */
-/* *color5:       #907aa9 */
-/* *color13:      #907aa9 */
-
-/* !cyan */
-/* *color6:       #56949f */
-/* *color14:      #56949f */
-
-/* !white */
-/* *color7:       #9893a5 */
-/* *color15:      #797593 */
-
-/* ! Miasma */
-/* *foreground:   #c2c2b0 */
-/* *background:   #222222 */
-/* *cursorColor:  #5f875f */
-/* *primary:       #bb7744 */
-/* *secondary:       #78824B */
-/* *alert:       #685742 */
-
-/* ! black */
-/* *color0:       #222222 */
-/* *color8:       #666666 */
-
-/* ! red */
-/* *color1:       #685742 */
-/* *color9:       #685742 */
-
-/* ! green */
-/* *color2:       #5f875f */
-/* *color10:      #5f875f */
-
-/* ! yellow */
-/* *color3:       #B36D43 */
-/* *color11:      #B36D43 */
-
-/* ! blue */
-/* *color4:       #78824B */
-/* *color12:      #78824b */
-
-/* ! magenta */
-/* *color5:       #bb7744 */
-/* *color13:      #bb7744 */
-
-/* ! cyan */
-/* *color6:       #C9A554 */
-/* *color14:      #C9A554 */
-
-/* ! white */
-/* *color7:       #D7C483 */
-/* *color15:      #D7C483 */
-
-! Solarized Light
-/* *background:              #fdf6e3 */
-/* *foreground:              #657b83 */
-/* *cursorColor:             #586e75 */
-/* *primary:                 #d33682 */
-/* *secondary:               #268bd2 */
-/* *alert:                   #dc322f */
-
-/* *color0:                  #eee8d5 */
-/* *color1:                  #dc322f */
-/* *color2:                  #859900 */
-/* *color3:                  #b58900 */
-/* *color4:                  #268bd2 */
-/* *color5:                  #d33682 */
-/* *color6:                  #2aa198 */
-/* *color7:                  #073642 */
-/* *color9:                  #cb4b16 */
-/* *color8:                  #fdf6e3 */
-/* *color10:                 #93a1a1 */
-/* *color11:                 #839496 */
-/* *color12:                 #657b83 */
-/* *color13:                 #6c71c4 */
-/* *color14:                 #586e75 */
-/* *color15:                 #002b36 */
-
-! Gruvbox Material Hard Light
-/* *foreground:   #654735 */
-/* *background:   #f9f5d7 */
-/* *cursorColor:  #654735 */
-/* *foreground_alt: #4f3829 */
-/* *primary: #945e80 */
-/* *secondary: #45707a */
-/* *alert: #c14a4a */
-
-/* ! black */
-/* *color0:       #7c6f64 */
-/* *color8:       #928374 */
-
-/* ! red */
-/* *color1:       #c14a4a */
-/* *color9:       #ae5858 */
-
-/* ! green */
-/* *color2:       #6c782e */
-/* *color10:      #6f8352 */
-
-/* ! yellow */
-/* *color3:       #b47109 */
-/* *color11:      #a96b2c */
-
-/* ! blue */
-/* *color4:       #45707a */
-/* *color12:      #45707a */
-
-/* ! magenta */
-/* *color5:       #945e80 */
-/* *color13:      #945e80 */
-
-/* ! cyan */
-/* *color6:       #4c7a5d */ 
-/* *color14:      #4c7a5d */
-
-/* ! white */
-/* *color7:       #ddc7a1 */
-/* *color15:      #a89984 */
-
-/* ! orange */
-/* *color16:       #f3eac7 */
-/* *color24:       #a89984 */
-
-/* ! TokyoNight Storm */
-/* *background: #24283b */
-/* *foreground: #c0caf5 */
-/* *primary: #7aa2f7 */
-/* *secondary: #bb9af7 */
-/* *alert: #f7768e */
-
-/* ! black */
-/* *color0: #1d202f */
-/* *color8: #414868 */
-
-/* ! red */
-/* *color1: #f7768e */
-/* *color9: #f7768e */
-
-/* ! green */
-/* *color2: #9ece6a */
-/* *color10: #9ece6a */
-
-/* ! yellow */
-/* *color3: #e0af68 */
-/* *color11: #e0af68 */
-
-/* ! blue */
-/* *color4: #7aa2f7 */
-/* *color12: #7aa2f7 */
-
-/* ! magenta */
-/* *color5: #bb9af7 */
-/* *color13: #bb9af7 */
-
-/* ! cyan */
-/* *color6: #7dcfff */
-/* *color14: #7dcfff */
-
-/* ! white */
-/* *color7: #a9b1d6 */
-/* *color15: #c0caf5 */
-
-! TokyoNight Day
-/* *background: #e1e2e7 */
-/* *foreground: #3760bf */
-
-/* *color0: #e9e9ed */
-/* *color1: #f52a65 */
-/* *color2: #587539 */
-/* *color3: #8c6c3e */
-/* *color4: #2e7de9 */
-/* *color5: #9854f1 */
-/* *color6: #007197 */
-/* *color7: #6172b0 */
-
-/* *color8: #a1a6c5 */
-/* *color9: #f52a65 */
-/* *color10: #587539 */
-/* *color11: #8c6c3e */
-/* *color12: #2e7de9 */
-/* *color13: #9854f1 */
-/* *color14: #007197 */
-/* *color15: #3760bf */
-
-/* ! Kanagawa */
-/* ! special */
-/* *foreground:   #dcd7ba */
-/* *background:   #1f1f28 */
-/* *cursorColor:  #dcd7ba */
-/* *primary: #957fb8 */
-/* *secondary: #7e9cd8 */
-/* *alert: #c34043 */
-
-/* ! black */
-/* *color0:       #090618 */
-/* *color8:       #727169 */
-
-/* ! red */
-/* *color1:       #c34043 */
-/* *color9:       #e82424 */
-
-/* ! green */
-/* *color2:       #76946a */
-/* *color10:      #98bb6c */
-
-/* ! yellow */
-/* *color3:       #c0a36e */
-/* *color11:      #e6c384 */
-
-/* ! blue */
-/* *color4:       #7e9cd8 */
-/* *color12:      #7fb4ca */
-
-/* ! magenta */
-/* *color5:       #957fb8 */
-/* *color13:      #938aa9 */
-
-/* ! cyan */
-/* *color6:       #6a9589 */
-/* *color14:      #7aa89f */
-
-/* ! white */
-/* *color7:       #c8c093 */
-/* *color15:      #dcd7ba */
-
-/* ! Kanagawa Light */
-/* ! special */
-/* *foreground:   #545464 */
-/* *background:   #f2ecbc */
-/* *cursorColor:  #43436c */
-/* *primary: #b35b79 */
-/* *secondary: #4d699b */
-/* *alert: #c84053 */
-
-/* ! normal */
-/* *color0: #1F1F28 */
-/* *color1: #c84053 */
-/* *color2: #6f894e */
-/* *color3: #77713f */
-/* *color4: #4d699b */
-/* *color5: #b35b79 */
-/* *color6: #597b75 */
-/* *color7: #545464 */
-
-/* ! bright */
-/* *color8:  #8a8980 */
-/* *color9:  #d7474b */
-/* *color10: #6e915f */
-/* *color11: #836f4a */
-/* *color12: #6693bf */
-/* *color13: #624c83 */
-/* *color14: #5e857a */
-/* *color15: #43436c */
-
-/* !Melange Dark */
-/* *background: #292522 */
-/* *foreground: #ECE1D7 */
-/* *cursor:     #403A36 */
-
-/* *color0:  #34302C */
-/* *color1:  #BD8183 */
-/* *color2:  #78997A */
-/* *color3:  #E49B5D */
-/* *color4:  #7F91B2 */
-/* *color5:  #B380B0 */
-/* *color6:  #7B9695 */
-/* *color7:  #C1A78E */
-/* *color8:  #867462 */
-
-/* *color9:  #D47766 */
-/* *color10: #85B695 */
-/* *color11: #EBC06D */
-/* *color12: #A3A9CE */
-/* *color13: #CF9BC2 */
-/* *color14: #89B3B6 */
-/* *color15: #ECE1D7 */
-
-! Catppuccin Frappe
-!*background: #303446
-!*foreground: #C6D0F5
-!*cursorColor: #C6D0F5
-!
-!! black
-!*color0: #51576D
-!*color8: #626880
-!
-!! red
-!*color1: #E78284
-!*color9: #E78284
-!
-!! green
-!*color2: #A6D189
-!*color10: #A6D189
-!
-!! yellow
-!*color3: #E5C890
-!*color11: #E5C890
-!
-!! blue
-!*color4: #8CAAEE
-!*color12: #8CAAEE
-!
-!! magenta
-!*color5: #F4B8E4
-!*color13: #F4B8E4
-!
-!! cyan
-!*color6: #81C8BE
-!*color14: #81C8BE
-!
-!! white
-!*color7: #B5BFE2
-!*color15: #A5ADCE
-
-!! Catppuccin Latte
-!*background: #EFF1F5
-!*foreground: #4C4F69
-!
-!! black
-!*color0: #5C5F77
-!*color8: #6C6F85
-!
-!! red
-!*color1: #D20F39
-!*color9: #D20F39
-!
-!! green
-!*color2: #40A02B
-!*color10: #40A02B
-!
-!! yellow
-!*color3: #DF8E1D
-!*color11: #DF8E1D
-!
-!! blue
-!*color4: #1E66F5
-!*color12: #1E66F5
-!
-!! magenta
-!*color5: #EA76CB
-!*color13: #EA76CB
-!
-!! cyan
-!*color6: #179299
-!*color14: #179299
-!
-!! white
-!*color7: #ACB0BE
-!*color15: #BCC0CC
-
-/* ! everforest theme */
-/* ! special */
-/* *foreground:   #d3c6aa */
-/* *background:   #2b3339 */
-/* *cursorColor:  #d3c6aa */
-/* *primary:      #df69ba */
-/* *secondary:    #7fbbb3 */
-/* *alert:        #e67e80 */
-
-/* ! black */
-/* *color0:       #4e3e43 */
-/* *color8:       #2b3339 */
-
-/* ! red */
-/* *color1:       #e67e80 */
-/* *color9:       #f85552 */
-
-/* ! green */
-/* *color2:       #a7c080 */
-/* *color10:      #8da101 */
-
-/* ! yellow */
-/* *color3:      #dbbc7f */
-/* *color11:     #dfa000 */
-
-/* ! blue */
-/* *color4:      #7fbbb3 */
-/* *color12:     #3a94c5 */
-
-/* ! magenta */
-/* *color5:       #d699b6 */
-/* *color13:      #df69ba */
-
-/* ! cyan */
-/* *color6:       #83c092 */
-/* *color14:      #35a77c */
-
-/* ! white */
-/* *color7:       #d3c6aa */
-/* *color15:      #7a8478 */
+*foreground:   #575279
+*background:   #faf4ed
+*cursorColor:  #575279
+*primary: #907aa9
+*secondary: #286983
+*alert: #b4637a
+
+!black
+*color0:       #fffaf3
+*color8:       #f2e9e1
+
+!red
+*color1:       #b4637a
+*color9:       #b4637a
+
+!green
+*color2:       #ea9d34
+*color10:      #ea9d34
+
+!yellow
+*color3:       #d7827e
+*color11:      #d7827e
+
+!blue
+*color4:       #286983
+*color12:      #286983
+
+!magenta
+*color5:       #907aa9
+*color13:      #907aa9
+
+!cyan
+*color6:       #56949f
+*color14:      #56949f
+
+!white
+*color7:       #9893a5
+*color15:      #797593
 
 !Xft.dpi: 103
 Xft.dpi: 96

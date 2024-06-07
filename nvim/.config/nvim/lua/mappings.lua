@@ -32,7 +32,10 @@ map("v", "<", "<gv", mapopts)
 map("v", ">", ">gv", mapopts)
 
 -- trouble
-map("n", "<leader>dg", "<cmd>Trouble<cr>", mapopts)
+map("n", "<leader>da", "<cmd>Trouble diagnostics toggle<cr>", mapopts)
+map("n", "<leader>dg", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", mapopts)
+map("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", mapopts)
+map("n", "<leader>cl", "<cmd>Trouble lsp tgglefocus=false win.position=right<cr>", mapopts)
 
 map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
