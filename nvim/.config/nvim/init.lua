@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "nekonako/xresources-nvim" },
+	{ "sindrets/diffview.nvim" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-surround" },

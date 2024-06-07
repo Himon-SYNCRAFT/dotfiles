@@ -401,6 +401,119 @@ ls.add_snippets("php", {
 			{ delimiters = "`#" }
 		)
 	),
+	s(
+		"manytoone",
+		fmt(
+			[[
+            #[ORM\ManyToOne(targetEntity: `targetClass^::class)]
+            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`referencedColumnName^')]
+            private `entity^ $`lowercased_typ^;
+            ]],
+			{
+				targetClass = i(1, "Target"),
+				sourceId = i(2, "source_id"),
+				referencedColumnName = i(3, "id"),
+				entity = rep(1),
+				lowercased_typ = f(first_to_lower, { 1 }),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"onetoone",
+		fmt(
+			[[
+            #[ORM\OneToOne(targetEntity: `targetClass^::class)]
+            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`referencedColumnName^')]
+            private `entity^ $`lowercased_typ^;
+            ]],
+			{
+				targetClass = i(1, "Target"),
+				sourceId = i(2, "source_id"),
+				referencedColumnName = i(3, "id"),
+				entity = rep(1),
+				lowercased_typ = f(first_to_lower, { 1 }),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"onetomany",
+		fmt(
+			[[
+            /**
+            * @var Collection<int, `entity^>
+            */
+            #[ORM\JoinTable(name: '`joinTable^')]
+            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`targetColumnName^')]
+            #[ORM\InverseJoinColumn(name: '`targetId^', referencedColumnName: '`sourceColumnName^', unique: true)]
+            #[ORM\ManyToMany(targetEntity: `targetClass^::class)]
+            private Collection $`lowercased_typ^s;
+            ]],
+			{
+				targetClass = i(1, "Target"),
+				sourceId = i(2, "source_id"),
+				targetColumnName = i(3, "id"),
+				targetId = i(4, "source_id"),
+				sourceColumnName = i(5, "id"),
+				joinTable = i(6, "joinTable"),
+				lowercased_typ = f(first_to_lower, { 1 }),
+				entity = rep(1),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"manytomany",
+		fmt(
+			[[
+            /**
+            * @var Collection<int, `entity^>
+            */
+            #[ORM\JoinTable(name: '`joinTable^')]
+            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`targetColumnName^')]
+            #[ORM\InverseJoinColumn(name: '`targetId^', referencedColumnName: '`sourceColumnName^')]
+            #[ORM\ManyToMany(targetEntity: `targetClass^::class)]
+            private Collection $`lowercased_typ^s;
+            ]],
+			{
+				targetClass = i(1, "Target"),
+				sourceId = i(2, "source_id"),
+				targetColumnName = i(3, "id"),
+				targetId = i(4, "source_id"),
+				sourceColumnName = i(5, "id"),
+				joinTable = i(6, "joinTable"),
+				lowercased_typ = f(first_to_lower, { 1 }),
+				entity = rep(1),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
+		"enum",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root#`namespace#;
+
+            enum `enum_name#: string
+            {
+                case `case_name# = '`case#';
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_current_file_directory),
+				enum_name = f(get_filename),
+				case_name = i(1),
+				case = i(2),
+			},
+			{ delimiters = "`#" }
+		)
+	),
 	postfix({
 		trig = ".var",
 		match_pattern = "^%s*(.*)",
