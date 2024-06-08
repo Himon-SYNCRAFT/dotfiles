@@ -265,13 +265,6 @@ vim.cmd([[
 	set ignorecase
 	set smartcase
 
-    " vim-javascript
-    augroup vimrc-javascript
-        autocmd!
-        autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
-        " autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
-    augroup END
-
     let g:codeium_no_map_tab = 1
     let g:codeium_filetypes = { "sql": v:false }
 
@@ -295,12 +288,5 @@ vim.cmd([[
     augroup vimrc-remember-cursor-position
         autocmd!
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-    augroup END
-
-    augroup vimrc-php
-        autocmd!
-        autocmd FileType php inoremap .. ->
-        autocmd FileType php nnoremap ; A;<ESC>
-        autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
     augroup END
 ]])

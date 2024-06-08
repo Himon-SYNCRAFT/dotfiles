@@ -120,8 +120,8 @@ local function lsp()
 
 	errors = " %#StatusLineErrSign#󰅙 " .. count["errors"]
 	warnings = " %#StatusLineWarnSign#󰀦 " .. count["warnings"]
-	hints = " %#StatusLineHintSign#󰀨 " .. count["hints"]
-	info = " %#StatusLineInfoSign#󰌵 " .. count["info"]
+	hints = " %#StatusLineHintSign#󰌵 " .. count["hints"]
+	info = " %#StatusLineInfoSign#󰀨 " .. count["info"]
 
 	return errors .. warnings .. hints .. info
 end

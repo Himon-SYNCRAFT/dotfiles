@@ -197,6 +197,13 @@ lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 })
 
 lspconfig.tsserver.setup({
