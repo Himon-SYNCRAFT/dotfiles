@@ -257,8 +257,8 @@ c.tabs.show = 'never'
 # qutebrowser`.
 # Type: Dict
 c.url.searchengines = {
-    # 'DEFAULT': 'https://search.brave.com/search?q={}',
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://search.brave.com/search?q={}',
+    # 'DEFAULT': 'https://duckduckgo.com/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'wa': 'https://wiki.archlinux.org/?search={}',
     'ap': 'https://archlinux.org/packages/?q={}',
@@ -386,8 +386,8 @@ config.bind('e', 'edit-url')
 # })
 # catppuccin.setup(c, 'macchiato')
 # catppuccin.setup(c, 'latte')
-# rosepine.setup(c, 'rose-pine-moon', True)
-rosepine.setup(c, 'rose-pine-dawn', True)
+rosepine.setup(c, 'rose-pine-moon', True)
+# rosepine.setup(c, 'rose-pine-dawn', True)
 
 c.colors.webpage.bg = 'white'
 
