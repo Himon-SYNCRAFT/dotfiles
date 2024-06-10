@@ -32,7 +32,10 @@ map("v", "<", "<gv", mapopts)
 map("v", ">", ">gv", mapopts)
 
 -- trouble
-map("n", "<leader>dg", "<cmd>Trouble<cr>", mapopts)
+map("n", "<leader>da", "<cmd>Trouble diagnostics toggle<cr>", mapopts)
+map("n", "<leader>dg", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", mapopts)
+map("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", mapopts)
+map("n", "<leader>cl", "<cmd>Trouble lsp tgglefocus=false win.position=right<cr>", mapopts)
 
 map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
@@ -91,12 +94,14 @@ map("n", "<leader>e", [[<Cmd>lua require'user.telescope'.project_files()<CR>]], 
 
 -- Browse files from cwd - File Browser
 -- autocmd VimEnter * nunmap <leader>f
-vim.cmd([[
-    autocmd VimEnter * nmap <leader>f :Telescope file_browser<CR>
-]])
+-- vim.cmd([[
+--     autocmd VimEnter * nmap <leader>f :Telescope file_browser<CR>
+-- ]])
+-- map("n", "<leader>f", [[<Cmd>Telescope file_browser<CR>]], mapopts)
+map("n", "<leader>f", [[<Cmd>Telescope live_grep<CR>]], mapopts)
 
 -- grep word under cursor
-map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], mapopts)
+-- map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], mapopts)
 
 -- grep word under cursor - case-sensitive (exact word) - made for use with Replace All - see <leader>ra
 map("n", "<leader>G", [[<Cmd>lua require'telescope.builtin'.grep_string({word_match='-w'})<CR>]], mapopts)
