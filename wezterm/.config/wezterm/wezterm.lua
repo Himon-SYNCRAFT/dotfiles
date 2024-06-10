@@ -7,9 +7,10 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.color_scheme = "rose-pine-moon"
-config.window_background_opacity = 0.87
+config.window_background_opacity = 0.92
 -- config.window_background_opacity = 1.0
+
+config.color_scheme = "rose-pine-dawn"
 
 config.font = wezterm.font_with_fallback({
 	"MonaspiceNe NF",
