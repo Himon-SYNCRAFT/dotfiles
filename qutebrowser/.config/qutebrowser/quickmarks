@@ -20,3 +20,4 @@ sync http://localhost:8384/
 aker https://symfony.com/doc/current/setup.html
 prod swag http://192.168.1.71:7070/webservice-doc/
 swagger http://192.168.1.71:7070/webservice-doc/
+burst https://www.burst-type.pro/
