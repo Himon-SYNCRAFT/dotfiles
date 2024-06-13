@@ -145,7 +145,8 @@ local color = require("xresources")
 -- vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = color.fg })
 -- vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 -- vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
-local statusLineBg = "#191724"
+-- local statusLineBg = "#191724"
+local statusLineBg = color.grey
 
 local diff_hl = {
 	-- add = {

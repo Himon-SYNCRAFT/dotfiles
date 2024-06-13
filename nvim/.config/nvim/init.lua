@@ -108,6 +108,7 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ "HiPhish/rainbow-delimiters.nvim" },
 
 	-- Telescope Extensions
 	{ "nvim-telescope/telescope.nvim" },
