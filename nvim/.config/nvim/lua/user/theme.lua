@@ -200,6 +200,7 @@ local diff_hl = {
 }
 
 modify_hl(0, "Normal", { bg = color.none, ctermbg = color.none })
+modify_hl(0, "Comment", { bg = color.none, fg = color.light_white })
 modify_hl(0, "NormalFloat", { bg = color.none, ctermbg = color.none })
 modify_hl(0, "NonText", { bg = color.none, ctermbg = color.none })
 modify_hl(0, "InactiveWindow", { bg = color.none, ctermbg = color.none })

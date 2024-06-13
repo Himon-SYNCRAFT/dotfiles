@@ -42,8 +42,10 @@ map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
 map("n", "<F4>", ":Explore<CR>", mapopts)
 
 -- ranger
-map("n", "<F2>", ":Ranger<CR>", mapopts)
-map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
+-- map("n", "<F2>", ":Ranger<CR>", mapopts)
+-- map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
+
+map("n", "<F2>", "<CMD>Oil<Cr>", mapopts)
 
 -- easymotion
 -- map("n", "s", "<Plug>(easymotion-overwin-f2)", mapopts)
