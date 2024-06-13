@@ -107,6 +107,27 @@ local function get_first_letter_lowercase(values)
 	return str:sub(1, 1):lower()
 end
 
+local function get_namespace()
+	local buf = vim.api.nvim_get_current_buf()
+	local filepath = vim.api.nvim_buf_get_name(buf)
+	local src_start = filepath:find("src/")
+
+	if src_start then
+		local start_pos = src_start + #"src/"
+
+		local last_slash = filepath:match(".*()/")
+
+		if last_slash and last_slash > start_pos then
+			local subpath = filepath:sub(start_pos, last_slash - 1)
+			return subpath:gsub("/", "\\")
+		else
+			return ""
+		end
+	else
+		return filepath
+	end
+end
+
 ls.add_snippets("php", {
 	s(
 		"cl",
@@ -125,7 +146,7 @@ ls.add_snippets("php", {
             ]],
 			{
 				root = f(get_namespace_for_src),
-				namespace = f(get_current_file_directory),
+				namespace = f(get_namespace),
 				class_name = f(get_filename),
 				class_content = i(1),
 			},
@@ -168,7 +189,7 @@ ls.add_snippets("php", {
             ]],
 			{
 				root = f(get_namespace_for_src),
-				namespace = f(get_current_file_directory),
+				namespace = f(get_namespace),
 				class_name = f(get_filename),
 				class_content = i(1),
 			},
@@ -237,7 +258,7 @@ ls.add_snippets("php", {
             ]],
 			{
 				root = f(get_namespace_for_src),
-				namespace = f(get_current_file_directory),
+				namespace = f(get_namespace),
 				class_name = f(get_filename),
 				entity_name = i(1),
 				find_by_id_type = rep(1),
@@ -272,7 +293,7 @@ ls.add_snippets("php", {
             ]],
 			{
 				root = f(get_namespace_for_src),
-				namespace = f(get_current_file_directory),
+				namespace = f(get_namespace),
 				class_name = f(get_filename),
 				end_ = i(0),
 			},
@@ -506,7 +527,7 @@ ls.add_snippets("php", {
             ]],
 			{
 				root = f(get_namespace_for_src),
-				namespace = f(get_current_file_directory),
+				namespace = f(get_namespace),
 				enum_name = f(get_filename),
 				case_name = i(1),
 				case = i(2),
