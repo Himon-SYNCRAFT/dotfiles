@@ -27,13 +27,13 @@ stow --no-folding -v -t ~/ fish
 stow --no-folding -v -t ~/ home
 stow --no-folding -v -t ~/ ideavim
 stow --no-folding -v -t ~/ lazygit
-stow --no-folding -v -t ~/ mpd
+stow --ignore='database' --ignore='state' --no-folding -v -t ~/ mpd
 stow --no-folding -v -t ~/ ncmpcpp
 stow --no-folding -v -t ~/ nvim
 stow --no-folding -v -t ~/ picom
 stow --no-folding -v -t ~/ polybar
 stow --no-folding -v -t ~/ qtile
-stow --no-folding -v -t ~/ qutebrowser
+stow --ignore='.pyc' --no-folding -v -t ~/ qutebrowser
 stow --no-folding -v -t ~/ ranger
 stow --no-folding -v -t ~/ scripts
 stow --no-folding -v -t ~/ vim
