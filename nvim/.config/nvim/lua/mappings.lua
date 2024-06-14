@@ -44,8 +44,20 @@ map("n", "<F4>", ":Explore<CR>", mapopts)
 -- ranger
 -- map("n", "<F2>", ":Ranger<CR>", mapopts)
 -- map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
+--
+vim.keymap.set("n", "<F2>", function()
+	local oil = require("oil")
+	oil.open()
 
-map("n", "<F2>", "<CMD>Oil<Cr>", mapopts)
+	vim.wait(1000, function()
+		return oil.get_cursor_entry() ~= nil
+	end)
+	if oil.get_cursor_entry() then
+		oil.open_preview()
+	end
+end)
+
+-- map("n", "<F2>", "<CMD>Oil<Cr>", mapopts)
 
 -- easymotion
 -- map("n", "s", "<Plug>(easymotion-overwin-f2)", mapopts)
