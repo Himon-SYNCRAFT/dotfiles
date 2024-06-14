@@ -80,6 +80,11 @@ require("telescope").setup({
 		},
 		dynamic_preview_title = true,
 	},
+	pickers = {
+		find_files = {
+			follow = true,
+		},
+	},
 })
 
 require("telescope").load_extension("file_browser")
@@ -127,7 +132,7 @@ M.project_files = function()
 
 	local gopts = { show_untracked = true }
 
-	local fopts = {}
+	local fopts = { "-L" }
 
 	gopts.prompt_title = " Find"
 	gopts.prompt_prefix = "  "
