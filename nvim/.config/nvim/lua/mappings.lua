@@ -33,7 +33,7 @@ map("v", ">", ">gv", mapopts)
 map("n", "<leader>da", "<cmd>Trouble diagnostics toggle<cr>", mapopts)
 map("n", "<leader>dg", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", mapopts)
 map("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", mapopts)
-map("n", "<leader>cl", "<cmd>Trouble lsp tgglefocus=false win.position=right<cr>", mapopts)
+map("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", mapopts)
 
 map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
@@ -197,3 +197,28 @@ map("n", "<leader>ga", [[:PhpactorGenerateAccessors<CR>]], mapopts)
 map("n", "<leader>gs", [[:PhpactorGenerateMutators<CR>]], mapopts)
 
 map("n", "<Esc>", "<Cmd>nohlsearch<CR>", mapopts)
+
+-- neotest
+vim.keymap.set("n", "<leader>tr", function()
+	local nt = require("neotest")
+	-- nt.summary.open()
+	nt.output_panel.open()
+	nt.output_panel.clear()
+	nt.run.run(vim.fn.expand("%"))
+end)
+
+vim.keymap.set("n", "<leader>tt", function()
+	local nt = require("neotest")
+	nt.summary.toggle()
+	nt.output_panel.toggle()
+end)
+
+vim.keymap.set("n", "<leader>tw", function()
+	local nt = require("neotest")
+	nt.watch.toggle()
+end)
+
+vim.keymap.set("n", "<leader>ta", function()
+	local nt = require("neotest")
+	nt.run.run("./tests")
+end)

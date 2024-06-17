@@ -233,6 +233,28 @@ require("lazy").setup({
 		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
+
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"olimorris/neotest-phpunit",
+		},
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-phpunit"),
+				},
+				diagnostic = {
+					enabled = true,
+					severity = vim.diagnostic.severity.ERROR,
+				},
+			})
+		end,
+	},
 })
 
 require("user.dressing")
@@ -250,6 +272,7 @@ require("user.debugging")
 require("user.theme")
 require("user.luasnip")
 require("user.oil")
+require("user.neotest")
 
 vim.cmd([[
     filetype plugin indent on

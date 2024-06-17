@@ -103,53 +103,12 @@ lspconfig.cssls.setup({
 	handlers = handlers,
 })
 
--- lspconfig.tailwindcss.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	handlers = handlers,
--- })
-
--- lspconfig.groovyls.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     handlers = handlers
--- }
-
--- lspconfig.jdtls.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     handlers = handlers,
---     filetypes = {
---         "java", "groovy"
---     }
--- }
-
--- lspconfig.html.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     handlers = handlers,
---     init_options = {provideFormatter = false}
--- }
-
 lspconfig.intelephense.setup({
 	init_options = { licenceKey = "/home/himon/intelephense/license.txt" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
 })
-
-local phpactor_capabilities = {}
-for k, v in pairs(capabilities) do
-	if k ~= "completion" then
-		phpactor_capabilities[k] = v
-	end
-end
-
--- lspconfig.phpactor.setup({
--- 	on_attach = on_attach,
--- 	capabilities = phpactor_capabilities,
--- 	handlers = handlers,
--- })
 
 lspconfig.gopls.setup({
 	on_attach = on_attach,
