@@ -271,6 +271,17 @@ modify_hl(0, "DiffViewDiffDeleteDim", diff_hl.delete_dim)
 modify_hl(0, "DiffviewFolderName", { fg = color.fg })
 modify_hl(0, "DiffviewFilePanelFileName", { fg = color.fg })
 
+modify_hl(0, "NeotestDir", { bg = color.none, fg = color.fg })
+modify_hl(0, "NeotestFile", { bg = color.none, fg = color.fg })
+modify_hl(0, "NeotestNamespace", { bg = color.none, fg = color.fg })
+modify_hl(0, "NeotestTest", { bg = color.none, fg = color.fg })
+modify_hl(0, "NeotestRunning", { bg = color.none, fg = color.yellow })
+modify_hl(0, "NeotestPassed", { bg = color.none, fg = color.green })
+modify_hl(0, "NeotestFailed", { bg = color.none, fg = color.red })
+modify_hl(0, "NeotestAdapterName", { bg = color.none, fg = color.light_red })
+
+modify_hl(0, "OilDir", { bg = color.none, fg = color.fg, bold = true })
+
 modify_hl(0, "DiffAdd", diff_hl.add)
 modify_hl(0, "DiffChange", diff_hl.change)
 modify_hl(0, "DiffDelete", diff_hl.delete)
