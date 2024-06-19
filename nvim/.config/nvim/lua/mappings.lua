@@ -39,7 +39,7 @@ map("n", "<leader>dh", "[[<Cmd>lua vim.diagnostic.disable()<CR>]]", mapopts)
 map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
 
 -- netrw
-map("n", "<F4>", ":Explore<CR>", mapopts)
+-- map("n", "<F4>", ":Explore<CR>", mapopts)
 
 -- ranger
 -- map("n", "<F2>", ":Ranger<CR>", mapopts)
@@ -81,9 +81,6 @@ map("n", "<leader>c", [[<Cmd>lua require'telescope.builtin'.commands({results_ti
 -- Telescope oldfiles
 map("n", "<leader>o", [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]], mapopts)
 
--- Telescopic version of FZF's :Lines
-map("n", "<C-F>", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], mapopts)
-
 -- Fzf in current buffer
 map("n", "<C-f>", [[<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>]], mapopts)
 
@@ -104,12 +101,6 @@ map("n", "<space>h", [[<Cmd>lua require'telescope.builtin'.help_tags({results_ti
 -- find files with gitfiles & fallback on find_files
 map("n", "<leader>e", [[<Cmd>lua require'user.telescope'.project_files()<CR>]], mapopts)
 
--- Browse files from cwd - File Browser
--- autocmd VimEnter * nunmap <leader>f
--- vim.cmd([[
---     autocmd VimEnter * nmap <leader>f :Telescope file_browser<CR>
--- ]])
--- map("n", "<leader>f", [[<Cmd>Telescope file_browser<CR>]], mapopts)
 map("n", "<leader>f", [[<Cmd>Telescope live_grep<CR>]], mapopts)
 
 -- grep word under cursor
@@ -124,7 +115,7 @@ map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]], ma
 -- find or create neovim configs
 -- map("n", "<leader>nc", [[<Cmd>lua require'user.telescope'.nvim_config()<CR>]],
 --     mapopts)
-map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
+-- map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
 
 -- go to definitions
 -- map("n", "gd", [[:Telescope coc definitions<CR>]], mapopts)
@@ -143,16 +134,7 @@ map("n", "gi", [[:Telescope lsp_implementations<CR>]], mapopts)
 -- map("n", "gr", [[:Telescope coc references_used<CR>]], mapopts)
 map("n", "gr", [[:Telescope lsp_references<CR>]], mapopts)
 
-vim.keymap.set("n", "<leader>p", function()
-	require("auto-session.session-lens").search_session()
-end, mapopts)
-
--- line code actions
--- map("n", "<space><space>", [[:Telescope coc line_code_actions<CR>]], mapopts)
-
--- line code actions
--- map("n", "<leader>dg", [[:Telescope coc diagnostics<CR>]], mapopts)
--- map("n", "<leader>dg", [[:Telescope diagnostics<CR>]], mapopts)
+vim.keymap.set("n", "<leader>p", require("auto-session.session-lens").search_session, mapopts)
 
 -- telescope-repo
 map("n", "<leader>rl", [[<Cmd>lua require'user.telescope'.repo_list()<CR>]], mapopts)

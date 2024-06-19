@@ -1,5 +1,6 @@
 vim.g.mapleader = ","
 vim.o.background = "light"
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -213,7 +214,15 @@ require("lazy").setup({
 					"~/",
 					"~/Projects",
 					"~/Downloads",
+					"~/.config",
 					"/",
+				},
+				session_lens = {
+					theme_conf = {
+						border = true,
+					},
+					theme = "dropdown",
+					previewer = false,
 				},
 			})
 		end,

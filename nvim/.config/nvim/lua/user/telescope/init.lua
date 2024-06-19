@@ -1,4 +1,4 @@
--- Telescope 🔭 - setup and customized pickers
+-- Telescope - setup and customized pickers
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local utils = require("telescope.utils")
@@ -139,6 +139,7 @@ M.project_files = function()
 	gopts.results_title = " Repo Files"
 	gopts.file_ignore_patterns = {
 		"node_modules",
+		"public/assets/js/vendor",
 		".woff",
 		".woff2",
 		".svg",
