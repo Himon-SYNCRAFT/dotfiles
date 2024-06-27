@@ -45,17 +45,19 @@ map("n", "<leader>ds", "[[<Cmd>lua vim.diagnostic.enable()<CR>]]", mapopts)
 -- map("n", "<F2>", ":Ranger<CR>", mapopts)
 -- map("n", "<F3>", ":RangerWorkingDirectory<CR>", mapopts)
 --
-vim.keymap.set("n", "<F2>", function()
-	local oil = require("oil")
-	oil.open()
+-- vim.keymap.set("n", "<F2>", function()
+-- 	local oil = require("oil")
+-- 	oil.open()
 
-	vim.wait(1000, function()
-		return oil.get_cursor_entry() ~= nil
-	end)
-	if oil.get_cursor_entry() then
-		oil.open_preview()
-	end
-end)
+-- 	vim.wait(1000, function()
+-- 		return oil.get_cursor_entry() ~= nil
+-- 	end)
+-- 	if oil.get_cursor_entry() then
+-- 		oil.open_preview()
+-- 	end
+-- end)
+map("n", "<F2>", "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>", mapopts)
+map("n", "<F3>", "<cmd>lua MiniFiles.open(nil, false)<CR>", mapopts)
 
 -- map("n", "<F2>", "<CMD>Oil<Cr>", mapopts)
 

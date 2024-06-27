@@ -39,12 +39,7 @@ require("lazy").setup({
 			{ "rbgrouleff/bclose.vim" },
 		},
 	},
-	{
-		"stevearc/oil.nvim",
-		opts = {},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
+	{ "echasnovski/mini.files", version = "*" },
 
 	-- ai
 	{
@@ -280,8 +275,9 @@ require("mappings")
 require("user.debugging")
 require("user.theme")
 require("user.luasnip")
-require("user.oil")
+-- require("user.oil")
 require("user.neotest")
+require("user.mini_files")
 
 vim.cmd([[
     filetype plugin indent on
