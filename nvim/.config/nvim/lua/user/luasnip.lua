@@ -301,6 +301,35 @@ ls.add_snippets("php", {
 		)
 	),
 	s(
+		"crud",
+		fmt(
+			[[
+            <?php
+
+            declare(strict_types=1);
+
+            namespace `root^`namespace^;
+
+            use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
+            class `class_name^ extends AbstractCrudController
+            {
+                public static function getEntityFqcn(): string
+                {
+                    return `typ_^::class;
+                }
+            }
+            ]],
+			{
+				root = f(get_namespace_for_src),
+				namespace = f(get_namespace),
+				class_name = f(get_filename),
+				typ_ = i(1),
+			},
+			{ delimiters = "`^" }
+		)
+	),
+	s(
 		"route",
 		fmt(
 			[[

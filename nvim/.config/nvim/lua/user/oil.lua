@@ -1,6 +1,7 @@
 require("oil").setup({
 	default_file_explorer = true,
 	delete_to_trash = true,
+	skip_confirm_for_simple_edits = false,
 	constrain_cursor = "editable",
 	experimental_watch_for_changes = true,
 	view_options = {
