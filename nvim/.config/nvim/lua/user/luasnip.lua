@@ -564,6 +564,21 @@ ls.add_snippets("php", {
 			{ delimiters = "`#" }
 		)
 	),
+	s(
+		"ifnull",
+		fmt(
+			[[
+            if (`arg# === null) {
+                `content#
+            }
+            ]],
+			{
+				arg = i(1),
+				content = i(0),
+			},
+			{ delimiters = "`#" }
+		)
+	),
 	postfix({
 		trig = ".var",
 		match_pattern = "^%s*(.*)",

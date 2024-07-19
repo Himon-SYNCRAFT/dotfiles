@@ -1,8 +1,8 @@
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "󰅙", numhl = "" })
 vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "󰀦", numhl = "" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "󰌵", numhl = "" })
-vim.fn.sign_define("DiagnosticSignInformation", {
-	texthl = "DiagnosticSignInformation",
+vim.fn.sign_define("DiagnosticSignInfo", {
+	texthl = "DiagnosticSignInfo",
 	text = "󰀨",
 	numhl = "",
 })
@@ -306,3 +306,4 @@ modify_hl(0, "Directory", { bg = color.none, fg = color.fg })
 modify_hl(0, "TroubleLspFileName", { bg = color.none, fg = color.fg })
 modify_hl(0, "TroubleNormal", { bg = color.none })
 modify_hl(0, "TroubleNormalNC", { bg = color.none })
+modify_hl(0, "DiagnosticUnderlineInfo", { underline = false })
