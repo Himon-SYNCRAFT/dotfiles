@@ -306,3 +306,7 @@ modify_hl(0, "Directory", { bg = color.none, fg = color.fg })
 modify_hl(0, "TroubleLspFileName", { bg = color.none, fg = color.fg })
 modify_hl(0, "TroubleNormal", { bg = color.none })
 modify_hl(0, "TroubleNormalNC", { bg = color.none })
+
+modify_hl(0, "LspInlayHint", { bg = color.none, fg = color.light_white })
+
+modify_hl(0, "@type.builtin.c", { bg = color.none, fg = color.yellow })
