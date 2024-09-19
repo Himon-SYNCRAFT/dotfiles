@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 		"phpstan",
 		"pyright",
 		"templ",
-		"tsserver",
+		"ts_ls",
 	},
 })
 
@@ -96,6 +96,12 @@ lspconfig.clangd.setup({
 	capabilities = capabilities,
 	handlers = handlers,
 })
+
+-- lspconfig.ccls.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	handlers = handlers,
+-- })
 
 lspconfig.cssls.setup({
 	on_attach = on_attach,
@@ -176,7 +182,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-lspconfig.tsserver.setup({
+lspconfig.tsls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
