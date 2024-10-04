@@ -68,6 +68,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("x", "<space><space>", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
 
+	if client.name == "intelephense" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
 	lsp_signature.on_attach({
 		bind = true, -- This is mandatory, otherwise border config won't get registered.
 		handler_opts = { border = "rounded" },
