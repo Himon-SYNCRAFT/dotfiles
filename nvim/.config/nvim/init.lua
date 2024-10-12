@@ -23,7 +23,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-surround" },
-	{ "tpope/vim-commentary" },
+	-- { "tpope/vim-commentary" },
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
