@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 		"phpstan",
 		"pyright",
 		"templ",
-		"tsserver",
+		"ts_ls",
 	},
 })
 
@@ -68,6 +68,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("x", "<space><space>", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
 
+	if client.name == "intelephense" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
 	lsp_signature.on_attach({
 		bind = true, -- This is mandatory, otherwise border config won't get registered.
 		handler_opts = { border = "rounded" },
@@ -96,6 +100,12 @@ lspconfig.clangd.setup({
 	capabilities = capabilities,
 	handlers = handlers,
 })
+
+-- lspconfig.ccls.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	handlers = handlers,
+-- })
 
 lspconfig.cssls.setup({
 	on_attach = on_attach,
@@ -176,7 +186,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-lspconfig.tsserver.setup({
+lspconfig.tsls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,

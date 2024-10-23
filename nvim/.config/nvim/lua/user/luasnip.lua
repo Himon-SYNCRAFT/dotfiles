@@ -579,6 +579,20 @@ ls.add_snippets("php", {
 			{ delimiters = "`#" }
 		)
 	),
+	s(
+		"col",
+		fmt(
+			[[
+            #[ORM\Column(`attr^)]
+            private `var^;
+            ]],
+			{
+				var = i(1, "string $name"),
+				attr = i(2, "nullable: false"),
+			},
+			{ delimiters = "`^" }
+		)
+	),
 	postfix({
 		trig = ".var",
 		match_pattern = "^%s*(.*)",

@@ -5,6 +5,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local sources = {
 	null_ls.builtins.diagnostics.phpstan,
 	null_ls.builtins.diagnostics.phpcs,
+	-- null_ls.builtins.diagnostics.phpmd,
 	null_ls.builtins.formatting.phpcsfixer,
 	-- null_ls.builtins.formatting.prettier,
 	null_ls.builtins.formatting.stylua,
@@ -16,13 +17,9 @@ local sources = {
 	null_ls.builtins.diagnostics.phpmd.with({
 		extra_args = { "ruleset.xml" },
 	}),
+	null_ls.builtins.formatting.clang_format,
+	-- null_ls.builtins.code_actions.refactoring,
 }
-
-if vim.fn.executable("prettier") == 1 then
-	sources[#sources + 1] = null_ls.builtins.formatting.prettier.with({
-		filetypes = { "twig" },
-	})
-end
 
 null_ls.setup({
 	sources = sources,

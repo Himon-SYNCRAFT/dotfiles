@@ -1,5 +1,5 @@
-*.alpha:  0.92
-!*.alpha:  1
+!*.alpha:  0.92
+*.alpha:  1
 
 ! DARK_THEME_START
 ! RosePine Moon
@@ -87,12 +87,12 @@
 /* *color15:      #797593 */
 ! LIGHT_THEME_END
 
-!Xft.dpi: 103
-Xft.dpi: 96
+Xft.dpi: 103
+/*Xft.dpi: 96*/
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
-Xft.autohint: false
+Xft.autohint: true
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 

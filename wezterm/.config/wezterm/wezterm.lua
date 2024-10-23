@@ -10,7 +10,8 @@ end
 config.window_background_opacity = 0.92
 -- config.window_background_opacity = 1.0
 
-config.color_scheme = "rose-pine-dawn"
+-- config.color_scheme = "rose-pine-dawn"
+config.color_scheme = "rose-pine-moon"
 
 config.font = wezterm.font_with_fallback({
 	"MonaspiceNe NF",
@@ -21,8 +22,8 @@ config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = false,
-		font = wezterm.font("MonaspiceNe NF", {
-			weight = "Bold",
+		font = wezterm.font("DMMono Nerd Font", {
+			weight = "Medium",
 			style = "Normal",
 			stretch = "Normal",
 		}),
@@ -30,8 +31,8 @@ config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = true,
-		font = wezterm.font("MonaspiceNe NF", {
-			weight = "Bold",
+		font = wezterm.font("DMMono Nerd Font", {
+			weight = "Medium",
 			style = "Italic",
 			stretch = "Normal",
 		}),
@@ -39,7 +40,7 @@ config.font_rules = {
 	{
 		intensity = "Normal",
 		italic = false,
-		font = wezterm.font("MonaspiceNe NF", {
+		font = wezterm.font("DMMono Nerd Font", {
 			weight = "Medium",
 			style = "Normal",
 			stretch = "Normal",
@@ -48,7 +49,7 @@ config.font_rules = {
 	{
 		intensity = "Normal",
 		italic = true,
-		font = wezterm.font("MonaspiceNe NF", {
+		font = wezterm.font("DMMono Nerd Font", {
 			weight = "Medium",
 			style = "Italic",
 			stretch = "Normal",
