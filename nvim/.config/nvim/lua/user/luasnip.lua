@@ -588,3 +588,26 @@ ls.add_snippets("php", {
 		end),
 	}),
 })
+
+ls.add_snippets("go", {
+	s(
+		"switch",
+		fmt(
+			[[
+            switch `val# {
+            case `case#:
+                `return_#
+            default:
+                `default_#
+            }
+            ]],
+			{
+				val = i(1, "val"),
+				case = i(2, "case"),
+				return_ = i(3, "return"),
+				default_ = i(4, 'panic("invalid")'),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+})
