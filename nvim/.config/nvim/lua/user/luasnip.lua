@@ -565,6 +565,21 @@ ls.add_snippets("php", {
 		)
 	),
 	s(
+		"ifnull",
+		fmt(
+			[[
+            if (`arg# === null) {
+                `content#
+            }
+            ]],
+			{
+				arg = i(1),
+				content = i(0),
+			},
+			{ delimiters = "`#" }
+		)
+	),
+	s(
 		"col",
 		fmt(
 			[[

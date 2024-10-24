@@ -66,6 +66,8 @@ function fish_prompt
         printf "(%s) " (set_color blue)(basename $VIRTUAL_ENV)(set_color normal)
     end
 
+    printf "%s " (date +%H:%M)
+
     if test "$fish_key_bindings" = "fish_vi_key_bindings"
         switch $fish_bind_mode
             case default

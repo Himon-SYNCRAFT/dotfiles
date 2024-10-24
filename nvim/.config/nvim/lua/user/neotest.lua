@@ -1,6 +1,6 @@
 require("neotest-phpunit")({
 	phpunit_cmd = function()
-		return { "vendor/bin/phpunit", "--testdox" }
+		return { "vendor/bin/phpunit" }
 	end,
 	filter_dirs = { ".git", "node_modules", "vendor" },
 })
