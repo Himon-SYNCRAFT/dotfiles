@@ -7,6 +7,7 @@ local sources = {
 	null_ls.builtins.diagnostics.phpcs,
 	-- null_ls.builtins.diagnostics.phpmd,
 	null_ls.builtins.formatting.phpcsfixer,
+	-- null_ls.builtins.formatting.phpcbf,
 	-- null_ls.builtins.formatting.prettier,
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.formatting.gofumpt,
@@ -28,14 +29,16 @@ null_ls.setup({
 		local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 		if client.supports_method("textDocument/formatting") then
-			vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
+			vim.keymap.set("n", "<space>f", function()
+				vim.lsp.buf.format({ async = true, timeout_ms = 5000 })
+			end, bufopts)
 
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ async = false })
+					vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
 				end,
 			})
 		end

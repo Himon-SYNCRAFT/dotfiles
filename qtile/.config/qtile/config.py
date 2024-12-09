@@ -238,18 +238,18 @@ for i in groups:
     )
 
 
-border_focus = theme.primary
+border_focus = theme.foreground
 border_normal = theme.background
 
-border_width = 2
-default_margin = 15
+border_width = 0
+default_margin = 25
 margin = [default_margin, default_margin, default_margin, default_margin]
 
 layout_config = dict(
     border_focus=border_focus,
     border_normal=border_normal,
     border_width=border_width,
-    margin=margin,
+    margin=[20, 10, 5, 10],
 )
 
 monad_layout_config = dict(
@@ -267,7 +267,7 @@ layouts = [
     MonadTall(**monad_layout_config, max_ratio=0.81, min_ratio=0.19),
     MonadWide(**monad_layout_config, max_ratio=0.8,
               min_ratio=0.20, ratio=0.20),
-    Columns(**layout_config, insert_position=1),
+    Columns(**layout_config, insert_position=1, fair=True),
     # RatioTile(**layout_config),
     # Tile(**layout_config, master_length=4, ratio=0.5, shift_windows=True),
     # Bsp(**layout_config),
@@ -301,10 +301,10 @@ group_box_config['padding'] = 0
 
 screens = [
     Screen(
-        top=bar.Gap(32),
-        left=bar.Gap(0),
-        right=bar.Gap(0),
-        bottom=bar.Gap(0),
+        top=bar.Gap(22),
+        left=bar.Gap(-5),
+        right=bar.Gap(-5),
+        bottom=bar.Gap(-5),
         # bottom=bar.Bar(
         #     widgets=[
         #         widget.Sep(),

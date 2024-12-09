@@ -17,6 +17,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.filetype.add({
+	pattern = {
+		["%.env%.[%w_.-]+"] = "sh",
+	},
+})
+
 require("lazy").setup({
 	{ "nekonako/xresources-nvim" },
 	{ "sindrets/diffview.nvim" },

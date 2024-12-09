@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 		"phpstan",
 		"pyright",
 		"templ",
-		"ts_ls",
+		"typescript-language-server",
 	},
 })
 
@@ -66,7 +66,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space><space>", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("v", "<space><space>", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("x", "<space><space>", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
+	vim.keymap.set("n", "<space>f", function()
+		vim.lsp.buf.format({ async = true, timeout_ms = 5000 })
+	end, bufopts)
 
 	if client.name == "intelephense" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -186,10 +188,18 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-lspconfig.tsls.setup({
+lspconfig.ts_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"javascript.jsx",
+		"typescript",
+		"typescriptreact",
+		"typescript.tsx",
+	},
 })
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
