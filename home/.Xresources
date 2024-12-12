@@ -2,47 +2,92 @@
 *.alpha:  1
 
 ! DARK_THEME_START
-! RosePine Moon
+! Base2Tone Earth
 ! special
-*foreground:   #e0def4
-*background:   #232136
-*cursorColor:  #e0def4
-*primary: #c4a7e7
-*secondary: #3e8fb0
-*alert: #eb6f92
+*foreground:   #fff3eb
+*background:   #322d29
+*cursorColor:  #fff3eb
+*primary: #d9b154
+*secondary: #fcc440
+*alert: #dfb99f
 
 ! black
-*color0:       #2a273f
-*color8:       #393552
+*color0:       #3f3a37
+*color8:       #6a5f58
 
 ! red
-*color1:       #eb6f92
-*color9:       #eb6f92
+*color1:      #dfb99f
+*color9:      #dfb99f
 
 ! green
-*color2:       #f6c177
-*color10:      #f6c177
+*color2:       #cfc9b9
+*color10:      #cfc9b9
+/**color2:       #e2dcd0*/
+/**color10:      #e2dcd0*/
 
 ! yellow
-*color3:       #ea9a97
-*color11:      #ea9a97
+*color3:       #d9b154
+*color11:      #d9b154
 
 ! blue
-*color4:       #3e8fb0
-*color12:      #3e8fb0
+*color4:       #fcc440
+*color12:      #fcc440
 
 ! magenta
-*color5:       #c4a7e7
-*color13:      #c4a7e7
+*color5:       #967e6e
+*color13:      #967e6e
 
 ! cyan
-*color6:       #9ccfd8
-*color14:      #9ccfd8
+*color6:       #bfa05a
+*color14:      #bfa05a
 
 ! white
-*color7:       #6e6a86
-*color15:      #908caa
+*color7:      #88786d
+*color15:       #6a5f58
 ! DARK_THEME_END
+
+/*! DARK_THEME_START*/
+/*! RosePine Moon*/
+/*! special*/
+/**foreground:   #e0def4*/
+/**background:   #232136*/
+/**cursorColor:  #e0def4*/
+/**primary: #c4a7e7*/
+/**secondary: #3e8fb0*/
+/**alert: #eb6f92*/
+/**/
+/*! black*/
+/**color0:       #2a273f*/
+/**color8:       #393552*/
+/**/
+/*! red*/
+/**color1:       #eb6f92*/
+/**color9:       #eb6f92*/
+/**/
+/*! green*/
+/**color2:       #f6c177*/
+/**color10:      #f6c177*/
+/**/
+/*! yellow*/
+/**color3:       #ea9a97*/
+/**color11:      #ea9a97*/
+/**/
+/*! blue*/
+/**color4:       #3e8fb0*/
+/**color12:      #3e8fb0*/
+/**/
+/*! magenta*/
+/**color5:       #c4a7e7*/
+/**color13:      #c4a7e7*/
+/**/
+/*! cyan*/
+/**color6:       #9ccfd8*/
+/**color14:      #9ccfd8*/
+/**/
+/*! white*/
+/**color7:       #6e6a86*/
+/**color15:      #908caa*/
+/*! DARK_THEME_END*/
 
 ! LIGHT_THEME_START
 /* ! Rose Pine Dawn */
@@ -87,8 +132,8 @@
 /* *color15:      #797593 */
 ! LIGHT_THEME_END
 
-Xft.dpi: 103
-/*Xft.dpi: 96*/
+/*Xft.dpi: 103*/
+Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb

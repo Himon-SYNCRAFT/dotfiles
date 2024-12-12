@@ -21,9 +21,38 @@ map("n", "<C-k>", "<C-w>k", mapopts)
 map("n", "<C-l>", "<C-w>l", mapopts)
 map("n", "<C-h>", "<C-w>h", mapopts)
 
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", mapopts)
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", mapopts)
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", mapopts)
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", mapopts)
+
 -- splits
 map("n", "<leader>h", ":<C-u>split<CR>", mapopts)
 map("n", "<leader>v", ":<C-u>vsplit<CR>", mapopts)
+
+local function vimdir()
+	local vd = ""
+
+	local workspace_folders = vim.lsp.buf.list_workspace_folders()
+	if workspace_folders and #workspace_folders > 0 then
+		vd = workspace_folders[1]
+	else
+		vd = vim.fn.expand("%:p:h")
+	end
+
+	return vd
+end
+
+local function open_terminal()
+	vim.cmd(string.format("let $VIM_DIR = '%s'", vimdir()))
+	vim.cmd("10split")
+	vim.cmd("terminal fish")
+	vim.api.nvim_input("Acd $VIM_DIR<cr>clear<cr>")
+	vim.cmd("se winfixheight")
+end
+
+-- terminal
+vim.keymap.set("n", "<leader>s", open_terminal, mapopts)
 
 -- move indentation
 map("v", "<", "<gv", mapopts)

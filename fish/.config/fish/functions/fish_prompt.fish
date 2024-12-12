@@ -1,4 +1,33 @@
 function fish_prompt
+    if set -q NVIM
+        set_color $fish_color_cwd
+
+        if test "$fish_key_bindings" = "fish_vi_key_bindings"
+            switch $fish_bind_mode
+                case default
+                    set_color --bold blue
+                    printf '[N] '
+                case insert
+                    set_color --bold magenta
+                    printf '[I] '
+                case replace_one
+                    set_color --bold green
+                    printf '[R] '
+                case replace
+                    set_color --bold cyan
+                    printf '[R] '
+                case visual
+                    het_color --bold yellow
+                    printf '[V] '
+            end
+            set_color normal
+        else
+            printf ' '
+        end
+
+        set_color normal
+        return
+    end
     if not set -q VIRTUAL_ENV_DISABLE_PROMPT
         set -g VIRTUAL_ENV_DISABLE_PROMPT true
     end
@@ -83,7 +112,7 @@ function fish_prompt
                 set_color --bold cyan
                 printf '[R] '
             case visual
-                set_color --bold yellow
+                het_color --bold yellow
                 printf '[V] '
         end
         set_color normal

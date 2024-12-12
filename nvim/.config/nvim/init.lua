@@ -1,6 +1,7 @@
 vim.g.mapleader = ","
-vim.o.background = "light"
-vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.o.background = "light"
+vim.o.background = "dark"
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,localoptions"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -48,9 +49,7 @@ require("lazy").setup({
 	{ "echasnovski/mini.files", version = "*" },
 
 	-- ai
-	{
-		"Exafunction/codeium.vim",
-	},
+	{ "Exafunction/codeium.vim" },
 
 	-- Treesitter
 	{
@@ -300,6 +299,16 @@ require("lazy").setup({
 	},
 
 	{ "normen/vim-pio" },
+})
+
+vim.api.nvim_create_autocmd("QuitPre", {
+	callback = function()
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			if vim.bo[buf].buftype == "terminal" then
+				vim.api.nvim_buf_delete(buf, { force = true })
+			end
+		end
+	end,
 })
 
 require("user.dressing")
