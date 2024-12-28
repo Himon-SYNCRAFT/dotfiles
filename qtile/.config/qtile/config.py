@@ -25,7 +25,9 @@ from libqtile.layout.xmonad import MonadTall, MonadWide
 mod = "mod1"
 super_key = "mod4"
 terminal = guess_terminal('st')
+# terminal = guess_terminal('ghostty')
 terminal_in_fish = "st -w '' -e fish"
+# terminal_in_fish = "ghostty"
 # terminal = guess_terminal('alacritty')
 # terminal_in_fish = "alacritty"
 # terminal = guess_terminal('wezterm')

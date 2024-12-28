@@ -13,7 +13,6 @@ local sources = {
 	null_ls.builtins.formatting.gofumpt,
 	null_ls.builtins.formatting.goimports_reviser,
 	null_ls.builtins.formatting.golines,
-	null_ls.builtins.formatting.ocamlformat,
 	null_ls.builtins.formatting.prettierd,
 	null_ls.builtins.diagnostics.phpmd.with({
 		extra_args = { "ruleset.xml" },

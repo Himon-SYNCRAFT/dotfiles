@@ -17,14 +17,18 @@ require("mason-lspconfig").setup({
 		"phpcs",
 		"phpstan",
 		"pyright",
+		"prettierd",
 		"templ",
 		"typescript-language-server",
+		"rust-analyzer",
+		"rustfmt",
 	},
 })
 
 local util = require("lspconfig/util")
 local lspconfig = require("lspconfig")
 local lsp_signature = require("lsp_signature")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -72,6 +76,16 @@ local on_attach = function(client, bufnr)
 
 	if client.name == "intelephense" then
 		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+			end,
+		})
 	end
 
 	lsp_signature.on_attach({
@@ -183,6 +197,24 @@ lspconfig.lua_ls.setup({
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },
+			},
+		},
+	},
+})
+
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	handlers = handlers,
+	settings = {
+		["rust-analyzer"] = {
+			check = {
+				command = "clippy",
+			},
+			diagnostics = {
+				styleLints = {
+					enable = true,
+				},
 			},
 		},
 	},

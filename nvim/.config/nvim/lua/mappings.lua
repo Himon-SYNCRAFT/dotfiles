@@ -21,6 +21,7 @@ map("n", "<C-k>", "<C-w>k", mapopts)
 map("n", "<C-l>", "<C-w>l", mapopts)
 map("n", "<C-h>", "<C-w>h", mapopts)
 
+map("t", "<esc><esc>", "<C-\\><C-n>", mapopts)
 map("t", "<C-j>", "<C-\\><C-n><C-w>j", mapopts)
 map("t", "<C-k>", "<C-\\><C-n><C-w>k", mapopts)
 map("t", "<C-l>", "<C-\\><C-n><C-w>l", mapopts)

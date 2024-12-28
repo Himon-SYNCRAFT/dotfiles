@@ -36,6 +36,10 @@ local kind_icons = {
 }
 
 cmp.setup({
+	completion = {
+		-- completeopt = "menu,menuone,noselect",
+		completeopt = "menu,menuone",
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
