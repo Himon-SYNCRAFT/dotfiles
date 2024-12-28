@@ -37,8 +37,7 @@ local kind_icons = {
 
 cmp.setup({
 	completion = {
-		-- completeopt = "menu,menuone,noselect",
-		completeopt = "menu,menuone",
+		completeopt = "menu,menuone,fuzzy",
 	},
 	snippet = {
 		expand = function(args)
