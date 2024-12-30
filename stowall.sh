@@ -33,6 +33,7 @@ stow --no-folding -v -t ~/ nvim
 stow --no-folding -v -t ~/ picom
 stow --no-folding -v -t ~/ polybar
 stow --no-folding -v -t ~/ qtile
+stow --no-folding -v -t ~/ awesome
 stow --ignore='.pyc' --no-folding -v -t ~/ qutebrowser
 stow --no-folding -v -t ~/ ranger
 stow --no-folding -v -t ~/ scripts

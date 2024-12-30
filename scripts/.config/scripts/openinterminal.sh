@@ -10,4 +10,4 @@ done
 IFS=' '
 
 command=$(ls -1 $RES | grep . | grep -v / | sort | uniq | dmenu -l 10 -p "run in terminal:")
-command -v "$command" && st -e "$command" &
+command -v "$command" && st -n "$command" -e "$command" &
