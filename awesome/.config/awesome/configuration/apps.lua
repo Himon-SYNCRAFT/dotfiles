@@ -2,7 +2,6 @@ local dpi = require("beautiful.xresources").apply_dpi
 local menubar = require("menubar")
 
 apps = {
-
 	-- Your default terminal
 	-- terminal = "ghostty",
 	terminal = "st",
@@ -14,6 +13,8 @@ apps = {
 
 	-- Your default file explorer
 	explorer = "pcmanfm",
+
+	lockscreen = "betterlockscreen -s dim",
 }
 
 -- apps.open_terminal_cmd = "ghostty --gtk-single-instance=true"

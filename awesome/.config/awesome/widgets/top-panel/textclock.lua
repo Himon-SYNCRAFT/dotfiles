@@ -1,10 +1,11 @@
 local wibox = require("wibox")
+local theme = require("configuration.theme")
 
 -- Create a textclock widget
 mytextclock = wibox.widget({
-	format = "%d.%m.%Y %H:%M",
+	-- format = "%d.%m.%Y %H:%M",
 	widget = wibox.widget.textclock,
-	font = "Monospace Bold 10",
+	font = theme.font_regular_bold,
 })
 
 -- mytextclock = wibox.widget({

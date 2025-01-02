@@ -24,6 +24,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
+beautiful.font = "Noto Sans 10"
 beautiful.useless_gap = 10
 beautiful.gap_single_client = 10
 

@@ -1,9 +1,9 @@
 local awful = require("awful")
 local gears = require("gears")
-local menubar = require("menubar")
+local gmath = require("gears.math")
+local naughty = require("naughty")
 
 require("awful.autofocus")
-local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 local modkey = require("configuration.keys.mod").modKey
@@ -11,11 +11,79 @@ local ctrlKey = require("configuration.keys.mod").ctrlKey
 local shiftKey = require("configuration.keys.mod").shiftKey
 local apps = require("configuration.apps")
 
+local function next_non_empty_tag()
+	local screen = awful.screen.focused()
+	local current_tag = screen.selected_tag
+	local current_tag_index = current_tag.index
+
+	local tags = screen.tags
+	local showntags = {}
+
+	for _, t in ipairs(tags) do
+		if not awful.tag.getproperty(t, "hide") then
+			table.insert(showntags, t)
+		end
+	end
+
+	awful.tag.viewnone(screen)
+
+	next_index = gmath.cycle(#showntags, current_tag_index + 1)
+
+	while next_index ~= current_tag_index do
+		local _tag = screen.tags[next_index]
+		local has_clients = #_tag:clients() > 0
+
+		if has_clients then
+			break
+		end
+
+		next_index = gmath.cycle(#showntags, next_index + 1)
+	end
+
+	showntags[gmath.cycle(#showntags, next_index)].selected = true
+
+	screen:emit_signal("tag::history::update")
+end
+
+local function prev_non_empty_tag()
+	local screen = awful.screen.focused()
+	local current_tag = screen.selected_tag
+	local current_tag_index = current_tag.index
+
+	local tags = screen.tags
+	local showntags = {}
+
+	for _, t in ipairs(tags) do
+		if not awful.tag.getproperty(t, "hide") then
+			table.insert(showntags, t)
+		end
+	end
+
+	awful.tag.viewnone(screen)
+
+	next_index = gmath.cycle(#showntags, current_tag_index - 1)
+
+	while next_index ~= current_tag_index do
+		local _tag = screen.tags[next_index]
+		local has_clients = #_tag:clients() > 0
+
+		if has_clients then
+			break
+		end
+
+		next_index = gmath.cycle(#showntags, next_index - 1)
+	end
+
+	showntags[gmath.cycle(#showntags, next_index)].selected = true
+
+	screen:emit_signal("tag::history::update")
+end
+
 -- {{{ Key bindings
 globalKeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-	awful.key({ modkey }, "comma", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "period", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey }, "comma", prev_non_empty_tag, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "period", next_non_empty_tag, { description = "view next", group = "tag" }),
 	-- awful.key({ modkey, "Shift" }, "Left", function()
 	-- 	-- get current tag
 	-- 	local t = client.focus and client.focus.first_tag or nil
@@ -130,10 +198,6 @@ globalKeys = gears.table.join(
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),
-	-- Menubar
-	-- awful.key({ modkey }, "d", function()
-	-- 	menubar.show()
-	-- end, { description = "show the menubar", group = "launcher" })
 
 	awful.key({ modkey }, "d", function()
 		awful.spawn("dmenu_run -b -l 10 -p 'run:'")

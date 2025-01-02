@@ -18,7 +18,6 @@ end)
 
 -- You can store common configuration variables here, or completely get rid of this file.
 local configuration = {
-
 	-- Width of the top panel
 	toppanel_height = dpi(30),
 }

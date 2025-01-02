@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local theme = require("configuration.theme")
 
 local tasklist_buttons = gears.table.join(
 	awful.button({}, 1, function(c)
@@ -21,8 +22,6 @@ local tasklist_buttons = gears.table.join(
 	end)
 )
 
-local theme = beautiful.get()
-
 -- Create a tasklist widget
 -- This works, however it may be better to inherit the s variable from the top panel itself
 awful.screen.connect_for_each_screen(function(s)
@@ -35,7 +34,7 @@ awful.screen.connect_for_each_screen(function(s)
 			fg_focus = theme.fg_normal,
 			shape_border_color_focus = theme.bg_focus,
 			shape_border_width_focus = 2,
-			font = "Monospace 10",
+			font = theme.font_regular,
 		},
 	})
 end)

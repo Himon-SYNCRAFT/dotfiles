@@ -3,6 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local theme = require("configuration.theme")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -30,8 +31,7 @@ local taglist_buttons = gears.table.join(
 
 beautiful.taglist_spacing = dpi(10)
 beautiful.taglist_bg_focus = beautiful.bg_normal
--- beautiful.taglist_fg_focus = beautiful.bg_focus
-beautiful.taglist_fg_focus = "#c4a7e7"
+beautiful.taglist_fg_focus = theme.primary
 
 -- Create a promptbox for each screen
 -- This works, however it may be better to inherit the s variable from the top panel itself
@@ -41,7 +41,7 @@ awful.screen.connect_for_each_screen(function(s)
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
 		style = {
-			font = "MonaspaceNe NFP 15",
+			font = "Monospace 12",
 		},
 	})
 end)
