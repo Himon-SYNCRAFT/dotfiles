@@ -14,16 +14,20 @@ local cpu_widget = require("widgets.cpu")
 local memory_widget = require("widgets.memory")
 local pacman = require("widgets.pacman")
 local volume_widget = require("widgets.volume")
+local mpd_widget = require("widgets.mpd")
+local clientname_widget = require("widgets.clientname")
+
+beautiful.systray_icon_spacing = 4
+-- beautiful.bg_systray = theme.white
 
 local systray = wibox.widget({
 	{
 		widget = wibox.widget.systray,
-		base_size = 20,
+		base_size = 15,
 	},
-	left = -6,
-	right = 0,
-	top = 5,
-	down = 5,
+	left = -3,
+	right = 15,
+	top = 6,
 	widget = wibox.container.margin,
 })
 
@@ -69,6 +73,8 @@ local TopPanel = function(s)
 		{
 			layout = wibox.layout.fixed.horizontal,
 			mytextclock,
+			mpd_widget(),
+			-- clientname_widget,
 		},
 		-- s.mytasklist, -- Middle widget
 		{ -- Right widgets
