@@ -3,7 +3,7 @@ local awful = require("awful")
 -- local icons = require('theme.icons')
 -- local apps = require("configuration.apps")
 
-local tags = { " ", " ", "󰇌 ", "󰇍 ", "󰇎 ", "󰠮 ", "󰓃 ", "󰍡 ", "󰇮 ", "󰋎 " }
+local tags = { "󰇊 ", "󰇋 ", "󰇌 ", "󰇍 ", "󰇎 ", "󰠮 ", "󰓃 ", "󰍡 ", "󰇮 ", "󰋎 " }
 local l = awful.layout.suit
 local layouts = { l.tile, l.tile, l.tile, l.tile, l.tile, l.tile, l.tile, l.tile.bottom, l.tile, l.tile }
 
