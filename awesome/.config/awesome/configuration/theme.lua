@@ -32,10 +32,26 @@ theme.primary = theme.magenta
 theme.secondary = theme.blue
 theme.alert = theme.red
 
-theme.font_regular = "Noto Sans 10"
-theme.font_regular_bold = "Noto Sans Bold 10"
-theme.font_monospace = "Monospace 10"
-theme.font_monospace_bold = "Monospace Bold 10"
+theme.bg_normal = xrdb.background
+theme.bg_focus = xrdb.color12
+theme.bg_urgent = xrdb.color9
+theme.bg_minimize = xrdb.color8
+theme.bg_systray = theme.bg_normal
+
+theme.fg_normal = xrdb.foreground
+theme.fg_focus = theme.bg_normal
+theme.fg_urgent = theme.bg_normal
+theme.fg_minimize = theme.bg_normal
+
+local font = "Sans"
+local size = "10"
+local font_monospace = "Monospace"
+
+theme.font_name = font
+theme.font_regular = font .. " " .. size
+theme.font_regular_bold = font .. " Bold " .. size
+theme.font_monospace = font_monospace .. " " .. size
+theme.font_monospace_bold = font_monospace .. " Bold " .. size
 
 theme.icon_font = theme.font_monospace
 

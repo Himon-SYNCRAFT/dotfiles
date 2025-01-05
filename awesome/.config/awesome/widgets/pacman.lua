@@ -26,7 +26,7 @@ local function factory()
 		popup_border_color = theme.fg_normal,
 		popup_height = 10, -- 10 packages shown in scrollable window
 		popup_width = 300,
-		polkit_agent_path = "/usr/bin/lxpolkit",
+		polkit_agent_path = "/usr/lib/lxpolkit",
 	})
 
 	local group = wibox.widget({

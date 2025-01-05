@@ -5,6 +5,8 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local theme = require("configuration.theme")
+local dpi = require("beautiful").xresources.apply_dpi
 require("awful.autofocus")
 
 -- Widget and layout library
@@ -24,9 +26,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
-beautiful.font = "Noto Sans 10"
+beautiful.font = theme.font_regular
 beautiful.useless_gap = 10
 beautiful.gap_single_client = 10
+
+naughty.config.defaults.margin = dpi(20)
+naughty.config.defaults.border_width = 0
+naughty.config.padding = dpi(10)
+naughty.config.spacing = dpi(10)
 
 -- Init all modules (You can add/remove active modules here)
 require("modules.auto-start")

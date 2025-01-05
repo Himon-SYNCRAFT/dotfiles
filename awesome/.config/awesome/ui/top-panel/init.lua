@@ -34,15 +34,18 @@ local systray = wibox.widget({
 local TopPanel = function(s)
 	-- Wiboxes are much more flexible than wibars simply for the fact that there are no defaults, however if you'd rather have the ease of a wibar you can replace this with the original wibar code
 
-	local panel_x_margin = 20
-	local panel_y_margin = beautiful.useless_gap
+	-- local panel_x_margin = 20
+	-- local panel_y_margin = beautiful.useless_gap
+
+	local panel_x_margin = 0
+	local panel_y_margin = 0
 
 	local panel = wibox({
 		ontop = true,
 		type = "dock",
 		screen = s,
 		height = configuration.toppanel_height,
-		width = s.geometry.width - panel_x_margin * 2 - 1,
+		width = s.geometry.width - panel_x_margin * 2,
 		x = s.geometry.x + panel_x_margin,
 		y = s.geometry.y + panel_y_margin,
 		stretch = false,
@@ -51,9 +54,9 @@ local TopPanel = function(s)
 		struts = {
 			top = configuration.toppanel_height,
 		},
-		shape = function(cr, w, h)
-			gears.shape.rounded_rect(cr, w, h, dpi(6))
-		end,
+		-- shape = function(cr, w, h)
+		-- 	gears.shape.rounded_rect(cr, w, h, dpi(6))
+		-- end,
 	})
 
 	panel:struts({
@@ -69,14 +72,25 @@ local TopPanel = function(s)
 			-- mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
+			-- wibox.container.margin(s.mytasklist, dpi(5), dpi(5), dpi(7), dpi(7)),
 		},
 		{
 			layout = wibox.layout.fixed.horizontal,
 			mytextclock,
+			wibox.container.margin(
+				wibox.widget({
+					widget = wibox.widget.separator,
+					orientation = "vertical",
+					forced_width = dpi(2),
+				}),
+				dpi(8),
+				dpi(8),
+				dpi(8),
+				dpi(8)
+			),
 			mpd_widget(),
 			-- clientname_widget,
 		},
-		-- s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,

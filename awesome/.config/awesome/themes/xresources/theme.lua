@@ -34,10 +34,6 @@ theme.border_normal = xrdb.color0
 theme.border_focus = theme.bg_focus
 theme.border_marked = xrdb.color10
 
-theme.yellow = xrdb.color3
-theme.orange = xrdb.color10
-theme.red = xrdb.color9
-
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

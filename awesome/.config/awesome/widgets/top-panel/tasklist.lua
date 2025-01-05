@@ -27,7 +27,7 @@ local tasklist_buttons = gears.table.join(
 awful.screen.connect_for_each_screen(function(s)
 	s.mytasklist = awful.widget.tasklist({
 		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
+		filter = awful.widget.tasklist.filter.focused,
 		buttons = tasklist_buttons,
 		style = {
 			bg_focus = theme.bg_normal,
@@ -35,6 +35,8 @@ awful.screen.connect_for_each_screen(function(s)
 			shape_border_color_focus = theme.bg_focus,
 			shape_border_width_focus = 2,
 			font = theme.font_regular,
+			disable_task_name = true,
+			align = "center",
 		},
 	})
 end)
