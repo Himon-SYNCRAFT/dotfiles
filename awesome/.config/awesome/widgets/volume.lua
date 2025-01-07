@@ -3,7 +3,6 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 local lain = require("lain")
 local dpi = require("beautiful").xresources.apply_dpi
-local beautiful = require("beautiful")
 local theme = require("configuration.theme")
 
 local function build_progressbar(level, step)
@@ -32,7 +31,22 @@ local volume_level_command = string.format(
 	1
 )
 
+local function is_muted()
+	local result = awful.spawn.easy_async(string.format("pactl get-sink-mute 0"))
+
+	if result == "Mute: yes" then
+		return true
+	else
+		return false
+	end
+end
+
 local function get_volume_level(callback)
+	if is_muted() then
+		callback(0)
+		return
+	end
+
 	awful.spawn.easy_async_with_shell(volume_level_command, function(volume_level, stderr, _reason, _existyletcode)
 		callback(tonumber(volume_level))
 	end)
@@ -44,15 +58,15 @@ local font_icon = theme.icon_font
 
 local function notify_change_level(volumeicon)
 	awful.spawn.easy_async_with_shell(volume_level_command, function(volume_level, stderr, _reason, _exitcode)
-		get_volume_level(function(volume_level)
-			local icon = volume_level == 0 and volume_mute or volume_enabled
+		get_volume_level(function(lvl)
+			local icon = lvl == 0 and volume_mute or volume_enabled
 
 			volumeicon:set_markup(icon)
 
 			notify_id = naughty.notify({
 				title = volume_enabled .. " Volume",
 				font = font_strong,
-				text = build_progressbar(volume_level, 10) .. " " .. volume_level .. "%",
+				text = build_progressbar(lvl, 10) .. " " .. lvl .. "%",
 				position = "top_right",
 				bg = theme.bg_normal,
 				fg = theme.fg_normal,
@@ -89,8 +103,8 @@ local function factory()
 
 	local volume = lain.widget.pulsebar({ font = font })
 
-	local do_update = function(volume)
-		volume.update()
+	local do_update = function(vol)
+		vol.update()
 		notify_change_level(volumeicon)
 	end
 
