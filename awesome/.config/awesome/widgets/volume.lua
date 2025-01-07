@@ -57,7 +57,7 @@ local function notify_change_level(volumeicon)
 				bg = theme.bg_normal,
 				fg = theme.fg_normal,
 				margin = 10,
-				width = 200,
+				width = 142,
 				replaces_id = notify_id,
 				border_width = 0,
 			}).id

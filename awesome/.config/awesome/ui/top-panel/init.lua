@@ -12,24 +12,34 @@ local logout = require("widgets.logout")
 local logo = require("widgets.logo")
 local cpu_widget = require("widgets.cpu")
 local memory_widget = require("widgets.memory")
-local pacman = require("widgets.pacman")
+local pkg_widget = require("widgets.pkg")
 local volume_widget = require("widgets.volume")
 local mpd_widget = require("widgets.mpd")
 local clientname_widget = require("widgets.clientname")
 
 beautiful.systray_icon_spacing = 4
 -- beautiful.bg_systray = theme.white
+--
+local function systray()
+	local widget = wibox.widget.systray()
+	widget:set_base_size(15)
+	widget:set_reverse(true)
+	widget:set_visible(true)
+	widget:set_forced_width(nil)
+	widget:set_forced_height(nil)
 
-local systray = wibox.widget({
-	{
-		widget = wibox.widget.systray,
-		base_size = 15,
-	},
-	left = -3,
-	right = 15,
-	top = 6,
-	widget = wibox.container.margin,
-})
+	return wibox.widget({
+		-- {
+		-- 	widget = widget,
+		-- 	base_size = 15,
+		-- },
+		widget,
+		left = -3,
+		right = 50,
+		top = 6,
+		widget = wibox.container.margin,
+	})
+end
 
 local TopPanel = function(s)
 	-- Wiboxes are much more flexible than wibars simply for the fact that there are no defaults, however if you'd rather have the ease of a wibar you can replace this with the original wibar code
@@ -94,13 +104,13 @@ local TopPanel = function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			pacman(),
+			pkg_widget(),
 			cpu_widget(),
 			memory_widget(),
 			volume_widget(),
 			logout,
 			s.mylayoutbox,
-			systray,
+			systray(),
 		},
 	})
 

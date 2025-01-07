@@ -4,7 +4,7 @@ wmname LG3D
 # pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x nm-applet > /dev/null || nm-applet &
 # nitrogen --restore &
-pgrep -x dunst > /dev/null || dunst &
+# pgrep -x dunst > /dev/null || dunst &
 # electron-mail &
 pgrep -f caffeine > /dev/null || caffeine &
 pgrep -x unclutter > /dev/null || unclutter --timeout 1 --jitter 25 --ignore-scrolling &
