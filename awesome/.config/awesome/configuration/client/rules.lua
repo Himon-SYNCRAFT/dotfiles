@@ -4,7 +4,6 @@ local client_keys = require("configuration.client.keys")
 local client_buttons = require("configuration.client.buttons")
 local title_bars = require("configuration.client.titlebars")
 local beautiful = require("beautiful")
-local tags = root.tags()
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -71,7 +70,7 @@ awful.rules.rules = {
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	{
 		rule = { class = "obsidian" },
-		properties = { tag = tags[6] },
+		properties = { tag = sharedTags[6] },
 	},
 
 	{
@@ -79,24 +78,24 @@ awful.rules.rules = {
 			class = { "ncmpcpp", "cmus" },
 			instance = { "ncmpcpp", "cmus" },
 		},
-		properties = { tag = tags[7] },
+		properties = { tag = sharedTags[7] },
 	},
 
 	{
 		rule_any = { class = { "GG", "Gg" } },
-		properties = { tag = tags[8] },
+		properties = { tag = sharedTags[8] },
 	},
 
 	{
 		rule = { class = "Microsoft Teams - Preview" },
-		properties = { tag = tags[10] },
+		properties = { tag = sharedTags[10] },
 	},
 
 	{
 		rule_any = {
 			class = { "Mail", "Thunderbird", "thunderbird" },
 		},
-		properties = { tag = tags[9] },
+		properties = { tag = sharedTags[9] },
 	},
 }
 -- }}}

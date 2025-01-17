@@ -2,6 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local gmath = require("gears.math")
 local menubar = require("menubar")
+local sharedtags = require("sharedtags")
 
 require("awful.autofocus")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
@@ -79,6 +80,33 @@ local function prev_non_empty_tag()
 	screen:emit_signal("tag::history::update")
 end
 
+local function swap_bydirection(dir)
+	local sel = client.focus
+	local scr = awful.screen.focused()
+
+	if sel then
+		-- move focus
+		awful.client.focus.global_bydirection(dir, sel)
+		local c = client.focus
+		--
+		-- -- swapping inside a screen
+		if sel.screen.index == c.screen.index and sel ~= c then
+			c:swap(sel)
+
+			-- swapping to an empty screen
+		elseif sel == c then
+			sel:move_to_screen(awful.screen.focused())
+			-- swapping to a nonempty screen
+		elseif sel.screen.index ~= c.screen.index and sel ~= c then
+			sel:move_to_screen(c.screen)
+			-- c:move_to_screen(scr)
+		end
+
+		awful.screen.focus(sel.screen)
+		sel:emit_signal("request::activate", "client.swap.global_bydirection", { raise = false })
+	end
+end
+
 -- {{{ Key bindings
 globalKeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -125,16 +153,16 @@ globalKeys = gears.table.join(
 
 	-- Layout manipulation
 	awful.key({ modkey, shiftKey }, "j", function()
-		awful.client.swap.global_bydirection("down")
+		swap_bydirection("down")
 	end, { description = "swap window down", group = "client" }),
 	awful.key({ modkey, shiftKey }, "k", function()
-		awful.client.swap.global_bydirection("up")
+		swap_bydirection("up")
 	end, { description = "swap window up", group = "client" }),
 	awful.key({ modkey, shiftKey }, "h", function()
-		awful.client.swap.global_bydirection("left")
+		swap_bydirection("left")
 	end, { description = "swap window on left", group = "client" }),
 	awful.key({ modkey, shiftKey }, "l", function()
-		awful.client.swap.global_bydirection("right")
+		swap_bydirection("right")
 	end, { description = "swap window on right", group = "client" }),
 	-- awful.key({ modkey, "Control" }, "j", function()
 	-- 	awful.screen.focus_relative(1)
@@ -230,34 +258,34 @@ for i = 1, 10 do
 		-- View tag only.
 		awful.key({ modkey }, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local tag = sharedTags[i]
 			if tag then
-				tag:view_only()
+				sharedtags.viewonly(tag, screen)
 			end
 		end, descr_view),
 		-- Toggle tag display.
 		awful.key({ modkey, "Control" }, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local tag = sharedTags[i]
 			if tag then
-				awful.tag.viewtoggle(tag)
+				sharedtags.viewtoggle(tag, screen)
 			end
 		end, descr_toggle),
 		-- Move client to tag.
 		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
-			if _G.client.focus then
-				local tag = _G.client.focus.screen.tags[i]
+			if client.focus then
+				local tag = sharedTags[i]
 				if tag then
-					_G.client.focus:move_to_tag(tag)
+					client.focus:move_to_tag(tag)
 				end
 			end
 		end, descr_move),
 		-- Toggle tag on focused client.
 		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
-			if _G.client.focus then
-				local tag = _G.client.focus.screen.tags[i]
+			if client.focus then
+				local tag = sharedTags[i]
 				if tag then
-					_G.client.focus:toggle_tag(tag)
+					client.focus:toggle_tag(tag)
 				end
 			end
 		end, descr_toggle_focus)
