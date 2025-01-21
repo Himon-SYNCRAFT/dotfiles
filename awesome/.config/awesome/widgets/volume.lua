@@ -31,22 +31,7 @@ local volume_level_command = string.format(
 	1
 )
 
-local function is_muted()
-	local result = awful.spawn.easy_async(string.format("pactl get-sink-mute 0"))
-
-	if result == "Mute: yes" then
-		return true
-	else
-		return false
-	end
-end
-
 local function get_volume_level(callback)
-	if is_muted() then
-		callback(0)
-		return
-	end
-
 	awful.spawn.easy_async_with_shell(volume_level_command, function(volume_level, stderr, _reason, _existyletcode)
 		callback(tonumber(volume_level))
 	end)

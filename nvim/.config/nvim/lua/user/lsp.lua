@@ -177,17 +177,17 @@ lspconfig.pyright.setup({
 	handlers = handlers,
 })
 
-lspconfig.sqlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	handlers = handlers,
-})
-
-lspconfig.sqls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	handlers = handlers,
-})
+-- lspconfig.sqlls.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	handlers = handlers,
+-- })
+--
+-- lspconfig.sqls.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	handlers = handlers,
+-- })
 
 lspconfig.lua_ls.setup({
 	on_attach = on_attach,

@@ -10,6 +10,8 @@ pgrep -f caffeine > /dev/null || caffeine &
 pgrep -x unclutter > /dev/null || unclutter --timeout 1 --jitter 25 --ignore-scrolling &
 # redshift-gtk &
 
+sudo ntfsfix -d /dev/sdb1
+
 # setxkbmap -layout pl,pl -variant ,dvorak &
 setxkbmap -option caps:escape &
 xset r rate 250 60 &

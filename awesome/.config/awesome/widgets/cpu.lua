@@ -2,6 +2,8 @@ local wibox = require("wibox")
 local lain = require("lain")
 local dpi = require("beautiful").xresources.apply_dpi
 local theme = require("configuration.theme")
+local awful = require("awful")
+local naughty = require("naughty")
 
 local markup = lain.util.markup
 
@@ -37,16 +39,25 @@ local function factory()
 		end,
 	})
 
-	return wibox.container.margin(
-		wibox.widget({
-			cpu_icon,
-			cpu.widget,
-			layout = wibox.layout.align.horizontal,
-		}),
-		dpi(0),
-		dpi(0),
-		dpi(2)
-	)
+	local widget = wibox.widget({
+		cpu_icon,
+		cpu.widget,
+		layout = wibox.layout.align.horizontal,
+	})
+
+	local command = "bash -c " .. os.getenv("HOME") .. "/.config/scripts/cpuinfo.sh"
+
+	widget:buttons(awful.button({}, 1, function()
+		awful.spawn.easy_async(command, function(stdout)
+			naughty.notify({
+				title = "CPU Info",
+				text = stdout,
+				timeout = 5,
+			})
+		end)
+	end))
+
+	return wibox.container.margin(widget, dpi(0), dpi(0), dpi(2))
 end
 
 return factory
