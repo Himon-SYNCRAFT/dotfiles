@@ -23,6 +23,7 @@ local sources = {
 
 null_ls.setup({
 	sources = sources,
+	-- debug = true,
 	debug = true,
 	on_attach = function(client, bufnr)
 		local bufopts = { noremap = true, silent = true, buffer = bufnr }
