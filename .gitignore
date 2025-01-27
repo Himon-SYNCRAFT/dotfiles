@@ -7,3 +7,4 @@ qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
 qutebrowser/.config/qutebrowser/catppuccin
 qutebrowser/.config/qutebrowser/catppuccin
 nvim/.config/nvim/lazy-lock.json
+ncmpcpp/.config/ncmpcpp/previews
