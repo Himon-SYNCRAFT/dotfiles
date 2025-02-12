@@ -20,101 +20,6 @@ local function link(ns, source, target)
 	vim.api.nvim_set_hl(ns, source, { link = target })
 end
 
-local function get_lighter_color(before_color, hex)
-	local t = tostring(before_color)
-	local s = string.sub(t, 2, 7)
-	local after_color = tonumber("0x" .. s) + hex
-	local final_color = "#" .. string.format("%x", after_color)
-	return final_color
-end
-
-local function get_darker_color(before_color, hex)
-	local t = tostring(before_color)
-	local s = string.sub(t, 2, 7)
-	local after_color = tonumber("0x" .. s) - hex
-	local final_color = "#" .. string.format("%x", after_color)
-	return final_color
-end
-
-local function clamp(component)
-	return math.min(math.max(component, 0), 255)
-end
-
-local function lighten_darken_color(col, amt)
-	local num = tonumber(col:sub(2), 16)
-	local r = math.floor(num / 0x10000) + amt
-	local g = (math.floor(num / 0x100) % 0x100) + amt
-	local b = (num % 0x100) + amt
-	local result = "#" .. string.format("%X", clamp(r) * 0x10000 + clamp(g) * 0x100 + clamp(b))
-	return result
-end
-
-local function color_to_hex(col)
-	return tonumber(col:sub(2), 16)
-end
-
-local function get_r_from_rgb(col)
-	local r = math.floor(col / 0x10000)
-	return r
-end
-
-local function get_g_from_rgb(col)
-	local g = (math.floor(col / 0x100) % 0x100)
-	return g
-end
-
-local function get_b_from_rgb(col)
-	local b = col % 0x100
-	return b
-end
-
-local function pseudo_transparent(color, background, foreground_alpha, background_alpha)
-	if foreground_alpha == nil then
-		foreground_alpha = 0.5
-	end
-
-	if background_alpha == nil then
-		background_alpha = 1
-	end
-
-	local col = color_to_hex(color)
-	local bg = color_to_hex(background)
-
-	-- local r = get_r_from_rgb(col) * foreground_alpha + get_r_from_rgb(bg) * background_alpha * (1 - foreground_alpha)
-	-- local g = get_g_from_rgb(col) * foreground_alpha + get_g_from_rgb(bg) * background_alpha * (1 - foreground_alpha)
-	-- local b = get_b_from_rgb(col) * foreground_alpha + get_b_from_rgb(bg) * background_alpha * (1 - foreground_alpha)
-	--
-	local r = get_r_from_rgb(bg) * (1 - foreground_alpha) + (get_r_from_rgb(col) * foreground_alpha)
-	local g = get_g_from_rgb(bg) * (1 - foreground_alpha) + (get_g_from_rgb(col) * foreground_alpha)
-	local b = get_b_from_rgb(bg) * (1 - foreground_alpha) + (get_b_from_rgb(col) * foreground_alpha)
-
-	return "#" .. string.format("%X", clamp(r) * 0x10000 + clamp(g) * 0x100 + clamp(b))
-end
-
-local function mix_colors(_col1, _col2, factor)
-	if factor == nil then
-		factor = 0.5
-	end
-
-	local col1 = color_to_hex(_col1)
-	local col2 = color_to_hex(_col2)
-
-	local r1 = get_r_from_rgb(col1)
-	local g1 = get_g_from_rgb(col1)
-	local b1 = get_b_from_rgb(col1)
-
-	local r2 = get_r_from_rgb(col2)
-	local g2 = get_g_from_rgb(col2)
-	local b2 = get_b_from_rgb(col2)
-
-	local r = r1 * (1 - factor) + r2 * factor
-	local g = g1 * (1 - factor) + g2 * factor
-	local b = b1 * (1 - factor) + b2 * factor
-
-	local result = "#" .. string.format("%X", clamp(r) * 0x10000 + clamp(g) * 0x100 + clamp(b))
-	return result
-end
-
 vim.cmd([[
 	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
     set termguicolors
@@ -134,42 +39,9 @@ vim.cmd([[
 
 local color = require("xresources")
 
--- vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = color.grey })
--- vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = color.blue })
--- vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
--- vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = color.light_blue })
--- vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
--- vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
--- vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = color.pink })
--- vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
--- vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = color.fg })
--- vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
--- vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
--- local statusLineBg = "#191724"
 local statusLineBg = color.grey
 
 local diff_hl = {
-	-- add = {
-	-- 	bg = vim.o.background == "light" and get_darker_color(color.green, 0xf0f10)
-	-- 		or get_lighter_color(color.green, 0xf0f10),
-	-- },
-	-- change = {
-	-- 	bg = vim.o.background == "light" and get_darker_color(color.blue, 0xf0f10)
-	-- 		or get_lighter_color(color.blu, 0xf0f10),
-	-- },
-	-- delete = {
-	-- 	bg = vim.o.background == "light" and get_darker_color(color.red, 0xf0f10)
-	-- 		or get_lighter_color(color.red, 0xf0f10),
-	-- },
-	-- text = { fg = color.fg, bg = color.none },
-	-- add_as_delete = {
-	-- 	bg = vim.o.background == "light" and get_darker_color(color.purple, 0xf0f10)
-	-- 		or get_lighter_color(color.purple, 0xf0f10),
-	-- },
-	-- delete_dim = {
-	-- 	bg = vim.o.background == "light" and get_darker_color(color.yellow, 0xf0f10)
-	-- 		or get_lighter_color(color.yellow, 0xf0f10),
-	-- },
 	add = {
 		fg = color.green,
 		bg = color.bg,
@@ -182,15 +54,6 @@ local diff_hl = {
 		fg = color.red,
 		bg = color.bg,
 	},
-	-- add = {
-	-- 	bg = mix_colors(color.green, color.bg, 0.95),
-	-- },
-	-- change = {
-	-- 	bg = mix_colors(color.blue, color.bg, 0.95),
-	-- },
-	-- delete = {
-	-- 	bg = mix_colors(color.red, color.bg, 0.95),
-	-- },
 	text = { fg = color.fg, bg = color.none },
 	add_as_delete = {
 		bg = "magenta",
@@ -237,9 +100,9 @@ modify_hl(0, "StatusLineHintSign", { fg = color.blue, bg = statusLineBg })
 modify_hl(0, "StatusLineInfoSign", { fg = color.cyan, bg = statusLineBg })
 modify_hl(0, "DiagnosticError", { fg = color.red, bg = color.none })
 modify_hl(0, "DiagnosticSignError", { fg = color.red, bg = color.none })
-modify_hl(0, "DiagnosticHint", { fg = color.blue })
-modify_hl(0, "DiagnosticSignHint", { fg = color.blue })
-modify_hl(0, "DiagnosticInfo", { fg = color.cyan, bg = color.grey })
+modify_hl(0, "DiagnosticHint", { fg = color.blue, bg = color.none })
+modify_hl(0, "DiagnosticSignHint", { fg = color.blue, bg = color.none })
+modify_hl(0, "DiagnosticInfo", { fg = color.cyan, bg = color.none })
 modify_hl(0, "DiagnosticSignInfo", { fg = color.cyan, bg = color.none })
 modify_hl(0, "DiagnosticWarn", { fg = color.yellow, bg = color.grey })
 modify_hl(0, "DiagnosticSignWarn", { fg = color.yellow, bg = color.none })
