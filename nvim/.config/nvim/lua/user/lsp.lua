@@ -130,7 +130,16 @@ lspconfig.cssls.setup({
 })
 
 lspconfig.intelephense.setup({
-	init_options = { licenceKey = "/home/himon/intelephense/license.txt" },
+	init_options = {
+		licenceKey = "/home/himon/intelephense/license.txt",
+	},
+	settings = {
+		intelephense = {
+			files = {
+				maxSize = 4000000,
+			},
+		},
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,

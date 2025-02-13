@@ -328,6 +328,7 @@ require("user.luasnip")
 -- require("user.oil")
 require("user.neotest")
 require("user.mini_files")
+require("user.diagnostic")
 
 vim.cmd([[
     filetype plugin indent on
@@ -341,7 +342,8 @@ vim.cmd([[
 	set number
 	set relativenumber
 	" set colorcolumn=80
-    set signcolumn=yes
+    set signcolumn=no
+    " set signcolumn=yes
     set scrolloff=8
 
     let g:indentLine_loaded = 0
@@ -395,4 +397,8 @@ vim.cmd([[
         autocmd!
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
+]])
+
+vim.cmd([[
+    set signcolumn=no
 ]])
