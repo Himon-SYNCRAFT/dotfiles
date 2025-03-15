@@ -1,7 +1,8 @@
 vim.g.mapleader = ","
 -- vim.o.background = "light"
 vim.o.background = "dark"
-vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,localoptions"
+-- vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,localoptions"
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
