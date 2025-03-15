@@ -168,6 +168,9 @@ local cmdline_mapping = {
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {
+	completion = {
+		completeopt = "menu,menuone,fuzzy,noinsert,noselect",
+	},
 	mapping = cmdline_mapping,
 	completion = {
 		completeopt = "menu,menuone,noselect,fuzzy",

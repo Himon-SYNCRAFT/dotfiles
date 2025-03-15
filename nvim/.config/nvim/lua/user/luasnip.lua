@@ -456,7 +456,11 @@ ls.add_snippets("php", {
 		fmt(
 			[[
             #[ORM\ManyToOne(targetEntity: `targetClass^::class)]
-            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`referencedColumnName^')]
+            #[ORM\JoinColumn(
+                name: '`sourceId^',
+                referencedColumnName: '`referencedColumnName^',
+                nullable: false,
+            )]
             private `entity^ $`lowercased_typ^;
             ]],
 			{
@@ -474,7 +478,11 @@ ls.add_snippets("php", {
 		fmt(
 			[[
             #[ORM\OneToOne(targetEntity: `targetClass^::class)]
-            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`referencedColumnName^')]
+            #[ORM\JoinColumn(
+                name: '`sourceId^',
+                referencedColumnName: '`referencedColumnName^',
+                nullable: false,
+            )]
             private `entity^ $`lowercased_typ^;
             ]],
 			{
@@ -495,8 +503,14 @@ ls.add_snippets("php", {
             * @var Collection<int, `entity^>
             */
             #[ORM\JoinTable(name: '`joinTable^')]
-            #[ORM\JoinColumn(name: '`sourceId^', referencedColumnName: '`targetColumnName^')]
-            #[ORM\InverseJoinColumn(name: '`targetId^', referencedColumnName: '`sourceColumnName^', unique: true)]
+            #[ORM\JoinColumn(
+                name: '`sourceId^',
+                referencedColumnName: '`targetColumnName^'
+            )]
+            #[ORM\InverseJoinColumn(
+                name: '`targetId^',
+                referencedColumnName: '`sourceColumnName^', unique: true
+            )]
             #[ORM\ManyToMany(targetEntity: `targetClass^::class)]
             private Collection $`lowercased_typ^s;
             ]],
