@@ -172,12 +172,18 @@ cmp.setup.cmdline("/", {
 		completeopt = "menu,menuone,fuzzy,noinsert,noselect",
 	},
 	mapping = cmdline_mapping,
+	completion = {
+		completeopt = "menu,menuone,noselect,fuzzy",
+	},
 	sources = { { name = "buffer", keyword_length = 5 } },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
 	mapping = cmdline_mapping,
+	completion = {
+		completeopt = "menu,menuone,noselect,fuzzy",
+	},
 	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline", keyword_length = 3 } }),
 })
 
