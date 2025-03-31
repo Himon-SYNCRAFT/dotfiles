@@ -13,4 +13,6 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.HINT] = "DiagnosticHint",
 		},
 	},
+
+	virtual_text = true,
 })

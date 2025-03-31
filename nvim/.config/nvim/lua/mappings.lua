@@ -242,3 +242,7 @@ vim.keymap.set("n", "<leader>ta", function()
 	local nt = require("neotest")
 	nt.run.run("./tests")
 end)
+
+vim.keymap.set("n", "K", function()
+	vim.lsp.buf.hover({ border = "rounded" })
+end)

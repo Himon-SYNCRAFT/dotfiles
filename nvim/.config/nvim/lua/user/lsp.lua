@@ -55,7 +55,9 @@ local border = {
 }
 
 local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+	-- ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+	-- ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	-- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
 
 local on_attach = function(client, bufnr)
@@ -63,7 +65,7 @@ local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "<space>d", vim.lsp.buf.signature_help, bufopts)
 	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
@@ -112,6 +114,12 @@ lspconfig.bashls.setup({
 })
 
 lspconfig.clangd.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	handlers = handlers,
+})
+
+lspconfig.zls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,

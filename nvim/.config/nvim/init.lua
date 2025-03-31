@@ -1,6 +1,6 @@
 vim.g.mapleader = ","
-vim.o.background = "light"
--- vim.o.background = "dark"
+-- vim.o.background = "light"
+vim.o.background = "dark"
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,localoptions"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -313,7 +313,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 
 require("user.dressing")
 require("user.gitsigns")
-require("user.ranger")
+-- require("user.ranger")
 require("user.telescope")
 -- require("user.treesitter")
 require("user.lsp")
