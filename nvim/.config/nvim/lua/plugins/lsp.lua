@@ -97,10 +97,9 @@ return {
             local lsp_signature = require("lsp_signature")
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-            -- local capabilities =
-            --     require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
             -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
+            -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
