@@ -2,7 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-beautiful.wallpaper = os.getenv("HOME") .. "/wallpapers/light.jpg"
+beautiful.wallpaper = os.getenv("HOME") .. "/wallpapers/dark.jpg"
 
 local function set_wallpaper(s)
 	-- Wallpaper

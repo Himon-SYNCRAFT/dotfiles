@@ -2,39 +2,17 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
-local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
-local c = ls.choice_node
 local d = ls.dynamic_node
-local r = ls.restore_node
-local l = require("luasnip.extras").lambda
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 local postfix = require("luasnip.extras.postfix").postfix
+-- local t = ls.text_node
+-- local r = ls.restore_node
+-- local l = require("luasnip.extras").lambda
+-- local c = ls.choice_node
 
-ls.config.setup({
-	enable_autosnippets = true,
-})
-
-vim.keymap.set({ "i" }, "<C-K>", function()
-	ls.expand()
-end, { silent = true })
-
--- vim.keymap.set({ "i", "s" }, "<Tab>", function()
--- 	ls.jump(1)
--- end, { silent = true })
-
--- vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
--- 	ls.jump(-1)
--- end, { silent = true })
-
--- vim.keymap.set({ "i", "s" }, "<C-E>", function()
--- 	if ls.choice_active() then
--- 		ls.change_choice(1)
--- 	end
--- end, { silent = true })
---
 local function find_git_root()
 	local path = vim.fn.expand("%:p:h")
 	local root = nil

@@ -23,7 +23,7 @@ clientKeys = gears.table.join(
 	awful.key({ ctrlKey }, "x", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
-	awful.key({ superKey }, "f", awful.client.floating.toggle, { description = "toggle floating", group = "client" })
+	awful.key({ superKey }, "f", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),
 	-- awful.key({ modkey, "Control" }, "Return", function(c)
 	--     c:swap(awful.client.getmaster())
 	-- end, { description = "move to master", group = "client" }),
@@ -38,10 +38,10 @@ clientKeys = gears.table.join(
 	-- 	-- minimized, since minimized clients can't have the focus.
 	-- 	c.minimized = true
 	-- end, { description = "minimize", group = "client" }),
-	-- awful.key({ modkey }, "m", function(c)
-	-- 	c.maximized = not c.maximized
-	-- 	c:raise()
-	-- end, { description = "(un)maximize", group = "client" }),
+	awful.key({ superKey }, "m", function(c)
+		c.maximized = not c.maximized
+		c:raise()
+	end, { description = "(un)maximize", group = "client" })
 	-- awful.key({ modkey, "Control" }, "m", function(c)
 	-- 	c.maximized_vertical = not c.maximized_vertical
 	-- 	c:raise()

@@ -17,7 +17,7 @@ function fish_prompt
                     set_color --bold cyan
                     printf '[R] '
                 case visual
-                    het_color --bold yellow
+                    set_color --bold yellow
                     printf '[V] '
             end
             set_color normal
@@ -112,7 +112,7 @@ function fish_prompt
                 set_color --bold cyan
                 printf '[R] '
             case visual
-                het_color --bold yellow
+                set_color --bold yellow
                 printf '[V] '
         end
         set_color normal

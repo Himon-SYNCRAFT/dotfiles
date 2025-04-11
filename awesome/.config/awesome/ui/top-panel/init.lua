@@ -16,7 +16,7 @@ local pkg_widget = require("widgets.pkg")
 local volume_widget = require("widgets.volume")
 local mpd_widget = require("widgets.mpd")
 local clientname_widget = require("widgets.clientname")
-local battery_widget = require("widgets.battery")
+-- local battery_widget = require("widgets.battery")
 
 beautiful.systray_icon_spacing = 4
 -- beautiful.bg_systray = theme.white
@@ -108,7 +108,7 @@ local TopPanel = function(s)
 			pkg_widget(),
 			cpu_widget(),
 			memory_widget(),
-			battery_widget(),
+			-- battery_widget(),
 			volume_widget(),
 			logout,
 			s.mylayoutbox,

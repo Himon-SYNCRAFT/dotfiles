@@ -156,7 +156,6 @@ map("n", "<space>e", [[<Cmd>lua require'user.telescope'.find_configs()<CR>]], ma
 -- map("n", "<leader>nc", [[<Cmd>call OpenRangerIn("~/.config/nvim", "tabedit ")<CR>]], mapopts)
 
 -- go to definitions
--- map("n", "gd", [[:Telescope coc definitions<CR>]], mapopts)
 -- map("n", "gd", [[:Telescope lsp_definitions<CR>]], mapopts)
 vim.keymap.set("n", "gd", function()
 	-- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
@@ -165,11 +164,9 @@ vim.keymap.set("n", "gd", function()
 end, mapopts)
 
 -- go to implementations
--- map("n", "gi", [[:Telescope coc implementations<CR>]], mapopts)
 map("n", "gi", [[:Telescope lsp_implementations<CR>]], mapopts)
 
 -- go to references
--- map("n", "gr", [[:Telescope coc references_used<CR>]], mapopts)
 map("n", "gr", [[:Telescope lsp_references<CR>]], mapopts)
 
 vim.keymap.set("n", "<leader>p", require("auto-session.session-lens").search_session, mapopts)
