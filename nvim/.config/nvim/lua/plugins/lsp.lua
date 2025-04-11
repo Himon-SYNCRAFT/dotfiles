@@ -55,12 +55,12 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "nvimtools/none-ls.nvim",
-            "saghen/blink.cmp"
+            "saghen/blink.cmp",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
         config = function()
             require("mason").setup({})
-            require("mason-lspconfig").setup({
-                automatic_installation = true,
+            require("mason-tool-installer").setup({
                 ensure_installed = {
                     "emmet_language_server",
                     "gofumpt",
@@ -78,6 +78,17 @@ return {
                     "typescript-language-server",
                     "rust-analyzer",
                     "rustfmt",
+                },
+            })
+            require("mason-lspconfig").setup({
+                automatic_installation = true,
+                ensure_installed = {
+                    "emmet_language_server",
+                    "gopls",
+                    "intelephense",
+                    "phpactor",
+                    "pyright",
+                    "templ",
                 },
             })
 
