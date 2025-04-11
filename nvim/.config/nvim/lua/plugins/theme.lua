@@ -24,21 +24,21 @@ return {
         end
 
         vim.cmd([[
-	" autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
-    set termguicolors
-    " set cursorline
-    set noshowmode
+            " autocmd Vimenter * hi Normal guibg=NONE ctermbg=NONE
+            set termguicolors
+            " set cursorline
+            set noshowmode
 
-    call matchadd('ColorColumn', '\%82v', 100)
+            call matchadd('ColorColumn', '\%82v', 100)
 
-    set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+            set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
-    augroup CursorLine
-        au!
-        au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-        au WinLeave * setlocal nocursorline
-    augroup END
-]])
+            augroup CursorLine
+                au!
+                au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+                au WinLeave * setlocal nocursorline
+            augroup END
+        ]])
 
         local color = require("xresources")
 
