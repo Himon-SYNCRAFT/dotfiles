@@ -405,6 +405,10 @@
 #    summary = "foobar"
 #    skip_display = yes
 
+[skip-display]
+    appname = "brave"
+    skip_display = yes
+
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"

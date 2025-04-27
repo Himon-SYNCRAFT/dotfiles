@@ -203,7 +203,7 @@ ls.add_snippets("php", {
                         ->getOneOrNullResult();
                 }
 
-                public function save(`entity_name^ $`lowercased_entity_name^, bool $flush = false): void
+                public function save(`entity_name^ $`lowercased_entity_name^, bool $flush = true): void
                 {
                     $this->_em->persist($`lowercased_entity_name^);
 
@@ -215,7 +215,7 @@ ls.add_snippets("php", {
                 /**
                 * @param `item_type^[] $items
                 */
-                public function saveAll(array $items, bool $flush = false): void
+                public function saveAll(array $items, bool $flush = true): void
                 {
                     foreach ($items as $item) {
                         $this->_em->persist($item);

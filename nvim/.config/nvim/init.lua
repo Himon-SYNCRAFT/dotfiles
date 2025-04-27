@@ -32,6 +32,18 @@ require("lazy").setup("plugins", {
 	},
 })
 
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpAccept",
+	callback = function(ev)
+		local item = ev.data.item
+		if item.kind == require("blink.cmp.types").CompletionItemKind.Snippet then
+			vim.defer_fn(function()
+				require("blink.cmp").show()
+			end, 10)
+		end
+	end,
+})
+
 require("statusline")
 require("mappings")
 require("user.diagnostic")

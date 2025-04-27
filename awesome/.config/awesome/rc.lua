@@ -7,6 +7,7 @@ local gears = require("gears")
 local awful = require("awful")
 local theme = require("configuration.theme")
 local dpi = require("beautiful").xresources.apply_dpi
+local naughty_dbus = require("naughty.dbus")
 require("awful.autofocus")
 
 -- Widget and layout library
@@ -34,6 +35,14 @@ naughty.config.defaults.margin = dpi(20)
 naughty.config.defaults.border_width = 0
 naughty.config.padding = dpi(10)
 naughty.config.spacing = dpi(10)
+
+naughty.config.presets.brave = {
+	callback = function()
+		return false
+	end,
+}
+
+table.insert(naughty_dbus.config.mapping, { { appname = "brave-browser" }, naughty.config.presets.brave })
 
 -- Init all modules (You can add/remove active modules here)
 require("modules.auto-start")

@@ -82,8 +82,10 @@ snippet =?:
 	$${1:foo} = ${2:true} ? ${3:a} : ${0};
 snippet ?:
 	${1:true} ? ${2:a} : ${0}
-snippet t "$retVal = (condition) ? a : b"
-	$${1:retVal} = ($2) ? ${3:a} : ${4:b};
+
+# snippet t "$retVal = (condition) ? a : b"
+# 	$${1:retVal} = ($2) ? ${3:a} : ${4:b};
+
 # Predefined variables
 snippet C
 	$_COOKIE['${1:variable}']
