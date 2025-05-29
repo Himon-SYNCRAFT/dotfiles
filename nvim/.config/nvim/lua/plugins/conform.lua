@@ -16,6 +16,7 @@ return {
 				c = { "clang-format" },
 				templ = { "templ" },
 				sql = { "sleek" },
+				mysql = { "sleek" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
