@@ -16,6 +16,7 @@ return {
 					"goimports-reviser",
 					"golines",
 					"gopls",
+					"golangci-lint",
 					"intelephense",
 					"php-cs-fixer",
 					"phpactor",
@@ -117,6 +118,12 @@ return {
 			-- }
 
 			lspconfig.bashls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				handlers = handlers,
+			})
+
+			lspconfig.marksman.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				handlers = handlers,
