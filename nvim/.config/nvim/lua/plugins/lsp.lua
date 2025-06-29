@@ -16,6 +16,7 @@ return {
 					"goimports-reviser",
 					"golines",
 					"gopls",
+					"golangci-lint",
 					"intelephense",
 					"php-cs-fixer",
 					"phpactor",
@@ -123,6 +124,12 @@ return {
 				handlers = handlers,
 			})
 
+			lspconfig.marksman.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				handlers = handlers,
+			})
+
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
@@ -178,6 +185,11 @@ return {
 						usePlaceholders = true,
 						analyses = { unusedparams = true },
 						["formatting.gofumpt"] = true,
+						["ui.inlayhint.hints"] = {
+							compositeLiteralFields = true,
+							constantValues = true,
+							parameterNames = true,
+						},
 					},
 				},
 			})

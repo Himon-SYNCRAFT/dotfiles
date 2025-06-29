@@ -44,48 +44,48 @@
 *color15:      #908caa
 ! DARK_THEME_END
 
-/*! LIGHT_THEME_START*/
-/*! Rose Pine Dawn */
-/*! special */
-/**foreground:   #575279 */
-/**background:   #faf4ed */
-/**cursorColor:  #575279 */
-/**primary: #907aa9 */
-/**secondary: #286983 */
-/**alert: #b4637a */
-/**/
-/*!black */
-/**color0:       #fffaf3 */
-/**color8:       #f2e9e1 */
-/**/
-/*!red */
-/**color1:       #b4637a */
-/**color9:       #b4637a */
-/**/
-/*!green */
-/**color2:       #ea9d34 */
-/**color10:      #ea9d34 */
-/**/
-/*!yellow */
-/**color3:       #d7827e */
-/**color11:      #d7827e */
-/**/
-/*!blue */
-/**color4:       #286983 */
-/**color12:      #286983 */
-/**/
-/*!magenta */
-/**color5:       #907aa9 */
-/**color13:      #907aa9 */
-/**/
-/*!cyan */
-/**color6:       #56949f */
-/**color14:      #56949f */
-/**/
-/*!white */
-/**color7:       #9893a5 */
-/**color15:      #797593 */
-/*! LIGHT_THEME_END*/
+! LIGHT_THEME_START
+/* ! Rose Pine Dawn */
+/* ! special */
+/* *foreground:   #575279 */
+/* *background:   #faf4ed */
+/* *cursorColor:  #575279 */
+/* *primary: #907aa9 */
+/* *secondary: #286983 */
+/* *alert: #b4637a */
+/*  */
+/* !black */
+/* *color0:       #fffaf3 */
+/* *color8:       #f2e9e1 */
+/*  */
+/* !red */
+/* *color1:       #b4637a */
+/* *color9:       #b4637a */
+/*  */
+/* !green */
+/* *color2:       #ea9d34 */
+/* *color10:      #ea9d34 */
+/*  */
+/* !yellow */
+/* *color3:       #d7827e */
+/* *color11:      #d7827e */
+/*  */
+/* !blue */
+/* *color4:       #286983 */
+/* *color12:      #286983 */
+/*  */
+/* !magenta */
+/* *color5:       #907aa9 */
+/* *color13:      #907aa9 */
+/*  */
+/* !cyan */
+/* *color6:       #56949f */
+/* *color14:      #56949f */
+/*  */
+/* !white */
+/* *color7:       #9893a5 */
+/* *color15:      #797593 */
+! LIGHT_THEME_END
 
 /*Xft.dpi: 103*/
 Xft.dpi: 96
@@ -98,48 +98,3 @@ Xft.lcdfilter: lcddefault
 
 xterm*faceName: Monospace
 xterm*faceSize: 9
-
-!! DARK_THEME_START
-!! Base2Tone Earth
-!! special
-!*foreground:   #fff3eb
-!*background:   #322d29
-!*cursorColor:  #fff3eb
-!*primary: #d9b154
-!*secondary: #fcc440
-!*alert: #dfb99f
-!
-!! black
-!*color0:       #3f3a37
-!*color8:       #6a5f58
-!
-!! red
-!*color1:      #dfb99f
-!*color9:      #dfb99f
-!
-!! green
-!*color2:       #cfc9b9
-!*color10:      #cfc9b9
-!/**color2:       #e2dcd0*/
-!/**color10:      #e2dcd0*/
-!
-!! yellow
-!*color3:       #d9b154
-!*color11:      #d9b154
-!
-!! blue
-!*color4:       #fcc440
-!*color12:      #fcc440
-!
-!! magenta
-!*color5:       #967e6e
-!*color13:      #967e6e
-!
-!! cyan
-!*color6:       #bfa05a
-!*color14:      #bfa05a
-!
-!! white
-!*color7:      #88786d
-!*color15:       #6a5f58
-!! DARK_THEME_END

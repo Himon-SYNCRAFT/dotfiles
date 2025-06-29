@@ -17,6 +17,8 @@ return {
 				templ = { "templ" },
 				sql = { "sleek" },
 				mysql = { "sleek" },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				template = { "prettierd", "prettier", stop_after_first = true },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()

@@ -194,5 +194,7 @@ return {
 		modify_hl(0, "LspInlayHint", { bg = color.none, fg = color.light_white })
 
 		modify_hl(0, "@type.builtin.c", { bg = color.none, fg = color.yellow })
+
+		modify_hl(0, "NotifyBackground", { bg = "#000000" })
 	end,
 }

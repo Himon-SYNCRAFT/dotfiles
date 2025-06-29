@@ -18,5 +18,6 @@ return {
 
 		require("user.luasnip.php")
 		require("user.luasnip.zig")
+		require("user.luasnip.go")
 	end,
 }
