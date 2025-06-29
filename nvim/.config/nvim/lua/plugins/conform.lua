@@ -11,7 +11,7 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
-				go = { "gofumpt", "goimports-reviser", "golines" },
+				go = { "goimports-reviser", "golines", "gofumpt" },
 				php = { "php_cs_fixer" },
 				c = { "clang-format" },
 				templ = { "templ" },

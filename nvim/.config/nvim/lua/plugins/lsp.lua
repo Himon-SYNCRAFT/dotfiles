@@ -31,6 +31,7 @@ return {
 				},
 			})
 			require("mason-lspconfig").setup({
+                automatic_enable = false,
 				automatic_installation = true,
 				ensure_installed = {
 					"emmet_language_server",
