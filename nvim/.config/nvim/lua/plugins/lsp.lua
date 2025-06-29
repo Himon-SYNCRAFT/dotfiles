@@ -184,6 +184,11 @@ return {
 						usePlaceholders = true,
 						analyses = { unusedparams = true },
 						["formatting.gofumpt"] = true,
+						["ui.inlayhint.hints"] = {
+							compositeLiteralFields = true,
+							constantValues = true,
+							parameterNames = true,
+						},
 					},
 				},
 			})
