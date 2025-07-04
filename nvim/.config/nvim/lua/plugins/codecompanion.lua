@@ -1,5 +1,9 @@
 return {
 	"olimorris/codecompanion.nvim",
+	keys = {
+		{ "<space>cc", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion Chat" },
+		{ "<space>ca", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
+	},
 	opts = {
 		strategies = {
 			-- Change the default chat adapter
@@ -32,6 +36,7 @@ return {
 						model = {
 							default = "qwen2.5-coder:7b",
 							-- default = "qwen2.5-coder:32b",
+							-- default = "qwen2.5-coder:14b",
 						},
 					},
 				})
@@ -71,4 +76,14 @@ return {
 		-- Setup the entire opts table
 		require("codecompanion").setup(opts)
 	end,
+	extensions = {
+		mcphub = {
+			callback = "mcphub.extensions.codecompanion",
+			opts = {
+				show_result_in_chat = true, -- Show mcp tool results in chat
+				make_vars = true, -- Convert resources to #variables
+				make_slash_commands = true, -- Add prompts as /slash commands
+			},
+		},
+	},
 }

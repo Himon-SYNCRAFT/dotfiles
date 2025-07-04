@@ -1,4 +1,3 @@
-require("luasnip.loaders.from_snipmate").lazy_load()
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
