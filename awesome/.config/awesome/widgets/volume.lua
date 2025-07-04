@@ -70,7 +70,21 @@ local function up_volume(volume, callback)
 			return
 		end
 
-		awful.spawn(string.format("pactl set-sink-volume %d +5%%", volume.device))
+		local vol = tonumber(volume_level)
+		awful.spawn(string.format("pactl set-sink-volume %d +5%%", vol))
+
+		callback()
+	end)
+end
+
+local function down_volume(volume, callback)
+	get_volume_level(function(volume_level)
+		if volume_level >= 99 then
+			return
+		end
+
+		local vol = tonumber(volume_level)
+		awful.spawn(string.format("pactl set-sink-volume %d -5%%", vol))
 
 		callback()
 	end)
@@ -95,11 +109,13 @@ local function factory()
 
 	volumeicon:buttons(awful.util.table.join(
 		awful.button({}, 1, function() -- left click
-			awful.spawn(string.format("pactl set-sink-mute %d toggle", volume.device))
+			local vol = tonumber(volume.device)
+			awful.spawn(string.format("pactl set-sink-mute %d toggle", vol))
 			do_update(volume)
 		end),
 		awful.button({}, 2, function() -- middle click
-			awful.spawn(string.format("pactl set-sink-volume %d 100%%", volume.device))
+			local vol = tonumber(volume.device)
+			awful.spawn(string.format("pactl set-sink-volume %d 100%%", vol))
 			do_update(volume)
 		end),
 		awful.button({}, 3, function() -- right click
@@ -111,8 +127,9 @@ local function factory()
 			end)
 		end),
 		awful.button({}, 5, function() -- scroll down
-			awful.spawn(string.format("pactl set-sink-volume %d -5%%", volume.device))
-			do_update(volume)
+			down_volume(volume, function()
+				do_update(volume)
+			end)
 		end)
 	))
 

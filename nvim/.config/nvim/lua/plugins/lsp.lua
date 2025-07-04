@@ -14,25 +14,25 @@ return {
 					"emmet_language_server",
 					"gofumpt",
 					"goimports-reviser",
+					"golangci-lint",
 					"golines",
 					"gopls",
-					"golangci-lint",
 					"intelephense",
 					"php-cs-fixer",
 					"phpactor",
 					"phpcs",
 					"phpstan",
-					"pyright",
 					"prettierd",
-					"templ",
-					"typescript-language-server",
+					"pyright",
 					"rust-analyzer",
 					"rustfmt",
 					"sleek",
+					"templ",
+					"typescript-language-server",
 				},
 			})
 			require("mason-lspconfig").setup({
-                automatic_enable = false,
+				automatic_enable = false,
 				automatic_installation = true,
 				ensure_installed = {
 					"emmet_language_server",
@@ -41,6 +41,7 @@ return {
 					"phpactor",
 					"pyright",
 					"templ",
+					"marksman",
 				},
 			})
 
