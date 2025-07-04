@@ -42,5 +42,6 @@ stow --no-folding -v -t ~/ wezterm
 stow --no-folding -v -t ~/ zathura
 stow --no-folding -v -t ~/ fontconfig
 stow --no-folding -v -t ~/ fastfetch
+stow --no-folding -v -t ~/ opencode
 
 xrdb ~/.Xresources
