@@ -8,12 +8,12 @@
         "ollama": {
             "npm": "@ai-sdk/openai-compatible",
             "options": {
-                "baseURL": "http://localhost:11434/v1"
+                "baseURL": "http://127.0.0.1:11434/v1"
             },
             "models": {
-                "qwen2.5-coder:7b-16k": {
-                    "tools": true
-                }
+                "qwen2.5-coder:7b": {},
+                "deepseek-r1:32b": {},
+                "qwen3:32b": {}
             }
         }
     }

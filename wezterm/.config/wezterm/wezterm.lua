@@ -10,8 +10,9 @@ end
 -- config.window_background_opacity = 0.92
 config.window_background_opacity = 1.0
 
-config.color_scheme = "rose-pine-dawn"
+-- config.color_scheme = "rose-pine-dawn"
 -- config.color_scheme = "rose-pine-moon"
+config.color_scheme = "Rosé Pine Moon (base16)"
 
 config.font = wezterm.font_with_fallback({
 	"MonaspiceNe NF",
@@ -63,11 +64,17 @@ config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { "fish", "-l" }
 config.window_close_confirmation = "NeverPrompt"
 config.scrollback_lines = 3500
-config.enable_wayland = true
+config.enable_wayland = false
 
 config.keys = {
 	{ key = "k", mods = "SUPER", action = act.ScrollByLine(-1) },
 	{ key = "j", mods = "SUPER", action = act.ScrollByLine(1) },
 }
+
+config.animation_fps = 120
+config.max_fps = 240
+config.front_end = "OpenGL"
+config.dpi = 96
+-- config.front_end = "WebGpu"
 
 return config
