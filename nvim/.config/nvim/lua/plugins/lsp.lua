@@ -18,6 +18,7 @@ return {
 					"golines",
 					"gopls",
 					"intelephense",
+					"kulala-fmt",
 					"php-cs-fixer",
 					"phpactor",
 					"phpcs",
@@ -143,11 +144,11 @@ return {
 				handlers = handlers,
 			})
 
-			-- lspconfig.ccls.setup({
-			-- 	on_attach = on_attach,
-			-- 	capabilities = capabilities,
-			-- 	handlers = handlers,
-			-- })
+			lspconfig.kulala_ls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				handlers = handlers,
+			})
 
 			lspconfig.cssls.setup({
 				on_attach = on_attach,

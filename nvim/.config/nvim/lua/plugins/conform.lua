@@ -4,6 +4,13 @@ return {
 	config = function()
 		local conform = require("conform")
 		conform.setup({
+			formatters = {
+				kulala = {
+					command = "kulala-fmt",
+					args = { "format", "$FILENAME" },
+					stdin = false,
+				},
+			},
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- python = { "isort", "black" },
@@ -19,6 +26,7 @@ return {
 				mysql = { "sleek" },
 				html = { "prettierd", "prettier", stop_after_first = true },
 				template = { "prettierd", "prettier", stop_after_first = true },
+				http = { "kulala" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
@@ -30,7 +38,7 @@ return {
 		})
 
 		vim.keymap.set("n", "<space>f", function()
-			conform.format({ async = true, timeout_ms = 5000 })
+			conform.format({ async = true, timeout_ms = 10000 })
 		end)
 	end,
 }

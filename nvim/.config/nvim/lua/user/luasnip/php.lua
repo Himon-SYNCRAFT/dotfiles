@@ -12,16 +12,39 @@ local postfix = require("luasnip.extras.postfix").postfix
 -- local l = require("luasnip.extras").lambda
 -- local c = ls.choice_node
 
+-- local function find_git_root()
+-- 	local path = vim.fn.expand("%:p:h")
+-- 	local root = nil
+-- 	while path ~= "/" and path ~= "" do
+-- 		if vim.fn.isdirectory(path .. "/.git") ~= 0 then
+-- 			root = path
+-- 			break
+-- 		end
+-- 		path = vim.fn.fnamemodify(path, ":h")
+-- 	end
+-- 	return root
+-- end
+
 local function find_git_root()
 	local path = vim.fn.expand("%:p:h")
 	local root = nil
+
+	-- Metoda 1: Sprawdzenie poprzez system call
+	local git_root = vim.fn.system("cd " .. vim.fn.shellescape(path) .. " && git rev-parse --show-toplevel 2>/dev/null")
+	if vim.v.shell_error == 0 then
+		return vim.fn.trim(git_root)
+	end
+
+	-- Metoda 2: Manualny traversal (fallback)
 	while path ~= "/" and path ~= "" do
-		if vim.fn.isdirectory(path .. "/.git") ~= 0 then
+		-- Sprawdź czy istnieje .git (katalog lub plik)
+		if vim.fn.isdirectory(path .. "/.git") ~= 0 or vim.fn.filereadable(path .. "/.git") ~= 0 then
 			root = path
 			break
 		end
 		path = vim.fn.fnamemodify(path, ":h")
 	end
+
 	return root
 end
 

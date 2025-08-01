@@ -19,6 +19,7 @@ return {
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("user.luasnip.php")
 		require("user.luasnip.zig")
+		require("user.luasnip.http")
 		-- require("user.luasnip.go")
 	end,
 }

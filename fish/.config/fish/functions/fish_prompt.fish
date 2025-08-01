@@ -33,12 +33,13 @@ function fish_prompt
     end
 
     # set_color bryellow
-    set_color yellow
-    printf '%s' $USER
-    set_color normal
-    printf ' in '
+    # set_color yellow
+    # printf '%s' $USER
+    # set_color normal
+    # printf ' in '
 
-    set_color $fish_color_cwd
+    # set_color $fish_color_cwd
+    set_color yellow
     # printf '%s' (prompt_pwd)
     # printf '%s' (pwd)
     printf '%s'(string replace -r ~ '~' (pwd))

@@ -18,5 +18,6 @@ vim.diagnostic.config({
 		},
 	},
 
+	underline = false,
 	virtual_text = true,
 })

@@ -4,8 +4,8 @@ local menubar = require("menubar")
 apps = {
 	-- Your default terminal
 	-- terminal = "ghostty",
-	-- terminal = "st",
-	terminal = "alacritty",
+	terminal = "st",
+	-- terminal = "alacritty",
 
 	-- Your default text editor
 	editor = "nvim",
@@ -19,8 +19,8 @@ apps = {
 }
 
 -- apps.open_terminal_cmd = "ghostty"
--- apps.open_terminal_cmd = "st -w '' -e fish"
-apps.open_terminal_cmd = "alacritty"
+apps.open_terminal_cmd = "st -w '' -e fish"
+-- apps.open_terminal_cmd = "alacritty"
 apps.editor_cmd = apps.terminal .. " -e " .. apps.editor
 apps.explorer_cmd = apps.terminal .. " -e " .. apps.explorer
 menubar.utils.terminal = apps.terminal -- Set the terminal for applications that require it
