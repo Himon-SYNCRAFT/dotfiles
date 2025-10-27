@@ -3,7 +3,8 @@ return {
 	-- event = "LazyFile",
 	opts = {
 		-- Event to trigger linters
-		events = { "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" },
+		events = { "BufWritePost", "BufReadPost", "TextChanged", "TextChangedI" },
+		-- events = { "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" },
 		linters_by_ft = {
 			php = { "phpstan", "phpcs" },
 			go = { "golangcilint" },

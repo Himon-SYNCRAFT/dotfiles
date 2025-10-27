@@ -85,23 +85,18 @@ return {
 				vim.keymap.set("n", "<space><space>", vim.lsp.buf.code_action, bufopts)
 				vim.keymap.set("v", "<space><space>", vim.lsp.buf.code_action, bufopts)
 				vim.keymap.set("x", "<space><space>", vim.lsp.buf.code_action, bufopts)
-				-- vim.keymap.set("n", "<space>f", function()
-				--     vim.lsp.buf.format({ async = true, timeout_ms = 50000 })
-				-- end, bufopts)
 
 				if client.name == "intelephense" then
 					client.server_capabilities.documentFormattingProvider = false
 				end
 
-				-- if client.supports_method("textDocument/formatting") then
-				--     vim.api.nvim_create_autocmd("BufWritePre", {
-				--         group = augroup,
-				--         buffer = bufnr,
-				--         callback = function()
-				--             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-				--         end,
-				--     })
-				-- end
+				if
+					client.server_capabilities.semanticTokensProvider
+					and client.server_capabilities.semanticTokensProvider.full
+				then
+					vim.lsp.semantic_tokens.start(bufnr, client.id)
+					vim.lsp.semantic_tokens.force_refresh()
+				end
 
 				lsp_signature.on_attach({
 					bind = true, -- This is mandatory, otherwise border config won't get registered.

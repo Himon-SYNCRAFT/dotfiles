@@ -6,7 +6,7 @@
   "theme.font.label": "DepartureMono Nerd Font Propo",
   "terminal": "alacritty",
   "theme.bar.floating": false,
-  "theme.bar.enableShadow": true,
+  "theme.bar.enableShadow": false,
   "bar.workspaces.show_icons": true,
   "bar.workspaces.workspaceMask": false,
   "bar.workspaces.showWsIcons": false,
@@ -370,7 +370,7 @@
   "theme.bar.menus.text": "#dcd7ba",
   "theme.bar.menus.tooltip.background": "#1f1f28",
   "theme.bar.menus.tooltip.text": "#dcd7ba",
-  "theme.bar.transparent": false,
+  "theme.bar.transparent": true,
   "theme.notification.actions.background": "#363646",
   "theme.notification.actions.text": "#dcd7ba",
   "theme.notification.background": "#1f1f28",
@@ -417,18 +417,18 @@
   "bar.layouts": {
     "0": {
       "left": [
-        "dashboard"
+        "dashboard",
+        "workspaces"
       ],
       "middle": [
-        "workspaces",
-        "windowtitle"
+        "windowtitle",
+        "clock"
       ],
       "right": [
         "updates",
         "volume",
         "network",
         "systray",
-        "clock",
         "notifications"
       ]
     },
@@ -498,5 +498,7 @@
   "bar.workspaces.numbered_active_indicator": "color",
   "theme.notification.enableShadow": true,
   "theme.notification.border_radius": "0.0em",
-  "theme.font.size": "1.3rem"
+  "theme.font.size": "1.3rem",
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "theme.bar.outer_spacing": "0.8em"
 }
