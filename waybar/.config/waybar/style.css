@@ -1,16 +1,17 @@
-@import "./rose-pine-moon.css";
+@import "./kanagawa-wave.css";
 
 * {
     background: transparent;
     border: none;
     /* font-family: MonaspiceNe NF; */
-    font-family: Cantarell, MonaspiceNe NF;
-    font-size: 14px;
+    /* font-family: Cantarell, MonaspiceNe NF; */
+    font-family: DepartureMono Nerd Font Propo;
+    font-size: 13px;
 }
 
 window#waybar {
-    /* background: @base; */
-    background: transparent;
+    background: @base;
+    /* background: transparent; */
     /* background-color: rgba(43, 48, 59, 0.5); */
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     /* color: #ffffff; */
@@ -44,7 +45,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    color: @rose;
+    color: @yellow;
 }
 
 #workspaces button.active {
@@ -52,7 +53,7 @@ button:hover {
 }
 
 #workspaces button.active:hover {
-    color: @rose;
+    color: @yellow;
 }
 
 #workspaces button.urgent {
@@ -84,11 +85,12 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 5px;
-    color: #ffffff;
+    color: @text;
     background-color: @base;
 }
 
-#clock {
+#clock,
+#window {
     font-weight: bold;
 }
 
@@ -105,7 +107,7 @@ button:hover {
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
+    margin-left: 10;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
@@ -169,6 +171,7 @@ label:focus {
 #tray label {
     font-size: 12px;
     font-family: Cantarell;
+    color: @text;
 }
 
 tooltip {

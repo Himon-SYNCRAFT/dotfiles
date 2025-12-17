@@ -38,7 +38,7 @@ return {
 		})
 
 		vim.keymap.set("n", "<space>f", function()
-			conform.format({ async = true, timeout_ms = 10000 })
+			conform.format({ async = false, timeout_ms = 10000 })
 		end)
 	end,
 }

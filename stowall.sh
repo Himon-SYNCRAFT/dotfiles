@@ -46,5 +46,6 @@ stow --no-folding -v -t ~/ opencode
 stow --no-folding -v -t ~/ waybar
 stow --no-folding -v -t ~/ hypr
 stow --no-folding -v -t ~/ hyprpanel
+stow --no-folding -v -t ~/ alacritty
 
 xrdb ~/.Xresources
