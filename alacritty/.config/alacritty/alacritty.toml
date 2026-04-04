@@ -74,6 +74,11 @@ action = "DecreaseFontSize"
 key = "Down"
 mods = "Shift|Alt"
 
+[[keyboard.bindings]]
+chars = "\n"
+key = "Return"
+mods = "Shift"
+
 [scrolling]
 history = 10000
 

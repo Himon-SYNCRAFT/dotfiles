@@ -30,6 +30,7 @@ return {
 					"sleek",
 					"templ",
 					"typescript-language-server",
+					"yamlfmt",
 				},
 			})
 			require("mason-lspconfig").setup({
@@ -270,6 +271,11 @@ return {
 					"typescript",
 					"typescriptreact",
 					"typescript.tsx",
+				},
+				settings = {
+					implicitProjectConfiguration = {
+						checkJs = true,
+					},
 				},
 			})
 

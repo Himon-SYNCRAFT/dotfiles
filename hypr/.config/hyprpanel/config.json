@@ -7,9 +7,9 @@
   "terminal": "alacritty",
   "theme.bar.floating": false,
   "theme.bar.enableShadow": false,
-  "bar.workspaces.show_icons": true,
+  "bar.workspaces.show_icons": false,
   "bar.workspaces.workspaceMask": false,
-  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showWsIcons": true,
   "bar.workspaces.showApplicationIcons": false,
   "wallpaper.image": "/home/himon/wallpapers/dark.jpg",
   "theme.bar.background": "#1f1f28",
@@ -500,5 +500,8 @@
   "theme.notification.border_radius": "0.0em",
   "theme.font.size": "1.3rem",
   "theme.bar.buttons.windowtitle.enableBorder": false,
-  "theme.bar.outer_spacing": "0.8em"
+  "theme.bar.outer_spacing": "0.8em",
+  "theme.bar.location": "top",
+  "theme.bar.layer": "bottom",
+  "theme.font.weight": 600
 }

@@ -10,4 +10,4 @@ done
 IFS=' '
 
 command=$(ls -1 $RES | grep . | grep -v / | sort | uniq | dmenu -l 10 -p "run in terminal:")
-command -v "$command" && alacritty -e "$command" &
+command -v "$command" && alacritty --title "$command" --class "$command" -e "$command" &
