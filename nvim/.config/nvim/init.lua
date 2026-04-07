@@ -1,114 +1,76 @@
+-- init.lua
 vim.g.mapleader = ","
--- vim.o.background = "light"
 vim.o.background = "dark"
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-
-vim.opt.rtp:prepend(lazypath)
-
 vim.filetype.add({
-	pattern = {
-		["%.env%.[%w_.-]+"] = "sh",
-	},
+    pattern = {
+        ["%.env%.[%w_.-]+"] = "sh",
+    },
 })
 
-require("lazy").setup("plugins", {
-	performance = {
-		cache = {
-			enabled = true,
-		},
-	},
-})
+-- Bootstrap: pobiera/rejestruje wszystkie pluginy
+require("pack")
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "BlinkCmpAccept",
-	callback = function(ev)
-		local item = ev.data.item
-		if item.kind == require("blink.cmp.types").CompletionItemKind.Snippet then
-			vim.defer_fn(function()
-				require("blink.cmp").show()
-			end, 10)
-		end
-	end,
-})
-
+-- theme najpierw — żeby floaty i inne okna miały kolory
+require("plugins.theme")
+require("plugins.lsp")
+require("plugins.blink")
+require("plugins.dadbod")
+require("plugins.luasnip")
+require("plugins.codeium")
+require("plugins.treesitter")
+require("plugins.telescope")
+require("plugins.mini_files")
+require("plugins.gitsigns")
+require("plugins.conform")
+require("plugins.lint")
+require("plugins.trouble")
+require("plugins.autosession")
+require("plugins.kulala")
+require("plugins.lazydev")
 require("statusline")
 require("mappings")
 require("user.diagnostic")
+require("plugins.lightbulb").setup()
 
-vim.cmd([[
-    filetype plugin indent on
-    set nocompatible
+vim.cmd("filetype plugin indent on")
 
-    set fileformats=unix,dos,mac
-    set noswapfile
+vim.o.fileformats    = "unix,dos,mac"
+vim.o.swapfile       = false
 
-	syntax on
-	set ruler
-	set number
-	set relativenumber
-	" set colorcolumn=80
-    set signcolumn=no
-    " set signcolumn=yes
-    set scrolloff=8
+vim.o.ruler          = true
+vim.o.number         = true
+vim.o.relativenumber = true
+vim.o.signcolumn     = "no"
+vim.o.scrolloff      = 8
 
-    let g:indentLine_loaded = 0
+vim.g.indentLine_loaded = 0
 
-    set laststatus=3
-    set cmdheight=0
+vim.o.laststatus     = 3
+vim.o.cmdheight      = 0
 
-	"" Fix backspace indent
-	set backspace=indent,eol,start
+vim.o.backspace      = "indent,eol,start"
 
-	set tabstop=4
-	set softtabstop=0
-	set shiftwidth=4
-	set expandtab
-    set shiftround
-    set nofoldenable
+vim.o.tabstop        = 4
+vim.o.softtabstop    = 0
+vim.o.shiftwidth     = 4
+vim.o.expandtab      = true
+vim.o.shiftround     = true
+vim.o.foldenable     = false
 
-    set splitright
-    set splitbelow
+vim.o.splitright     = true
+vim.o.splitbelow     = true
 
-    set shortmess=filnxtToOFcsWAICS
+vim.o.shortmess      = "filnxtToOFcsWAICS"
+vim.o.clipboard      = "unnamed,unnamedplus"
 
-	if has('unnamedplus')
-	    set clipboard=unnamed,unnamedplus
-	endif
+vim.o.ignorecase     = true
+vim.o.smartcase      = true
 
-	set ignorecase
-	set smartcase
+vim.o.updatetime     = 300
 
-    set completeopt=menu,menuone,noselect
+vim.g.codeium_no_map_tab = 1
+vim.g.codeium_filetypes  = { sql = false }
 
-    let g:codeium_no_map_tab = 1
-    let g:codeium_filetypes = { "sql": v:false }
-
-    let g:db_ui_auto_execute_table_helpers = 1
-    let g:db_ui_table_helpers = {
-    \   'postgresql': {
-    \     'Count': 'SELECT count(*) FROM "{table}"',
-    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
-    \   },
-    \   'sqlite': {
-    \     'Count': 'SELECT count(*) FROM "{table}"',
-    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
-    \   },
-    \   'mysql': {
-    \     'Count': 'SELECT count(*) FROM "{table}"',
-    \     'Where': 'SELECT count(*) FROM "{table}" WHERE'
-    \   },
-    \ }
-]])
+vim.o.winborder = "rounded"

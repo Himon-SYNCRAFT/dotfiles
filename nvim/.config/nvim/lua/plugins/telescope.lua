@@ -1,104 +1,105 @@
-return {
-	"nvim-telescope/telescope.nvim",
-	dependencies = {
-		"nvim-telescope/telescope-file-browser.nvim",
-		"cljoly/telescope-repo.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	},
+-- lua/plugins/telescope.lua
+local actions = require("telescope.actions")
+local mapopts = { noremap = true, silent = true }
 
-	config = function()
-		-- Telescope - setup and customized pickers
-		local actions = require("telescope.actions")
-		local action_state = require("telescope.actions.state")
-		local utils = require("telescope.utils")
+require("telescope").setup({
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+        },
+        file_browser = { hidden = true },
+    },
+    defaults = {
+        preview = { timeout = 500, msg_bg_fillchar = "" },
+        multi_icon = " ",
+        vimgrep_arguments = {
+            "rg", "--color=never", "--no-heading", "--with-filename",
+            "--line-number", "--column", "--smart-case", "--hidden",
+        },
+        prompt_prefix = "❯ ",
+        selection_caret = "❯ ",
+        sorting_strategy = "ascending",
+        color_devicons = true,
+        layout_config = {
+            prompt_position = "bottom",
+            horizontal = { width_padding = 0.04, height_padding = 0.1, preview_width = 0.6 },
+            vertical = { width_padding = 0.05, height_padding = 1, preview_height = 0.5 },
+        },
+        mappings = {
+            n = {
+                ["<Del>"] = actions.close,
+                ["<C-A>"] = function(pb)
+                    require("user.telescope").multi_selection_open(pb)
+                end,
+            },
+            i = {
+                ["<esc>"] = actions.close,
+                ["<C-A>"] = function(pb)
+                    require("user.telescope").multi_selection_open(pb)
+                end,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+            },
+        },
+        dynamic_preview_title = true,
+    },
+    pickers = {
+        find_files = { follow = true },
+    },
+})
 
-		-- https://github.com/nvim-telescope/telescope.nvim/issues/1048
-		local telescope_custom_actions = {}
+-- Ładowanie rozszerzeń przez user/telescope
+require("user.telescope")
 
-		function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
-			local picker = action_state.get_current_picker(prompt_bufnr)
-			local num_selections = #picker:get_multi_selection()
-			if not num_selections or num_selections <= 1 then
-				actions.add_selection(prompt_bufnr)
-			end
-			actions.send_selected_to_qflist(prompt_bufnr)
-			vim.cmd("cfdo " .. open_cmd)
-		end
+local tb = require("telescope.builtin")
+local ut = require("user.telescope")
 
-		function telescope_custom_actions.multi_selection_open(prompt_bufnr)
-			telescope_custom_actions._multiopen(prompt_bufnr, "edit")
-		end
+-- LSP navigation
+vim.keymap.set("n", "gd", function() tb.lsp_definitions() end, mapopts)
+vim.keymap.set("n", "gi", function() tb.lsp_implementations() end, mapopts)
+vim.keymap.set("n", "gr", function() tb.lsp_references() end, mapopts)
 
-		require("telescope").setup({
-			extensions = {
-				fzf = {
-					fuzzy = true, -- false will only do exact matching
-					override_generic_sorter = true,
-					override_file_sorter = true,
-					case_mode = "smart_case", -- this is default
-				},
-				file_browser = { hidden = true },
-				-- ["ui-select"] = {
-				--   require("telescope.themes").get_cursor(),
-				-- },
-			},
-			defaults = {
-				preview = { timeout = 500, msg_bg_fillchar = "" },
-				multi_icon = " ",
-				vimgrep_arguments = {
-					"rg",
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"--hidden",
-				},
-				prompt_prefix = "❯ ",
-				selection_caret = "❯ ",
-				sorting_strategy = "ascending",
-				color_devicons = true,
-				layout_config = {
-					prompt_position = "bottom",
-					horizontal = {
-						width_padding = 0.04,
-						height_padding = 0.1,
-						preview_width = 0.6,
-					},
-					vertical = {
-						width_padding = 0.05,
-						height_padding = 1,
-						preview_height = 0.5,
-					},
-				},
+-- File finding
+vim.keymap.set("n", "<leader>e", ut.project_files, mapopts)
+vim.keymap.set("n", "<leader>df", function()
+    tb.find_files({ find_command = { "fd", vim.fn.expand("<cword>") } })
+end, mapopts)
+vim.keymap.set("n", "<space>e", ut.find_configs, mapopts)
 
-				-- using custom temp multi-select maps
-				-- https://github.com/nvim-telescope/telescope.nvim/issues/1048
-				mappings = {
-					n = {
-						["<Del>"] = actions.close,
-						["<C-A>"] = telescope_custom_actions.multi_selection_open,
-					},
-					i = {
-						["<esc>"] = actions.close,
-						["<C-A>"] = telescope_custom_actions.multi_selection_open,
-						["<C-j>"] = actions.move_selection_next,
-						["<C-k>"] = actions.move_selection_previous,
-					},
-				},
-				dynamic_preview_title = true,
-			},
-			pickers = {
-				find_files = {
-					follow = true,
-				},
-			},
-		})
+-- Search
+vim.keymap.set("n", "<leader>f", "<Cmd>Telescope live_grep<CR>", mapopts)
+vim.keymap.set("n", "<leader>G", function()
+    tb.grep_string({ word_match = "-w" })
+end, mapopts)
+vim.keymap.set("n", "<C-f>", tb.current_buffer_fuzzy_find, mapopts)
+vim.keymap.set("n", "<space>x", tb.diagnostics, mapopts)
 
-		require("telescope").load_extension("file_browser")
-		require("telescope").load_extension("fzf")
-		require("telescope").load_extension("repo")
-		-- require("telescope").load_extension "media_files"
-	end,
-}
+-- Buffers & navigation
+vim.keymap.set("n", "<leader>b", function()
+    tb.buffers({
+        prompt_title = "",
+        results_title = "﬘",
+        layout_strategy = "vertical",
+        layout_config = { width = 0.40, height = 0.55 },
+    })
+end, mapopts)
+vim.keymap.set("n", "<leader>o", function()
+    tb.oldfiles({ results_title = "Recent-ish Files" })
+end, mapopts)
+
+-- Meta
+vim.keymap.set("n", "<leader>c", function()
+    tb.commands({ results_title = "Commands Results" })
+end, mapopts)
+vim.keymap.set("n", "<leader>k", function()
+    tb.keymaps({ results_title = "Key Maps Results" })
+end, mapopts)
+vim.keymap.set("n", "<space>h", function()
+    tb.help_tags({ results_title = "Help Results" })
+end, mapopts)
+
+-- Repos
+vim.keymap.set("n", "<leader>rl", ut.repo_list, mapopts)
