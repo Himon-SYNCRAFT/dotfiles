@@ -1,6 +1,5 @@
 -- lua/plugins/telescope.lua
 local actions = require("telescope.actions")
-local mapopts = { noremap = true, silent = true }
 
 require("telescope").setup({
     extensions = {
@@ -58,24 +57,24 @@ local tb = require("telescope.builtin")
 local ut = require("user.telescope")
 
 -- LSP navigation
-vim.keymap.set("n", "gd", function() tb.lsp_definitions() end, mapopts)
-vim.keymap.set("n", "gi", function() tb.lsp_implementations() end, mapopts)
-vim.keymap.set("n", "gr", function() tb.lsp_references() end, mapopts)
+vim.keymap.set("n", "gd", function() tb.lsp_definitions() end,      { silent = true, desc = "LSP: przejdź do definicji" })
+vim.keymap.set("n", "gi", function() tb.lsp_implementations() end,  { silent = true, desc = "LSP: przejdź do implementacji" })
+vim.keymap.set("n", "gr", function() tb.lsp_references() end,       { silent = true, desc = "LSP: pokaż referencje" })
 
 -- File finding
-vim.keymap.set("n", "<leader>e", ut.project_files, mapopts)
+vim.keymap.set("n", "<leader>e", ut.project_files, { silent = true, desc = "Szukaj plików w projekcie (git/fd)" })
 vim.keymap.set("n", "<leader>df", function()
     tb.find_files({ find_command = { "fd", vim.fn.expand("<cword>") } })
-end, mapopts)
-vim.keymap.set("n", "<space>e", ut.find_configs, mapopts)
+end, { silent = true, desc = "Szukaj pliku po słowie pod kursorem" })
+vim.keymap.set("n", "<space>e", ut.find_configs, { silent = true, desc = "Szukaj w plikach konfiguracyjnych" })
 
 -- Search
-vim.keymap.set("n", "<leader>f", "<Cmd>Telescope live_grep<CR>", mapopts)
+vim.keymap.set("n", "<leader>f", "<Cmd>Telescope live_grep<CR>", { silent = true, desc = "Przeszukaj pliki (live grep)" })
 vim.keymap.set("n", "<leader>G", function()
     tb.grep_string({ word_match = "-w" })
-end, mapopts)
-vim.keymap.set("n", "<C-f>", tb.current_buffer_fuzzy_find, mapopts)
-vim.keymap.set("n", "<space>x", tb.diagnostics, mapopts)
+end, { silent = true, desc = "Szukaj całego słowa pod kursorem (grep)" })
+vim.keymap.set("n", "<C-f>", tb.current_buffer_fuzzy_find,  { silent = true, desc = "Szukaj w bieżącym buforze" })
+vim.keymap.set("n", "<space>x", tb.diagnostics,             { silent = true, desc = "Pokaż diagnostykę LSP" })
 
 -- Buffers & navigation
 vim.keymap.set("n", "<leader>b", function()
@@ -85,21 +84,21 @@ vim.keymap.set("n", "<leader>b", function()
         layout_strategy = "vertical",
         layout_config = { width = 0.40, height = 0.55 },
     })
-end, mapopts)
+end, { silent = true, desc = "Lista otwartych buforów" })
 vim.keymap.set("n", "<leader>o", function()
     tb.oldfiles({ results_title = "Recent-ish Files" })
-end, mapopts)
+end, { silent = true, desc = "Ostatnio otwarte pliki" })
 
 -- Meta
 vim.keymap.set("n", "<leader>c", function()
     tb.commands({ results_title = "Commands Results" })
-end, mapopts)
+end, { silent = true, desc = "Lista komend Vima" })
 vim.keymap.set("n", "<leader>k", function()
     tb.keymaps({ results_title = "Key Maps Results" })
-end, mapopts)
+end, { silent = true, desc = "Lista skrótów klawiszowych" })
 vim.keymap.set("n", "<space>h", function()
     tb.help_tags({ results_title = "Help Results" })
-end, mapopts)
+end, { silent = true, desc = "Przeszukaj pomoc Vima" })
 
 -- Repos
-vim.keymap.set("n", "<leader>rl", ut.repo_list, mapopts)
+vim.keymap.set("n", "<leader>rl", ut.repo_list, { silent = true, desc = "Lista repozytoriów git" })
