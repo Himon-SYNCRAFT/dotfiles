@@ -8,71 +8,72 @@
 --   treesitter parsery:    :TSUpdate  (uruchomić z poziomu nvim)
 
 vim.pack.add({
-    -- Zależności
-    "https://github.com/nvim-lua/plenary.nvim",
-    "https://github.com/nvim-tree/nvim-web-devicons",
+	-- Zależności
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
 
-    -- LSP
-    "https://github.com/neovim/nvim-lspconfig",
-    "https://github.com/williamboman/mason.nvim",
-    "https://github.com/williamboman/mason-lspconfig.nvim",
-    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- LSP
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/williamboman/mason.nvim",
+	"https://github.com/williamboman/mason-lspconfig.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 
-    -- Completion
-    { src = "https://github.com/saghen/blink.cmp",                version = "v1.10.2" },
-    { src = "https://github.com/saghen/blink.compat",             version = "v2.5.0" },
-    { src = "https://github.com/L3MON4D3/LuaSnip",                version = "v2.5.0" },
+	-- Completion
+	{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
+	{ src = "https://github.com/saghen/blink.compat", version = "v2.5.0" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0" },
 
-    -- Treesitter
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	-- Treesitter
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-    -- Telescope
-    "https://github.com/nvim-telescope/telescope.nvim",
-    "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-    "https://github.com/nvim-telescope/telescope-file-browser.nvim",
-    "https://github.com/cljoly/telescope-repo.nvim",
+	-- Telescope
+	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+	"https://github.com/nvim-telescope/telescope-file-browser.nvim",
+	"https://github.com/cljoly/telescope-repo.nvim",
 
-    -- File explorer
-    "https://github.com/echasnovski/mini.files",
+	-- File explorer
+	"https://github.com/echasnovski/mini.files",
 
-    -- Git
-    "https://github.com/lewis6991/gitsigns.nvim",
+	-- Git
+	"https://github.com/lewis6991/gitsigns.nvim",
 
-    -- Formatter + Linter
-    "https://github.com/stevearc/conform.nvim",
-    "https://github.com/mfussenegger/nvim-lint",
+	-- Formatter + Linter
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/mfussenegger/nvim-lint",
 
-    -- Diagnostics panel
-    "https://github.com/folke/trouble.nvim",
+	-- Diagnostics panel
+	"https://github.com/folke/trouble.nvim",
 
-    -- Theme
-    "https://github.com/rebelot/kanagawa.nvim",
+	-- Theme
+	"https://github.com/rebelot/kanagawa.nvim",
 
-    -- Session
-    "https://github.com/rmagatti/auto-session",
+	-- Session
+	"https://github.com/rmagatti/auto-session",
 
-    -- DB
-    "https://github.com/tpope/vim-dadbod",
-    "https://github.com/kristijanhusak/vim-dadbod-ui",
-    "https://github.com/kristijanhusak/vim-dadbod-completion",
+	-- DB
+	"https://github.com/tpope/vim-dadbod",
+	"https://github.com/kristijanhusak/vim-dadbod-ui",
+	"https://github.com/kristijanhusak/vim-dadbod-completion",
 
-    -- HTTP
-    "https://github.com/mistweaverco/kulala.nvim",
+	-- HTTP
+	"https://github.com/mistweaverco/kulala.nvim",
 
-    -- Lua dev
-    "https://github.com/folke/lazydev.nvim",
+	-- Lua dev
+	"https://github.com/folke/lazydev.nvim",
 
-    -- Editing helpers
-    "https://github.com/tpope/vim-surround",
-    "https://github.com/tpope/vim-repeat",
-    "https://github.com/Raimondi/delimitMate",
+	-- Editing helpers
+	"https://github.com/tpope/vim-surround",
+	"https://github.com/tpope/vim-repeat",
+	"https://github.com/Raimondi/delimitMate",
 
-    -- AI completion
-    "https://github.com/Exafunction/codeium.vim",
+	-- AI completion
+	"https://github.com/Exafunction/codeium.vim",
 
-    -- PHP
-    "https://github.com/phpactor/phpactor",
+	-- PHP
+	"https://github.com/phpactor/phpactor",
 
-    -- Misc
-    "https://github.com/joerdav/templ.vim",
+	-- Misc
+	"https://github.com/joerdav/templ.vim",
+	"https://github.com/echasnovski/mini.notify",
 }, { confirm = false })

@@ -83,6 +83,10 @@
       "rev": "ced297546b8fdb8e215d416d4753a735514a2fe0",
       "src": "https://github.com/echasnovski/mini.files"
     },
+    "mini.notify": {
+      "rev": "32d3544b9368c76c562f22027ab25b750647fdf1",
+      "src": "https://github.com/echasnovski/mini.notify"
+    },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"

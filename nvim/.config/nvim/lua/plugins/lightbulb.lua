@@ -1,4 +1,3 @@
--- lua/plugins/code_action_indicator.lua
 local M = {}
 
 local ns = vim.api.nvim_create_namespace("lightbulb")

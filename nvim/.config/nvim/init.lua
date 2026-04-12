@@ -4,9 +4,9 @@ vim.o.background = "dark"
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
 
 vim.filetype.add({
-    pattern = {
-        ["%.env%.[%w_.-]+"] = "sh",
-    },
+	pattern = {
+		["%.env%.[%w_.-]+"] = "sh",
+	},
 })
 
 -- Bootstrap: pobiera/rejestruje wszystkie pluginy
@@ -14,6 +14,7 @@ require("pack")
 
 -- theme najpierw — żeby floaty i inne okna miały kolory
 require("plugins.theme")
+require("plugins.mini_notify")
 require("plugins.lsp")
 require("plugins.blink")
 require("plugins.dadbod")
@@ -36,41 +37,41 @@ require("plugins.lightbulb").setup()
 
 vim.cmd("filetype plugin indent on")
 
-vim.o.fileformats    = "unix,dos,mac"
-vim.o.swapfile       = false
+vim.o.fileformats = "unix,dos,mac"
+vim.o.swapfile = false
 
-vim.o.ruler          = true
-vim.o.number         = true
+vim.o.ruler = true
+vim.o.number = true
 vim.o.relativenumber = true
-vim.o.signcolumn     = "no"
-vim.o.scrolloff      = 8
+vim.o.signcolumn = "no"
+vim.o.scrolloff = 8
 
 vim.g.indentLine_loaded = 0
 
-vim.o.laststatus     = 3
-vim.o.cmdheight      = 0
+vim.o.laststatus = 3
+vim.o.cmdheight = 0
 
-vim.o.backspace      = "indent,eol,start"
+vim.o.backspace = "indent,eol,start"
 
-vim.o.tabstop        = 4
-vim.o.softtabstop    = 0
-vim.o.shiftwidth     = 4
-vim.o.expandtab      = true
-vim.o.shiftround     = true
-vim.o.foldenable     = false
+vim.o.tabstop = 4
+vim.o.softtabstop = 0
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.shiftround = true
+vim.o.foldenable = false
 
-vim.o.splitright     = true
-vim.o.splitbelow     = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-vim.o.shortmess      = "filnxtToOFcsWAICS"
-vim.o.clipboard      = "unnamed,unnamedplus"
+vim.o.shortmess = "filnxtToOFcsWAICS"
+vim.o.clipboard = "unnamed,unnamedplus"
 
-vim.o.ignorecase     = true
-vim.o.smartcase      = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-vim.o.updatetime     = 300
+vim.o.updatetime = 300
 
 vim.g.codeium_no_map_tab = 1
-vim.g.codeium_filetypes  = { sql = false }
+vim.g.codeium_filetypes = { sql = false }
 
 vim.o.winborder = "rounded"

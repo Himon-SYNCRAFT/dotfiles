@@ -2,9 +2,6 @@
 -- Wyłącznie bindingi niezwiązane z pluginami.
 -- Bindingi pluginów są w ich własnych plikach lua/plugins/*.lua
 
-local map = vim.api.nvim_set_keymap
-local mapopts = { noremap = true, silent = true }
-
 -- Command abbreviations
 vim.cmd([[
     cnoreabbrev W! w!
@@ -20,28 +17,28 @@ vim.cmd([[
 ]])
 
 -- Nawigacja splitów
-map("n", "<C-j>", "<C-w>j", mapopts)
-map("n", "<C-k>", "<C-w>k", mapopts)
-map("n", "<C-l>", "<C-w>l", mapopts)
-map("n", "<C-h>", "<C-w>h", mapopts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, desc = "Przejdź do splitu poniżej" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, desc = "Przejdź do splitu powyżej" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, desc = "Przejdź do splitu po prawej" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true, desc = "Przejdź do splitu po lewej" })
 
 -- Terminal mode
-map("t", "<esc><esc>", "<C-\\><C-n>", mapopts)
-map("t", "<C-j>", "<C-\\><C-n><C-w>j", mapopts)
-map("t", "<C-k>", "<C-\\><C-n><C-w>k", mapopts)
-map("t", "<C-l>", "<C-\\><C-n><C-w>l", mapopts)
-map("t", "<C-h>", "<C-\\><C-n><C-w>h", mapopts)
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>",          { silent = true, desc = "Wyjdź z trybu terminala" })
+vim.keymap.set("t", "<C-j>",     "<C-\\><C-n><C-w>j",     { silent = true, desc = "Terminal: przejdź do splitu poniżej" })
+vim.keymap.set("t", "<C-k>",     "<C-\\><C-n><C-w>k",     { silent = true, desc = "Terminal: przejdź do splitu powyżej" })
+vim.keymap.set("t", "<C-l>",     "<C-\\><C-n><C-w>l",     { silent = true, desc = "Terminal: przejdź do splitu po prawej" })
+vim.keymap.set("t", "<C-h>",     "<C-\\><C-n><C-w>h",     { silent = true, desc = "Terminal: przejdź do splitu po lewej" })
 
 -- Tworzenie splitów
-map("n", "<leader>h", ":<C-u>split<CR>", mapopts)
-map("n", "<leader>v", ":<C-u>vsplit<CR>", mapopts)
+vim.keymap.set("n", "<leader>h", "<Cmd>split<CR>",  { silent = true, desc = "Otwórz poziomy split" })
+vim.keymap.set("n", "<leader>v", "<Cmd>vsplit<CR>", { silent = true, desc = "Otwórz pionowy split" })
 
--- Wcięcia w visual mode
-map("v", "<", "<gv", mapopts)
-map("v", ">", ">gv", mapopts)
+-- Wcięcia w visual mode (zachowują zaznaczenie)
+vim.keymap.set("v", "<", "<gv", { silent = true, desc = "Zmniejsz wcięcie (zachowaj zaznaczenie)" })
+vim.keymap.set("v", ">", ">gv", { silent = true, desc = "Zwiększ wcięcie (zachowaj zaznaczenie)" })
 
--- Czyszczenie highlight
-map("n", "<Esc>", "<Cmd>nohlsearch<CR>", mapopts)
+-- Czyszczenie highlight wyszukiwania
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { silent = true, desc = "Wyczyść podświetlenie wyszukiwania" })
 
 -- Terminal: otwórz w małym splicie z cd do katalogu projektu
 local function vimdir()
@@ -60,4 +57,4 @@ local function open_terminal()
     vim.cmd("se winfixheight")
 end
 
-vim.keymap.set("n", "<leader>s", open_terminal, mapopts)
+vim.keymap.set("n", "<leader>s", open_terminal, { silent = true, desc = "Otwórz terminal w małym splicie" })
