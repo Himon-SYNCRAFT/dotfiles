@@ -61,9 +61,6 @@ vim.pack.add({
 	"https://github.com/folke/lazydev.nvim",
 
 	-- Editing helpers
-	-- "https://github.com/tpope/vim-surround",
-	-- "https://github.com/tpope/vim-repeat",
-	-- "https://github.com/Raimondi/delimitMate",
 	"https://github.com/echasnovski/mini.pairs",
 	"https://github.com/echasnovski/mini.surround",
 
@@ -71,7 +68,7 @@ vim.pack.add({
 	"https://github.com/Exafunction/codeium.vim",
 
 	-- PHP
-	"https://github.com/phpactor/phpactor",
+	{ src = "https://github.com/phpactor/phpactor", build = "composer install" },
 
 	-- Misc
 	"https://github.com/joerdav/templ.vim",

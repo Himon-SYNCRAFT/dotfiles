@@ -85,3 +85,21 @@ vim.g.codeium_filetypes = { sql = false }
 
 vim.o.winborder = "rounded"
 vim.o.pumborder = "rounded"
+
+local original_notify = vim.notify
+
+local ignored = {
+	"No signature help available",
+}
+
+vim.notify = function(msg, level, opts)
+	if type(msg) == "string" then
+		for _, pattern in ipairs(ignored) do
+			if msg:match(pattern) then
+				return
+			end
+		end
+	end
+
+	return original_notify(msg, level, opts)
+end
