@@ -15,6 +15,8 @@ require("pack")
 -- theme najpierw — żeby floaty i inne okna miały kolory
 require("plugins.theme")
 require("plugins.mini_notify")
+require("plugins.mini_pairs")
+require("plugins.mini_surround")
 require("plugins.lsp")
 require("plugins.blink")
 require("plugins.dadbod")
@@ -39,6 +41,10 @@ vim.cmd("filetype plugin indent on")
 
 vim.o.fileformats = "unix,dos,mac"
 vim.o.swapfile = false
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.undofile = true
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.o.ruler = true
 vim.o.number = true
@@ -68,10 +74,14 @@ vim.o.clipboard = "unnamed,unnamedplus"
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
 
 vim.o.updatetime = 300
+vim.o.synmaxcol = 300
 
 vim.g.codeium_no_map_tab = 1
 vim.g.codeium_filetypes = { sql = false }
 
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"

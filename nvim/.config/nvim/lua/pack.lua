@@ -1,6 +1,4 @@
 -- lua/pack.lua
--- Centralna lista pluginów zarządzanych przez vim.pack (wbudowany Neovim 0.12)
--- Pluginy trafiają do: ~/.local/share/nvim/site/pack/core/opt/
 --
 -- WAŻNE — kroki budowania po pierwszej instalacji (jednorazowe):
 --   telescope-fzf-native:  cd ~/.local/share/nvim/site/pack/core/opt/telescope-fzf-native.nvim && make
@@ -21,14 +19,14 @@ vim.pack.add({
 	-- Completion
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 	{ src = "https://github.com/saghen/blink.compat", version = "v2.5.0" },
-	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0", build = "make install_jsregexp" },
 
 	-- Treesitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
 	-- Telescope
 	"https://github.com/nvim-telescope/telescope.nvim",
-	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	"https://github.com/nvim-telescope/telescope-file-browser.nvim",
 	"https://github.com/cljoly/telescope-repo.nvim",
 
@@ -63,9 +61,11 @@ vim.pack.add({
 	"https://github.com/folke/lazydev.nvim",
 
 	-- Editing helpers
-	"https://github.com/tpope/vim-surround",
-	"https://github.com/tpope/vim-repeat",
-	"https://github.com/Raimondi/delimitMate",
+	-- "https://github.com/tpope/vim-surround",
+	-- "https://github.com/tpope/vim-repeat",
+	-- "https://github.com/Raimondi/delimitMate",
+	"https://github.com/echasnovski/mini.pairs",
+	"https://github.com/echasnovski/mini.surround",
 
 	-- AI completion
 	"https://github.com/Exafunction/codeium.vim",
