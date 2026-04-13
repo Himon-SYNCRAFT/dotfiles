@@ -29,8 +29,16 @@ require("mason-tool-installer").setup({
 })
 
 -- capabilities (blink)
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+-- local capabilities = require("blink.cmp").get_lsp_capabilities()
+--
+-- capabilities (cmp)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok, cmp = pcall(require, "cmp_nvim_lsp")
+if ok then
+	capabilities = cmp.default_capabilities(capabilities)
+end
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- 🔥 GLOBAL CONFIG (zamiast powtarzania wszędzie)
 vim.lsp.config("*", {
 	capabilities = capabilities,

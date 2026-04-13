@@ -17,8 +17,11 @@ vim.pack.add({
 	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 
 	-- Completion
-	{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
-	{ src = "https://github.com/saghen/blink.compat", version = "v2.5.0" },
+	"https://github.com/hrsh7th/nvim-cmp",
+	"https://github.com/hrsh7th/cmp-nvim-lsp",
+	"https://github.com/hrsh7th/cmp-buffer",
+	"https://github.com/hrsh7th/cmp-path",
+	"https://github.com/hrsh7th/cmp-cmdline",
 	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0", build = "make install_jsregexp" },
 
 	-- Treesitter
