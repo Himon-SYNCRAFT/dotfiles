@@ -23,29 +23,51 @@ require("kanagawa").setup({
 		local pallette = colors.palette
 		local theme = colors.theme
 
-		return {
-			StatusLineNC = { fg = pallette.fujiWhite, bg = pallette.sumiInk0 },
-			StatusLine = { fg = pallette.fujiWhite, bg = pallette.sumiInk4 },
-			StatusLineErrSign = { fg = theme.diag.error, bg = pallette.sumiInk4 },
-			StatusLineWarnSign = { fg = theme.diag.warning, bg = pallette.sumiInk4 },
-			StatusLineHintSign = { fg = theme.diag.hint, bg = pallette.sumiInk4 },
-			StatusLineInfoSign = { fg = theme.diag.info, bg = pallette.sumiInk4 },
-			CursorLineNr = { fg = pallette.roninYellow, bg = pallette.sumiInk5 },
-			ColorColumn = { bg = pallette.sumiInk4 },
-			SignColumn = { bg = "None" },
-			LineNr = { fg = pallette.sumiInk6, bg = "None" },
-			TroubleLspFileName = { bg = "None", fg = pallette.fujiWhite },
-			TroubleNormal = { bg = "None" },
-			TroubleNormalNC = { bg = "None" },
-			NormalFloat = { bg = "none" },
-			FloatBorder = { bg = "none" },
-			FloatTitle = { bg = "none" },
-			NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-			LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-			MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-			["@variable.builtin.php"] = { italic = false, fg = pallette.waveRed, bg = "none" },
-			CodeActionVirtText = { fg = theme.diag.hint, bg = pallette.sumiInk5 },
-		}
+		if vim.o.background == "dark" then
+			return {
+				StatusLineNC = { fg = pallette.fujiWhite, bg = pallette.sumiInk0 },
+				StatusLine = { fg = pallette.fujiWhite, bg = pallette.sumiInk4 },
+				StatusLineErrSign = { fg = theme.diag.error, bg = pallette.sumiInk4 },
+				StatusLineWarnSign = { fg = theme.diag.warning, bg = pallette.sumiInk4 },
+				StatusLineHintSign = { fg = theme.diag.hint, bg = pallette.sumiInk4 },
+				StatusLineInfoSign = { fg = theme.diag.info, bg = pallette.sumiInk4 },
+				CursorLineNr = { fg = pallette.roninYellow, bg = pallette.sumiInk5 },
+				ColorColumn = { bg = pallette.sumiInk4 },
+				SignColumn = { bg = "None" },
+				LineNr = { fg = pallette.sumiInk6, bg = "None" },
+				TroubleLspFileName = { bg = "None", fg = pallette.fujiWhite },
+				TroubleNormal = { bg = "None" },
+				TroubleNormalNC = { bg = "None" },
+				NormalFloat = { bg = "none" },
+				FloatBorder = { bg = "none" },
+				FloatTitle = { bg = "none" },
+				NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+				LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+				MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+				["@variable.builtin.php"] = { italic = false, fg = pallette.waveRed, bg = "none" },
+				CodeActionVirtText = { fg = theme.diag.hint, bg = pallette.sumiInk5 },
+			}
+		else
+			return {
+				StatusLineNC = { fg = pallette.lotusInk1, bg = pallette.lotusWhite0 },
+				StatusLine = { fg = pallette.lotusInk1, bg = pallette.lotusWhite4 },
+				StatusLineErrSign = { fg = theme.diag.error, bg = pallette.lotusWhite4 },
+				StatusLineWarnSign = { fg = theme.diag.warning, bg = pallette.lotusWhite4 },
+				StatusLineHintSign = { fg = theme.diag.hint, bg = pallette.lotusWhite4 },
+				StatusLineInfoSign = { fg = theme.diag.info, bg = pallette.lotusWhite4 },
+				-- CursorLineNr = { fg = pallette.roninYellow, bg = pallette.sumiInk5 },
+				SignColumn = { bg = "None" },
+				LineNr = { bg = "None" },
+				TroubleLspFileName = { bg = "None" },
+				TroubleNormal = { bg = "None" },
+				TroubleNormalNC = { bg = "None" },
+				NormalFloat = { bg = "none" },
+				FloatBorder = { bg = "none", fg = pallette.lotusInk1 },
+				FloatTitle = { bg = "none" },
+				["@variable.builtin.php"] = { italic = false, bg = "none" },
+				-- CodeActionVirtText = { fg = theme.diag.hint, bg = pallette.sumiInk5 },
+			}
+		end
 	end,
 })
 

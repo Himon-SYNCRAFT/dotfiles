@@ -1,6 +1,13 @@
 -- init.lua
+local mode = os.getenv("THEME_MODE")
+
+if mode == "light" then
+	vim.o.background = "light"
+else
+	vim.o.background = "dark"
+end
+
 vim.g.mapleader = ","
-vim.o.background = "dark"
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
 
 vim.filetype.add({

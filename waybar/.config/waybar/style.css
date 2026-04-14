@@ -3,9 +3,10 @@
 * {
     background: transparent;
     border: none;
-    /* font-family: MonaspiceNe NF; */
+    font-family: MonaspiceNe NF;
     /* font-family: Cantarell, MonaspiceNe NF; */
-    font-family: DepartureMono Nerd Font Propo;
+    /* font-family: DepartureMono Nerd Font Propo; */
+    /* font-family: FantasqueSansM Nerd Font; */
     font-size: 13px;
 }
 

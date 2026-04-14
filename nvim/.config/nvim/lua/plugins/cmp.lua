@@ -42,8 +42,16 @@ cmp.setup({
 		end,
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		-- completion = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
+		completion = {
+			border = "rounded",
+			winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+		},
+		documentation = {
+			border = "rounded",
+			winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+		},
 	},
 	formatting = {
 		format = function(entry, vim_item)
