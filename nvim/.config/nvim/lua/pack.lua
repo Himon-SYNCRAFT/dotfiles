@@ -27,6 +27,12 @@ vim.pack.add({
 	-- Treesitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
+	-- Claude Code Integration
+	"https://github.com/coder/claudecode.nvim",
+
+	-- OpenCode Integration
+	"https://github.com/nickjvandyke/opencode.nvim",
+
 	-- Telescope
 	"https://github.com/nvim-telescope/telescope.nvim",
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make" },

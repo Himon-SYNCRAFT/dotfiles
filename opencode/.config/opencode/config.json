@@ -1,9 +1,45 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "theme": "opencode",
-    "model": "anthropic/claude-sonnet-4-20250514",
     "autoshare": false,
     "autoupdate": true,
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git"
+    ],
+    "disabled_providers": [
+        "openai"
+    ],
+    "agent": {
+        "build": {
+            "mode": "primary",
+            "model": "zai-coding-plan/glm-4.7",
+        },
+        "plan": {
+            "mode": "primary",
+            "model": "zai-coding-plan/glm-5.1",
+            "permission": {
+                "read": {
+                    "*": "allow",
+                    "*.env": "deny",
+                    "*.env.*": "deny",
+                    "*.env.example": "allow"
+                },
+                "edit": "allow",
+                "glob": "allow",
+                "grep": "allow",
+                "bash": "ask",
+                "skill": "allow",
+                "question": "allow",
+                "webfetch": "allow",
+                "websearch": "allow",
+                "codesearch": "allow",
+                "external_directory": "ask"
+            }
+        },
+        "executor": {
+            "mode": "primary",
+            "model": "zai-coding-plan/glm-4.5-air",
+        }
+    },
     "provider": {
         "ollama": {
             "npm": "@ai-sdk/openai-compatible",

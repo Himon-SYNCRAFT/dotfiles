@@ -8,4 +8,7 @@ function toggle-theme
         set -Ux THEME_MODE dark
         ln -sf ~/.config/alacritty/themes/kanagawa_wave.toml ~/.config/alacritty/themes/current.toml
     end
+
+    touch /home/himon/.config/alacritty/alacritty.toml
+    pkill -USR1 nvim 2>/dev/null
 end

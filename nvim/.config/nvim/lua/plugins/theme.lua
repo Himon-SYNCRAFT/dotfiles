@@ -82,6 +82,7 @@ vim.cmd([[
     set termguicolors
     set noshowmode
     call matchadd('ColorColumn', '\%82v', 100)
+    "set colorcolumn=82
     set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
     augroup CursorLine
         au!

@@ -1,4 +1,31 @@
 -- init.lua
+-- local signal = vim.loop.new_signal()
+--
+-- signal:start("sigusr1", function()
+-- 	vim.schedule(function()
+-- 		local mode = os.getenv("THEME_MODE")
+--
+-- 		if mode == "light" then
+-- 			vim.o.background = "light"
+-- 		else
+-- 			vim.o.background = "dark"
+-- 		end
+--
+-- 		-- przeładuj colorscheme (kanagawa sam wybierze variant)
+-- 		vim.cmd("highlight clear")
+-- 		vim.cmd("syntax reset")
+--
+-- 		package.loaded["plugins.theme"] = nil
+-- 		require("plugins.theme")
+--
+-- 		vim.cmd("set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow")
+--
+-- 		vim.cmd("doautocmd ColorScheme")
+-- 		vim.cmd("doautocmd VimEnter")
+-- 		vim.cmd("redraw!")
+-- 	end)
+-- end)
+
 local mode = os.getenv("THEME_MODE")
 
 if mode == "light" then
@@ -39,6 +66,8 @@ require("plugins.trouble")
 require("plugins.autosession")
 require("plugins.kulala")
 require("plugins.lazydev")
+require("plugins.claudecode")
+require("plugins.opencode")
 require("statusline")
 require("mappings")
 require("user.diagnostic")

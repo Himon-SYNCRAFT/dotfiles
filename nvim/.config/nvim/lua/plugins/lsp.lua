@@ -7,7 +7,7 @@ require("mason-tool-installer").setup({
 		"emmet_language_server",
 		"gofumpt",
 		"goimports-reviser",
-		"golangci-lint",
+		{ "golangci-lint", version = "v2.11.4" },
 		"golines",
 		"gopls",
 		"intelephense",
@@ -78,7 +78,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.api.nvim_create_autocmd("CursorHoldI", {
 			buffer = args.buf,
 			callback = function()
-				vim.lsp.buf.signature_help({ border = "rounded" })
+				for _, cl in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+					if cl.server_capabilities.signatureHelpProvider then
+						vim.lsp.buf.signature_help({ border = "rounded", focus = false })
+						return
+					end
+				end
 			end,
 		})
 
