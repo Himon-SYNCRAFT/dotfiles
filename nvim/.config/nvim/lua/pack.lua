@@ -22,6 +22,7 @@ vim.pack.add({
 	"https://github.com/hrsh7th/cmp-buffer",
 	"https://github.com/hrsh7th/cmp-path",
 	"https://github.com/hrsh7th/cmp-cmdline",
+	"https://github.com/saadparwaiz1/cmp_luasnip",
 	{ src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0", build = "make install_jsregexp" },
 
 	-- Treesitter
@@ -31,7 +32,9 @@ vim.pack.add({
 	"https://github.com/coder/claudecode.nvim",
 
 	-- OpenCode Integration
-	"https://github.com/nickjvandyke/opencode.nvim",
+	-- "https://github.com/nickjvandyke/opencode.nvim",
+	-- { src = "/home/himon/Projects/opcode.nvim" },
+	"https://github.com/Himon-SYNCRAFT/opcode.nvim",
 
 	-- Telescope
 	"https://github.com/nvim-telescope/telescope.nvim",
@@ -82,4 +85,6 @@ vim.pack.add({
 	-- Misc
 	"https://github.com/joerdav/templ.vim",
 	"https://github.com/echasnovski/mini.notify",
+	"https://github.com/LunarVim/bigfile.nvim",
+	"https://github.com/benomahony/uv.nvim",
 }, { confirm = false })

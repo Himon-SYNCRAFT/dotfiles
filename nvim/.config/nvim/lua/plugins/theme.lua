@@ -17,6 +17,7 @@ require("kanagawa").setup({
 	theme = "wave",
 	background = {
 		dark = "wave",
+		-- dark = "dragon",
 		light = "lotus",
 	},
 	overrides = function(colors)

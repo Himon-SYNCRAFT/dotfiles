@@ -47,5 +47,7 @@ stow --no-folding -v -t ~/ waybar
 stow --no-folding -v -t ~/ hypr
 stow --no-folding -v -t ~/ hyprpanel
 stow --no-folding -v -t ~/ alacritty
+stow --no-folding -v -t ~/ foot
+stow --no-folding -v -t ~/ yazi
 
 xrdb ~/.Xresources
