@@ -36,6 +36,9 @@ local parsers = {
 	"markdown",
 	"markdown_inline",
 	"sql",
+	"gdscript",
+	"godot_resource",
+	"gdshader",
 }
 
 -- Zainstaluj parsery jeśli nie są zainstalowane (asynchronicznie)

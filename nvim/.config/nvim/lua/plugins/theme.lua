@@ -24,8 +24,10 @@ require("kanagawa").setup({
 		local pallette = colors.palette
 		local theme = colors.theme
 
+		local result = {}
+
 		if vim.o.background == "dark" then
-			return {
+			result = {
 				StatusLineNC = { fg = pallette.fujiWhite, bg = pallette.sumiInk0 },
 				StatusLine = { fg = pallette.fujiWhite, bg = pallette.sumiInk4 },
 				StatusLineErrSign = { fg = theme.diag.error, bg = pallette.sumiInk4 },
@@ -49,7 +51,7 @@ require("kanagawa").setup({
 				CodeActionVirtText = { fg = theme.diag.hint, bg = pallette.sumiInk5 },
 			}
 		else
-			return {
+			result = {
 				StatusLineNC = { fg = pallette.lotusInk1, bg = pallette.lotusWhite0 },
 				StatusLine = { fg = pallette.lotusInk1, bg = pallette.lotusWhite4 },
 				StatusLineErrSign = { fg = theme.diag.error, bg = pallette.lotusWhite4 },
@@ -69,6 +71,10 @@ require("kanagawa").setup({
 				-- CodeActionVirtText = { fg = theme.diag.hint, bg = pallette.sumiInk5 },
 			}
 		end
+
+		-- result["Keyword"] = { bold = true }
+
+		return result
 	end,
 })
 
@@ -82,7 +88,7 @@ vim.opt.fillchars = "eob: ,vert: "
 vim.cmd([[
     set termguicolors
     set noshowmode
-    call matchadd('ColorColumn', '\%82v', 100)
+    call matchadd('ColorColumn', '\%100v', 100)
     "set colorcolumn=82
     set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
     augroup CursorLine

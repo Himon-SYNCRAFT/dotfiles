@@ -300,16 +300,12 @@ bind = CONTROL, X, killactive,
 bind = $mainMod, M, exit,
 bind = $mainMod, E, exec, $fileManager
 bind = SUPER, F, togglefloating,
-# bind = SUPER, M, exec, alacritty --class ncmpcpp -e ncmpcpp
 bind = $mainMod, D, exec, $menu
 # bind = $mainMod, T, exec, ~/.config/scripts/openinalacritty.sh
 bind = $mainMod, T, exec, ~/.config/scripts/openinfoot.sh
 bind = $mainMod, P, pseudo, # dwindle
-# bind = $mainMod, J, togglesplit, # dwindle
 bind = SUPER, L, exec, hyprlock
 bind = SUPER, T, exec, fish -c "toggle-theme"
-bind = SUPER, H, exec, pkill -USR2 -x handy
-# bind = SUPER, H, exec, hyprpanel t settings-dialog
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l

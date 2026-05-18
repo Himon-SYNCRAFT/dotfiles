@@ -26,13 +26,14 @@
 -- 	end)
 -- end)
 
-local mode = os.getenv("THEME_MODE")
-
-if mode == "light" then
-	vim.o.background = "light"
-else
-	vim.o.background = "dark"
-end
+-- local mode = os.getenv("THEME_MODE")
+--
+-- if mode == "light" then
+-- 	vim.o.background = "light"
+-- else
+-- 	vim.o.background = "dark"
+-- end
+vim.o.background = "dark"
 
 vim.g.mapleader = ","
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
@@ -74,6 +75,7 @@ require("mappings")
 require("user.diagnostic")
 require("plugins.lightbulb").setup()
 require("plugins.bigfile")
+require("plugins.godot")
 require("uv").setup()
 
 vim.cmd("filetype plugin indent on")

@@ -71,14 +71,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- inlay hints
 		if client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint.enable(true)
+			if client.name ~= "intelephense" then
+				vim.lsp.inlay_hint.enable(true)
+			end
 		end
 
 		-- signature help
 		vim.api.nvim_create_autocmd("CursorHoldI", {
 			buffer = args.buf,
 			callback = function()
-				for _, cl in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+				for _, cl in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
 					if cl.server_capabilities.signatureHelpProvider then
 						vim.lsp.buf.signature_help({ border = "rounded", focus = false })
 						return
@@ -113,6 +115,7 @@ vim.lsp.config("kulala_ls", {})
 vim.lsp.config("cssls", {})
 vim.lsp.config("jsonls", {})
 vim.lsp.config("templ", {})
+vim.lsp.config("taplo", {})
 
 -- PHP
 vim.lsp.config("intelephense", {
@@ -218,6 +221,8 @@ vim.lsp.config("emmet_language_server", {
 	},
 })
 
+vim.lsp.config("gdscript", {})
+
 -- ========================
 -- 🚀 ENABLE
 -- ========================
@@ -237,4 +242,5 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"tsserver",
 	"emmet_language_server",
+	"gdscript",
 })
