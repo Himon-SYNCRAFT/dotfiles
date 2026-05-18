@@ -477,6 +477,13 @@ hl.window_rule({
 
 hl.window_rule({
 	match = {
+		class = "teams-for-linux",
+	},
+	workspace = "10 silent",
+})
+
+hl.window_rule({
+	match = {
 		class = "^steam_app_d+$",
 	},
 	workspace = "10 silent",

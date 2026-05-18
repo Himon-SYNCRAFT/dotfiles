@@ -3,7 +3,8 @@
 * {
     background: transparent;
     border: none;
-    font-family: MonaspiceNe NF;
+    font-family: JetBrainsMono Nerd Font;
+    /* font-family: MonaspiceNe NF; */
     /* font-family: Cantarell, MonaspiceNe NF; */
     /* font-family: DepartureMono Nerd Font Propo; */
     /* font-family: FantasqueSansM Nerd Font; */
@@ -59,6 +60,10 @@ button:hover {
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+}
+
+#workspaces button label {
+    font-size: 18px;
 }
 
 #mode {
