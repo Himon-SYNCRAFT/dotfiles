@@ -8,7 +8,9 @@
     /* font-family: Cantarell, MonaspiceNe NF; */
     /* font-family: DepartureMono Nerd Font Propo; */
     /* font-family: FantasqueSansM Nerd Font; */
-    font-size: 13px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 window#waybar {
@@ -96,9 +98,7 @@ button:hover {
 }
 
 #clock,
-#window {
-    font-weight: bold;
-}
+#window {}
 
 #workspaces {
     padding: 0;

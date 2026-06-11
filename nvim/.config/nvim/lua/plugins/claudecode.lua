@@ -5,6 +5,7 @@ require("claudecode").setup({
 		provider = "external",
 		provider_opts = {
 			-- external_terminal_cmd = "footclient --working-directory %s -e %s",
+			-- external_terminal_cmd = "alacritty msg create-window --working-directory %s -e %s",
 			external_terminal_cmd = "alacritty --working-directory %s -e %s",
 		},
 	},

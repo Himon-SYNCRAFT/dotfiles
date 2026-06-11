@@ -9,6 +9,8 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+require("hyprland-gui")
+
 ------------------
 ---- MONITORS ----
 ------------------
@@ -42,6 +44,7 @@ local menu = "dmenu_run -b -l 10 -p 'run:'"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar & hyprpaper")
 	hl.exec_cmd("xsettingsd")
+	hl.exec_cmd("foot -s")
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("thunderbird")
 	hl.exec_cmd("udiskie --tray")
@@ -49,7 +52,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("rclone mount syncraft_at_google:/ /home/himon/Remote/syncraft@google/ --vfs-cache-mode full --daemon")
 	hl.exec_cmd("hyprctl setcursor rose-pine-moon 24")
 	hl.exec_cmd("gammastep-indicator")
-	hl.exec_cmd("foot -s")
+	hl.exec_cmd("teams-for-linux")
 end)
 
 -------------------------------
