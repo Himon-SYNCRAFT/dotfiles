@@ -10,7 +10,7 @@ builtin_box_drawing = true
 
 [font.glyph_offset]
 # y = 1
-y = 2
+# y = 2
 # x = 1
 
 [font.normal]
@@ -20,19 +20,13 @@ y = 2
 # family = "DMMono Nerd Font"
 family = "JetBrainsMono Nerd Font"
 # family = "MonaspiceNe NF"
-style = "Regular"
-# style = "Medium"
+# style = "Regular"
+style = "Medium"
 
 [font.bold]
-# family = "FantasqueSansM Nerd Font"
-# family = "CommitMono Nerd Font"
-# family = "DMMono Nerd Font"
-# family = "MonaspiceNe NF"
-# style = "Bold"
-style = "Regular"
 
 [font.offset]
-y = 5
+# y = 5
 # x = 1
 
 [[keyboard.bindings]]

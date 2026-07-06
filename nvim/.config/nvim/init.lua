@@ -1,39 +1,5 @@
 -- init.lua
--- local signal = vim.loop.new_signal()
 --
--- signal:start("sigusr1", function()
--- 	vim.schedule(function()
--- 		local mode = os.getenv("THEME_MODE")
---
--- 		if mode == "light" then
--- 			vim.o.background = "light"
--- 		else
--- 			vim.o.background = "dark"
--- 		end
---
--- 		-- przeładuj colorscheme (kanagawa sam wybierze variant)
--- 		vim.cmd("highlight clear")
--- 		vim.cmd("syntax reset")
---
--- 		package.loaded["plugins.theme"] = nil
--- 		require("plugins.theme")
---
--- 		vim.cmd("set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow")
---
--- 		vim.cmd("doautocmd ColorScheme")
--- 		vim.cmd("doautocmd VimEnter")
--- 		vim.cmd("redraw!")
--- 	end)
--- end)
-
--- local mode = os.getenv("THEME_MODE")
---
--- if mode == "light" then
--- 	vim.o.background = "light"
--- else
--- 	vim.o.background = "dark"
--- end
-vim.o.background = "dark"
 
 vim.g.mapleader = ","
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos"
@@ -48,6 +14,7 @@ vim.filetype.add({
 require("pack")
 
 -- theme najpierw — żeby floaty i inne okna miały kolory
+require("plugins.theme_toggle").setup()
 require("plugins.theme")
 require("plugins.mini_notify")
 require("plugins.mini_pairs")

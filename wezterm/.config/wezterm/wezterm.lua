@@ -7,15 +7,18 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+local theme = require("kanagawa")
+
 -- config.window_background_opacity = 0.92
 config.window_background_opacity = 1.0
 
 -- config.color_scheme = "rose-pine-dawn"
 -- config.color_scheme = "rose-pine-moon"
-config.color_scheme = "Rosé Pine Moon (base16)"
+-- config.color_scheme = theme
+config.colors = theme
 
 config.font = wezterm.font_with_fallback({
-	"FantasqueSansM Nerd Font",
+	"JetBrains Mono Nerd Font",
 	"Noto Color Emoji",
 })
 
@@ -58,7 +61,7 @@ config.font = wezterm.font_with_fallback({
 -- 	},
 -- }
 config.use_cap_height_to_scale_fallback_fonts = false
-config.font_size = 13
+config.font_size = 11
 config.line_height = 1.3
 config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { "fish", "-l" }

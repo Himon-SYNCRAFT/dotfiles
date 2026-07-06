@@ -8,4 +8,4 @@ command=$(
   | sort -u \
   | dmenu -l 10 -p "run in terminal:"
 )
-command -v "$command" && foot --title "$command" -e "$command" &
+command -v "$command" && footclient --title "$command" -e "$command" &

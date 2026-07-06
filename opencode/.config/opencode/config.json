@@ -50,6 +50,23 @@
             "models": {
                 "qwen2.5-coder:7b": {},
             }
+        },
+        "llamacpp": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "llama.cpp local",
+            "options": {
+                "baseURL": "http://127.0.0.1:8080/v1",
+                "apiKey": "local"
+            },
+            "models": {
+                "Qwen3-30B-A3B-Q4_K_M.gguf": {
+                    "name": "Qwen3 30B A3B",
+                    // "limit": {
+                    //     "context": 4096,
+                    //     "output": 8192
+                    // }
+                }
+            }
         }
     }
 }
