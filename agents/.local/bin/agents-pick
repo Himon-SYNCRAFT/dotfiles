@@ -13,14 +13,14 @@ for r in "${rows[@]}"; do dup[${r#*$'\t'}]=$(( ${dup[${r#*$'\t'}]:-0} + 1 )); do
 labels=()
 for r in "${rows[@]}"; do
     lbl=${r#*$'\t'}
-    [ "${dup[$lbl]}" -gt 1 ] && lbl="$lbl #${r%%$'\t'*}"
+    [ "${dup[$lbl]}" -gt 1 ] && lbl="$lbl [#${r%%$'\t'*}]"
     labels+=("$lbl")
 done
 
 sel=$(printf '%s\n' "${labels[@]}" | dmenu -i -p agents) || exit 0
 
 pid=
-if [[ $sel =~ \ #([0-9]+)$ ]]; then
+if [[ $sel =~ \[#([0-9]+)\]$ ]]; then
     pid=${BASH_REMATCH[1]}   # disambiguated duplicate → pid is in the suffix
 else
     for r in "${rows[@]}"; do

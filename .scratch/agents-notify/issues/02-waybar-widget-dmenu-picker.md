@@ -9,7 +9,7 @@
 - [x] Widget pokazuje liczbę sesji notify+done; przy `working` sesje nie są liczone — *stub-test: text=2 przy fixture notify+done+working+dead*; żywy waybar — E2E
 - [x] Aktualizacja natychmiastowa po sygnale, bez pollingu — *config: `interval: "once"` + `signal: 8` (SIGRTMIN+8, weryfikowane w man waybar-custom 0.15); `pkill -RTMIN+8` z agent-hook już pokryte testem*; odświeżenie po restarcie waybara — E2E
 - [x] Toggle pusto/zero działa jedną zmienną na górze skryptu, bez edycji configu waybara — *`SHOW_ZERO` w `agents-widget` (env-overridable); hidden = pusty `text` + `hide-empty-text: true` → moduł zwija się w całości, layout nie drga; stub-test obu trybów*
-- [x] Klik → dmenu z etykietami ze state file; wybór focusuje właściwe okno — *stub-test: `agents-pick` → `focus-window <pid>` → `hyprctl dispatch focuswindow address:…`; duplikaty etykiet (ten sam agent+projekt) dostają sufiks ` #pid` (story 18)*; prawdziwe dmenu+klik — E2E
+- [x] Klik → dmenu z etykietami ze state file; wybór focusuje właściwe okno — *stub-test: `agents-pick` → `focus-window <pid>` → `hyprctl dispatch focuswindow address:…`; duplikaty etykiet (ten sam agent+projekt) dostają sufiks `[#pid]` (story 18)*; prawdziwe dmenu+klik — E2E
 - [x] Tooltip listuje sesje z etykietami `agent · projekt — status` — *status mapowany: notify→czeka, done→gotowe; stub-test*
 - [x] Wpisy z martwym PID-em nie renderują się (lazy pruning) — *przy renderze plik stanu z martwym PID jest usuwany (`rm`), pid 0 (nie znaleziono terminala) zostaje; stub-test*
 - [x] Test assert-based: fixture state dir → JSON widgetu (kontrakt waybara), linie dmenu, wywołanie focus przez stub `hyprctl` — `bash agents/tests/test-agents.sh` → ALL PASS

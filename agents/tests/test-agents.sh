@@ -145,17 +145,20 @@ mk_state w1 working "$live_pid"  pi      other
 mk_state n1 notify  "$live_pid"  pi      dotfiles
 mk_state d1 done    "$live_pid"  claude  dotfiles
 mk_state x1 done    "$dead_pid"  opencode ghost
+mk_state z1 notify  0            opencode nopid   # pid 0 = terminal not found → kept, still listed
 
 out=$(SHOW_ZERO=1 agents-widget)
-assert_eq "widget counts notify+done, not working" "$(jq -r .text <<<"$out")" 2
+assert_eq "widget counts notify+done, not working" "$(jq -r .text <<<"$out")" 3
 assert_eq "widget class: a notify session outranks done" "$(jq -r .class <<<"$out")" notify
 tooltip=$(jq -r .tooltip <<<"$out")
 grep -q 'pi · dotfiles — czeka'     <<<"$tooltip" || fail "tooltip: notify line missing — $tooltip"
 grep -q 'claude · dotfiles — gotowe' <<<"$tooltip" || fail "tooltip: done line missing — $tooltip"
-grep -q other  <<<"$tooltip" && fail "working session must not be listed"
+grep -q 'opencode · nopid — czeka'  <<<"$tooltip" || fail "pid-0 session must be listed — $tooltip"
 grep -q ghost <<<"$tooltip" && fail "dead-pid session must not be listed"
+grep -q other <<<"$tooltip" && fail "working session must not be listed"
 [ -e "$XDG_RUNTIME_DIR/agents/x1.json" ] && fail "dead pid must be pruned at render"
 [ -e "$XDG_RUNTIME_DIR/agents/w1.json" ] || fail "live working session must survive pruning"
+[ -e "$XDG_RUNTIME_DIR/agents/z1.json" ] || fail "pid-0 session must survive (not dead, just unclickable)"
 
 # --- zero toggle: one variable in the script, no waybar config edit ----------
 rm -f "$XDG_RUNTIME_DIR/agents"/*.json
@@ -179,11 +182,11 @@ printf '[{"pid":%s,"address":"0xpick01"},{"pid":%s,"address":"0xpick02"}]' \
 STUB_DMENU_CHOICE="pi · pickproj (czeka)" agents-pick
 wait_for 'dispatch focuswindow address:0xpick01' "$HYPRCTL_LOG" \
     || fail "picking a session must focus its window"
-grep -q "claude · twin (gotowe) #$live_pid"  "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
-grep -q "claude · twin (gotowe) #$live2_pid" "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
+grep -qF "claude · twin (gotowe) [#$live_pid]"  "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
+grep -qF "claude · twin (gotowe) [#$live2_pid]" "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
 
 : > "$HYPRCTL_LOG"
-STUB_DMENU_CHOICE="claude · twin (gotowe) #$live2_pid" agents-pick
+STUB_DMENU_CHOICE="claude · twin (gotowe) [#$live2_pid]" agents-pick
 wait_for 'dispatch focuswindow address:0xpick02' "$HYPRCTL_LOG" \
     || fail "picking a disambiguated twin must focus the right window"
 
