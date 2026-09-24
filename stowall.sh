@@ -49,5 +49,6 @@ stow --no-folding -v -t ~/ hyprpanel
 stow --no-folding -v -t ~/ alacritty
 stow --no-folding -v -t ~/ foot
 stow --no-folding -v -t ~/ yazi
+stow --ignore=tests --no-folding -v -t ~/ agents
 
 xrdb ~/.Xresources

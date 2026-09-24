@@ -1,0 +1,64 @@
+#!/bin/bash
+# agent-hook <agent> <event> — shared state writer for all AI-agent harnesses.
+#
+# Reads the harness session JSON on stdin (session_id required; cwd and
+# message picked up when present). Events:
+#   working — agent is busy: state only, no notification
+#   notify  — agent needs input: critical notification, hangs until clicked
+#   done    — agent finished: normal notification, expires on its own
+#   clear   — session over: remove the state file
+#
+# State lives in ${XDG_RUNTIME_DIR}/agents/<session_id>.json — tmpfs, no
+# daemon, each writer touches only its own file (atomic rename).
+
+agent=${1:?usage: agent-hook <agent> <event>}
+event=${2:?}
+
+input=$(cat)
+sid=$(jq -r '.session_id // empty' <<<"$input" 2>/dev/null); sid=${sid:-anon-$$}
+cwd=$(jq -r '.cwd // empty' <<<"$input" 2>/dev/null);       cwd=${cwd:-$PWD}
+project=$(basename "$cwd")
+message=$(jq -r '.message // ""' <<<"$input" 2>/dev/null)
+
+statedir=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/agents
+statefile=$statedir/$sid.json
+
+# Walk the PPID chain to the owning terminal. Agents run via the `ai` wrapper
+# (standalone foot), so the nearest process named "foot" is the window's PID.
+# ponytail: if no foot in the chain, fall back to topmost ancestor — only
+# sane under the hard `ai`-wrapper convention; make hooks synchronous (async
+# hooks can detach from the parent chain).
+pid=
+p=$$
+while [ -n "$p" ] && [ "$p" != 1 ]; do
+    if [ "$(cat /proc/$p/comm 2>/dev/null)" = foot ]; then pid=$p; break; fi
+    p=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')
+done
+pid=${pid:-$p}
+
+case $event in
+clear)
+    rm -f "$statefile" ;;
+working|notify|done)
+    mkdir -p "$statedir"
+    tmpf=$statefile.tmp.$$
+    jq -n --arg agent "$agent" --arg project "$project" --arg cwd "$cwd" \
+          --arg event "$event" --argjson pid "${pid:-0}" \
+          --argjson ts "$(date +%s)" --arg message "$message" \
+          '{agent: $agent, project: $project, cwd: $cwd, event: $event,
+            pid: $pid, ts: $ts, message: $message}' > "$tmpf" && mv "$tmpf" "$statefile" ;;
+*)
+    echo "agent-hook: unknown event: $event" >&2; exit 1 ;;
+esac
+
+pkill -RTMIN+8 -x waybar 2>/dev/null || true
+
+case $event in
+notify|done)
+    urgency=critical
+    [ "$event" = done ] && urgency=normal
+    # background: the helper hangs until the notification is clicked/expires
+    agent-notify "$sid" "$urgency" "$agent · $project" "${message:-$event}" &
+    disown
+    ;;
+esac
