@@ -25,7 +25,7 @@ statefile=$statedir/$sid.json
 
 # Walk the PPID chain to the owning terminal. Agents run via the `ai` wrapper
 # (standalone foot), so the nearest process named "foot" is the window's PID.
-# ponytail: if no foot in the chain, fall back to topmost ancestor — only
+# ponytail: no foot in the chain → pid 0 (unclickable, no phantom focus); only
 # sane under the hard `ai`-wrapper convention; make hooks synchronous (async
 # hooks can detach from the parent chain).
 pid=
@@ -34,7 +34,7 @@ while [ -n "$p" ] && [ "$p" != 1 ]; do
     if [ "$(cat /proc/$p/comm 2>/dev/null)" = foot ]; then pid=$p; break; fi
     p=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')
 done
-pid=${pid:-$p}
+pid=${pid:-0}
 
 case $event in
 clear)

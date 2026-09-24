@@ -97,7 +97,7 @@ echo '{"session_id":"s1"}' | agent-hook claude clear
 echo '{"session_id":"a"}' | agent-hook claude notify &
 echo '{"session_id":"b"}' | agent-hook claude done &
 wait
-wait_for 'b' "$DUNST_LOG" || true
+wait_for 'b' "$DUNST_LOG" || fail "session b never notified"
 for s in a b; do
     [ -e "$XDG_RUNTIME_DIR/agents/$s.json" ] || fail "missing state file for session $s"
 done
