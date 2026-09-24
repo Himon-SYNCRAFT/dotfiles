@@ -21,3 +21,7 @@
 - `agent-hook`: PPID-walk po `/proc` (comm == `foot`, fallback topmost ancestor), atomowy zapis (tmp+mv), sygnał `pkill -RTMIN+8 -x waybar`. `agent-notify` odpalany w tle (helper wisi do kliknięcia/wygaśnięcia — hook nie może blokować).
 - `dunstrc`: `mouse_left_click = do_action` (było `close_current`).
 - Pozostałe niewytickowane pola wymagają żywej sesji Hyprland+dunst — manualny seam E2E ze specu (Testing Decisions). Ryzyka E2E: realny łańcuch PPID per harness (hooki claude muszą być synchroniczne) i replace po stack-tag w prawdziwym dunst.
+
+## Post-resolution note (from ticket 03)
+
+- E2E ticketa 03 wyszło na jaw, że na Hyprlandzie 0.55+ `hyprctl dispatch focuswindow address:…` pada (dispatch jest teraz jedno-wyrażeniowym Lua; stub w testach maskował błąd). `focus-window` przepisany na `hyprctl dispatch "hl.dsp.focus({ window = 'pid:<pid>' })"` — selektor `pid:` rozwiązuje kompozytor w momencie dispatchu, rundtrip clients→jq→address usunięty. Zweryfikowane na żywym systemie. Niewytickowane wyżej pola E2E (klik w dunst, replace po stack-tag) nadal czekają na manualną weryfikację.

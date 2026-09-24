@@ -121,12 +121,11 @@ FAKEPID_FILE="$tmp/c1pid" SESSION_JSON='{"session_id":"c1","cwd":"/tmp/x"}' \
 c1state="$XDG_RUNTIME_DIR/agents/c1.json"
 wait_for 'c1' "$DUNST_LOG" || fail "no notification for c1"
 c1pid=$(jq -r .pid "$c1state")
-printf '[{"pid":%s,"address":"0x55aa0000"}]' "$c1pid" > "$CLIENTS_JSON"
 assert_eq "c1 pid = its foot terminal" "$c1pid" "$(cat "$tmp/c1pid")"
 dispatches_before=$(grep -c dispatch "$HYPRCTL_LOG")
 STUB_DUNST_ACTION=default agent-notify c1 critical "claude · x" "msg"
-wait_for 'dispatch focuswindow address:0x55aa0000' "$HYPRCTL_LOG" \
-    || fail "click must resolve pid→address and focus the window"
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$c1pid' })" "$HYPRCTL_LOG" \
+    || fail "click must dispatch a pid-selector focus for the session's window"
 assert_eq "exactly one focus dispatch" "$(grep -c dispatch "$HYPRCTL_LOG")" "$((dispatches_before + 1))"
 
 # --- widget: fixture state dir → waybar JSON contract -------------------------
@@ -176,18 +175,16 @@ lines=$(agents-widget lines)
 assert_eq "dmenu line format" "$(awk -F'\t' '$2 == "pi · pickproj (czeka)" {print $2}' <<<"$lines")" "pi · pickproj (czeka)"
 grep -q "^$live_pid" <<<"$lines" || fail "picker row must carry the window pid"
 
-printf '[{"pid":%s,"address":"0xpick01"},{"pid":%s,"address":"0xpick02"}]' \
-       "$live_pid" "$live2_pid" > "$CLIENTS_JSON"
 : > "$HYPRCTL_LOG"; : > "$DMENU_LOG"
 STUB_DMENU_CHOICE="pi · pickproj (czeka)" agents-pick
-wait_for 'dispatch focuswindow address:0xpick01' "$HYPRCTL_LOG" \
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$live_pid' })" "$HYPRCTL_LOG" \
     || fail "picking a session must focus its window"
 grep -qF "claude · twin (gotowe) [#$live_pid]"  "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
 grep -qF "claude · twin (gotowe) [#$live2_pid]" "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
 
 : > "$HYPRCTL_LOG"
 STUB_DMENU_CHOICE="claude · twin (gotowe) [#$live2_pid]" agents-pick
-wait_for 'dispatch focuswindow address:0xpick02' "$HYPRCTL_LOG" \
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$live2_pid' })" "$HYPRCTL_LOG" \
     || fail "picking a disambiguated twin must focus the right window"
 
 # --- waybar config contract: signal-driven, no polling ------------------------

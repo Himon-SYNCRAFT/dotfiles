@@ -4,9 +4,10 @@ require("claudecode").setup({
 		split_width_percentage = 0.50,
 		provider = "external",
 		provider_opts = {
-			-- external_terminal_cmd = "footclient --working-directory %s -e %s",
-			-- external_terminal_cmd = "alacritty msg create-window --working-directory %s -e %s",
-			external_terminal_cmd = "alacritty --working-directory %s -e %s",
+			-- external_terminal_cmd = "alacritty --working-directory %s -e %s",
+			-- %s = claude command; cwd comes from nvim's cwd (jobstart), foot is
+			-- standalone via `ai` so the agent-hook PPID chain reaches the window
+			external_terminal_cmd = "ai %s",
 		},
 	},
 	terminal_cmd = "claude --dangerously-skip-permissions",

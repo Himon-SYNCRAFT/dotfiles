@@ -1,11 +1,10 @@
 #!/bin/bash
 # focus-window <pid> — focus the Hyprland window belonging to a process PID.
-# The PID→address resolution happens at click time: window addresses are
-# volatile, never store them.
+# Hyprland 0.55+ parses `hyprctl dispatch` as one Lua expression and the
+# compositor resolves the pid:… window selector at dispatch time — addresses
+# are volatile, never store them.
 
 pid=${1:?usage: focus-window <pid>}
 case $pid in ''|*[!0-9]*) exit 1 ;; esac
 
-addr=$(hyprctl clients -j 2>/dev/null | jq -r --argjson pid "$pid" \
-       '.[] | select(.pid == $pid) | .address' | head -n1)
-[ -n "$addr" ] && [ "$addr" != null ] && hyprctl dispatch focuswindow "address:$addr"
+hyprctl dispatch "hl.dsp.focus({ window = 'pid:$pid' })" >/dev/null 2>&1
