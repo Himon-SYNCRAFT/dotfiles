@@ -44,6 +44,7 @@ require("plugins.lightbulb").setup()
 require("plugins.bigfile")
 require("plugins.godot")
 require("uv").setup()
+require("plugins.markdown")
 
 vim.cmd("filetype plugin indent on")
 
