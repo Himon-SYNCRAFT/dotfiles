@@ -11,7 +11,12 @@ here=$(cd "$(dirname "$0")" && pwd)
 pkg=$(dirname "$here")
 
 tmp=$(mktemp -d)
-cleanup() { [ -n "${fake_foot:-}" ] && kill "$fake_foot" 2>/dev/null; rm -rf "$tmp"; }
+cleanup() {
+    [ -n "${fake_foot:-}" ] && kill "$fake_foot" 2>/dev/null
+    [ -n "${live_pid:-}" ]  && kill "$live_pid" 2>/dev/null
+    [ -n "${live2_pid:-}" ] && kill "$live2_pid" 2>/dev/null
+    rm -rf "$tmp"
+}
 trap cleanup EXIT
 
 export XDG_RUNTIME_DIR="$tmp/runtime"
@@ -36,11 +41,18 @@ cat > "$tmp/bin/pkill" <<'EOF'
 echo "pkill $*" >> "$PKILL_LOG"
 exit 0
 EOF
+cat > "$tmp/bin/dmenu" <<'EOF'
+#!/bin/bash
+# log the offered lines, print the fake user's choice
+(cat >> "$DMENU_LOG"; echo "$STUB_DMENU_CHOICE")
+exit 0
+EOF
 chmod +x "$tmp/bin/"*
 
 export PATH="$tmp/bin:$pkg/.local/bin:$PATH"
 export HYPRCTL_LOG="$tmp/hyprctl.log" CLIENTS_JSON="$tmp/clients.json"
 export DUNST_LOG="$tmp/dunst.log" PKILL_LOG="$tmp/pkill.log"
+export DMENU_LOG="$tmp/dmenu.log"; : > "$DMENU_LOG"
 : > "$HYPRCTL_LOG"; : > "$DUNST_LOG"; : > "$PKILL_LOG"
 
 # fake standalone foot: a bash binary named "foot" (comm = "foot"), so the
@@ -116,5 +128,72 @@ STUB_DUNST_ACTION=default agent-notify c1 critical "claude · x" "msg"
 wait_for 'dispatch focuswindow address:0x55aa0000' "$HYPRCTL_LOG" \
     || fail "click must resolve pid→address and focus the window"
 assert_eq "exactly one focus dispatch" "$(grep -c dispatch "$HYPRCTL_LOG")" "$((dispatches_before + 1))"
+
+# --- widget: fixture state dir → waybar JSON contract -------------------------
+rm -f "$XDG_RUNTIME_DIR/agents"/*.json
+sleep 300 & live_pid=$!
+bash -c 'exit 0' & dead_pid=$!; wait "$dead_pid"
+
+mk_state() {  # <sid> <event> <pid> <agent> <project>
+    jq -n --arg agent "$4" --arg project "$5" --arg event "$2" \
+          --argjson pid "$3" --argjson ts 1 --arg message m \
+          '{agent:$agent,project:$project,cwd:"/x",event:$event,pid:$pid,ts:$ts,message:$message}' \
+          > "$XDG_RUNTIME_DIR/agents/$1.json"
+}
+
+mk_state w1 working "$live_pid"  pi      other
+mk_state n1 notify  "$live_pid"  pi      dotfiles
+mk_state d1 done    "$live_pid"  claude  dotfiles
+mk_state x1 done    "$dead_pid"  opencode ghost
+
+out=$(SHOW_ZERO=1 agents-widget)
+assert_eq "widget counts notify+done, not working" "$(jq -r .text <<<"$out")" 2
+assert_eq "widget class: a notify session outranks done" "$(jq -r .class <<<"$out")" notify
+tooltip=$(jq -r .tooltip <<<"$out")
+grep -q 'pi · dotfiles — czeka'     <<<"$tooltip" || fail "tooltip: notify line missing — $tooltip"
+grep -q 'claude · dotfiles — gotowe' <<<"$tooltip" || fail "tooltip: done line missing — $tooltip"
+grep -q other  <<<"$tooltip" && fail "working session must not be listed"
+grep -q ghost <<<"$tooltip" && fail "dead-pid session must not be listed"
+[ -e "$XDG_RUNTIME_DIR/agents/x1.json" ] && fail "dead pid must be pruned at render"
+[ -e "$XDG_RUNTIME_DIR/agents/w1.json" ] || fail "live working session must survive pruning"
+
+# --- zero toggle: one variable in the script, no waybar config edit ----------
+rm -f "$XDG_RUNTIME_DIR/agents"/*.json
+assert_eq "SHOW_ZERO=1 → always visible 0" "$(SHOW_ZERO=1 agents-widget | jq -r .text)" 0
+assert_eq "SHOW_ZERO=0 → hidden (empty text, waybar collapses it)" "$(SHOW_ZERO=0 agents-widget | jq -r .text)" ""
+
+# --- picker: dmenu lines from state file + focus through stub hyprctl --------
+rm -f "$XDG_RUNTIME_DIR/agents"/*.json
+sleep 300 & live2_pid=$!
+mk_state p1 notify "$live_pid"  pi     pickproj
+mk_state q1 done   "$live_pid"  claude twin
+mk_state q2 done   "$live2_pid" claude twin   # same agent+project → must be told apart by pid
+
+lines=$(agents-widget lines)
+assert_eq "dmenu line format" "$(awk -F'\t' '$2 == "pi · pickproj (czeka)" {print $2}' <<<"$lines")" "pi · pickproj (czeka)"
+grep -q "^$live_pid" <<<"$lines" || fail "picker row must carry the window pid"
+
+printf '[{"pid":%s,"address":"0xpick01"},{"pid":%s,"address":"0xpick02"}]' \
+       "$live_pid" "$live2_pid" > "$CLIENTS_JSON"
+: > "$HYPRCTL_LOG"; : > "$DMENU_LOG"
+STUB_DMENU_CHOICE="pi · pickproj (czeka)" agents-pick
+wait_for 'dispatch focuswindow address:0xpick01' "$HYPRCTL_LOG" \
+    || fail "picking a session must focus its window"
+grep -q "claude · twin (gotowe) #$live_pid"  "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
+grep -q "claude · twin (gotowe) #$live2_pid" "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
+
+: > "$HYPRCTL_LOG"
+STUB_DMENU_CHOICE="claude · twin (gotowe) #$live2_pid" agents-pick
+wait_for 'dispatch focuswindow address:0xpick02' "$HYPRCTL_LOG" \
+    || fail "picking a disambiguated twin must focus the right window"
+
+# --- waybar config contract: signal-driven, no polling ------------------------
+wbconf=$pkg/../waybar/.config/waybar/config.jsonc
+[ -f "$wbconf" ] || fail "waybar config not found: $wbconf"
+for want in '"custom/agents"' '"signal": 8' '"interval": "once"' \
+            '"hide-empty-text": true' '"on-click": "~/.local/bin/agents-pick"'; do
+    grep -q "$want" "$wbconf" || fail "waybar config missing: $want"
+done
+ok "waybar module wired: signal 8, interval once, click → agents-pick"
 
 echo "ALL PASS"
