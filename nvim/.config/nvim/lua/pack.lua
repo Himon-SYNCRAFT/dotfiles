@@ -77,7 +77,7 @@ vim.pack.add({
 	"https://github.com/echasnovski/mini.surround",
 
 	-- AI completion
-	"https://github.com/Exafunction/codeium.vim",
+	"https://github.com/monkoose/neocodeium",
 
 	-- PHP
 	{ src = "https://github.com/phpactor/phpactor", build = "composer install" },
