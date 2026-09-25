@@ -3,7 +3,7 @@
 # that agent's window (focus-window resolves pid → address at click time).
 
 mapfile -t rows < <(agents-widget lines)
-[ ${#rows[@]} -eq 0 ] && exit 0
+[ ${#rows[@]} -eq 0 ] && { notify-send -t 2000 agents "Żaden agent nie czeka"; exit 0; }
 
 # Two agents in the same project are indistinguishable by label alone (spec
 # story 18) — tag duplicate labels with the window pid so the pick is unique.
