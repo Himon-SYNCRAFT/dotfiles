@@ -46,7 +46,7 @@ System zdarzeniowy: hooki/pluginy/extensions agentów piszą per-sesyjne pliki s
 - Notyfikacje: dunstify z akcją default; helper wisi do kliknięcia/wygaśnięcia; replace per sesja przez stack-tag; `mouse_left_click = do_action` w dunstrc (dzisiaj default zamyka powiadomienie).
 - Sygnał do waybara: `pkill -RTMIN+8 waybar` z agent-hook; numer zweryfikowany jako wolny w obecnym configu.
 - Adaptery per harness: claude — hooki w settings.json (istniejące hooki notify-send podmienione, `idle_prompt` usunięty jako duplikat Stop), opencode — plugin ładowany z katalogu pluginów, pi — extension w katalogu extensions. Wszystkie trzy wołają ten sam `agent-hook`.
-- Opencode: payloady eventów zweryfikowane z typów SDK zainstalowanej wersji (`permission.updated`, `session.idle`, `session.status{idle,busy,retry}`, `properties.sessionID`).
+- Opencode (korekta po weryfikacji live — issue 05): binarka to v2.0.15, słownik v1 (`permission.updated`, `session.idle`, `session.status`) w niej nie istnieje. Rzeczywiste eventy `{type, created, data:{sessionID,…}}`: `permission.asked` → notify, `permission.replied`/`session.inbox.enqueued`(user)/`session.execution.started` → working, `session.execution.succeeded/failed` → done, `session.deleted` → clear; plugin jako zwykły `{id, setup}` default export w `~/.config/opencode/plugins/`; `ai` forsuje `--standalone` (shared background service psuje PPID-walk i przeżywa okno).
 - Rozmieszczenie: nowy pakiet stow `agents/` (skrypty, plugin opencode, testy); edycje in-place w istniejących pakietach waybar i dunst; `~/.claude/settings.json` i `~/.pi/agent/extensions/` poza stow.
 - Zwykłe terminale użytkownika (footclient) nietknięte.
 

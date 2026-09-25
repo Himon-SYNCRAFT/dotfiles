@@ -9,4 +9,19 @@
 if [ $# -eq 0 ]; then
     exec foot -T "ai"
 fi
+
+# opencode: standalone server (child of this window). The shared background
+# service detaches from the window, so the plugin's PPID walk would resolve
+# to whichever window started it first — breaking PID→window correlation.
+# Only the session-bearing entrypoints are covered: bare TUI, `run`, `mini`;
+# utility subcommands (serve/service/auth/…) are not agent windows, and the
+# flag must sit AFTER run/mini (`opencode --standalone run` is unrecognized).
+if [ "$1" = opencode ]; then
+    if [ -z "$2" ]; then
+        set -- opencode --standalone
+    elif [ "$2" = run ] || [ "$2" = mini ]; then
+        set -- opencode "$2" --standalone "${@:3}"
+    fi
+fi
+
 exec foot -T "ai · $1" "$@"
