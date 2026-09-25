@@ -19,7 +19,6 @@ require("mason-tool-installer").setup({
 		"prettierd",
 		"pyright",
 		"rust-analyzer",
-		"rustfmt",
 		"sleek",
 		"stylua",
 		"templ",
