@@ -55,9 +55,12 @@ export DUNST_LOG="$tmp/dunst.log" PKILL_LOG="$tmp/pkill.log"
 export DMENU_LOG="$tmp/dmenu.log"; : > "$DMENU_LOG"
 : > "$HYPRCTL_LOG"; : > "$DUNST_LOG"; : > "$PKILL_LOG"
 
-# fake standalone foot: a bash binary named "foot" (comm = "foot"), so the
-# PPID walk in agent-hook finds it as the nearest "foot" ancestor
+# fake foot: a bash binary named "foot" (comm = "foot"); the window's shell
+# (its direct child) is what agent-hook records. setsid: no controlling tty,
+# so focus-window takes its no-pty fallback and never writes to a real pty.
 cp "$(command -v bash)" "$tmp/bin/foot"
+# window shell: records its pid, runs the hook (`; true` = no exec-in-place)
+export WINDOW_SH='echo $$ > "$FAKEPID_FILE"; agent-hook claude notify <<<"$SESSION_JSON"; true'
 
 # --- helpers ----------------------------------------------------------------
 fail() { echo "FAIL: $*" >&2; exit 1; }
@@ -68,7 +71,7 @@ wait_for()  # <text> <file>: poll until the text shows up in the file
 
 session_json='{"session_id":"s1","cwd":"/home/user/dotfiles","message":"needs approval"}'
 FAKEPID_FILE="$tmp/fakepid" SESSION_JSON="$session_json" \
-    "$tmp/bin/foot" -c 'echo $$ > "$FAKEPID_FILE"; agent-hook claude notify <<<"$SESSION_JSON"; true' &
+    setsid "$tmp/bin/foot" -c 'bash -c "$WINDOW_SH"; true' &
 fake_foot=$!
 
 # --- notify event writes full state ----------------------------------------
@@ -80,7 +83,7 @@ assert_eq "project"     "$(jq -r .project  "$state")" dotfiles
 assert_eq "cwd"         "$(jq -r .cwd      "$state")" /home/user/dotfiles
 assert_eq "event"       "$(jq -r .event    "$state")" notify
 assert_eq "message"     "$(jq -r .message  "$state")" "needs approval"
-assert_eq "pid = terminal PID (PPID walk)" "$(jq -r .pid "$state")" "$fake_pid"
+assert_eq "pid = window shell (PPID walk)" "$(jq -r .pid "$state")" "$fake_pid"
 ts=$(jq -r .ts "$state"); case $ts in *[!0-9]*|'') fail "ts not numeric: '$ts'";; *) ok "ts numeric";; esac
 
 grep -q -- '-u critical' "$DUNST_LOG"      || fail "notify must be critical urgency"
@@ -117,20 +120,21 @@ ok "parallel writers: one file per session"
 
 # --- click through: notification action → focus-window → hyprctl -------------
 FAKEPID_FILE="$tmp/c1pid" SESSION_JSON='{"session_id":"c1","cwd":"/tmp/x"}' \
-    "$tmp/bin/foot" -c 'echo $$ > "$FAKEPID_FILE"; agent-hook claude notify <<<"$SESSION_JSON"; true' &
+    setsid "$tmp/bin/foot" -c 'bash -c "$WINDOW_SH; sleep 5"; true' &
+c1foot=$!
 c1state="$XDG_RUNTIME_DIR/agents/c1.json"
 wait_for 'c1' "$DUNST_LOG" || fail "no notification for c1"
 c1pid=$(jq -r .pid "$c1state")
-assert_eq "c1 pid = its foot terminal" "$c1pid" "$(cat "$tmp/c1pid")"
+assert_eq "c1 pid = its window shell" "$c1pid" "$(cat "$tmp/c1pid")"
 dispatches_before=$(grep -c dispatch "$HYPRCTL_LOG")
 STUB_DUNST_ACTION=default agent-notify c1 critical "claude · x" "msg"
-wait_for "dispatch hl.dsp.focus({ window = 'pid:$c1pid' })" "$HYPRCTL_LOG" \
-    || fail "click must dispatch a pid-selector focus for the session's window"
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$c1foot' })" "$HYPRCTL_LOG" \
+    || fail "click (no pty) must fall back to the foot pid selector"
 assert_eq "exactly one focus dispatch" "$(grep -c dispatch "$HYPRCTL_LOG")" "$((dispatches_before + 1))"
 
 # --- widget: fixture state dir → waybar JSON contract -------------------------
 rm -f "$XDG_RUNTIME_DIR/agents"/*.json
-sleep 300 & live_pid=$!
+setsid sleep 300 & live_pid=$!
 bash -c 'exit 0' & dead_pid=$!; wait "$dead_pid"
 
 mk_state() {  # <sid> <event> <pid> <agent> <project>
@@ -166,7 +170,7 @@ assert_eq "SHOW_ZERO=0 → hidden (empty text, waybar collapses it)" "$(SHOW_ZER
 
 # --- picker: dmenu lines from state file + focus through stub hyprctl --------
 rm -f "$XDG_RUNTIME_DIR/agents"/*.json
-sleep 300 & live2_pid=$!
+setsid sleep 300 & live2_pid=$!
 mk_state p1 notify "$live_pid"  pi     pickproj
 mk_state q1 done   "$live_pid"  claude twin
 mk_state q2 done   "$live2_pid" claude twin   # same agent+project → must be told apart by pid
@@ -177,14 +181,14 @@ grep -q "^$live_pid" <<<"$lines" || fail "picker row must carry the window pid"
 
 : > "$HYPRCTL_LOG"; : > "$DMENU_LOG"
 STUB_DMENU_CHOICE="pi · pickproj (czeka)" agents-pick
-wait_for "dispatch hl.dsp.focus({ window = 'pid:$live_pid' })" "$HYPRCTL_LOG" \
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$$' })" "$HYPRCTL_LOG" \
     || fail "picking a session must focus its window"
 grep -qF "claude · twin (gotowe) [#$live_pid]"  "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
 grep -qF "claude · twin (gotowe) [#$live2_pid]" "$DMENU_LOG" || fail "duplicate labels must carry a pid suffix"
 
 : > "$HYPRCTL_LOG"
 STUB_DMENU_CHOICE="claude · twin (gotowe) [#$live2_pid]" agents-pick
-wait_for "dispatch hl.dsp.focus({ window = 'pid:$live2_pid' })" "$HYPRCTL_LOG" \
+wait_for "dispatch hl.dsp.focus({ window = 'pid:$$' })" "$HYPRCTL_LOG" \
     || fail "picking a disambiguated twin must focus the right window"
 
 # --- waybar config contract: signal-driven, no polling ------------------------

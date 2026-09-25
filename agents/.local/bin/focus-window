@@ -1,10 +1,31 @@
 #!/bin/bash
-# focus-window <pid> — focus the Hyprland window belonging to a process PID.
-# Hyprland 0.55+ parses `hyprctl dispatch` as one Lua expression and the
-# compositor resolves the pid:… window selector at dispatch time — addresses
-# are volatile, never store them.
+# focus-window <pid> — focus the Hyprland window whose root process is <pid>
+# (agent-hook stores the direct child of foot, i.e. the window's shell).
+#
+# footclient windows all share the foot server's PID, so Hyprland can't tell
+# them apart. Each window has its own pty though: push the title, write a
+# unique marker title into that pty (OSC 2), find the window by it in
+# `hyprctl clients`, focus by address, pop the title back.
+# ponytail: the marker write can interleave with the agent's own TUI output
+# (one short write, rare); no pty → fall back to the foot PID selector
+# (standalone foot only).
 
 pid=${1:?usage: focus-window <pid>}
 case $pid in ''|*[!0-9]*) exit 1 ;; esac
 
-hyprctl dispatch "hl.dsp.focus({ window = 'pid:$pid' })" >/dev/null 2>&1
+focus() { hyprctl dispatch "hl.dsp.focus({ window = '$1' })" >/dev/null 2>&1; }
+
+tty=$(ps -o tty= -p "$pid" 2>/dev/null | tr -d ' ')
+if [[ $tty == pts/* ]] && [ -w "/dev/$tty" ]; then
+    marker=agent-focus-$pid
+    printf '\e[22;0t\e]2;%s\a' "$marker" > "/dev/$tty"
+    for _ in $(seq 20); do
+        addr=$(hyprctl clients -j | jq -r --arg m "$marker" '.[] | select(.title == $m) | .address' | head -1)
+        [ -n "$addr" ] && break
+        sleep 0.05
+    done
+    printf '\e[23;0t' > "/dev/$tty"
+    [ -n "$addr" ] && { focus "address:$addr"; exit; }
+fi
+
+focus "pid:$(ps -o ppid= -p "$pid" | tr -d ' ')"

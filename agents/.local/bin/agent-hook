@@ -23,16 +23,18 @@ message=$(jq -r '.message // ""' <<<"$input" 2>/dev/null)
 statedir=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/agents
 statefile=$statedir/$sid.json
 
-# Walk the PPID chain to the owning terminal. Agents run via the `ai` wrapper
-# (standalone foot), so the nearest process named "foot" is the window's PID.
-# ponytail: no foot in the chain → pid 0 (unclickable, no phantom focus); only
-# sane under the hard `ai`-wrapper convention; make hooks synchronous (async
-# hooks can detach from the parent chain).
+# Walk the PPID chain to the window's root process: the direct child of
+# foot (the window's shell). Unique per window under both standalone foot and
+# footclient (where every window shares the server PID), and it dies with the
+# window — the widget prunes on it, focus-window finds the window via its pty.
+# ponytail: no foot in the chain → pid 0 (unclickable, no phantom focus); make
+# hooks synchronous (async hooks can detach from the parent chain).
 pid=
 p=$$
 while [ -n "$p" ] && [ "$p" != 1 ]; do
-    if [ "$(cat /proc/$p/comm 2>/dev/null)" = foot ]; then pid=$p; break; fi
-    p=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')
+    pp=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')
+    if [ "$(cat /proc/$pp/comm 2>/dev/null)" = foot ]; then pid=$p; break; fi
+    p=$pp
 done
 pid=${pid:-0}
 

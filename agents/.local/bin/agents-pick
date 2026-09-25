@@ -17,7 +17,7 @@ for r in "${rows[@]}"; do
     labels+=("$lbl")
 done
 
-sel=$(printf '%s\n' "${labels[@]}" | dmenu -i -p agents) || exit 0
+sel=$(printf '%s\n' "${labels[@]}" | dmenu -l 10 -p agents) || exit 0
 
 pid=
 if [[ $sel =~ \[#([0-9]+)\]$ ]]; then

@@ -17,6 +17,12 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
+	output = "eDP-1",
+	mode = "1920x1080@60",
+	position = "auto",
+	scale = "1",
+})
+hl.monitor({
 	output = "DP-1",
 	mode = "3840x2160@143.85",
 	position = "auto",
@@ -62,6 +68,11 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
+-- exec_cmd scripts (agents-pick etc.) live in ~/.local/bin; guard so reloads don't stack it
+local localBin = os.getenv("HOME") .. "/.local/bin"
+if not (":" .. os.getenv("PATH") .. ":"):find(":" .. localBin .. ":", 1, true) then
+	hl.env("PATH", localBin .. ":" .. os.getenv("PATH"))
+end
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcusor")
@@ -278,6 +289,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(formatKeys(superMod, "F"), hl.dsp.window.float({ action = "toggle" }))
 hl.bind(formatKeys(mainMod, "D"), hl.dsp.exec_cmd(menu))
 hl.bind(formatKeys(mainMod, "T"), hl.dsp.exec_cmd("~/.config/scripts/openinfoot.sh"))
+hl.bind(formatKeys(mainMod, "A"), hl.dsp.exec_cmd("~/.local/bin/agents-pick"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(formatKeys(superMod, "L"), hl.dsp.exec_cmd("hyprlock"))
 hl.bind(formatKeys(superMod, "T"), hl.dsp.exec_cmd('fish -c "toggle-theme"'))
