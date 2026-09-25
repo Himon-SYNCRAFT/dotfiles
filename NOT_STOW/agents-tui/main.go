@@ -6,7 +6,9 @@
 //	go build -C NOT_STOW/agents-tui -o ~/.local/bin/agents-tui .
 //
 // Read-only: processes (/proc) say which agents exist, state files
-// ($XDG_RUNTIME_DIR/agents/*.json) only add status. Nothing is written or pruned.
+// ($XDG_RUNTIME_DIR/agents/*.json) only add status, `hyprctl clients` adds
+// the window (workspace, focus, title). Nothing is written or pruned on disk;
+// the only write is a one-off title marker into each new agent window's pty.
 package main
 
 import (
@@ -48,6 +50,17 @@ type row struct {
 	agent, project, status, message string
 	since                           time.Time
 	label                           string
+	workspace                       string
+	focused                         bool
+}
+
+type client struct {
+	Address        string `json:"address"`
+	Title          string `json:"title"`
+	FocusHistoryID int    `json:"focusHistoryID"`
+	Workspace      struct {
+		Name string `json:"name"`
+	} `json:"workspace"`
 }
 
 var statusRank = map[string]int{"czeka": 0, "gotowe": 1, "pracuje": 2, "bezczynny": 3}
@@ -132,6 +145,100 @@ func buildRows(procs []proc, states []state) []row {
 	return rows
 }
 
+// addWindows fills window data from Hyprland clients via the shell → address
+// map; no address (or window gone) leaves the row without it. The window
+// title stands in for a missing message.
+func addWindows(rows []row, clients []client, addrs map[int]string) []row {
+	byAddr := make(map[string]client, len(clients))
+	for _, c := range clients {
+		byAddr[c.Address] = c
+	}
+	for i := range rows {
+		c, ok := byAddr[addrs[rows[i].shell]]
+		if !ok {
+			continue
+		}
+		rows[i].workspace, rows[i].focused = c.Workspace.Name, c.FocusHistoryID == 0
+		if rows[i].message == "" {
+			rows[i].message = c.Title
+		}
+	}
+	return rows
+}
+
+func parseClients(b []byte) ([]client, error) {
+	var cs []client
+	return cs, json.Unmarshal(b, &cs)
+}
+
+func hyprClients() []client {
+	b, err := exec.Command("hyprctl", "clients", "-j").Output()
+	if err != nil {
+		return nil
+	}
+	cs, _ := parseClients(b)
+	return cs
+}
+
+// resolveAddrs maps each new shell to its window address with focus-window's
+// trick (footclient windows share the foot pid, so Hyprland can't tell them
+// apart): push title, OSC 2 marker into the shell's pty, find it in
+// `hyprctl clients`, pop title. All new shells in one batch; a miss is stored
+// as "" so it's never retried. Shells no longer listed are dropped.
+// ponytail: blocks the UI up to 1 s while a marker is pending (move to a
+// tea.Cmd if that ever shows); the marker write can interleave with the
+// agent's TUI output, and an agent retitling within those ms makes a miss.
+func resolveAddrs(addrs map[int]string, shells []int) {
+	live := make(map[int]bool, len(shells))
+	pending := map[string]int{} // marker → shell
+	ptys := map[int]*os.File{}
+	pop := func(sh int) {
+		ptys[sh].WriteString("\x1b[23;0t")
+		ptys[sh].Close()
+	}
+	for _, sh := range shells {
+		live[sh] = true
+		if _, ok := addrs[sh]; ok {
+			continue
+		}
+		addrs[sh] = ""
+		tty, _ := os.Readlink(fmt.Sprintf("/proc/%d/fd/0", sh))
+		if !strings.HasPrefix(tty, "/dev/pts/") {
+			continue
+		}
+		f, err := os.OpenFile(tty, os.O_WRONLY, 0)
+		if err != nil {
+			continue
+		}
+		marker := fmt.Sprintf("agents-tui-%d-%d", os.Getpid(), sh) // per instance
+		if _, err := fmt.Fprintf(f, "\x1b[22;0t\x1b]2;%s\a", marker); err != nil {
+			f.Close()
+			continue
+		}
+		pending[marker], ptys[sh] = sh, f
+	}
+	for sh := range addrs {
+		if !live[sh] {
+			delete(addrs, sh)
+		}
+	}
+	for i := 0; i < 20 && len(pending) > 0; i++ {
+		if i > 0 {
+			time.Sleep(50 * time.Millisecond)
+		}
+		for _, c := range hyprClients() {
+			if sh, ok := pending[c.Title]; ok {
+				addrs[sh] = c.Address
+				pop(sh)
+				delete(pending, c.Title)
+			}
+		}
+	}
+	for _, sh := range pending {
+		pop(sh)
+	}
+}
+
 // readStates: unreadable/broken files are skipped (a writer may be mid-rename).
 func readStates(dir string) []state {
 	paths, _ := filepath.Glob(filepath.Join(dir, "*.json"))
@@ -206,6 +313,7 @@ type tickMsg time.Time
 func tick() tea.Cmd { return tea.Tick(time.Second, func(t time.Time) tea.Msg { return tickMsg(t) }) }
 
 type model struct {
+	addrs  map[int]string // window shell pid → Hyprland address
 	rows   []row
 	cursor int
 	width  int
@@ -216,7 +324,24 @@ func (m *model) refresh() {
 	if m.cursor < len(m.rows) {
 		sel = m.rows[m.cursor].shell
 	}
-	m.rows = buildRows(scanProcs(), readStates(stateDir()))
+	// Clients first: a window just marked still shows the marker title until
+	// Hyprland sees the pop; it gets its data on the next tick.
+	clients := hyprClients()
+	rows := buildRows(scanProcs(), readStates(stateDir()))
+	// Mark only windows already listed last tick: a just-started agent sets
+	// its own title right away and would race the marker.
+	prev := map[int]bool{}
+	for _, r := range m.rows {
+		prev[r.shell] = true
+	}
+	var shells []int
+	for _, r := range rows {
+		if prev[r.shell] {
+			shells = append(shells, r.shell)
+		}
+	}
+	resolveAddrs(m.addrs, shells)
+	m.rows = addWindows(rows, clients, m.addrs)
 	m.cursor = min(m.cursor, max(len(m.rows)-1, 0))
 	for i, r := range m.rows { // keep the selection on the same window
 		if r.shell == sel {
@@ -278,12 +403,18 @@ func (m model) View() string {
 	var b strings.Builder
 	for i, r := range m.rows {
 		parts := []string{r.label, r.status, age(time.Since(r.since))}
+		if r.workspace != "" {
+			parts = append(parts, "ws "+r.workspace)
+		}
 		if r.message != "" {
 			parts = append(parts, strings.Join(strings.Fields(r.message), " "))
 		}
 		st := lineStyle
 		if i == m.cursor {
 			st = selStyle
+		}
+		if r.focused {
+			st = st.Bold(true)
 		}
 		if m.width > 0 {
 			st = st.MaxWidth(m.width)
@@ -294,7 +425,7 @@ func (m model) View() string {
 }
 
 func main() {
-	m := model{}
+	m := model{addrs: map[int]string{}}
 	m.refresh()
 	if _, err := tea.NewProgram(m, tea.WithAltScreen()).Run(); err != nil {
 		fmt.Fprintln(os.Stderr, err)

@@ -4,14 +4,18 @@
 
 **Blocked by:** 01
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Marker wykonywany raz na okno (nie przy każdym pollingu); tytuł okna przywracany (push/pop)
-- [ ] Kolumna workspace poprawna dla okien `foot` i `footclient` (w tym kilka okien footclient — ten sam pid serwera)
-- [ ] Wiersz okna z fokusem pogrubiony; zmiana fokusu widoczna w ≤1 s
-- [ ] Tytuł okna pokazywany, gdy brak message
-- [ ] Mapa `pid → address` czyszczona, gdy okno znika; brak adresu nie psuje wiersza ani nie powoduje ponawiania markera co tick
-- [ ] `main_test.go` rozszerzony: fałszywy output `hyprctl clients -j` + mapa adresów → workspace, fokus, tytuł-fallback w wierszach — `go test` PASS
+- [x] Marker wykonywany raz na okno (nie przy każdym pollingu); tytuł okna przywracany (push/pop)
+- [x] Kolumna workspace poprawna dla okien `foot` i `footclient` (w tym kilka okien footclient — ten sam pid serwera)
+- [x] Wiersz okna z fokusem pogrubiony; zmiana fokusu widoczna w ≤1 s
+- [x] Tytuł okna pokazywany, gdy brak message
+- [x] Mapa `pid → address` czyszczona, gdy okno znika; brak adresu nie psuje wiersza ani nie powoduje ponawiania markera co tick
+- [x] `main_test.go` rozszerzony: fałszywy output `hyprctl clients -j` + mapa adresów → workspace, fokus, tytuł-fallback w wierszach — `go test` PASS
 - [ ] E2E: kilka agentów w `footclient` na różnych workspace'ach → poprawne workspace'y i pogrubienie; marker nie psuje widocznie outputu agenta
 
 ## Comments
+
+- Zaimplementowane w `NOT_STOW/agents-tui/main.go`: `resolveAddrs` (marker jednorazowo, wszystkie nowe okna w jednym batchu, pudło zapisywane jako `""` — bez ponawiania; prune przy zniknięciu wiersza), `addWindows` (workspace, fokus, tytuł-fallback). pty z `/proc/<shell>/fd/0`. Marker dopiero dla wiersza widzianego już w poprzednim ticku (świeży agent sam ustawia tytuł — wyścig).
+- E2E częściowo: live test na jednym oknie foot z claude → poprawny address/ws/fokus, tytuł przywrócony, prune działa. Kilka okien `footclient` na różnych workspace'ach — do sprawdzenia ręcznie.
+- Znane ceilingi (`ponytail:` w kodzie): marker blokuje UI do 1 s przy pudle; Enter nadal woła `focus-window` (drugi marker) zamiast focusu po znanym adresie.

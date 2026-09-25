@@ -69,3 +69,54 @@ func TestBuildRows(t *testing.T) {
 		t.Errorf("rows:\n got %+v\nwant %+v", gs, want)
 	}
 }
+
+func TestBuildRowsWindow(t *testing.T) {
+	// Two footclient windows (same foot server pid) + one standalone foot.
+	clientsJSON := `[
+		{"address":"0xa","title":"✳ claude","focusHistoryID":0,"workspace":{"id":2,"name":"2"},"pid":100},
+		{"address":"0xb","title":"pi — tools","focusHistoryID":1,"workspace":{"id":5,"name":"code"},"pid":100},
+		{"address":"0xc","title":"opencode","focusHistoryID":2,"workspace":{"id":3,"name":"3"},"pid":300},
+		{"address":"0xd","title":"firefox","focusHistoryID":3,"workspace":{"id":1,"name":"1"},"pid":900}
+	]`
+	clients, err := parseClients([]byte(clientsJSON))
+	if err != nil {
+		t.Fatal(err)
+	}
+	procs := []proc{
+		{pid: 1, comm: "systemd"},
+		{pid: 100, ppid: 1, comm: "foot"},
+		{pid: 101, ppid: 100, comm: "fish"},
+		{pid: 102, ppid: 101, comm: "claude", cwd: "/p/a", start: time.Unix(10, 0)},
+		{pid: 201, ppid: 100, comm: "fish"},
+		{pid: 202, ppid: 201, comm: "pi", cwd: "/p/tools", start: time.Unix(20, 0)},
+		{pid: 300, ppid: 1, comm: "foot"},
+		{pid: 301, ppid: 300, comm: "bash"},
+		{pid: 302, ppid: 301, comm: "opencode", cwd: "/p/web", start: time.Unix(30, 0)},
+		{pid: 400, ppid: 1, comm: "foot"},
+		{pid: 401, ppid: 400, comm: "fish"},
+		{pid: 402, ppid: 401, comm: "claude", cwd: "/p/nomarker", start: time.Unix(40, 0)},
+	}
+	states := []state{{Agent: "opencode", Event: "done", PID: 301, TS: 50, Message: "zrobione"}}
+	// 401: marker not found → "" (no window data).
+	addrs := map[int]string{101: "0xa", 201: "0xb", 301: "0xc", 401: ""}
+
+	type got struct {
+		shell     int
+		workspace string
+		focused   bool
+		message   string
+	}
+	var gs []got
+	for _, r := range addWindows(buildRows(procs, states), clients, addrs) {
+		gs = append(gs, got{r.shell, r.workspace, r.focused, r.message})
+	}
+	want := []got{
+		{301, "3", false, "zrobione"}, // message wins over title
+		{101, "2", true, "✳ claude"},
+		{201, "code", false, "pi — tools"},
+		{401, "", false, ""},
+	}
+	if !reflect.DeepEqual(gs, want) {
+		t.Errorf("rows:\n got %+v\nwant %+v", gs, want)
+	}
+}
