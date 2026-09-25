@@ -16,6 +16,7 @@
     ],
     "modules-right": [
         // "custom/pkg",
+        "custom/agents",
         "pulseaudio",
         // "cpu",
         // "memory",
@@ -226,6 +227,15 @@
             "balanced": " ",
             "power-saver": "󰛓"
         }
+    },
+    "custom/agents": {
+        "format": "󰚩 {text}",
+        "exec": "~/.local/bin/agents-widget",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8, // SIGRTMIN+8 from agent-hook — no polling
+        "hide-empty-text": true, // collapse fully at zero (SHOW_ZERO=0 mode)
+        "on-click": "~/.local/bin/agents-pick"
     },
     "custom/pkg": {
         "format": "󰅧 {text}",

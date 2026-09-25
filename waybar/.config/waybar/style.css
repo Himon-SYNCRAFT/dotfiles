@@ -89,6 +89,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #custom-pkg,
+#custom-agents,
 #window,
 #power-profiles-daemon,
 #mpd {
@@ -99,6 +100,15 @@ button:hover {
 
 #clock,
 #window {}
+
+/* waiting agents: red while one asks for input, muted when all just finished */
+#custom-agents.notify {
+    color: @samuraiRed;
+}
+
+#custom-agents.done {
+    color: @subtle;
+}
 
 #workspaces {
     padding: 0;

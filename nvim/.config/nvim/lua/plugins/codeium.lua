@@ -1,4 +1,7 @@
 -- lua/plugins/codeium.lua
-vim.keymap.set("i", "<C-o>", function()
-    return vim.fn["codeium#Accept"]()
-end, { expr = true })
+
+local codeium = require("neocodeium")
+
+codeium.setup()
+
+vim.keymap.set("i", "<C-o>", codeium.accept)

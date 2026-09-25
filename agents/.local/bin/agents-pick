@@ -1,0 +1,30 @@
+#!/bin/bash
+# agents-pick — dmenu over the waiting agent sessions; choosing a line focuses
+# that agent's window (focus-window resolves pid → address at click time).
+
+mapfile -t rows < <(agents-widget lines)
+[ ${#rows[@]} -eq 0 ] && exit 0
+
+# Two agents in the same project are indistinguishable by label alone (spec
+# story 18) — tag duplicate labels with the window pid so the pick is unique.
+declare -A dup
+for r in "${rows[@]}"; do dup[${r#*$'\t'}]=$(( ${dup[${r#*$'\t'}]:-0} + 1 )); done
+
+labels=()
+for r in "${rows[@]}"; do
+    lbl=${r#*$'\t'}
+    [ "${dup[$lbl]}" -gt 1 ] && lbl="$lbl [#${r%%$'\t'*}]"
+    labels+=("$lbl")
+done
+
+sel=$(printf '%s\n' "${labels[@]}" | dmenu -i -p agents) || exit 0
+
+pid=
+if [[ $sel =~ \[#([0-9]+)\]$ ]]; then
+    pid=${BASH_REMATCH[1]}   # disambiguated duplicate → pid is in the suffix
+else
+    for r in "${rows[@]}"; do
+        [ "${r#*$'\t'}" = "$sel" ] && { pid=${r%%$'\t'*}; break; }
+    done
+fi
+[ -n "$pid" ] && [ "$pid" != 0 ] && focus-window "$pid"

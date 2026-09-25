@@ -1,0 +1,19 @@
+#!/bin/bash
+# agent-notify <session_id> <urgency> <headline> <body>
+#
+# One notification per session: the stack tag makes a new notification
+# replace the previous one instead of stacking. dunstify blocks until the
+# notification is clicked or expires; clicking the default action focuses the
+# session's window (PID read from the state file, resolved by Hyprland at
+# dispatch time). Launched in the background by agent-hook.
+
+sid=${1:?}; urgency=${2:?}; headline=${3:?}; body=${4:-}
+
+action=$(dunstify -a ai-agents -u "$urgency" --stack-tag "$sid" \
+             -A "default,fokus" "$headline" "$body" 2>/dev/null)
+
+if [ "$action" = default ]; then
+    pid=$(jq -r '.pid // empty' \
+          "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/agents/$sid.json" 2>/dev/null)
+    [ -n "$pid" ] && exec focus-window "$pid"
+fi

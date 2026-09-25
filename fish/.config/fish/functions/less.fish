@@ -1,7 +1,7 @@
 function less --description 'moar or less'
-    if ! command -v moar &> /dev/null
+    if ! command -v moor &> /dev/null
         command less $argv;
     else
-        command moar $argv;
+        command moor $argv;
     end
 end

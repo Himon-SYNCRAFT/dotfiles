@@ -118,7 +118,7 @@ vim.lsp.config("taplo", {})
 
 -- PHP
 vim.lsp.config("intelephense", {
-	cmd = { "intelephense", "--stdio" },
+	-- cmd = { "intelephense", "--stdio" },
 	init_options = {
 		licenceKey = "/home/himon/intelephense/license.txt",
 	},

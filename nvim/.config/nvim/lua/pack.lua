@@ -87,4 +87,5 @@ vim.pack.add({
 	"https://github.com/echasnovski/mini.notify",
 	"https://github.com/LunarVim/bigfile.nvim",
 	"https://github.com/benomahony/uv.nvim",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 }, { confirm = false })

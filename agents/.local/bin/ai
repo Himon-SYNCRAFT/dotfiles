@@ -1,0 +1,12 @@
+#!/bin/bash
+# ai <command> [args…] — run a command in a standalone foot window.
+#
+# Standalone foot (not footclient): every window gets its own process PID.
+# agent-hook's PPID walk and focus-window's PID→window resolution depend on
+# this — footclient windows all report the foot server's PID and are
+# indistinguishable. No args → plain shell window.
+
+if [ $# -eq 0 ]; then
+    exec foot -T "ai"
+fi
+exec foot -T "ai · $1" "$@"

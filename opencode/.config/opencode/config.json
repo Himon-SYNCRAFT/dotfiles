@@ -1,6 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "model": "opencode/kimi-k2.6",
+    "model": "opencode/glm-5.2",
     "autoshare": false,
     "autoupdate": true,
     "plugin": [
@@ -12,11 +12,11 @@
     "agent": {
         "build": {
             "mode": "primary",
-            "model": "opencode/kimi-k2.6",
+            "model": "opencode/glm-5.2",
         },
         "plan": {
             "mode": "primary",
-            "model": "opencode/kimi-k2.6",
+            "model": "opencode/glm-5.2",
             "permission": {
                 "read": {
                     "*": "allow",
@@ -38,7 +38,7 @@
         },
         "executor": {
             "mode": "primary",
-            "model": "opencode/qwen3-coder",
+            "model": "opencode/glm-5.2",
         }
     },
     "provider": {

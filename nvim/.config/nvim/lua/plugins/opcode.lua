@@ -3,7 +3,8 @@ local opencode = require("opcode")
 opencode.setup({
 	hostname = "127.0.0.1",
 	port = 14096,
-	command = "alacritty -e opencode --port {port}",
+	-- command = "alacritty -e opencode --port {port}",
+	command = "footclient -e opencode --port {port}",
 })
 
 vim.keymap.set("n", "<leader>ao", function()
