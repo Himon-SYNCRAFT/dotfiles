@@ -124,7 +124,7 @@
     "clock": {
         "timezone": "Europe/Warsaw",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%R %d.%m.%Y, %a}",
+        "format": " {:%R %d.%m.%Y, %a}",
         "format-alt": "{:%R}"
     },
     "cpu": {
