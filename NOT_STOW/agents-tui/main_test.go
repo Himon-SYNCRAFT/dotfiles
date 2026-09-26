@@ -49,21 +49,22 @@ func TestBuildRows(t *testing.T) {
 	rows := buildRows(procs, readStates(dir))
 
 	type got struct {
-		shell         int
-		label, status string
-		since         int64
-		message       string
+		shell                          int
+		agent, project, branch, status string
+		since                          int64
+		message                        string
 	}
 	var gs []got
 	for _, r := range rows {
-		gs = append(gs, got{r.shell, r.label, r.status, r.since.Unix(), r.message})
+		gs = append(gs, got{r.shell, r.agent, r.project, r.branch, r.status, r.since.Unix(), r.message})
 	}
+	// Fake cwds aren't repos → "—" (gitBranch has its own test).
 	want := []got{
-		{701, "pi · api", "czeka", 800, ""},
-		{101, "claude · dotfiles [#101]", "czeka", 1000, "Potrzebuję zgody"},
-		{301, "opencode · web", "gotowe", 900, "gotowe"},
-		{501, "claude · dotfiles [#501]", "pracuje", 2000, ""},
-		{201, "pi · tools", "bezczynny", 500, ""},
+		{701, "pi", "api", "—", "czeka", 800, ""},
+		{101, "claude", "dotfiles", "—", "czeka", 1000, "Potrzebuję zgody"},
+		{301, "opencode", "web", "—", "gotowe", 900, "gotowe"},
+		{501, "claude", "dotfiles", "—", "pracuje", 2000, ""},
+		{201, "pi", "tools", "—", "bezczynny", 500, ""},
 	}
 	if !reflect.DeepEqual(gs, want) {
 		t.Errorf("rows:\n got %+v\nwant %+v", gs, want)
@@ -101,22 +102,60 @@ func TestBuildRowsWindow(t *testing.T) {
 	addrs := map[int]string{101: "0xa", 201: "0xb", 301: "0xc", 401: ""}
 
 	type got struct {
-		shell     int
-		workspace string
-		focused   bool
-		message   string
+		shell   int
+		focused bool
+		message string
 	}
 	var gs []got
 	for _, r := range addWindows(buildRows(procs, states), clients, addrs) {
-		gs = append(gs, got{r.shell, r.workspace, r.focused, r.message})
+		gs = append(gs, got{r.shell, r.focused, r.message})
 	}
 	want := []got{
-		{301, "3", false, "zrobione"}, // message wins over title
-		{101, "2", true, "✳ claude"},
-		{201, "code", false, "pi — tools"},
-		{401, "", false, ""},
+		{301, false, "zrobione"}, // message wins over title
+		{101, true, "✳ claude"},
+		{201, false, "pi — tools"},
+		{401, false, ""},
 	}
 	if !reflect.DeepEqual(gs, want) {
 		t.Errorf("rows:\n got %+v\nwant %+v", gs, want)
+	}
+}
+
+func TestGitBranch(t *testing.T) {
+	dir := t.TempDir()
+	write := func(path, body string) {
+		p := filepath.Join(dir, path)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	write("repo/.git/HEAD", "ref: refs/heads/main\n")
+	write("repo/src/deep/.keep", "")
+	write("det/.git/HEAD", "0123456789abcdef0123456789abcdef01234567\n")
+	write("repo/.git/worktrees/wt/HEAD", "ref: refs/heads/feature/x\n")
+	write("wt/.git", "gitdir: "+filepath.Join(dir, "repo/.git/worktrees/wt")+"\n")
+	write("repo/.git/modules/sub/HEAD", "ref: refs/heads/dev\n")
+	write("repo/sub/.git", "gitdir: ../.git/modules/sub\n") // submodule: relative gitdir
+	write("none/.keep", "")
+	write("odd/.git/HEAD", "ref: refs/remotes/origin/x\n") // not a branch: whole ref, no sha cut
+
+	for cwd, want := range map[string]string{
+		"repo":          "main",
+		"repo/src/deep": "main", // walks up
+		"det":           "0123456",
+		"wt":            "feature/x",
+		"repo/sub":      "dev",
+		"none":          "—",
+		"odd":           "refs/remotes/origin/x",
+	} {
+		if got := gitBranch(filepath.Join(dir, cwd)); got != want {
+			t.Errorf("gitBranch(%s) = %q, want %q", cwd, got, want)
+		}
+	}
+	if got := gitBranch(""); got != "—" {
+		t.Errorf(`gitBranch("") = %q, want "—"`, got)
 	}
 }

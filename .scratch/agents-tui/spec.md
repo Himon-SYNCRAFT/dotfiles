@@ -21,9 +21,8 @@ System z `agents-notify` (hooki → pliki stanu → dunst/waybar/dmenu) pokazuje
 7. Jako użytkownik, agenci bez okna foot w łańcuchu przodków (headless `claude -p`, inne terminale) mają być ukryci — z listy nie da się do nich skoczyć.
 8. Jako użytkownik, jedno okno = jeden wiersz, nawet jeśli w oknie jest kilka procesów agentów (np. claude odpala `opencode run` w Bash) — pokazuję agenta najbliższego `foot`.
 9. Jako użytkownik, wiersze wymagające uwagi mają być na górze: czeka → gotowe → pracuje → bezczynny; w grupie od najstarszego.
-10. Jako użytkownik, chcę widzieć: agent · projekt · status · wiek · workspace · message (obcięte do szerokości); gdy brak message — tytuł okna.
+10. Jako użytkownik, chcę widzieć wyrównane kolumny z nagłówkiem: folder · gałąź git · message (obcięte do szerokości; gdy brak — tytuł okna) · status (kolor z palety ANSI terminala) · agent.
 11. Jako użytkownik, wiersz okna, które ma aktualnie fokus, jest pogrubiony.
-12. Jako użytkownik dwóch agentów w tym samym projekcie, duplikaty etykiet mają sufiks z pid (jak w `agents-pick`).
 13. Jako użytkownik, mogę uruchomić TUI dowolną liczbę razy (skrót, CLI) — instancje są niezależne; skrót ustawiam sam.
 14. Jako właściciel dotfiles, budowa to jedna komenda `go build`, binarka nie ląduje w repo, `stowall.sh` bez zmian.
 

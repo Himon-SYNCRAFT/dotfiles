@@ -7,7 +7,7 @@
 //
 // Read-only: processes (/proc) say which agents exist, state files
 // ($XDG_RUNTIME_DIR/agents/*.json) only add status, `hyprctl clients` adds
-// the window (workspace, focus, title). Nothing is written or pruned on disk;
+// the window (focus, title). Nothing is written or pruned on disk;
 // the only write is a one-off title marker into each new agent window's pty.
 package main
 
@@ -24,6 +24,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/charmbracelet/x/ansi"
 )
 
 // Agents are recognised by /proc/<pid>/comm: all three ship as native
@@ -46,21 +47,16 @@ type state struct {
 }
 
 type row struct {
-	shell                           int // window's shell pid (direct child of foot)
-	agent, project, status, message string
-	since                           time.Time
-	label                           string
-	workspace                       string
-	focused                         bool
+	shell                                   int // window's shell pid (direct child of foot)
+	agent, project, branch, status, message string
+	since                                   time.Time
+	focused                                 bool
 }
 
 type client struct {
 	Address        string `json:"address"`
 	Title          string `json:"title"`
 	FocusHistoryID int    `json:"focusHistoryID"`
-	Workspace      struct {
-		Name string `json:"name"`
-	} `json:"workspace"`
 }
 
 var statusRank = map[string]int{"czeka": 0, "gotowe": 1, "pracuje": 2, "bezczynny": 3}
@@ -103,7 +99,7 @@ func buildRows(procs []proc, states []state) []row {
 			continue
 		}
 
-		r := row{shell: shell, agent: p.comm, project: filepath.Base(p.cwd), status: "bezczynny", since: p.start}
+		r := row{shell: shell, agent: p.comm, project: filepath.Base(p.cwd), branch: gitBranch(p.cwd), status: "bezczynny", since: p.start}
 		var best *state
 		for i, s := range states {
 			if s.PID == shell && s.Agent == p.comm && s.TS >= p.start.Unix() &&
@@ -118,18 +114,6 @@ func buildRows(procs []proc, states []state) []row {
 			}
 		}
 		rows = append(rows, r)
-	}
-
-	// Duplicate labels get the window pid, as in agents-pick.
-	count := map[string]int{}
-	for i := range rows {
-		rows[i].label = rows[i].agent + " · " + rows[i].project
-		count[rows[i].label]++
-	}
-	for i := range rows {
-		if count[rows[i].label] > 1 {
-			rows[i].label += fmt.Sprintf(" [#%d]", rows[i].shell)
-		}
 	}
 
 	sort.Slice(rows, func(i, j int) bool {
@@ -158,7 +142,7 @@ func addWindows(rows []row, clients []client, addrs map[int]string) []row {
 		if !ok {
 			continue
 		}
-		rows[i].workspace, rows[i].focused = c.Workspace.Name, c.FocusHistoryID == 0
+		rows[i].focused = c.FocusHistoryID == 0
 		if rows[i].message == "" {
 			rows[i].message = c.Title
 		}
@@ -236,6 +220,40 @@ func resolveAddrs(addrs map[int]string, shells []int) {
 	}
 	for _, sh := range pending {
 		pop(sh)
+	}
+}
+
+// gitBranch reads HEAD of the repo containing dir, walking up, without
+// running git. `.git` may be a file `gitdir: …` (worktree, submodule).
+// Outside a repo "—", detached HEAD → short sha.
+func gitBranch(dir string) string {
+	if dir == "" { // unreadable /proc/<pid>/cwd; "" would mean the TUI's own cwd
+		return "—"
+	}
+	for {
+		gd := filepath.Join(dir, ".git")
+		if b, err := os.ReadFile(gd); err == nil { // a file, not a dir
+			if v, ok := strings.CutPrefix(strings.TrimSpace(string(b)), "gitdir: "); ok {
+				gd = v
+				if !filepath.IsAbs(gd) {
+					gd = filepath.Join(dir, gd)
+				}
+			}
+		}
+		if b, err := os.ReadFile(filepath.Join(gd, "HEAD")); err == nil {
+			head := strings.TrimSpace(string(b))
+			// ponytail: reftable repos keep the real HEAD in the table and show
+			// ".invalid" here; read reftable if one ever shows up.
+			if ref, ok := strings.CutPrefix(head, "ref: "); ok {
+				return strings.TrimPrefix(ref, "refs/heads/")
+			}
+			return head[:min(7, len(head))]
+		}
+		parent := filepath.Dir(dir)
+		if parent == dir {
+			return "—"
+		}
+		dir = parent
 	}
 }
 
@@ -379,47 +397,53 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-var (
-	lineStyle = lipgloss.NewStyle()
-	selStyle  = lipgloss.NewStyle().Reverse(true)
-)
+// Terminal palette indexes (0–15), so colours follow the foot theme.
+var statusColor = map[string]lipgloss.Color{"czeka": "3", "gotowe": "2", "pracuje": "4", "bezczynny": "8"}
 
-func age(d time.Duration) string {
-	switch {
-	case d < time.Minute:
-		return fmt.Sprintf("%ds", int(d.Seconds()))
-	case d < time.Hour:
-		return fmt.Sprintf("%dm", int(d.Minutes()))
-	case d < 24*time.Hour:
-		return fmt.Sprintf("%dh", int(d.Hours()))
-	}
-	return fmt.Sprintf("%dd", int(d.Hours()/24))
+// cell cuts s to w cells with "…" and pads it to exactly w.
+func cell(s string, w int) string {
+	s = ansi.Truncate(s, w, "…")
+	return s + strings.Repeat(" ", w-lipgloss.Width(s))
 }
 
+// View: FOLDER | GAŁĄŹ | MESSAGE | STATUS | AGENT. Folder and branch fit the
+// longest value (capped), status and agent are fixed; message takes the rest
+// and is the first to shrink, down to nothing.
 func (m model) View() string {
 	if len(m.rows) == 0 {
 		return "brak agentów\n"
 	}
+	const gap = "  "
+	statusW, agentW := len("bezczynny"), len("opencode")
+	folderW, branchW := len("FOLDER"), lipgloss.Width("GAŁĄŹ")
+	for _, r := range m.rows {
+		folderW, branchW = max(folderW, lipgloss.Width(r.project)), max(branchW, lipgloss.Width(r.branch))
+	}
+	folderW, branchW = min(folderW, 20), min(branchW, 24)
+	msgW := m.width - folderW - branchW - statusW - agentW - 4*len(gap)
+	if m.width > 0 && msgW < 0 { // then branch, then folder, to keep status/agent visible
+		cut := min(-msgW, branchW)
+		branchW, folderW = branchW-cut, max(folderW+msgW+cut, 0)
+	}
+	msgW = max(msgW, 0)
+
 	var b strings.Builder
-	for i, r := range m.rows {
-		parts := []string{r.label, r.status, age(time.Since(r.since))}
-		if r.workspace != "" {
-			parts = append(parts, "ws "+r.workspace)
-		}
-		if r.message != "" {
-			parts = append(parts, strings.Join(strings.Fields(r.message), " "))
-		}
-		st := lineStyle
-		if i == m.cursor {
-			st = selStyle
-		}
-		if r.focused {
-			st = st.Bold(true)
-		}
+	// Status is rendered on its own for the colour, so every segment carries
+	// the row's style (a reset after the status would end reverse/bold).
+	line := func(st, statusSt lipgloss.Style, folder, branch, msg, status, agent string) {
+		l := st.Render(cell(folder, folderW)+gap+cell(branch, branchW)+gap+cell(msg, msgW)+gap) +
+			statusSt.Render(cell(status, statusW)) + st.Render(gap+cell(agent, agentW))
 		if m.width > 0 {
-			st = st.MaxWidth(m.width)
+			l = lipgloss.NewStyle().MaxWidth(m.width).Render(l)
 		}
-		b.WriteString(st.Render(strings.Join(parts, " · ")) + "\n")
+		b.WriteString(l + "\n")
+	}
+	faint := lipgloss.NewStyle().Faint(true)
+	line(faint, faint, "FOLDER", "GAŁĄŹ", "MESSAGE", "STATUS", "AGENT")
+	for i, r := range m.rows {
+		st := lipgloss.NewStyle().Reverse(i == m.cursor).Bold(r.focused)
+		line(st, st.Foreground(statusColor[r.status]), r.project, r.branch,
+			strings.Join(strings.Fields(r.message), " "), r.status, r.agent)
 	}
 	return b.String()
 }
