@@ -60,7 +60,9 @@ notify|done)
     urgency=critical
     [ "$event" = done ] && urgency=normal
     # background: the helper hangs until the notification is clicked/expires
-    agent-notify "$sid" "$urgency" "$agent · $project" "${message:-$event}" &
+    # detach stdio: an inherited stdout pipe makes Claude Code wait for dunstify
+    agent-notify "$sid" "$urgency" "$agent · $project" "${message:-$event}" \
+        </dev/null >/dev/null 2>&1 &
     disown
     ;;
 esac
